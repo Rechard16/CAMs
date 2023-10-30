@@ -1,3 +1,4 @@
+```
 CAMS/
 │
 ├── src/
@@ -32,6 +33,7 @@ CAMS/
 │   └── staff_list.xlsx                    # 员工数据。
 │
 └── README.md                              # 项目说明文档。
+```
 ： User
 - password: String
 - userID: String
