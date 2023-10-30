@@ -34,15 +34,15 @@ CAMS/
 │
 └── README.md                              # 项目说明文档。
 ```
-： User
+User
 - password: String
 - userID: String
 - faculty: String
 - id: int
 - permission: List<Permission>
-# changePassword()
-# viewQuery()
-# viewCamps()
++ changePassword()
++ viewQuery()
++ viewCamps()
 
 Staff (inherits from User)
 + createCamp(campInfo: CampInfo): Camp
