@@ -9,7 +9,9 @@ public class CampManager {
     private List<Camp> camps;
 
     public Camp createCamp(CampInfo campInfo) {
-        System.out.println("Hello testt.");
+        
+    	
+    	//
         return null;
     }
 
