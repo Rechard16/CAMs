@@ -1,16 +1,13 @@
 package manager;
 
-import model.Suggestion;
-import model.CampCommitteeMember;
-import model.Camp;
-import model.Change;
-import model.Staff;
+import model.*;
+
 import java.util.List;
 
 public class SuggestionManager {
     private List<Suggestion> suggestions;
 
-    public Suggestion createSuggestion(CampCommitteeMember user, Camp camp, List<Change> changes) {
+    public Suggestion createSuggestion(Student user, Camp camp, List<Change> changes) {
         // Implement the method
         return null;
     }

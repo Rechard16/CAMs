@@ -19,11 +19,11 @@ public class Camp {
         // Implement the method
     }
 
-    public void addCommitteeMember(committeeMembers member) {
+    public void addCommitteeMember(Student member) {
         // Implement the method
     }
 
-    public void removeCommitteeMember(committeeMembers member) {
+    public void removeCommitteeMember(Student member) {
         // Implement the method
     }
 }
