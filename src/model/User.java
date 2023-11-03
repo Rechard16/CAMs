@@ -1,3 +1,7 @@
+package model;
+
+import model.Permission;
+
 public class User {
     protected String password;
     protected String userID;

@@ -1,3 +1,5 @@
+package manager;
+
 import model.Camp;
 import model.CampInfo;
 import java.util.Date;

@@ -1,3 +1,5 @@
+package model;
+
 public class Staff extends User {
 
     public Camp createCamp(CampInfo campInfo) {

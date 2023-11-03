@@ -1,3 +1,5 @@
+package manager;
+
 import model.Suggestion;
 import model.CampCommitteeMember;
 import model.Camp;

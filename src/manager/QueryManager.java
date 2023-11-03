@@ -1,3 +1,5 @@
+package manager;
+
 import model.Query;
 import model.Student;
 import model.Staff;

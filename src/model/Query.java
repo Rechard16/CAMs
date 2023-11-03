@@ -1,3 +1,5 @@
+package model;
+
 public class Query {
     private User user;
     private Camp CampID;

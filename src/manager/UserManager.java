@@ -1,3 +1,5 @@
+package manager;
+
 import model.User;
 import model.Student;
 import model.Staff;
