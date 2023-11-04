@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Staff extends User {
 
     public Camp createCamp(CampInfo campInfo) {
@@ -29,5 +31,21 @@ public class Staff extends User {
 
     public void generateReport() {
         // Implement the method
+    }
+
+    protected void viewQuery() {
+
+    }
+
+    protected void viewCamps() {
+
+    }
+
+    protected void generateStudentList() {
+
+    }
+
+    protected void filterCamps() {
+
     }
 }

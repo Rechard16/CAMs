@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-public class Camp {
+public class Camp extends Model {
     private CampInfo information;
     private List<User> registered;
     private boolean visibility;
@@ -25,5 +25,10 @@ public class Camp {
 
     public void removeCommitteeMember(Student member) {
         // Implement the method
+    }
+
+
+    public int getId() {
+        return this.Id;
     }
 }

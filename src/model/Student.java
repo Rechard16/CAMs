@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class Student extends User {
@@ -24,5 +25,34 @@ public class Student extends User {
 
     public void withdrawCamp(int campID) {
         // Implement the method
+    }
+
+
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
+
+
+    @Override
+    protected void viewQuery() {
+
+    }
+
+    @Override
+    protected void viewCamps() {
+
+    }
+
+    @Override
+    protected void generateStudentList() {
+
+    }
+
+    @Override
+    protected void filterCamps() {
+
     }
 }

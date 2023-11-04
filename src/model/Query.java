@@ -1,8 +1,9 @@
 package model;
 
-public class Query {
+public class Query extends Model {
     private User user;
     private Camp CampID;
+    private int QueryID;
     private String description;
 
     public void view() {
@@ -11,5 +12,9 @@ public class Query {
 
     public void reply() {
         // Implement the method
+    }
+
+    public int getId() {
+        return this.QueryID;
     }
 }

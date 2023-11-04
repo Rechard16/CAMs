@@ -1,12 +1,11 @@
 package model;
 
-import model.Permission;
-
-public class User {
+public abstract class User extends Model {
+    protected int id;
     protected String password;
     protected String userID;
     protected String faculty;
-    protected int id;
+
     protected Permission permission;
 
     protected void changePassword(String oldPassword,String newPassword){
@@ -14,8 +13,15 @@ public class User {
             this.password = newPassword;
         }
     }
-    protected void viewQuery(){}
-    protected void viewCamps(){}
-    protected void generateStudentList(){}
-    protected void filterCamps(){}
+
+
+    public int getId() {
+        return this.id;
+    }
+
+    protected abstract void viewQuery();
+    protected abstract void viewCamps();
+    protected abstract void generateStudentList();
+    protected abstract void filterCamps();
+
 }
