@@ -1,9 +1,5 @@
 package model;
 
-import java.util.List;
-
-public abstract class Model {
-    public abstract int getId();
-
-
+public abstract class Model extends Serializable{
+    protected abstract int getId() ;
 }
