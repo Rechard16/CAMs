@@ -71,7 +71,7 @@ public class CampManager {
 
     //Should this method be in student class?
     //Unable to access the private List<Integer> camps
-    //Alternatively, we could do an occupiedDates variable for the Student class, compare against the dates of camp under camp info (might need another method?)
+    //Alternatively, we could do an occupiedDates variable for the Student class, compare against the dates of camp under camp info (might need another method in Camp/CampInfo Class)
     public boolean checkClash(Student student, Camp camp) {
     	//Checks whether the student is able to go for the camp
     	return false; 
