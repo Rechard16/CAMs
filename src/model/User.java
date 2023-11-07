@@ -18,4 +18,13 @@ public class User {
     protected void viewCamps(){}
     protected void generateStudentList(){}
     protected void filterCamps(){}
+    
+    
+    //Placeholder Methods 
+    public String getUserId() { //***Only as Placeholder***
+    	return this.userID;
+    }
+    public String getPassword() { //***Only as Placeholder***
+    	return password;
+    }
 }
