@@ -1,6 +1,7 @@
 package database;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import model.Model;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public abstract class Database<T extends Serializable>{
+public abstract class Database<T extends Model>{
     public abstract String getFilename();
     public void save() throws IOException {
         List<T> objectList = getAll();
@@ -43,6 +44,14 @@ public abstract class Database<T extends Serializable>{
             save();
         }
         else throw new ClassNotFoundException("Object not found");
+    }
+    public T findByID(int id){
+        for(T object : getAll()){
+            if(object.getId() == id){
+                return object;
+            }
+        }
+        return null;
     }
     public abstract List<T> getAll();
     public abstract void setAll(List<T> objectList);
