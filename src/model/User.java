@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 public abstract class User extends Model {
     protected int id;
     protected String password;
@@ -20,7 +22,7 @@ public abstract class User extends Model {
     }
 
     protected abstract void viewQuery();
-    protected abstract void viewCamps();
+    protected abstract void viewCamps() throws IOException, ClassNotFoundException;
     protected abstract void generateStudentList();
     protected abstract void filterCamps();
 

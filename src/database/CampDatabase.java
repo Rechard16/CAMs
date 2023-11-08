@@ -1,6 +1,7 @@
 package database;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,19 +19,22 @@ public class CampDatabase extends Database<Camp> {
     }
 
     @Override
-    public List<Camp> getAll() {
+    public List<Camp> getAll() throws IOException, ClassNotFoundException {
         File file = new File(getFilename());
         if (file.exists()) {
-            camps = MapperCollection.load(getFilename(), new TypeReference<List<Camp>>() {
-            });
+            camps = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
         }
         return camps;
     }
 
     @Override
-    public void setAll(List<Camp> objectList) {
+    public void setAll(List<Camp> objectList) throws IOException {
         this.camps = objectList;
-        MapperCollection.save(camps, getFilename());
+        SerializableCollection.serializeToFile(camps, getFilename());
+    }
+
+    protected Class<Camp> getContainedClass() {
+        return Camp.class;
     }
 
 }

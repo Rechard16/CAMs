@@ -19,6 +19,7 @@ participants. There should be filters for how the staff would want to generate t
 
 package model;
 
+import java.io.IOException;
 import java.util.List;
 import database.CampDatabase;
 import database.SuggestionDatabase;
@@ -28,24 +29,24 @@ public class Staff extends User {
     private CampDatabase campDatabase;
     private SuggestionDatabase suggestionDatabase;
 
-    public Camp createCamp(CampInfo campInfo) {
+    public Camp createCamp(CampInfo campInfo) throws IOException, ClassNotFoundException {
         Camp camp = new Camp(campInfo);
         campDatabase.add(camp);
         return camp;
     }
 
-    public void editCamp(int campID, CampInfo campInfo) {
+    public void editCamp(int campID, CampInfo campInfo) throws IOException, ClassNotFoundException {
         Camp camp = campDatabase.getAll().stream()
                 .filter(c -> c.getId() == campID)
                 .findFirst()
                 .orElse(null);
         if (camp != null) {
             camp.setInformation(campInfo);
-            campDatabase.update(camp);
+            campDatabase.update(camp, camp);
         }
     }
 
-    public void deleteCamp(int campID) {
+    public void deleteCamp(int campID) throws IOException, ClassNotFoundException {
         Camp camp = campDatabase.getAll().stream()
                 .filter(c -> c.getId() == campID)
                 .findFirst()
@@ -55,7 +56,7 @@ public class Staff extends User {
         }
     }
 
-    public void toggleVisibility(int campID) {
+    public void toggleVisibility(int campID) throws IOException, ClassNotFoundException {
         Camp camp = campDatabase.getAll().stream()
                 .filter(c -> c.getId() == campID)
                 .findFirst()
@@ -104,7 +105,7 @@ public class Staff extends User {
         // to be implement
     }
 
-    public void viewCamps() {
+    public void viewCamps() throws IOException, ClassNotFoundException {
         List<Camp> camps = campDatabase.getAll();
         for (Camp camp : camps) {
             System.out.println(camp); // Assuming Camp class has a proper toString method
@@ -120,7 +121,7 @@ public class Staff extends User {
     }
 
     public int getId() {
-        return this.id;
+        return super.getId();
     }
 
     public String getPassword() {

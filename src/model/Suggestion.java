@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,13 +13,12 @@ public class Suggestion extends Model {
     private int suggestionID;
     private String description;
     public List<Change> changes = new ArrayList<>();
-    private SuggestionDatabase suggestionDatabase;
+    //private SuggestionDatabase suggestionDatabase; no need to store this here it will lead to circular dependency
 
     public Suggestion(User user, int campID, String description, SuggestionDatabase suggestionDatabase) {
         this.user = user;
         this.campID = campID;
         this.description = description;
-        this.suggestionDatabase = suggestionDatabase;
         this.suggestionID = suggestionDatabase.generateNewId();
     }
 
@@ -44,7 +44,7 @@ public class Suggestion extends Model {
                         System.out.println("Current content: " + this.description);
                         System.out.println("Enter new description:");
                         this.description = scanner.nextLine();
-                        suggestionDatabase.update(this);
+                        suggestionDatabase.update(this, this);
                         break;
                     case 2:
                         this.delete();
@@ -55,6 +55,8 @@ public class Suggestion extends Model {
                         System.out.println("Invalid option.");
                 }
             }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             scanner.close();
         }

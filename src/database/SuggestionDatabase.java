@@ -3,6 +3,7 @@ package database;
 import model.Suggestion;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,17 +17,17 @@ public class SuggestionDatabase extends Database<Suggestion> {
         return idGenerator.incrementAndGet();
     }
 
-    public void update(Suggestion suggestion) {
+   /* public void update(Suggestion suggestion) {
 
         List<Suggestion> suggestions = getAll();
         for (int i = 0; i < suggestions.size(); i++) {
             if (suggestions.get(i).getId() == suggestion.getId()) {
                 suggestions.set(i, suggestion);
-                save(suggestions);
+                save();
                 break;
             }
         }
-    }
+    }*/
 
     @Override
     public String getFilename() {
@@ -34,18 +35,21 @@ public class SuggestionDatabase extends Database<Suggestion> {
     }
 
     @Override
-    public List<Suggestion> getAll() {
+    public List<Suggestion> getAll() throws IOException, ClassNotFoundException {
         File file = new File(getFilename());
         if (file.exists()) {
-            suggestions = MapperCollection.load(getFilename(), new TypeReference<List<Suggestion>>() {
-            });
+            suggestions = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
         }
         return suggestions;
     }
 
     @Override
-    public void setAll(List<Suggestion> objectList) {
+    public void setAll(List<Suggestion> objectList) throws IOException {
         this.suggestions = objectList;
-        MapperCollection.save(suggestions, getFilename());
+        SerializableCollection.serializeToFile(suggestions, getFilename());
+    }
+
+    protected Class<Suggestion> getContainedClass() {
+        return Suggestion.class;
     }
 }

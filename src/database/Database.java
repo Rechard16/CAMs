@@ -45,7 +45,7 @@ public abstract class Database<T extends Model>{
         }
         else throw new ClassNotFoundException("Object not found");
     }
-    public T findByID(int id){
+    public T findByID(int id) throws IOException, ClassNotFoundException {
         for(T object : getAll()){
             if(object.getId() == id){
                 return object;
@@ -53,8 +53,8 @@ public abstract class Database<T extends Model>{
         }
         return null;
     }
-    public abstract List<T> getAll();
-    public abstract void setAll(List<T> objectList);
+    public abstract List<T> getAll() throws IOException, ClassNotFoundException;
+    public abstract void setAll(List<T> objectList) throws IOException;
 
     protected abstract Class<T> getContainedClass();
 }
