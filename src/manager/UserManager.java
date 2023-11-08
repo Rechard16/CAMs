@@ -1,124 +1,119 @@
 package manager;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import model.Camp;
-import model.CampInfo;
-import java.util.Date;
-
-
+import model.User;
 import model.Student;
+import model.Staff;
+import java.util.List;
+import java.util.ArrayList;
 
-
-public class CampManager {
+public class UserManager {
 	
-	private List<Camp> camps;
-	private int totalCamps;
-	
-	public CampManager() {
-	    camps = new ArrayList<Camp>();
-	}
-	
-
+    private List<Staff> staffs;
+    private List<Student> students;
+    private List<User> users;
     
-    public boolean createCamp(CampInfo campInfo) { //does not check if campInfo contains valid information
-    	//Initializes a temporary Camp(campInfo) object, appends it to the end of the ArrayList camps 
-    	
-    	if (campInfo != null) {
-    		Camp tempCamp = new Camp(campInfo);
-    		camps.add(tempCamp);
-    		totalCamps++;
-    		return true; //returns true if successful
-    	}
-    	else {
-    		return false; //returns false if campInfo is null
-    	}
-        
+	
+    public UserManager(){
+    	staffs = new ArrayList<Staff>();
+    	students = new ArrayList<Student>();
+    	users = new ArrayList<User>(); //temporary
     }
 
-    public boolean deleteCamp(int deleteId) {
-        //Iterating through the ArrayList of camp objects 
-    	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
-    	
-    	int i = 0;
-    	while (i < camps.size()) {
-    		if (deleteId == camps.get(i).getId()) {
-    			camps.remove(i);
-    			return true;
-    		}
-    		i++;
+    //Unable to find out user type currently (Student or Staff)
+    //Supposed to find out through enum Permission from the User class?
+    //Permission is a protected variable under user, unable to access without a get method
+    //For now, using an ArrayList<User> to store the users
+    public boolean addUser(User user) {
+    	if (user != null && !users.contains(user)) {
+    		users.add(user);
+    		return true;
     	}
-        return false; //returns false when unable to find the camp to be deleted
-    }
-
-    public boolean editCamp(int campID, CampInfo campInfo) {
-        //Iterates through the ArrayList to find index of the campID to be edited
-    	//Uses the .set() method to replace with the new campInfo
     	
+        return false;
+    }
+    
+    
+    //Unable to access user's userID, protected variable
+    //Requires a getUserID() method from user class
+    /* 
+     * public String getUserId() {
+    	return this.userID;
+    }
+     */
+    public boolean removeUser(String userID) {
     	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
-    			Camp tempCamp = new Camp(campInfo);
-    			camps.set(i, tempCamp);
-    			return true; //returns true if successful
+    	while (i < users.size()) {
+    		if (userID.compareToIgnoreCase((users.get(i).getUserId())) == 0) { // Equals 0 when found, ignores case
+    		//	if (userID.compareTo((users.get(i).getUserId())) == 0) { //Case sensitive Version
+    			users.remove(i);
+    			return true; //Returns true when found and removes
     		}
     		i++;
     	}
     	
-        return false; //returns false when unable to find camp with the inputed campID
+        return false; //Returns false if unable to find
     }
 
-    //Should this method be in student class?
-    //Unable to access the private List<Integer> camps
-    //Alternatively, we could do an occupiedDates variable for the Student class, compare against the dates of camp under camp info (might need another method?)
-    public boolean checkClash(Student student, Camp camp) {
-    	//Checks whether the student is able to go for the camp
-    	return false; 
+    //Unable to access user's userID, protected variable
+    //Requires a getUserID() method from user class
+    public boolean editUser(User user) {
+        int i=0;
+        while (i < users.size()) {
+        	if (user.getUserId().compareToIgnoreCase((users.get(i).getUserId())) == 0) {
+        	// if (user.getUserId().compareTo(users.get(i).getUserId())) == 0) { //Case sensitive Version
+        		users.set(i, user);
+        		return true;
+        	}
+        	i++;
+        }
+        return false;
     }
     
-    //Not sure what this method is supposed to do
-    public boolean updateSlot(int campID, int number) {
-        
+    //Requires a getUserID() method from user class
+    public User getUserByID(String userID) {
+    	int i = 0;
+    	while (i < users.size()) {
+    		if (userID.compareToIgnoreCase((users.get(i).getUserId())) == 0) { // Equals 0 when found, ignores case
+        	//	if (userID.compareTo((users.get(i).getUserId())) == 0) { //Case sensitive Version
+    			return users.get(i); 
+    		}
+    		i++;
+    	}
+        return null; //Returns null if unable to find
+    }
+
+    public boolean checkCommittee(String studentID) {
+        // Implement the method
         return false;
     }
 
+    public boolean checkStaff(String staffID) {
+        // Implement the method
+        return false;
+    }
     
-    public void toggleVisibility(int campID, boolean boolValue) {
-        
-    	//In order to add this method, I added another method,setVisibility() into the Camp class
-    	//This method might not be reflected in the other branches (Added here just in case)
-        /*
-         public void setVisbility(boolean visible) {
-        	if (visible == true) {
-        		this.visibility = true;
-        	}
-        	else {
-        		this.visibility = false;
-        	}
-        }
-         */
-    	
+    //Unable to access points variable from Student class as it is private
+    //Not able to create an ArrayList of Student objects yet
+    public boolean givePoint(Student student, int points) {
+    	//To be implemented
+        return false;
+    }
+
+    //Unable to implement fully, unable to access user Private variable Password from User class
+    //getPassword() method as a placeholder for now
+    public boolean loginUser(String userID, String password) {
     	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
-    			camps.get(i).setVisibility(boolValue);
+    	while (i < users.size()) {
+    		if (userID.compareToIgnoreCase((users.get(i).getUserId())) == 0) { 
+    			if (users.get(i).getPassword().compareTo(password) == 0) {
+    				return true;
+    			}
+    			else {
+    				return false;
+    			}
     		}
     		i++;
     	}
-    	
-    	return;
-    }
-
-    public Camp getCampById(int campID) {
-        
-    	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
-    			return camps.get(i);
-    		}
-    	}
-    	
-        return null; //Returns null if unable to find
+        return false;
     }
 }
