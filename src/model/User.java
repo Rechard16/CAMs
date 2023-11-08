@@ -8,22 +8,20 @@ public abstract class User extends Model {
 
     protected Permission permission;
 
-    protected void changePassword(String oldPassword, String newPassword) {
-        if (oldPassword.equals(this.password)) {
+    protected void changePassword(String oldPassword,String newPassword){
+        if(oldPassword.equals(this.password)){
             this.password = newPassword;
         }
     }
+
 
     public int getId() {
         return this.id;
     }
 
     protected abstract void viewQuery();
-
     protected abstract void viewCamps();
-
     protected abstract void generateStudentList();
-
     protected abstract void filterCamps();
 
 }

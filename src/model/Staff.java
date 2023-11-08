@@ -1,84 +1,122 @@
+/*
+Staff:
+• A staff will be able to create, edit and delete camps.
+• A staff can toggle the visibility of the camp to be “on” or “off”. This will be reflected
+in the camp list that will be visible to students.
+• A staff can view all camps.
+• A staff can see list of camps that his/her created in a separate menu list so they can
+edit the camps they created.
+• A staff can view and reply to enquiries from students to the camp(s) his/her has
+created.
+• A staff can view and approve suggestions to changes to camp details from camp
+committee.
+• A staff can generate a report of the list of students attending each camp that his/her
+has created. The list will include details of the camp as well as the roles of the
+participants. There should be filters for how the staff would want to generate the list.
+(attendee, camp committee, etc.) (generate in either txt or csv format).
+• A staff can also generate a performance report of the camp committee members
+*/
+
 package model;
 
 import java.util.List;
+import database.CampDatabase;
+import database.SuggestionDatabase;
+//import java.util.Scanner;
 
 public class Staff extends User {
-    private database database;
+    private CampDatabase campDatabase;
+    private SuggestionDatabase suggestionDatabase;
 
     public Camp createCamp(CampInfo campInfo) {
-        Camp newCamp = new Camp(campInfo);
-        database.addCamp(newCamp); // 假设的方法添加营地到数据库
-        return newCamp;
+        Camp camp = new Camp(campInfo);
+        campDatabase.add(camp);
+        return camp;
     }
 
-    public void editCamp(int campID, CampInfo newCampInfo) {
-        Camp camp = database.getCampById(campID); // Assuming the Database class has a method to get a Camp object by ID
+    public void editCamp(int campID, CampInfo campInfo) {
+        Camp camp = campDatabase.getAll().stream()
+                .filter(c -> c.getId() == campID)
+                .findFirst()
+                .orElse(null);
         if (camp != null) {
-            // Update camp information with the new camp info
-            CampInfo currentInfo = camp.getInformation();
-            // Assuming we have setters in CampInfo or direct access if they are public
-            currentInfo.name = newCampInfo.name;
-            currentInfo.dates = newCampInfo.dates;
-            currentInfo.eligibility = newCampInfo.eligibility;
-            currentInfo.location = newCampInfo.location;
-            currentInfo.totalSlots = newCampInfo.totalSlots;
-            currentInfo.committeeSlots = newCampInfo.committeeSlots;
-            currentInfo.description = newCampInfo.description;
-            currentInfo.staffInCharge = newCampInfo.staffInCharge;
-            currentInfo.deadline = newCampInfo.deadline;
-            // Save updated camp info
-            database.updateCampInfo(currentInfo);
+            camp.setInformation(campInfo);
+            campDatabase.update(camp);
         }
     }
 
     public void deleteCamp(int campID) {
-        database.deleteCamp(campID); // Assuming the Database class has a method to delete a Camp by ID
+        Camp camp = campDatabase.getAll().stream()
+                .filter(c -> c.getId() == campID)
+                .findFirst()
+                .orElse(null);
+        if (camp != null) {
+            campDatabase.remove(camp);
+        }
     }
 
     public void toggleVisibility(int campID) {
-        //
+        Camp camp = campDatabase.getAll().stream()
+                .filter(c -> c.getId() == campID)
+                .findFirst()
+                .orElse(null);
+        if (camp != null) {
+            camp.setVisibility(!camp.isVisible());
+            campDatabase.update(camp);
+        }
     }
 
     public void viewSuggestion(int suggestionID) {
-        Suggestion suggestion = database.getSuggestionById(suggestionID);
+        Suggestion suggestion = suggestionDatabase.getAll().stream()
+                .filter(s -> s.getId() == suggestionID)
+                .findFirst()
+                .orElse(null);
+
         if (suggestion != null) {
-            // Assuming there is a method to view the suggestion details
             suggestion.view();
+        } else {
+            System.out.println("Suggestion not found.");
         }
     }
 
     public void approveSuggestion(int suggestionID) {
-        Suggestion suggestion = database.getSuggestionById(suggestionID);
-        if (suggestion != null) {
-            // Assuming there is a method to approve the suggestion
-            database.approveSuggestion(suggestion);
-        }
+        /*
+         * 没法实现
+         * Suggestion suggestion = suggestionDatabase.getAll().stream()
+         * .filter(s -> s.getId() == suggestionID)
+         * .findFirst()
+         * .orElse(null);
+         * 
+         * if (suggestion != null) {
+         * // Assume there's a method in Suggestion to approve it
+         * suggestion.approve();
+         * suggestionDatabase.update(suggestion);
+         * } else {
+         * System.out.println("Suggestion not found.");
+         * }
+         */
     }
 
     public void generateReport() {
-        // Assuming there is a method to generate a report
-        List<Camp> camps = database.getAllCamps();
-        // Logic to generate report based on the camps data
+        // 没法实现，缺乏 staff id在camp对象中
     }
 
     protected void viewQuery() {
-        // Assuming there is a method to get all queries
-        List<Query> queries = database.getAllQueries();
-        // Logic to view queries
+        // 待实现
     }
 
-    protected void viewCamps() {
-        List<Camp> camps = database.getAllCamps();
-        // Logic to view camps
+    public void viewCamps() {
+        List<Camp> camps = campDatabase.getAll();
+        for (Camp camp : camps) {
+            System.out.println(camp); // Assuming Camp class has a proper toString method
+        }
     }
 
     protected void generateStudentList() {
-        List<Camp> camps = database.getAllCamps();
-        // Logic to generate a list of students from all camps
+        // 没法实现，缺乏 staff id在camp对象中
     }
 
     protected void filterCamps() {
-        List<Camp> camps = database.getAllCamps();
-        // Logic to filter camps based on some criteria
+        // 待实现
     }
 }
