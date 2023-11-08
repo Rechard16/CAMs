@@ -11,7 +11,7 @@ import model.Camp;
 
 public class CampDatabase extends Database<Camp> {
 
-    private final String filename = "../data/camps"; // 例如使用YAML格式存储
+    private final String filename = "../data/camps";
     private List<Camp> camps;
 
     @Override
