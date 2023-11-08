@@ -6,10 +6,10 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import model.Camp;
-
+//本地测试用
 public class CampDatabase extends Database<Camp> {
 
-    private final String filename = "../data/camps"; // 例如使用YAML格式存储
+    private final String filename = "../data/camps"; 
     private List<Camp> camps;
 
     @Override
