@@ -3,46 +3,49 @@ package database;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 
-public abstract class Database<T>{
+public abstract class Database<T extends Serializable>{
     public abstract String getFilename();
-    public void save(List<T> objectList) {
-        MapperCollection.save(objectList, getFilename());
-    }
-    public List<T> load() {
-        File file = new File(getFilename());
-        if (file.exists()) {
-            return MapperCollection.load(getFilename(), new TypeReference<List<T>>() {
-            });
-        }
-        return null;
-    }
-    public void add(T newObject){
+    public void save() throws IOException {
         List<T> objectList = getAll();
-        objectList.add(newObject);
-        save(objectList);
-        load();
+        SerializableCollection.serializeToFile(objectList, getFilename());
+    }
+    public void load() throws IOException, ClassNotFoundException {
+        List<T> objectList=SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
         setAll(objectList);
     }
 
-    public void remove(T object){
+
+    public void add(T newObject) throws IOException, ClassNotFoundException {
         List<T> objectList = getAll();
-        objectList.remove(object);
-        save(objectList);
-        load();
-        setAll(objectList);
+        objectList.add(newObject);
+        save();
     }
-    public void update(T object){
+
+    public void remove(T object) throws IOException, ClassNotFoundException{
         List<T> objectList = getAll();
         int index = objectList.indexOf(object);
-        objectList.set(index, object);
-        save(objectList);
-        load();
-        setAll(objectList);
+        if(index != -1){
+            objectList.remove(index);
+            save();
+        }
+        else throw new ClassNotFoundException("Object not found");
+    }
+    public void update(T object,T newObject) throws IOException, ClassNotFoundException{
+        List<T> objectList = getAll();
+        int index = objectList.indexOf(object);
+        if(index != -1){
+            objectList.set(index, newObject);
+            save();
+        }
+        else throw new ClassNotFoundException("Object not found");
     }
     public abstract List<T> getAll();
     public abstract void setAll(List<T> objectList);
 
+    protected abstract Class<T> getContainedClass();
 }
