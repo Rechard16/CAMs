@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SuggestionDatabase extends Database<Suggestion> {
-    private final String filename = "../data/suggestions.yaml";
+    private final String filename = "../data/suggestions";
     private List<Suggestion> suggestions;
     // 用于生成唯一ID的原子整数
     private AtomicInteger idGenerator = new AtomicInteger();
