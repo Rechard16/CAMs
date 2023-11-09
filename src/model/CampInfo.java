@@ -96,4 +96,13 @@ public class CampInfo extends Model {
         this.deadline = deadline;
     }
 
+    // Getter for 'staff' attribute
+    public String getStaff() {
+        return this.staff;
+    }
+
+    // Setter for 'staff' attribute
+    public void setStaff(String staff) {
+        this.staff = staff;
+    }
 }

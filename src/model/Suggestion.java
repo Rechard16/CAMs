@@ -13,7 +13,8 @@ public class Suggestion extends Model {
     private int suggestionID;
     private String description;
     public List<Change> changes = new ArrayList<>();
-    //private SuggestionDatabase suggestionDatabase; no need to store this here it will lead to circular dependency
+    // private SuggestionDatabase suggestionDatabase; no need to store this here it
+    // will lead to circular dependency
 
     public Suggestion(User user, int campID, String description, SuggestionDatabase suggestionDatabase) {
         this.user = user;
