@@ -11,13 +11,13 @@ import java.util.List;
 
 public abstract class Database<T extends Model>{
     public abstract String getFilename();
-    public void save() throws IOException {
+    public void save() throws IOException, ClassNotFoundException {
         List<T> objectList = getAll();
         SerializableCollection.serializeToFile(objectList, getFilename());
     }
-    public void load() throws IOException, ClassNotFoundException {
-        List<T> objectList=SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        setAll(objectList);
+    public List<T> load() throws IOException, ClassNotFoundException {
+        return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
+        //setAll(objectList);
     }
 
 

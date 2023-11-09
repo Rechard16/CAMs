@@ -13,6 +13,9 @@ public class CampDatabase extends Database<Camp> {
     private final String filename = "../data/camps"; 
     private List<Camp> camps;
 
+    public CampDatabase() throws IOException, ClassNotFoundException {
+        this.camps=load();
+    }
     @Override
     public String getFilename() {
         return filename;
@@ -20,17 +23,12 @@ public class CampDatabase extends Database<Camp> {
 
     @Override
     public List<Camp> getAll() throws IOException, ClassNotFoundException {
-        File file = new File(getFilename());
-        if (file.exists()) {
-            camps = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        }
         return camps;
     }
 
     @Override
     public void setAll(List<Camp> objectList) throws IOException {
         this.camps = objectList;
-        SerializableCollection.serializeToFile(camps, getFilename());
     }
 
     protected Class<Camp> getContainedClass() {
