@@ -1,18 +1,18 @@
 package manager;
 
-import model.Query;
-import model.Student;
-import model.Staff;
-import model.Camp;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.Query;
+import model.Staff;
+
 public class QueryManager {
     private Map<Integer, List<Query>> list_query = new HashMap();// mapping each 'queries' to campID
     private Integer q_id;
+    /*
+
     public Query createQuery(Student user, Camp camp, String description) {
         // first time creating query
         if (!list_query.containsKey(camp.getId())) {
@@ -26,7 +26,8 @@ public class QueryManager {
 
             // updating 'queries' list under same campId
             list_query.put(camp.getId(), queries);
-        }
+	}
+    */
     private List<Query> queries;
     
     QueryManager (){

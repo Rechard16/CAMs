@@ -1,9 +1,7 @@
 package model;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 import database.SuggestionDatabase;
 
@@ -31,40 +29,6 @@ public class Suggestion extends Model {
         for (Change change : changes) {
             System.out.println(change.toString());
         }
-    }
-
-    public void edit() {
-        Scanner scanner = new Scanner(System.in);
-        try {
-            while (true) {
-                System.out.println("Select option: \n1. Edit Content \n2. Delete Suggestion \n3. Exit");
-                int option = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
-                switch (option) {
-                    case 1:
-                        System.out.println("Current content: " + this.description);
-                        System.out.println("Enter new description:");
-                        this.description = scanner.nextLine();
-                        suggestionDatabase.update(this, this);
-                        break;
-                    case 2:
-                        this.delete();
-                        return; // Exit after deletion
-                    case 3:
-                        return; // Exit editing
-                    default:
-                        System.out.println("Invalid option.");
-                }
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
-            scanner.close();
-        }
-    }
-
-    public void delete() {
-        suggestionDatabase.remove(this);
     }
 
     public int getId() {

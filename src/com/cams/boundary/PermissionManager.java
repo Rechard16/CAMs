@@ -5,7 +5,7 @@ import java.util.List;
 
 import model.Camp;
 import model.Permission;
-import model.Staff;
+import model.Student;
 import model.User;
 import model.UserType;
 
@@ -24,7 +24,7 @@ public class PermissionManager {
 		List<Permission> permissions = new ArrayList<Permission>();
 		if (user.getType() == UserType.STUDENT) {
 			// TODO
-			if (user.getAssignedCamp() == camp.getId()) {
+			if (((Student) user).getCampID() == camp.getId()) {
 				permissions.add(Permission.SUGGEST_CAMP);
 				permissions.add(Permission.VIEW_ENQUIRIES);
 				permissions.add(Permission.RESOLVE_ENQUIRY);
