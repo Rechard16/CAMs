@@ -34,18 +34,49 @@ public class SuggestionManager extends SuggestionDatabase {
         return false;
     }
 
-    public boolean deleteSuggestion(Suggestion suggestion) throws IOException, ClassNotFoundException {
+    // delete by segestionID
+    public boolean deleteBySuggestionID(Suggestion suggestion) throws IOException, ClassNotFoundException {
         if (suggestion != null){
-            suggestionDatabase.remove(suggestion);
-            return true;
+            int i = 0;
+            while (i < suggestionDatabase.getAll().size()) {
+                if (suggestion.getSuggestionID() == suggestionDatabase.getAll().get(i).getSuggestionID()) {
+                    suggestionDatabase.getAll().remove(i);
+                    return true;
+                }
+                i++;
+            }
+   
         }
         return false;
     }
 
+    // delete by campID
+    public boolean deleteByCampID(Camp camp) throws IOException, ClassNotFoundException {
+        if (camp != null){
+            suggestionDatabase.remove(suggestionDatabase.findByID(camp.getId()));
+        }
+        return false;
+    }
+
+
     public boolean editSuggestion(Camp camp, Suggestion suggestion, User user) throws IOException, ClassNotFoundException{
 
+        if (suggestion != null){
+
+            //create empty suggestion template
+            Suggestion newSuggestion = new Suggestion(user, camp.getId(), suggestion.getDescription(), suggestionDatabase);
 
             suggestionDatabase.findByID(suggestion.getSuggestionID());
+            
+            //delete original suggestion
+            deleteSuggestion(suggestion);
+
+            //replace with edited suggestion
+            addSuggestion(camp, newSuggestion, user);
+
+            return true;
+        }
+            
         return false;
     }
 
