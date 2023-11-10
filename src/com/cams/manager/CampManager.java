@@ -19,8 +19,9 @@ public class CampManager {
 	public CampManager() throws ClassNotFoundException, IOException {
 	    campdatabase = new CampDatabase();
 	}
+	
     public boolean createCamp(CampInfo campInfo) throws ClassNotFoundException, IOException { //does not check if campInfo contains valid information
-    	if (campInfo != null ) {
+    	if (campInfo != null) {
     		Camp tempCamp = new Camp(campInfo);
     		campdatabase.add(tempCamp);
     		return true; //returns true if successful
@@ -31,7 +32,7 @@ public class CampManager {
 
     }
 
-    //Not the remove() method from the CampDatabase Class
+    //Not the remove() method from the CampDatabase Class, using remove() from java.util
     public boolean deleteCampByObject(Camp campObject) {
         //Iterating through the ArrayList of camp objects 
     	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
