@@ -34,7 +34,7 @@ public class SuggestionManager extends SuggestionDatabase {
         return false;
     }
 
-    // delete by segestionID
+    // delete by sugestionID
     public boolean deleteBySuggestionID(Suggestion suggestion) throws IOException, ClassNotFoundException {
         if (suggestion != null){
             int i = 0;
@@ -59,25 +59,12 @@ public class SuggestionManager extends SuggestionDatabase {
     }
 
 
-    public boolean editSuggestion(Camp camp, Suggestion suggestion, User user) throws IOException, ClassNotFoundException{
-
-        if (suggestion != null){
-
-            //create empty suggestion template
-            Suggestion newSuggestion = new Suggestion(user, camp.getId(), suggestion.getDescription(), suggestionDatabase);
-
-            suggestionDatabase.findByID(suggestion.getSuggestionID());
-            
-            //delete original suggestion
-            deleteSuggestion(suggestion);
-
-            //replace with edited suggestion
-            addSuggestion(camp, newSuggestion, user);
-
+    public boolean editSuggestion(Suggestion oldSuggest, Suggestion newSuggest) throws ClassNotFoundException, IOException {
+        if (oldSuggest != null && newSuggest != null) {
+            suggestionDatabase.update(oldSuggest, newSuggest);
             return true;
         }
-            
-        return false;
+    	return false;
     }
 
     public boolean submitSuggestion() throws IOException, ClassNotFoundException{
