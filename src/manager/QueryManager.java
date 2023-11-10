@@ -7,10 +7,23 @@ import model.Camp;
 import java.util.List;
 
 public class QueryManager {
-    private List<Query> queries;
-
+    private List<Query> queries; //list containing queriesIDs
+    private Map<Integer, List<Query>> list_query = new HashMap() // mapping each 'queries' to campID
+    private int q_id;
     public Query createQuery(Student user, Camp camp, String description) {
-        // Implement the method
+        // first time creating query
+        if (!list_query.containsKey(camp.getId())) {
+            queries = new ArrayList<>();
+        }
+
+        // adding query to the 'queries' list
+        if (q_id != null){
+            queries = list_query.get(camp.getId());
+            queries.add(q_id);
+
+            // updating 'queries' list under same campId
+            list_query.put(camp.getId(), queries);
+        }
         return null;
     }
 
@@ -25,7 +38,7 @@ public class QueryManager {
     }
 
     public Query getQueryByID(int queryID) {
-        // Implement the method
+        this.q_id = queryID;
         return null;
     }
 
