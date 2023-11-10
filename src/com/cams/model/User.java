@@ -1,8 +1,6 @@
 package model;
 
-import model.Permission;
-
-public class User {
+abstract public class User {
     protected String password;
     protected String userID;
     protected String faculty;
@@ -14,8 +12,9 @@ public class User {
             this.password = newPassword;
         }
     }
-    protected void viewQuery(){}
-    protected void viewCamps(){}
-    protected void generateStudentList(){}
-    protected void filterCamps(){}
+    public abstract UserType getType();
+    protected abstract void viewQuery();
+    protected abstract void viewCamps();
+    protected abstract void generateStudentList();
+    protected abstract void filterCamps();
 }

@@ -6,6 +6,9 @@ public class Staff extends User {
         // Implement the method
         return null;
     }
+    
+    @Override
+    public UserType getType() { return UserType.STAFF; }
 
     public void editCamp(int campID, CampInfo campInfo) {
         // Implement the method
@@ -30,4 +33,28 @@ public class Staff extends User {
     public void generateReport() {
         // Implement the method
     }
+
+	@Override
+	protected void viewQuery() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void viewCamps() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void generateStudentList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void filterCamps() {
+		// TODO Auto-generated method stub
+		
+	}
 }
