@@ -17,4 +17,13 @@ abstract public class User {
     protected abstract void viewCamps();
     protected abstract void generateStudentList();
     protected abstract void filterCamps();
+    
+    
+    //Placeholder Methods 
+    public String getUserId() { //***Only as Placeholder***
+    	return this.userID;
+    }
+    public String getPassword() { //***Only as Placeholder***
+    	return password;
+    }
 }
