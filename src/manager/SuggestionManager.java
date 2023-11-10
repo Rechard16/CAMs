@@ -28,8 +28,22 @@ public class SuggestionManager {
         return null;
     }
 
+    // needs to be divided into 2 seperate methods
+    // needs to have 'Camp camp' as a parameter for both cases
     public boolean deleteSuggestion(int suggestionID) {
-        // Implement the method
+        // if camp itself is removed
+        list_suggestion.remove(camp.getId());
+
+
+        // if deleting 1 suggestion from 'suggestions' list
+        Iterator<Suggestion> iterator = list_suggestion.get(camp.getId()).iterator()
+        while (iterator.hasNext()) {
+            Suggestion target = iterator.next();
+
+            if (target.equals(suggestionID))
+
+                iterator.remove();
+        }
         return false;
     }
 
