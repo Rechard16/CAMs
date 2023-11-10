@@ -24,7 +24,6 @@ public class SuggestionManager {
             // updating 'suggestions' list under same campId
             list_suggestion.put(camp.getId(), suggestions);
         }
-
         return null;
     }
 
