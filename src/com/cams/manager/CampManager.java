@@ -2,7 +2,7 @@ package manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List; 
 import model.Camp;
 import model.CampInfo;
 import database.CampDatabase;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class CampManager {
 	
-	private CampDatabase campdatabase;
+	public CampDatabase campdatabase;
 	
 	public CampManager() throws ClassNotFoundException, IOException {
 	    campdatabase = new CampDatabase();
@@ -115,4 +115,5 @@ public class CampManager {
     	return false; 
     }
      */
+    
 }

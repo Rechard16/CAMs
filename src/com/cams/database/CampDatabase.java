@@ -7,7 +7,7 @@ import model.Camp;
 //本地测试用
 public class CampDatabase extends Database<Camp> {
 
-    private final String filename = "../data/camps"; 
+    private final String filename = "data/camps"; 
     private List<Camp> camps;
 
     public CampDatabase() throws IOException, ClassNotFoundException {
@@ -38,6 +38,8 @@ public class CampDatabase extends Database<Camp> {
     }
     //added
     public List<Camp> load() throws IOException, ClassNotFoundException {
+    	System.out.println(this.getFilename());
+    	
         return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
         //setAll(objectList);
     }

@@ -1,6 +1,12 @@
 package database;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SerializableCollection {
@@ -14,9 +20,9 @@ public abstract class SerializableCollection {
 
 
     public static <T> List<T> deserializeListFromFile(String filename, Class<T> clazz) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+        try {
+        	ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
             Object object = in.readObject();
-
             if (object instanceof List<?>) {
                 List<?> list = (List<?>) object;
                 for (Object listObject : list) {
@@ -30,6 +36,9 @@ public abstract class SerializableCollection {
             } else {
                 throw new ClassNotFoundException("Expected a List but found a " + object.getClass().getCanonicalName());
             }
+        } catch (Exception e) {
+        	// e.printStackTrace();
         }
+        return new ArrayList<T>();
     }
 }

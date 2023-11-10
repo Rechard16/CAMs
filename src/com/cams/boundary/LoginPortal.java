@@ -31,9 +31,10 @@ public class LoginPortal {
 		String password = scanner.nextLine();
 		session.attemptLogin(password);
 		
-		if (session.isLoggedIn()) return session;
-
+		if (!session.isLoggedIn()) return session;
+		
 		context.print("Incorrect username or password!");
 		return null;
+		
 	}
 }
