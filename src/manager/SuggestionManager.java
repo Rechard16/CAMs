@@ -34,27 +34,31 @@ public class SuggestionManager {
         // if camp itself is removed
         list_suggestion.remove(camp.getId());
 
-
         // if deleting 1 suggestion from 'suggestions' list
         Iterator<Suggestion> iterator = list_suggestion.get(camp.getId()).iterator()
         while (iterator.hasNext()) {
             Suggestion target = iterator.next();
-
             if (target.equals(suggestionID))
-
                 iterator.remove();
         }
         return false;
     }
 
+    // only if approveSuggestion is true
     public boolean editSuggestion(Suggestion suggestion, List<Change> changes) {
-        // Implement the method
+        if (){
+            Iterator<Suggestion> iterator = list_suggestion.get(suggestion.campId).iterator()
+            while (iterator.hasNext()) {
+                Suggestion target = iterator.next();
+                if (target.equals(suggestion.suggestionID))
+                    suggestion.suggestionDatabase.update() //needs to know what parameters r required
+            }
+        }
         return false;
     }
 
     public Suggestion getSuggestionByID(int suggestionID) {
         this.s_id = suggestionID;
-        // Implement the method
         return null;
     }
 
