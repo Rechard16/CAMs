@@ -1,10 +1,12 @@
 package manager;
 
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Camp;
 import model.CampInfo;
+import database.CampDatabase;
+
 import java.util.Date;
 
 
@@ -12,22 +14,15 @@ import model.Student;
 
 public class CampManager {
 	
-	private List<Camp> camps;
-	private int totalCamps;
+	private CampDatabase campdatabase;
 	
-	public CampManager() {
-	    camps = new ArrayList<Camp>();
+	public CampManager() throws ClassNotFoundException, IOException {
+	    campdatabase = new CampDatabase();
 	}
-	
-
-    
-    public boolean createCamp(CampInfo campInfo) { //does not check if campInfo contains valid information
-    	//Initializes a temporary Camp(campInfo) object, appends it to the end of the ArrayList camps 
-    	
-    	if (campInfo != null) {
+    public boolean createCamp(CampInfo campInfo) throws ClassNotFoundException, IOException { //does not check if campInfo contains valid information
+    	if (campInfo != null ) {
     		Camp tempCamp = new Camp(campInfo);
-    		camps.add(tempCamp);
-    		totalCamps++;
+    		campdatabase.add(tempCamp);
     		return true; //returns true if successful
     	}
     	else {
@@ -36,30 +31,62 @@ public class CampManager {
 
     }
 
-    public boolean deleteCamp(int deleteId) {
+    //Not the remove() method from the CampDatabase Class
+    public boolean deleteCampByObject(Camp campObject) {
         //Iterating through the ArrayList of camp objects 
     	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
     	
     	int i = 0;
-    	while (i < camps.size()) {
-    		if (deleteId == camps.get(i).getId()) {
-    			camps.remove(i);
+    	while (i < campdatabase.getList().size()) {
+    		if (campObject.getId() == campdatabase.getList().get(i).getId()) {
+    			campdatabase.getList().remove(i);
     			return true;
     		}
     		i++;
     	}
         return false; //returns false when unable to find the camp to be deleted
     }
+    
+    public boolean updateCampByObject(Camp oldCamp, Camp newCamp) throws ClassNotFoundException, IOException {
+    	campdatabase.update(oldCamp, newCamp);
+    	return false;
+    }
+  
+    public void toggleVisibility(int campID, boolean boolValue) throws ClassNotFoundException, IOException {
+    	
+    	int i = 0;
+    	while (i < campdatabase.getAll().size()) {
+    		if (campID == campdatabase.getAll().get(i).getId()) {
+    			campdatabase.getAll().get(i).setVisibility(boolValue);
+    		}
+    		i++;
+    	}
+    	
+    	return;
+    }
 
-    public boolean editCamp(int campID, CampInfo campInfo) {
+    public Camp getCampById(int campID) throws ClassNotFoundException, IOException {
+        
+    	int i = 0;
+    	while (i < campdatabase.getAll().size()) {
+    		if (campID == campdatabase.getAll().get(i).getId()) {
+    			return campdatabase.getAll().get(i);
+    		}
+    	}
+    	
+        return null; //Returns null if unable to find
+    }
+    
+    /*
+    public boolean editCampbyID(int campID, CampInfo campInfo) {
         //Iterates through the ArrayList to find index of the campID to be edited
     	//Uses the .set() method to replace with the new campInfo
     	
     	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
+    	while (i < campdatabase.getList().size()) {
+    		if (campID == campdatabase.getList().get(i).getId()) {
     			Camp tempCamp = new Camp(campInfo);
-    			camps.set(i, tempCamp);
+    			campdatabase.getList().set(i, tempCamp);
     			return true; //returns true if successful
     		}
     		i++;
@@ -67,7 +94,7 @@ public class CampManager {
     	
         return false; //returns false when unable to find camp with the inputed campID
     }
-
+    
     //Should this method be in student class?
     //Unable to access the private List<Integer> camps
     //Alternatively, we could do an occupiedDates variable for the Student class, compare against the dates of camp under camp info (might need another method in Camp/CampInfo Class)
@@ -81,43 +108,5 @@ public class CampManager {
         
         return false;
     }
-
-    
-    public void toggleVisibility(int campID, boolean boolValue) {
-        
-    	//In order to add this method, I added another method,setVisibility() into the Camp class
-    	//This method might not be reflected in the other branches (Added here just in case)
-        /*
-         public void setVisbility(boolean visible) {
-        	if (visible == true) {
-        		this.visibility = true;
-        	}
-        	else {
-        		this.visibility = false;
-        	}
-        }
-         */
-    	
-    	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
-    			camps.get(i).setVisibility(boolValue);
-    		}
-    		i++;
-    	}
-    	
-    	return;
-    }
-
-    public Camp getCampById(int campID) {
-        
-    	int i = 0;
-    	while (i < camps.size()) {
-    		if (campID == camps.get(i).getId()) {
-    			return camps.get(i);
-    		}
-    	}
-    	
-        return null; //Returns null if unable to find
-    }
+    */
 }
