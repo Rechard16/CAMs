@@ -5,10 +5,14 @@ import model.*;
 import java.util.List;
 
 public class SuggestionManager {
-    private List<Suggestion> suggestions;
+    private ArrayList<Suggestion> suggestions;
+    private ArrayList<suggestions> list_suggestion = new ArrayList<>();
+    private int s_id;
 
     public Suggestion createSuggestion(Student user, Camp camp, List<Change> changes) {
-        // Implement the method
+        suggestions = new ArrayList<>();
+        suggestions.add(s_id);
+        list_suggestion.add(camp.getId());
         return null;
     }
 
@@ -23,6 +27,7 @@ public class SuggestionManager {
     }
 
     public Suggestion getSuggestionByID(int suggestionID) {
+        this.s_id = suggestionID;
         // Implement the method
         return null;
     }
