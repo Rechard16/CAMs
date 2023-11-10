@@ -10,7 +10,14 @@ public class SuggestionManager {
     private int s_id;
 
     public Suggestion createSuggestion(Student user, Camp camp, List<Change> changes) {
-        suggestions = new ArrayList<>();
+
+        // first time creating suggestion
+        if (!list_suggestion.containsKey(camp.getId())) {
+            suggestions = new ArrayList<>();
+            list_suggestion.put(camp.getId(), suggestions);
+        }
+        // adding suggestion to the existing 'suggestions' list under same campId
+
         suggestions.add(s_id);
 
         return null;
