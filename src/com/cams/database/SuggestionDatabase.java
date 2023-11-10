@@ -1,11 +1,11 @@
 package database;
 
-import model.Suggestion;
-import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import model.Suggestion;
 
 public class SuggestionDatabase extends Database<Suggestion> {
     private final String filename = "../data/suggestions";
@@ -46,7 +46,7 @@ public class SuggestionDatabase extends Database<Suggestion> {
     @Override
     public void setAll(List<Suggestion> objectList) throws IOException {
         this.suggestions = objectList;
-        SerializableCollection.serializeToFile(suggestions, getFilename());
+        // SerializableCollection.serializeToFile(suggestions, getFilename());
     }
 
     protected Class<Suggestion> getContainedClass() {

@@ -1,10 +1,7 @@
 package manager;
 
-import model.*;
-
-import java.util.List;
-
 public class SuggestionManager {
+	/*
     private List<Suggestion> suggestions; //list containing suggestionIDs;
     private Map<Integer, List<Suggestion>> list_suggestion = new HashMap() // mapping each 'suggestions' to campID
     private int s_id;
@@ -65,4 +62,5 @@ public class SuggestionManager {
         // Implement the method
         return false;
     }
+    */
 }
