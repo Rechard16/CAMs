@@ -5,14 +5,15 @@ import model.*;
 import java.util.List;
 
 public class SuggestionManager {
-    private ArrayList<Suggestion> suggestions;
-    private ArrayList<suggestions> list_suggestion = new ArrayList<>();
+    private List<Suggestion> suggestions; //list containing suggestionIDs;
+    private List<suggestions> list_suggestion = new ArrayList<>(); // list containing suggestions,
+                                                                    // linking each 'suggestions' to campID
     private int s_id;
 
     public Suggestion createSuggestion(Student user, Camp camp, List<Change> changes) {
         suggestions = new ArrayList<>();
         suggestions.add(s_id);
-        list_suggestion.add(camp.getId());
+
         return null;
     }
 
