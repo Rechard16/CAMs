@@ -101,4 +101,29 @@ public class Student extends User {
     public void setCamps(List<Integer> camps) {
         this.camps = camps;
     }
+    
+    public int getId() {
+        return super.getId();
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getUserID() {
+        return this.userID;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+    
 }
