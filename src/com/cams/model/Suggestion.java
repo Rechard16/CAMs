@@ -79,4 +79,7 @@ public class Suggestion extends Model {
     public void setChanges(List<Change> changes) {
         this.changes = changes;
     }
+
+    public void setUser(int i, String string, String string2, String string3) {
+    }
 }

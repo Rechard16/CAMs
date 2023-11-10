@@ -5,17 +5,30 @@ import java.io.IOException;
 import boundary.SessionManager;
 import boundary.login.LoginPortal;
 import boundary.login.LoginSession;
+import java.util.*;
+import manager.CampManager;
+import model.CampInfo;
+import model.*;
+import manager.SuggestionManager;
+
 
 public class Main {
 
 	public static void main(String args[]) throws ClassNotFoundException, IOException {
-		/*
+		
 		CampManager campmanager = new CampManager();
-
+		SuggestionManager sm = new SuggestionManager();
 		
 		Date date1 = new Date(2023, 12, 1);
 		Date date2 = new Date(2000, 12, 12);
 		
+		Suggestion sg = new Suggestion(null, 0, null, sm);
+		sg.setCampID(0);
+		sg.setDescription("hi");
+		sg.setSuggestionID(12);
+		sg.setUser(99, "df", "sdf","sdf");
+		sm.addSuggestion(null, sg, null);
+
 		CampInfo camp1info = new CampInfo();
 		camp1info.setName("camp 1");
 		camp1info.setId(001);
@@ -58,20 +71,9 @@ public class Main {
 		
 		campmanager.createCamp(camp1info);
 		campmanager.createCamp(camp2info);
-		*/
-		
 
-		
-		Context context = Context.createContext();
-		
-		while(true) launch(context);
-	}
-		
-	private static void launch(Context context) {
-		LoginPortal loginPortal = new LoginPortal(context);
-		LoginSession session = loginPortal.openPortal();
-		
-		SessionManager sessionManager = new SessionManager(context, session);
-		sessionManager.startSession();
+
+
+
 	}
 }
