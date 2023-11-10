@@ -14,12 +14,13 @@ public class SuggestionManager {
         // first time creating suggestion
         if (!list_suggestion.containsKey(camp.getId())) {
             suggestions = new ArrayList<>();
-            list_suggestion.put(camp.getId(), suggestions);
         }
-        // adding suggestion to the existing 'suggestions' list under same campId
 
+        // adding suggestion to the 'suggestions' list
         suggestions.add(s_id);
 
+        // updating 'suggestions' list under same campId
+        list_suggestion.put(camp.getId(), suggestions);
         return null;
     }
 
