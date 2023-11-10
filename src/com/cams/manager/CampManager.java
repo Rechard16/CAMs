@@ -1,10 +1,12 @@
 package manager;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List; 
 import model.Camp;
 import model.CampInfo;
+import model.Eligibility;
 import database.CampDatabase;
 
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.Date;
 public class CampManager {
 	
 	public CampDatabase campdatabase;
+	
 	
 	public CampManager() throws ClassNotFoundException, IOException {
 	    campdatabase = new CampDatabase();
@@ -106,14 +109,28 @@ public class CampManager {
         return null; //Returns null if unable to find
     }
     
-    /*
-    //Should this method be in student class?
-    //Unable to access the private List<Integer> camps
-    //Alternatively, we could do an occupiedDates variable for the Student class, compare against the dates of camp under camp info (might need another method in Camp/CampInfo Class)
-    public boolean checkClash(Student student, Camp camp) {
-    	//Checks whether the student is able to go for the camp
-    	return false; 
-    }
-     */
     
+    public List<Camp> getAllCamps(CampManager campmanager) throws ClassNotFoundException, IOException{
+    	return campdatabase.getAll();
+    }
+    
+    public List<Camp> getCampsByEligibility(CampManager campmanager, Eligibility eligibility) throws ClassNotFoundException, IOException{
+    	
+    	List <Camp> EligibleCampArr = new ArrayList<Camp>();
+    	Camp tempCamp = null;
+    	int i=0;
+    	while (i<campmanager.campdatabase.getList().size()) {
+    		if (eligibility == campmanager.campdatabase.getList().get(i).getInformation().getEligibility() && tempCamp != null) {
+    			tempCamp = campmanager.campdatabase.getList().get(i);
+    			EligibleCampArr.add(tempCamp);
+    		}
+    		i++;
+    	}
+    	if (i == 0) {
+    		return null; //No Eligible Camps
+    	}
+    	else
+    		return EligibleCampArr;
+    }
+ 
 }

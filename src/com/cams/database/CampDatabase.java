@@ -38,7 +38,7 @@ public class CampDatabase extends Database<Camp> {
     }
     //added
     public List<Camp> load() throws IOException, ClassNotFoundException {
-    	System.out.println(this.getFilename());
+    	//System.out.println(this.getFilename());
     	
         return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
         //setAll(objectList);
