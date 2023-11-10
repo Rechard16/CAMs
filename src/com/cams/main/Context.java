@@ -2,8 +2,8 @@ package main;
 
 import java.util.Scanner;
 
-import boundary.AuthenticationManager;
 import boundary.PermissionManager;
+import boundary.login.AuthenticationManager;
 import manager.UserManager;
 
 public class Context {

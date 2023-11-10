@@ -23,12 +23,20 @@ register the same camp again
 */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends User {
-    private int points;
-    private int CampID;
-    private List<Integer> camps;
+    private int points=0;
+    private int campID=0;
+    private List<Integer> camps = new ArrayList<Integer>();
+    
+    public Student() {super();}
+
+    public Student(int id, String userID, String faculty, String password, int campID) {
+    	super(id, userID, faculty, password);
+    	this.campID = campID;
+    }
     
     @Override
     public UserType getType() { return UserType.STUDENT; }
@@ -47,11 +55,11 @@ public class Student extends User {
 
     // Getter and Setter for CampID
     public int getCampID() {
-        return this.CampID;
+        return this.campID;
     }
 
     public void setCampID(int CampID) {
-        this.CampID = CampID;
+        this.campID = CampID;
     }
 
     // Getter and Setter for camps

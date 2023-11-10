@@ -7,9 +7,12 @@ public abstract class User extends Model {
     private String password;
     
     public User() {}
-    public User(String userID, String faculty) {
+
+    public User(int id, String userID, String faculty, String password) {
+    	this.id = id;
     	this.userID = userID;
     	this.faculty = faculty;
+    	this.password = password;
     }
 
     protected void changePassword(String oldPassword,String newPassword){
@@ -22,6 +25,8 @@ public abstract class User extends Model {
     
     @Override
     public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
     public String getUserId() { return userID; }
     public void setUserId(String id) { this.userID = id; }
     

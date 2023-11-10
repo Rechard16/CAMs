@@ -1,4 +1,4 @@
-package boundary;
+package boundary.login;
 
 import main.Context;
 import model.User;
@@ -33,5 +33,15 @@ public class LoginSession {
 	
 	public boolean isLoggedIn() {
 		return loggedIn;
+	}
+	
+	public boolean logout() {
+		if (!this.loggedIn) {
+			context.print("You are already logged out of CAMs");
+			return false;
+		}
+		this.loggedIn = false;
+		context.print("Successfully logged out of CAMs.");
+		return true;
 	}
 }

@@ -1,4 +1,4 @@
-package boundary;
+package boundary.login;
 
 import javax.naming.AuthenticationException;
 
@@ -16,7 +16,7 @@ public class AuthenticationManager {
 	// TODO
 	public User verify(String userId, String password) throws AuthenticationException {
 		User user = userManager.getUserByID(userId);
-		if (user == null || "TODO" != password)
+		if (user == null || !user.getPassword().equals(password))
 			throw new AuthenticationException("User failed to login");
 		else return user;
 	}

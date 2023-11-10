@@ -1,4 +1,4 @@
-package boundary;
+package boundary.login;
 
 import java.util.Scanner;
 
@@ -23,12 +23,12 @@ public class LoginPortal {
 	public LoginSession attemptLogin() {
 		Scanner scanner = context.getScanner();
 		context.print("Please enter your username");
-		String username = scanner.nextLine();
+		String username = scanner.next();
 		
 		LoginSession session = new LoginSession(username, context);
 
 		context.print("Please enter your password");
-		String password = scanner.nextLine();
+		String password = scanner.next();
 		session.attemptLogin(password);
 		
 		if (!session.isLoggedIn()) return session;

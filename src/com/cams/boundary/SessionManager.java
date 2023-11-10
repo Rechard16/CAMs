@@ -1,5 +1,8 @@
 package boundary;
 
+import boundary.action.ViewHandler;
+import boundary.action.views.EntryView;
+import boundary.login.LoginSession;
 import main.Context;
 
 public class SessionManager {
@@ -13,7 +16,28 @@ public class SessionManager {
 	}
 
 	public void startSession() {
-		context.print("Successfully logged in as %s.", loginSession.getUserId());
+		context.print("Successfully logged in as %s.\n", loginSession.getUserId());
 		context.print("Welcome to CAMS!");
+		
+		try {
+			runSession(new EntryView(context, loginSession));
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.print("Application encountered an error! Exiting!");
+		}
+
+		endSession();
+	}
+	
+	private void runSession(ViewHandler currentView) {
+		while(loginSession.isLoggedIn() && currentView != null) {
+			currentView.displayView();
+			currentView = currentView.getNextView();
+		}
+	}
+	
+	private void endSession() {
+		loginSession.logout();
+		context.print("Thank you for using CAMs!");
 	}
 }

@@ -6,6 +6,7 @@ public enum Permission {
     SUGGEST_CAMP,
     APPROVE_SUGGEST,
     VIEW_CAMPS, 
+    VIEW_HIDDEN_CAMPS,
     VIEW_CAMP,
     ENQUIRY,
     VIEW_ENQUIRIES,
