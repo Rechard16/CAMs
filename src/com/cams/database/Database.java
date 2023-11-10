@@ -21,6 +21,7 @@ public abstract class Database<T extends Model>{
     public void add(T newObject) throws IOException, ClassNotFoundException {
         List<T> objectList = getAll();
         objectList.add(newObject);
+        System.out.println("woooooooo");
         save();
     }
 

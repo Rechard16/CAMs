@@ -2,14 +2,15 @@ package database;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import model.Suggestion;
 
 public class SuggestionDatabase extends Database<Suggestion> {
-    private final String filename = "../data/suggestions";
-    private List<Suggestion> suggestions;
+    private final String filename = "data/suggestions";
+    private List<Suggestion> suggestions = new ArrayList<>();
 
     private AtomicInteger idGenerator = new AtomicInteger();
 

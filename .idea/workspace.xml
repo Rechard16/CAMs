@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f3a9b6-5c43-4599-833f-aa8cf38e9099" name="Changes" comment="connect managers to databases">
-      <change beforePath="$PROJECT_DIR$/src/com/cams/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/cams/main/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="19f3a9b6-5c43-4599-833f-aa8cf38e9099" name="Changes" comment="connect managers to databases" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

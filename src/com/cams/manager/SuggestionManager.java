@@ -13,28 +13,23 @@ import model.Camp;
 
 public class SuggestionManager extends SuggestionDatabase {
     private SuggestionDatabase suggestionDatabase;
-    private List<Suggestion> suggestions;
-    private Map<Integer, List<Suggestion>> list_suggestion = new HashMap<>();
+ 
 
     public SuggestionManager() throws ClassNotFoundException, IOException {
         suggestionDatabase = new database.SuggestionDatabase();
-        suggestions = getAll(); // Load existing suggestions from the database
         
     }
 
     // Add suggestion
-    public boolean addSuggestion(Camp camp, Suggestion suggestion, User user) throws IOException {
-        if (camp != null && suggestion != null) {
+    public boolean addSuggestion(Camp camp, Suggestion suggestion, User user) throws IOException, ClassNotFoundException {
+        if ( suggestion != null) {
             // Create a new Suggestion
-            Suggestion newSuggestion = new Suggestion(user, camp.getId(), suggestion.getDescription(), suggestionDatabase);
-
-            // Add the suggestion to the list associated with the camp
-            list_suggestion.computeIfAbsent(camp.getId(), k -> new ArrayList<>()).add(newSuggestion);
+            Suggestion newSuggestion = new Suggestion(user, 98, suggestion.getDescription(), suggestionDatabase);
 
             // Add the suggestion to the database
-            suggestions.add(newSuggestion);
-;           suggestionDatabase.add(suggestions);
-            save(); // Update the suggestions in the database
+            
+;           suggestionDatabase.add(newSuggestion);
+            suggestionDatabase.save(); // Update the suggestions in the database
             return true;
         }
         return false;
@@ -44,8 +39,5 @@ public class SuggestionManager extends SuggestionDatabase {
 
     // Other methods...
 
-    // Save changes to the database
-    private void save() throws IOException {
-        setAll(suggestions);
-    }
+  
 }
