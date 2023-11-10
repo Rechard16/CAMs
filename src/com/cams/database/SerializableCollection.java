@@ -1,9 +1,5 @@
 package database;
-<<<<<<< HEAD
 
-public class SerializableCollection {
-
-=======
 import java.io.*;
 import java.util.List;
 
@@ -36,5 +32,4 @@ public abstract class SerializableCollection {
             }
         }
     }
->>>>>>> main
 }

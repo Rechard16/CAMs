@@ -8,7 +8,7 @@ import manager.UserManager;
 public class Main {
 
 	public static void main(String args[]) {
-		Context context = new Context(new UserManager());
+		Context context = Context.createContext();
 		
 		while(true) launch(context);
 	}

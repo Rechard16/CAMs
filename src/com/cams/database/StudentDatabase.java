@@ -1,9 +1,5 @@
 package database;
 
-<<<<<<< HEAD
-public class StudentDatabase {
-
-=======
 import model.Student;
 
 import java.io.IOException;
@@ -30,5 +26,4 @@ public class StudentDatabase extends Database<Student>{
     protected Class<Student> getContainedClass() {
         return Student.class;
     }
->>>>>>> main
 }

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package database;
-
-public class SuggestionDatabase {
-
-}
-=======
 package database;
 
 import model.Suggestion;
@@ -60,4 +53,3 @@ public class SuggestionDatabase extends Database<Suggestion> {
         return Suggestion.class;
     }
 }
->>>>>>> main

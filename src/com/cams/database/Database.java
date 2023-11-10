@@ -1,10 +1,5 @@
 package database;
 
-<<<<<<< HEAD
-public class Database {
-
-=======
-import com.fasterxml.jackson.core.type.TypeReference;
 import model.Model;
 
 import java.io.File;
@@ -61,5 +56,4 @@ public abstract class Database<T extends Model>{
     public abstract void setAll(List<T> objectList) throws IOException;
 
     protected abstract Class<T> getContainedClass();
->>>>>>> main
 }

@@ -1,10 +1,13 @@
 package model;
 
-abstract public class User {
+import java.io.IOException;
+
+public abstract class User extends Model {
+    protected int id;
     protected String password;
     protected String userID;
     protected String faculty;
-    protected int id;
+
     protected Permission permission;
 
     protected void changePassword(String oldPassword,String newPassword){
@@ -12,18 +15,15 @@ abstract public class User {
             this.password = newPassword;
         }
     }
-    public abstract UserType getType();
+
+
+    public int getId() {
+        return this.id;
+    }
+
     protected abstract void viewQuery();
-    protected abstract void viewCamps();
+    protected abstract void viewCamps() throws IOException, ClassNotFoundException;
     protected abstract void generateStudentList();
     protected abstract void filterCamps();
-    
-    
-    //Placeholder Methods 
-    public String getUserId() { //***Only as Placeholder***
-    	return this.userID;
-    }
-    public String getPassword() { //***Only as Placeholder***
-    	return password;
-    }
+
 }
