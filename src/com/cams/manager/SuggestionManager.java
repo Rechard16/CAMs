@@ -1,24 +1,25 @@
-package com.cams.manager;
+package manager;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.Suggestion;
-
 import database.SuggestionDatabase;
+import model.Suggestion;
 
 public class SuggestionManager extends SuggestionDatabase  {
     private SuggestionDatabase suggestionDatabase;
-    private Map<Integer, List<Suggestion>> list_suggestion = new HashMap()
+    private Map<Integer, List<Suggestion>> list_suggestion = new HashMap();
     public SuggestionManager() throws ClassNotFoundException, IOException {
         suggestionDatabase = new database.SuggestionDatabase();
     }
     //add suggestion
 
     public boolean addSuggestion(model.Camp camp){
+    	return true;
 
-        for ()
+        /*for (
 
         if (suggestion != null)
         {
@@ -34,6 +35,7 @@ public class SuggestionManager extends SuggestionDatabase  {
             return true;
         }
         return false;
+        */
     }
 }
 

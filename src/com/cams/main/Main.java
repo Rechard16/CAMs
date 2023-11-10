@@ -1,19 +1,15 @@
 package main;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import manager.CampManager;
-import model.CampInfo;
-import model.Eligibility;
-import model.Staff;
+import boundary.SessionManager;
+import boundary.login.LoginPortal;
+import boundary.login.LoginSession;
 
 public class Main {
 
 	public static void main(String args[]) throws ClassNotFoundException, IOException {
-			
+		/*
 		CampManager campmanager = new CampManager();
 
 		
@@ -62,22 +58,20 @@ public class Main {
 		
 		campmanager.createCamp(camp1info);
 		campmanager.createCamp(camp2info);
+		*/
 		
 
 		
-		/*
 		Context context = Context.createContext();
 		
 		while(true) launch(context);
-		}
+	}
 		
-		private static void launch(Context context) {
-			LoginPortal loginPortal = new LoginPortal(context);
-			LoginSession session = loginPortal.openPortal();
-			
-			SessionManager sessionManager = new SessionManager(context, session);
-			sessionManager.startSession();
-		}
-		*/
+	private static void launch(Context context) {
+		LoginPortal loginPortal = new LoginPortal(context);
+		LoginSession session = loginPortal.openPortal();
+		
+		SessionManager sessionManager = new SessionManager(context, session);
+		sessionManager.startSession();
 	}
 }
