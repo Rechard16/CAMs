@@ -1,4 +1,4 @@
-package manager;
+package com.cams.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
