@@ -6,8 +6,7 @@ import java.util.List;
 
 public class SuggestionManager {
     private List<Suggestion> suggestions; //list containing suggestionIDs;
-    private List<suggestions> list_suggestion = new ArrayList<>(); // list containing suggestions,
-                                                                    // linking each 'suggestions' to campID
+    private Map<Integer, List<Suggestion>> list_suggestion = new HashMap() // mapping each 'suggestions' to campID
     private int s_id;
 
     public Suggestion createSuggestion(Student user, Camp camp, List<Change> changes) {
