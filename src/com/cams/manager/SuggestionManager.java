@@ -45,7 +45,6 @@ public class SuggestionManager extends SuggestionDatabase {
                 }
                 i++;
             }
-   
         }
         return false;
     }
@@ -58,27 +57,38 @@ public class SuggestionManager extends SuggestionDatabase {
         return false;
     }
 
+    
+    public Suggestion editSuggestion(Camp camp, User user, Suggestion suggestion, String editedSuggest) throws ClassNotFoundException, IOException {
 
-    public boolean editSuggestion(Suggestion oldSuggest, Suggestion newSuggest) throws ClassNotFoundException, IOException {
+            // Create a new Suggestion
+            Suggestion newSuggestion = new Suggestion(user, camp.getId(), editedSuggest, suggestionDatabase);
+
+        return newSuggestion;
+    }
+
+        // how do i make which change in List<changes> is to be approved?
+
+        // right now, newSuggest is made to be uploaded in the database only if accessed by staff. (newSuggest == return value of editedSuggestion)
+    public boolean approveChange(Suggestion oldSuggest, Suggestion newSuggest)throws IOException, ClassNotFoundException {
         if (oldSuggest != null && newSuggest != null) {
             suggestionDatabase.update(oldSuggest, newSuggest);
             return true;
         }
-    	return false;
-    }
-
-    public boolean submitSuggestion() throws IOException, ClassNotFoundException{
-
         return false;
     }
 
-    public boolean approveChange()throws IOException, ClassNotFoundException {
-
+    public boolean viewSuggestionByID(int suggestionID) throws IOException, ClassNotFoundException{
+        if (suggestionDatabase.findByID(suggestionID) != null)
+            System.out.println(suggestionDatabase.findByID(suggestionID).getDescription());
         return false;
     }
 
-    public boolean viewSuggestionByID(int suggestionID){
-
+    public boolean viewSuggestionChanges(Suggestion suggestion) throws IOException, ClassNotFoundException{
+        if (suggestion.getChanges() != null){
+            
+            System.out.println(suggestion.getChanges());
+            return true;
+        }
         return false;
     }
 
