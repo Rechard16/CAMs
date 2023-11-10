@@ -1,31 +1,43 @@
 package com.cams.manager;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import com.cams.model.Suggestion;
-import com.cams.model.Camp;
+import java.util.Map;
+
+import model.Suggestion;
 
 import database.SuggestionDatabase;
-import model.Suggestion;
 
 public class SuggestionManager extends SuggestionDatabase  {
     private SuggestionDatabase suggestionDatabase;
-
-    //constructor
-    public SuggestionManager(){
-        this.suggestionDatabase = new SuggestionDatabase();
+    private Map<Integer, List<Suggestion>> list_suggestion = new HashMap()
+    public SuggestionManager() throws ClassNotFoundException, IOException {
+        suggestionDatabase = new database.SuggestionDatabase();
     }
+    //add suggestion
 
-    // add suggestion
-    public boolean addSuggestion(model.Suggestion suggestion){
+    public boolean addSuggestion(model.Camp camp){
+
+        for ()
+
         if (suggestion != null)
         {
-            model.Suggestion temp = new Suggestion(suggestion);
-            suggestionDatabase.add(temp);
+            model.Suggestion temp = new Suggestion(
+                    suggestion.getUser(),
+                    suggestion.getCampID(),
+                    suggestion.getDescription(),
+                    suggestionDatabase
+            );
+
+
+            suggestionDatabase.setAll(temp);
             return true;
         }
         return false;
     }
-
 }
+
+
+
+    //delete suggestion
+
