@@ -7,7 +7,7 @@ public class CampInfo extends Model {
     private String name;
     private int CampId;
     private List<Date> dates;
-    private Eligibility eligibility;
+    private Faculty eligibility;
     private String location;
     private int totalSlots;
     private int committeeSlots;
@@ -28,7 +28,7 @@ public class CampInfo extends Model {
         return this.dates;
     }
 
-    public Eligibility getEligibility() {
+    public Faculty getEligibility() {
         return this.eligibility;
     }
 
@@ -68,7 +68,7 @@ public class CampInfo extends Model {
         this.dates = dates;
     }
 
-    public void setEligibility(Eligibility eligibility) {
+    public void setEligibility(Faculty eligibility) {
         this.eligibility = eligibility;
     }
 

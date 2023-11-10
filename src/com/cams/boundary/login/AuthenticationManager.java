@@ -18,6 +18,6 @@ public class AuthenticationManager {
 		User user = userManager.getUserByID(userId);
 		if (user == null || !user.getPassword().equals(password))
 			throw new AuthenticationException("User failed to login");
-		else return user;
+		return user;
 	}
 }

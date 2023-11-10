@@ -6,6 +6,8 @@ import main.Context;
 
 public class LoginPortal {
 	
+	public static final int MAX_LOGIN_TRIES=3;
+	
 	private final Context context;
 	
 	public LoginPortal(Context context) {
@@ -14,10 +16,12 @@ public class LoginPortal {
 	
 	public LoginSession openPortal() {
 		LoginSession session = null;
-		while (session == null)
+		for (int i=0;i<3;i++) {
 			session = attemptLogin();
-		
-		return session;
+			if (session != null) return session;
+		}
+		context.print("Too many unsuccessful login attempts >:( Shutting down...");
+		return null;
 	}
 	
 	public LoginSession attemptLogin() {
@@ -31,7 +35,7 @@ public class LoginPortal {
 		String password = scanner.next();
 		session.attemptLogin(password);
 		
-		if (!session.isLoggedIn()) return session;
+		if (session.isLoggedIn()) return session;
 		
 		context.print("Incorrect username or password!");
 		return null;

@@ -15,7 +15,15 @@ public class PermissionManager {
 	public List<Permission> getPermissions(User user) {
 		List<Permission> permissions = new ArrayList<Permission>();
 		permissions.add(Permission.VIEW_CAMP);
-		permissions.add(Permission.VIEW_CAMPS);
+		switch (user.getType()) {
+		case STUDENT:
+			permissions.add(Permission.VIEW_CAMPS);
+			break;
+		case STAFF:
+			permissions.add(Permission.VIEW_CAMPS_SUPER);
+			break;
+		default: break;
+		}
 		
 		return permissions;
 	}

@@ -33,7 +33,7 @@ public class Student extends User {
     
     public Student() {super();}
 
-    public Student(int id, String userID, String faculty, String password, int campID) {
+    public Student(int id, String userID, Faculty faculty, String password, int campID) {
     	super(id, userID, faculty, password);
     	this.campID = campID;
     }

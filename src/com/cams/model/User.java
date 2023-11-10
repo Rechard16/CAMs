@@ -3,12 +3,12 @@ package model;
 public abstract class User extends Model {
 	private int id;
     private String userID;
-    private String faculty;
+    private Faculty faculty;
     private String password;
     
     public User() {}
 
-    public User(int id, String userID, String faculty, String password) {
+    public User(int id, String userID, Faculty faculty, String password) {
     	this.id = id;
     	this.userID = userID;
     	this.faculty = faculty;
@@ -34,6 +34,6 @@ public abstract class User extends Model {
     public void setPassword(String password) { this.password = password; }
 
 
-    public String getFaculty() { return this.faculty; }
-    public void setFaculty(String faculty) { this.faculty = faculty; }
+    public Faculty getFaculty() { return this.faculty; }
+    public void setFaculty(Faculty faculty) { this.faculty = faculty; }
 }

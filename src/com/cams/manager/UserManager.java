@@ -2,6 +2,7 @@ package manager;
 
 import database.StaffDatabase;
 import database.StudentDatabase;
+import model.Faculty;
 import model.Staff;
 import model.Student;
 import model.User;
@@ -36,6 +37,6 @@ public class UserManager {
    
 	// TODO
     public User getUserByID(String userID) {
-    	return new Student(0, "iwi", "scse", "uwu", 2);
+    	return new Student(0, "iwi", Faculty.SCSE, "uwu", 2);
     }
 }

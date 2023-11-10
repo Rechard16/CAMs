@@ -1,27 +1,35 @@
 package main;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import boundary.PermissionManager;
 import boundary.login.AuthenticationManager;
+import manager.CampManager;
 import manager.UserManager;
 
 public class Context {
 	
 	private final UserManager userManager;
+	private final CampManager campManager;
 	private final AuthenticationManager authenticationManager;
 	private final PermissionManager permissionManager;
 	private final Scanner scanner = new Scanner(System.in);
 	
-	public Context(UserManager userManager, PermissionManager permissionManager) {
+	private Context(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
 		this.userManager = userManager;
 		this.permissionManager = permissionManager;
 		this.authenticationManager = new AuthenticationManager(userManager);
+		this.campManager = campManager;
 	}
 	
 	@Override
 	protected void finalize() {
 		this.scanner.close();
+	}
+	
+	public CampManager getCampManager() {
+		return this.campManager;
 	}
 
 	public AuthenticationManager getAuthenticationManager() {
@@ -48,7 +56,11 @@ public class Context {
 		System.out.printf(s, args);
 	}
 	
-	static Context createContext() {
-		return new Context(new UserManager(), new PermissionManager());
+	static Context createDefaultContext() throws ClassNotFoundException, IOException {
+		return new Context(new UserManager(), new PermissionManager(), new CampManager());
+	}
+	
+	static Context createContext(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
+		return new Context(userManager, permissionManager, campManager);
 	}
 }

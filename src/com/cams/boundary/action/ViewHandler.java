@@ -20,7 +20,7 @@ public abstract class ViewHandler {
 		this.authorizer = new ActionAuthorizer(getPermissions(), session);
 	}
 	
-	public void displayView() {
+	public void displayView() throws Exception {
 		OptionDisplayer displayer = new OptionDisplayer(context, getPrompt());
 		List<Action> actions = generateActions();
 		
@@ -30,6 +30,7 @@ public abstract class ViewHandler {
 		
 		Action chosen = displayer.getResponse();
 		chosen.performAction();
+		this.nextView = chosen.getNextView();
 	}
 	
 	protected abstract String getPrompt();

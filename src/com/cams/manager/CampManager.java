@@ -1,15 +1,13 @@
 package manager;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
+
+import database.CampDatabase;
 import model.Camp;
 import model.CampInfo;
-import model.Eligibility;
-import database.CampDatabase;
-
-import java.util.Date;
+import model.Faculty;
 
 public class CampManager {
 	
@@ -110,27 +108,20 @@ public class CampManager {
     }
     
     
-    public List<Camp> getAllCamps(CampManager campmanager) throws ClassNotFoundException, IOException{
+    public List<Camp> getAllCamps() throws ClassNotFoundException, IOException{
     	return campdatabase.getAll();
     }
     
-    public List<Camp> getCampsByEligibility(CampManager campmanager, Eligibility eligibility) throws ClassNotFoundException, IOException{
+    public List<Camp> getCampsByEligibility(Faculty eligibility) throws ClassNotFoundException, IOException{
     	
     	List <Camp> EligibleCampArr = new ArrayList<Camp>();
-    	Camp tempCamp = null;
-    	int i=0;
-    	while (i<campmanager.campdatabase.getList().size()) {
-    		if (eligibility == campmanager.campdatabase.getList().get(i).getInformation().getEligibility() && tempCamp != null) {
-    			tempCamp = campmanager.campdatabase.getList().get(i);
-    			EligibleCampArr.add(tempCamp);
+    	for (Camp camp: campdatabase.getAll()) {
+    		Faculty fac = camp.getInformation().getEligibility();
+    		if (fac == eligibility || fac == Faculty.SCHOOL) {
+    			EligibleCampArr.add(camp);
     		}
-    		i++;
     	}
-    	if (i == 0) {
-    		return null; //No Eligible Camps
-    	}
-    	else
-    		return EligibleCampArr;
+		return EligibleCampArr;
     }
  
 }

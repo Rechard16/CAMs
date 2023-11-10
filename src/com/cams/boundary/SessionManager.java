@@ -25,19 +25,12 @@ public class SessionManager {
 			e.printStackTrace();
 			context.print("Application encountered an error! Exiting!");
 		}
-
-		endSession();
 	}
 	
-	private void runSession(ViewHandler currentView) {
+	private void runSession(ViewHandler currentView) throws Exception {
 		while(loginSession.isLoggedIn() && currentView != null) {
 			currentView.displayView();
 			currentView = currentView.getNextView();
 		}
-	}
-	
-	private void endSession() {
-		loginSession.logout();
-		context.print("Thank you for using CAMs!");
 	}
 }
