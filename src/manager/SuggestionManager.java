@@ -17,6 +17,7 @@ public class SuggestionManager {
         }
 
         // adding suggestion to the 'suggestions' list
+        suggestions = list_suggestion.get(camp.getId());
         suggestions.add(s_id);
 
         // updating 'suggestions' list under same campId
