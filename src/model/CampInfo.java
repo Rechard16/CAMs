@@ -3,15 +3,24 @@ package model;
 import java.util.Date;
 import java.util.List;
 
-public class CampInfo {
-    private String name;
-    private List<Date> dates;
-    private Eligibility eligibility;
-    private String location;
-    private int totalSlots;
-    private int committeeSlots;
-    private String description;
-    private Staff staffInCharge;
+public class CampInfo extends Model {
+    public String name;
+    public int CampId;
+    public List<Date> dates;
+    public Eligibility eligibility;
+    public String location;
+    public int totalSlots;
+    public int committeeSlots;
+    public String description;
+    public Staff staffInCharge;
     public String staff;
-    private Date deadline;
+    public Date deadline;
+
+    public int getId() {
+        return this.CampId;
+    }
+
+    public Eligibility getEligibility() {
+        return this.eligibility;
+    }
 }
