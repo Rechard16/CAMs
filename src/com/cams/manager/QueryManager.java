@@ -1,56 +1,83 @@
 package manager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
+import database.SuggestionDatabase;
 import model.Query;
-import model.Staff;
+import model.Suggestion;
+import model.User;
+import model.Camp;
 
-public class QueryManager {
-    private Map<Integer, List<Query>> list_query = new HashMap();// mapping each 'queries' to campID
-    private Integer q_id;
-    /*
+public class QueryManager extends SuggestionDatabase {
+    private SuggestionDatabase queryDatabase;
+ 
+    // linking with suggestion database 
+    public QueryManager() throws ClassNotFoundException, IOException {
+        queryDatabase = new database.SuggestionDatabase();
+        
+    }
 
-    public Query createQuery(Student user, Camp camp, String description) {
-        // first time creating query
-        if (!list_query.containsKey(camp.getId())) {
-            queries = new ArrayList<>();
+     public boolean addQuery(Camp camp, Query query) throws IOException, ClassNotFoundException {
+        if (query != null) {
+
+            // Create a new query
+            Query newQuery = new Query(query.getUserId(), camp.getId(), query.getDescription(), queryDatabase);
+
+            // Add the query to the database
+            queryDatabase.add(newQuery);
+            queryDatabase.save(); // Update the queries in the database
+            return true;
         }
-
-        // adding query to the 'queries' list
-        if (q_id != null){
-            queries = list_query.get(camp.getId());
-            queries.add(q_id);
-
-            // updating 'queries' list under same campId
-            list_query.put(camp.getId(), queries);
-	}
-    */
-    private List<Query> queries;
-    
-    QueryManager (){
-    	queries = new ArrayList<Query>();
-    }
-
-    public boolean deleteQuery(int queryID) {
-        // Implement the method
         return false;
     }
 
-    public boolean editQuery(Query query, String description) {
-        // Implement the method
+    // delete by queryID
+    public boolean deleteByQueryID(Query query) throws IOException, ClassNotFoundException {
+        if (query != null){
+            int i = 0;
+            while (i < queryDatabase.getAll().size()) {
+                if (query.getId() == queryDatabase.getAll().get(i).getSuggestionID()) {
+                    queryDatabase.getAll().remove(i);
+                    return true;
+                }
+                i++;
+            }
+        }
         return false;
     }
 
-    public Query getQueryByID(int queryID) {
-        this.q_id = queryID;
-        return null;
-    }
-
-    public boolean replyToQuery(Staff staff, Query query, String response) {
-        // Implement the method
+    // delete by campID
+    public boolean deleteByCampID(Camp camp) throws IOException, ClassNotFoundException {
+        if (camp != null){
+            queryDatabase.remove(queryDatabase.findByID(camp.getId()));
+        }
         return false;
     }
+
+    public boolean editQuery(Camp camp, User user, Query query, String editedQuery) throws ClassNotFoundException, IOException {
+
+    int i = 0;
+    	while (i < queryDatabase.getAll().size()) {
+    		if (query.getId() == queryDatabase.getAll().get(i).getId()) {
+    			Query newQuery = new Query(user.getId(), camp.getId(), editedQuery, queryDatabase);
+    			queryDatabase.getAll().set(i, newQuery);
+    			return true; //returns true if successful
+    		}
+    		i++;
+    	}
+    	
+        return false;
 }
+
+
+    
+
+
+}
+/*
+ A staff can view and reply to enquiries from students to the camp(s) his/her has created.
+A student can submit enquiries regarding a camp.
+    o Only staff and camp committees in charge of that camp can view it.
+A student can view, edit, and delete their enquiries before it is processed.
+A camp committee member can view and reply to enquiries from students to the camp they oversee.
+ */
