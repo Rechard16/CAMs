@@ -3,5 +3,7 @@ package model;
 public enum Faculty {
     SCHOOL, 
     SCSE,
-    NBS
+    NBS,
+    ADM,
+    SSS, EEE
 }
