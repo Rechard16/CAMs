@@ -16,7 +16,7 @@ public class QueryManager extends SuggestionDatabase {
         queryDatabase = new database.SuggestionDatabase();
         
     }
-
+/*
      public boolean addQuery(Camp camp, Query query) throws IOException, ClassNotFoundException {
         if (query != null) {
 
@@ -68,10 +68,10 @@ public class QueryManager extends SuggestionDatabase {
     	
         return false;
 }
-
-public boolean viewQueryByID(int queryId) throws IOException, ClassNotFoundException{
-    if (queryDatabase.findByID(queryId) != null)
-        System.out.println(queryDatabase.findByID(queryId).getDescription());
+ */
+public boolean viewQueryByID(Camp camp) throws IOException, ClassNotFoundException{
+    if (queryDatabase.findByID(camp.getId()) != null)
+        System.out.println(queryDatabase.findByID(camp.getId()).getDescription());
     return false;
 }
 
