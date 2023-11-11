@@ -69,6 +69,16 @@ public class QueryManager extends SuggestionDatabase {
         return false;
 }
 
+public boolean viewQueryByID(int queryId) throws IOException, ClassNotFoundException{
+    if (queryDatabase.findByID(queryId) != null)
+        System.out.println(queryDatabase.findByID(queryId).getDescription());
+    return false;
+}
+
+public boolean replyQueryByID(int queryId) throws IOException, ClassNotFoundException{
+    //
+    return false;
+}
 
     
 
