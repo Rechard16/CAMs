@@ -24,7 +24,7 @@ public class QueryManager extends SuggestionDatabase {
             Query newQuery = new Query(query.getUserId(), camp.getId(), query.getDescription(), queryDatabase);
 
             // Add the query to the database
-            queryDatabase.add(newQuery);
+            // queryDatabase.add(newQuery);
             queryDatabase.save(); // Update the queries in the database
             return true;
         }
@@ -59,8 +59,8 @@ public class QueryManager extends SuggestionDatabase {
     int i = 0;
     	while (i < queryDatabase.getAll().size()) {
     		if (query.getId() == queryDatabase.getAll().get(i).getId()) {
-    			Query newQuery = new Query(user.getId(), camp.getId(), editedQuery, queryDatabase);
-    			queryDatabase.getAll().set(i, newQuery);
+    			// Query newQuery = new Query(user.getId(), camp.getId(), editedQuery, queryDatabase);
+    			// queryDatabase.getAll().set(i, newQuery);
     			return true; //returns true if successful
     		}
     		i++;

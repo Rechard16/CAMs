@@ -22,7 +22,7 @@ public class Main {
 		Date date1 = new Date(2023, 12, 1);
 		Date date2 = new Date(2000, 12, 12);
 		
-		Suggestion sg = new Suggestion(null, 0, null, sm);
+		/*Suggestion sg = new Suggestion(null, 0, null, sm);
 		sg.setCampID(0);
 		sg.setDescription("hi");
 		sg.setSuggestionID(12);

@@ -9,6 +9,7 @@ out/
 .factorypath
 .project
 .settings
+.idea
 .springBeans
 .sts4-cache
 bin/
