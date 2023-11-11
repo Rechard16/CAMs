@@ -1,51 +1,42 @@
 package manager;
 
-import model.User;
-import model.Student;
+import database.StaffDatabase;
+import database.StudentDatabase;
+import model.Faculty;
 import model.Staff;
-import java.util.List;
+import model.Student;
+import model.User;
 
 public class UserManager {
-    private List<Staff> staffs;
-    private List<Student> students;
+	
+    private StudentDatabase studentDatabase;
+    private StaffDatabase staffDatabase;
+    
+	
+    public UserManager(){
+    }
 
     public boolean addUser(User user) {
-        // Implement the method
+    	try {
+    		switch(user.getType()) {
+			case STAFF:
+				staffDatabase.add((Staff) user);
+				return true;
+			case STUDENT:
+				studentDatabase.add((Student) user);
+				return true;
+			default:
+				throw new IllegalArgumentException(user.getType().toString());
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
         return false;
     }
-
-    public boolean removeUser(String userID) {
-        // Implement the method
-        return false;
-    }
-
-    public boolean editUser(User user) {
-        // Implement the method
-        return false;
-    }
-
+    
+   
+	// TODO
     public User getUserByID(String userID) {
-        // Implement the method
-        return null;
-    }
-
-    public boolean checkCommittee(String studentID) {
-        // Implement the method
-        return false;
-    }
-
-    public boolean checkStaff(String staffID) {
-        // Implement the method
-        return false;
-    }
-
-    public boolean givePoint(Student student, int points) {
-        // Implement the method
-        return false;
-    }
-
-    public boolean loginUser(String userID, String password) {
-        // Implement the method
-        return false;
+    	return new Student(0, "iwi", Faculty.SCSE, "uwu", 2);
     }
 }

@@ -112,5 +112,4 @@ public class Camp extends Model {
     public boolean getVisibility() {
         return this.visibility;
     }
-
 }

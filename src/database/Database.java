@@ -1,12 +1,9 @@
 package database;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import model.Model;
-
-import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
+
+import model.Model;
 
 
 public abstract class Database<T extends Model>{
@@ -24,6 +21,7 @@ public abstract class Database<T extends Model>{
     public void add(T newObject) throws IOException, ClassNotFoundException {
         List<T> objectList = getAll();
         objectList.add(newObject);
+        System.out.println("woooooooo");
         save();
     }
 

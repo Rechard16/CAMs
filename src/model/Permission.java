@@ -1,8 +1,14 @@
 package model;
 
 public enum Permission {
-    Modify, 
-    Suggest,
-    View, 
-    Query
+	CREATE_CAMP,
+    MODIFY_CAMP, 
+    SUGGEST_CAMP,
+    APPROVE_SUGGEST,
+    VIEW_CAMPS, 
+    VIEW_CAMPS_SUPER,
+    VIEW_CAMP,
+    ENQUIRY,
+    VIEW_ENQUIRIES,
+    RESOLVE_ENQUIRY,
 }

@@ -1,14 +1,19 @@
 package model;
 
-import java.io.IOException;
-
 public abstract class User extends Model {
-    protected int id;
-    protected String password;
-    protected String userID;
-    protected String faculty;
+	private int id;
+    private String userID;
+    private Faculty faculty;
+    private String password;
+    
+    public User() {}
 
-    protected Permission permission;
+    public User(int id, String userID, Faculty faculty, String password) {
+    	this.id = id;
+    	this.userID = userID;
+    	this.faculty = faculty;
+    	this.password = password;
+    }
 
     protected void changePassword(String oldPassword,String newPassword){
         if(oldPassword.equals(this.password)){
@@ -16,14 +21,19 @@ public abstract class User extends Model {
         }
     }
 
+    public abstract UserType getType();
+    
+    @Override
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public int getId() {
-        return this.id;
-    }
+    public String getUserId() { return userID; }
+    public void setUserId(String id) { this.userID = id; }
+    
+    public String getPassword() { return this.password==null?"":password; }
+    public void setPassword(String password) { this.password = password; }
 
-    protected abstract void viewQuery();
-    protected abstract void viewCamps() throws IOException, ClassNotFoundException;
-    protected abstract void generateStudentList();
-    protected abstract void filterCamps();
 
+    public Faculty getFaculty() { return this.faculty; }
+    public void setFaculty(Faculty faculty) { this.faculty = faculty; }
 }
