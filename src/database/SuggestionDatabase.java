@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import model.Suggestion;
 
 public class SuggestionDatabase extends Database<Suggestion> {
-    private final String filename = "data/suggestions";
+    private final String filename = "data/suggestions.txt";
     private List<Suggestion> suggestions = new ArrayList<>();
 
     private AtomicInteger idGenerator = new AtomicInteger();

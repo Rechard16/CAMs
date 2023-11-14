@@ -7,7 +7,7 @@ import model.Camp;
 //本地测试用
 public class CampDatabase extends Database<Camp> {
 
-    private final String filename = "data/camps"; 
+    private final String filename = "data/camps.txt";
     private List<Camp> camps;
 
     public CampDatabase() throws IOException, ClassNotFoundException {
