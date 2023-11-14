@@ -5,14 +5,32 @@ import java.util.List;
 
 import database.SuggestionDatabase;
 
+/**
+ * The Suggestion class represents a suggestion made by a user in the system.
+ * It includes details about the suggestion, the user who made it, and the
+ * associated campaign.
+ * This class extends the Model class and provides specific functionalities for
+ * managing suggestions.
+ */
+
 public class Suggestion extends Model {
-    private User user;
-    private int campID;
-    private int suggestionID;
-    private String description;
-    public List<Change> changes = new ArrayList<>();
-    // private SuggestionDatabase suggestionDatabase; no need to store this here it
-    // will lead to circular dependency
+    private User user;// The user who made the suggestion.
+    private int campID;// The campaign ID to which this suggestion is related.
+    private int suggestionID;// A unique identifier for the suggestion.
+    private String description; // The content of the suggestion.
+    public List<Change> changes = new ArrayList<>(); // A list of changes proposed in the suggestion.
+
+    /**
+     * Constructs a new Suggestion with the specified user, campaign ID, and
+     * description.
+     * The suggestion ID is generated automatically by the SuggestionDatabase.
+     *
+     * @param user               The user making the suggestion.
+     * @param campID             The campaign ID associated with the suggestion.
+     * @param description        The content of the suggestion.
+     * @param suggestionDatabase The database used for generating a new suggestion
+     *                           ID.
+     */
 
     public Suggestion(User user, int campID, String description, SuggestionDatabase suggestionDatabase) {
         this.user = user;
@@ -20,6 +38,12 @@ public class Suggestion extends Model {
         this.description = description;
         this.suggestionID = suggestionDatabase.generateNewId();
     }
+
+    /**
+     * Displays the details of the suggestion including its ID, campaign ID, user
+     * ID, and content.
+     * Also prints out the list of proposed changes.
+     */
 
     public void view() {
         System.out.println("Suggestion ID: " + this.suggestionID);
@@ -31,55 +55,133 @@ public class Suggestion extends Model {
         }
     }
 
+    /**
+     * Retrieves the suggestion ID.
+     *
+     * @return int representing the suggestion's unique identifier.
+     */
+
     public int getId() {
         return this.suggestionID;
     }
 
-    // Getter and Setter for user
+    @Override
+
+    /**
+     * Retrieves the user who made the suggestion.
+     *
+     * @return User who made the suggestion.
+     */
+
     public User getUser() {
         return this.user;
     }
+
+    /**
+     * Sets the user who made the suggestion.
+     *
+     * @param user The user to be associated with the suggestion.
+     */
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    // Getter and Setter for campID
+    /**
+     * Retrieves the campaign ID associated with the suggestion.
+     *
+     * @return int representing the campaign ID.
+     */
+
     public int getCampID() {
         return this.campID;
     }
+
+    /**
+     * Sets the campaign ID for the suggestion.
+     *
+     * @param campID The campaign ID to be associated with the suggestion.
+     */
 
     public void setCampID(int campID) {
         this.campID = campID;
     }
 
-    // Getter and Setter for suggestionID
+    /**
+     * Retrieves the unique identifier for the suggestion.
+     *
+     * @return int representing the suggestion's unique ID.
+     */
+
     public int getSuggestionID() {
         return this.suggestionID;
     }
+
+    /**
+     * Sets the unique identifier for the suggestion.
+     *
+     * @param suggestionID The new unique ID for the suggestion.
+     */
 
     public void setSuggestionID(int suggestionID) {
         this.suggestionID = suggestionID;
     }
 
-    // Getter and Setter for description
+    /**
+     * Retrieves the description of the suggestion.
+     *
+     * @return String representing the content of the suggestion.
+     */
+
     public String getDescription() {
         return this.description;
     }
+
+    /**
+     * Sets the description for the suggestion.
+     *
+     * @param description The new content to be set for the suggestion.
+     */
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    // Getter and Setter for changes
+    /**
+     * Retrieves the list of changes proposed in the suggestion.
+     *
+     * @return List of Change objects associated with the suggestion.
+     */
+
     public List<Change> getChanges() {
         return this.changes;
     }
+
+    /**
+     * Sets the list of changes proposed in the suggestion.
+     *
+     * @param changes The new list of Change objects to be associated with the
+     *                suggestion.
+     */
 
     public void setChanges(List<Change> changes) {
         this.changes = changes;
     }
 
-    public void setUser(int i, String string, String string2, String string3) {
+    /**
+     * Overloaded setUser method for convenience, allowing setting user attributes
+     * directly.
+     *
+     * @param id       The new id of user
+     * @param userID   The new userID of user.
+     * @param faculty  The new faculty of user.
+     * @param password The new password of user.
+     */
+
+    public void setUser(int id, String userID, String faculty, String password) {
+        this.user.setId(id);
+        this.user.setUserId(userID);
+        this.iser.setFaculty(faculty);
+        this.user.setPassword(password);
     }
 }

@@ -19,8 +19,32 @@ participants. There should be filters for how the staff would want to generate t
 
 package model;
 
+/**
+ * The Staff class represents a staff user in the system. It extends the User
+ * class
+ * and includes specific functionalities and privileges associated with staff
+ * members.
+ * Staff users have the capability to manage camps, handle enquiries, and
+ * generate reports.
+ */
+
 public class Staff extends User {
-    
+
+    /**
+     * Default constructor for Staff.
+     */
+    public Staff() {
+        super();
+    }
+
+    /**
+     * Returns the UserType as STAFF, indicating this user is a staff member.
+     *
+     * @return UserType enum value representing a staff member.
+     */
+
     @Override
-    public UserType getType() { return UserType.STAFF; }
+    public UserType getType() {
+        return UserType.STAFF;
+    }
 }
