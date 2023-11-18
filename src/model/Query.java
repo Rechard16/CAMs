@@ -1,6 +1,6 @@
 package model;
 
-import database.SuggestionDatabase;
+import database.QueryDatabase;
 
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +17,7 @@ public class Query extends Model {
     private int campId;// The ID of the camp associated with the query.
     private int queryId;// A unique identifier for the query.
     private String description;// The content of the query.
-    private SuggestionDatabase suggestionDatabase;// Implement the SuggestionDatabase to store the data.
+    private String reply; // Teacher's reply of the query
 
     /**
      * Default constructor for Query.
@@ -33,6 +33,7 @@ public class Query extends Model {
      * @param userId      The ID of the user making the query.
      * @param campId      The ID of the camp associated with the query.
      * @param description The content of the query.
+     * @param reply       Inital reply is none.
      */
 
     public Query(int userId, int campId, String description) {
@@ -40,6 +41,7 @@ public class Query extends Model {
         this.campId = campId;
         this.queryId = 1;
         this.description = description;
+        this.reply = null;
     }
 
     /**
@@ -47,18 +49,19 @@ public class Query extends Model {
      * reference to SuggestionDatabase.
      * The queryId is generated using the SuggestionDatabase.
      *
-     * @param userId             The ID of the user making the query.
-     * @param campId             The ID of the camp associated with the query.
-     * @param description        The content of the query.
-     * @param suggestionDatabase The database used for generating a new query ID.
+     * @param userId      The ID of the user making the query.
+     * @param campId      The ID of the camp associated with the query.
+     * @param description The content of the query.
+     * @param queryId     The unique id for query.
+     * @param reply       Inital reply is none.
      */
 
-    public Query(int userId, int campId, String description, SuggestionDatabase suggestionDatabase) {
+    public Query(int userId, int campId, int queryId, String description) {
         this.userId = userId;
         this.campId = campId;
-        this.queryId = suggestionDatabase.generateNewId();
+        this.queryId = queryId;
         this.description = description;
-        this.suggestionDatabase = suggestionDatabase;
+        this.reply = null;
     }
 
     /**
@@ -140,5 +143,25 @@ public class Query extends Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * Retrieves the reply to the query.
+     *
+     * @return String representing the reply to the query.
+     */
+
+    public String getReply() {
+        return this.reply;
+    }
+
+    /**
+     * Sets the reply for the query.
+     *
+     * @param reply The new reply to be set for the query.
+     */
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 }

@@ -65,8 +65,6 @@ public class Suggestion extends Model {
         return this.suggestionID;
     }
 
-    @Override
-
     /**
      * Retrieves the user who made the suggestion.
      *
@@ -178,10 +176,10 @@ public class Suggestion extends Model {
      * @param password The new password of user.
      */
 
-    public void setUser(int id, String userID, String faculty, String password) {
+    public void setUser(int id, String userID, Faculty faculty, String password) {
         this.user.setId(id);
         this.user.setUserId(userID);
-        this.iser.setFaculty(faculty);
+        this.user.setFaculty(faculty);
         this.user.setPassword(password);
     }
 }
