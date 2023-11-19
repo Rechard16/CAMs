@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import database.SuggestionDatabase;
-
 /**
  * The Suggestion class represents a suggestion made by a user in the system.
  * It includes details about the suggestion, the user who made it, and the
@@ -32,11 +30,11 @@ public class Suggestion extends Model {
      *                           ID.
      */
 
-    public Suggestion(User user, int campID, String description, SuggestionDatabase suggestionDatabase) {
+    public Suggestion(User user, int campID, String description, int suggestionID) {
         this.user = user;
         this.campID = campID;
         this.description = description;
-        this.suggestionID = suggestionDatabase.generateNewId();
+        this.suggestionID = suggestionID;
     }
 
     /**
