@@ -4,7 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import model.Camp;
-//本地测试用
+
+/**
+ *
+ * @author Zeng Ruixiao
+ * @version 1.0
+ * @since 2023-11-22
+ */
 public class CampDatabase extends Database<Camp> {
 
     private final String filename = "data/camps.txt";

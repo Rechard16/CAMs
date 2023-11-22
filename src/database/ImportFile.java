@@ -8,7 +8,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * ImportFile class is used to import the data from the file.
+ * It is used to import the data from the file and store it in the database.
+ * @author Zeng Ruixiao
+ * @version 1.0
+ * @since 2023-11-22
+ */
+
 public class ImportFile {
+
     public void importFile() throws IOException, ClassNotFoundException {
         StaffDatabase staffDatabase = new StaffDatabase();
         Staff staffs[] = new Staff[5];
