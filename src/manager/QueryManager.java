@@ -7,7 +7,7 @@ import java.io.IOException;
 public class QueryManager {
     private QueryDatabase queryDatabase;
 
-    public QueryManager() {
+    public QueryManager() throws IOException, ClassNotFoundException {
         this.queryDatabase = new QueryDatabase();
     }
 

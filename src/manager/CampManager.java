@@ -30,14 +30,14 @@ public class CampManager {
 
     }
 
-    public boolean deleteCampByObject(Camp campObject) {
+    public boolean deleteCampByObject(Camp campObject) throws IOException, ClassNotFoundException {
         //Iterating through the ArrayList of camp objects 
     	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
     	
     	int i = 0;
-    	while (i < campdatabase.getList().size()) {
-    		if (campObject.getId() == campdatabase.getList().get(i).getId()) {
-    			campdatabase.getList().remove(i);
+    	while (i < campdatabase.getAll().size()) {
+    		if (campObject.getId() == campdatabase.getAll().get(i).getId()) {
+    			campdatabase.getAll().remove(i);
     			return true;
     		}
     		i++;
@@ -50,13 +50,13 @@ public class CampManager {
     	return false;
     }
     
-    public boolean deleteCampByID(int campID) {
+    public boolean deleteCampByID(int campID) throws IOException, ClassNotFoundException {
         //Iterating through the ArrayList of camp objects 
     	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
     	int i = 0;
-    	while (i < campdatabase.getList().size()) {
-    		if (campID == campdatabase.getList().get(i).getId()) {
-    			campdatabase.getList().remove(i);
+    	while (i < campdatabase.getAll().size()) {
+    		if (campID == campdatabase.getAll().get(i).getId()) {
+    			campdatabase.getAll().remove(i);
     			return true;
     		}
     		i++;
@@ -64,15 +64,15 @@ public class CampManager {
         return false; //returns false when unable to find the camp to be deleted
     }
     
-    public boolean editCampbyID(int campID, CampInfo campInfo) {
+    public boolean editCampbyID(int campID, CampInfo campInfo) throws IOException, ClassNotFoundException {
         //Iterates through the ArrayList to find index of the campID to be edited
     	//Uses the .set() method to replace with the new campInfo
     	
     	int i = 0;
-    	while (i < campdatabase.getList().size()) {
-    		if (campID == campdatabase.getList().get(i).getId()) {
+    	while (i < campdatabase.getAll().size()) {
+    		if (campID == campdatabase.getAll().get(i).getId()) {
     			Camp tempCamp = new Camp(campInfo);
-    			campdatabase.getList().set(i, tempCamp);
+    			campdatabase.getAll().set(i, tempCamp);
     			return true; //returns true if successful
     		}
     		i++;
@@ -84,9 +84,9 @@ public class CampManager {
     public void toggleVisibilityByID(int campID, boolean boolValue) throws ClassNotFoundException, IOException {
     	
     	int i = 0;
-    	while (i < campdatabase.getList().size()) {
+    	while (i < campdatabase.getAll().size()) {
     		if (campID == campdatabase.getAll().get(i).getId()) {
-    			campdatabase.getList().get(i).setVisibility(boolValue);
+    			campdatabase.getAll().get(i).setVisibility(boolValue);
     		}
     		i++;
     	}
@@ -97,9 +97,9 @@ public class CampManager {
     public Camp getCampByID(int campID) throws ClassNotFoundException, IOException {
         
     	int i = 0;
-    	while (i < campdatabase.getList().size()) {
-    		if (campID == campdatabase.getList().get(i).getId()) {
-    			return campdatabase.getList().get(i);
+    	while (i < campdatabase.getAll().size()) {
+    		if (campID == campdatabase.getAll().get(i).getId()) {
+    			return campdatabase.getAll().get(i);
     		}
     		i++;
     	}
