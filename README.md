@@ -1,4 +1,4 @@
-# FYPMS
+# CAMS
 
 NTU AY2023/24 Semester 1 SC2002 Group Project - Camp manager System (CAMS).
 
