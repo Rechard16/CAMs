@@ -123,7 +123,7 @@ public class Student extends User {
     public void setCamps(List<Integer> camps) {
         this.camps = camps;
     }
-
+   
     /**
      * Retrieves the ID of the camp the user is currently assigned to.
      *
@@ -143,5 +143,16 @@ public class Student extends User {
         this.campID = CampID;
     }
 
+	@Override
+	public boolean isRegistered(int id) {
+		return camps.contains(id);
+	}
 
+	@Override
+	public void register(Camp camp) {
+		int id=camp.getID();
+    	if (!camps.contains(id)) {
+    		camps.add(id);
+    	}
+	}
 }

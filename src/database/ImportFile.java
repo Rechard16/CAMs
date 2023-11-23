@@ -19,7 +19,7 @@ public class ImportFile {
      * @throws ClassNotFoundException if the class is not found
      */
     public void importFile() throws IOException, ClassNotFoundException {
-        /*StaffDatabase staffDatabase = new StaffDatabase();
+        StaffDatabase staffDatabase = new StaffDatabase();
         Staff staffs[] = new Staff[5];
         staffs[0] = new Staff(0, 
         		"HUKUMAR", 
@@ -98,11 +98,10 @@ public class ImportFile {
         D(15);
         aculty(Faculty.SSS);
         serID("AKY013");
-        assword("password");
+        assword("password");*/
         for (int i = 0; i < 2; i++) {
             studentDatabase.add(students[i]);
         }
         studentDatabase.save();
-        */
     }
 }

@@ -117,6 +117,7 @@ public class CampManager implements Savable {
     	
     	List <Camp> EligibleCampArr = new ArrayList<Camp>();
     	for (Camp camp: campdatabase.getAll()) {
+    		if (!camp.getVisibility()) continue;
     		Faculty fac = camp.getInformation().getEligibility();
     		if (fac == eligibility || fac == Faculty.SCHOOL) {
     			EligibleCampArr.add(camp);

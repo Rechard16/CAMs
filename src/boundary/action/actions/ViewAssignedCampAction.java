@@ -11,14 +11,10 @@ import model.Permission;
 import model.Student;
 
 public class ViewAssignedCampAction extends ViewCampAction{
-	private final Context context;
-	private final UserSession session;
 	private ViewHandler nextView;
 	
 	public ViewAssignedCampAction(Context context, UserSession session) {
 		super(context, session);
-		this.context = context;
-		this.session = session;
 	}
 
 	@Override
@@ -28,14 +24,14 @@ public class ViewAssignedCampAction extends ViewCampAction{
 
 	@Override
 	public void performAction() throws Exception {
-		Student student = (Student) session.getUser();
+		Student student = (Student) getSession().getUser();
 		int id = student.getCampID();
 		if (id == -1) {
-			context.print("You do not have an assigned camp!");
-			nextView = session.getViewStack().top();
+			getContext().print("You do not have an assigned camp!");
+			nextView = getSession().getViewStack().top();
 			return;
 		}
-		Camp camp = context.getCampManager().getCampByID(id);
+		Camp camp = getContext().getCampManager().getCampByID(id);
 
 		this.setCamp(camp);
 		super.performAction();

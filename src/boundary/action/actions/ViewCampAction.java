@@ -6,7 +6,7 @@ import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampOptionsView;
 import boundary.login.UserSession;
-import boundary.util.CampInfoDisplayer;
+import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -27,21 +27,36 @@ public class ViewCampAction implements Action {
 		this.session = session;
 	}
 	
-	public void setCamp(Camp camp) {
+	protected void setCamp(Camp camp) {
 		this.camp = camp;
+	}
+	
+	protected Camp getCamp() {
+		return this.camp;
+	}
+	
+	protected Context getContext() {
+		return this.context;
+	}
+	
+	protected UserSession getSession() {
+		return this.session;
 	}
 	
 	@Override
 	public String getDescription() {
-		return camp.getInformation().getName();
+		String name = camp.getInformation().getName();
+		if (session.getUser().isRegistered(camp.getID()))
+			name += " (Registered)";
+		if (!camp.isVisible()) 
+			name += " (Hidden)";
+		return name;
 	}
 
 	@Override
 	public void performAction() throws Exception {
-		context.print("You have selected: %s\n", camp.getInformation().getName());
-		
-		new CampInfoDisplayer(context, camp.getInformation())
-			.displayCampInfo();
+		new CampDisplayer(context, camp)
+			.dislayCamp();
 	}
 
 	@Override

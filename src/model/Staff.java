@@ -50,10 +50,7 @@ public class Staff extends User {
     }
     
     public void addCamp(Camp camp) {
-    	int id=camp.getID();
-    	if (!camps.contains(id)) {
-    		camps.add(id);
-    	}
+    	
     }
     
     public void removeCamp(Camp camp) {
@@ -68,4 +65,18 @@ public class Staff extends User {
     public void setCamps(List<Integer> camps) {
     	this.camps = camps;
     }
+
+	@Override
+	public boolean isRegistered(int id) {
+		return camps.contains(id);
+	}
+
+	@Override
+	public void register(Camp camp) {
+		int id=camp.getID();
+    	if (!camps.contains(id)) {
+    		camps.add(id);
+    	}
+		
+	}
 }

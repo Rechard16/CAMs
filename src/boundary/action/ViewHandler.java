@@ -11,18 +11,17 @@ public abstract class ViewHandler {
 	
 	protected final Context context;
 	protected final UserSession session;
-	private final ActionAuthorizer authorizer;
 	private ViewHandler nextView;
 	
 	public ViewHandler(Context context, UserSession session) {
 		this.context = context;
 		this.session = session;
-		this.authorizer = new ActionAuthorizer(session.getLoginSession());
 		session.getViewStack().addView(this);
 	}
 	
 	public void displayView() throws Exception {
 
+		ActionAuthorizer authorizer = session.getAuthorizer();
 		authorizer.setPermissions(getPermissions());
 		context.print("-----------------------------------------------------------");
 		OptionDisplayer displayer = new OptionDisplayer(context, getPrompt());

@@ -24,6 +24,7 @@ public class PermissionManager {
 			break;
 		case STAFF:
 			permissions.add(Permission.VIEW_CAMPS_SUPER);
+			permissions.add(Permission.TOGGLE_VISIBILITY);
 			break;
 		default: break;
 		}

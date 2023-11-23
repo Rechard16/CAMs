@@ -5,6 +5,7 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.actions.PreviousViewAction;
+import boundary.action.actions.ToggleVisibilityAction;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
@@ -25,7 +26,10 @@ public class CampOptionsView extends ViewHandler {
 
 	@Override
 	protected List<Action> generateActions() {
-		return List.of(new PreviousViewAction(session));
+		return List.of(
+				new ToggleVisibilityAction(context, session, camp),
+				new PreviousViewAction(session)
+				);
 	}
 
 	@Override
