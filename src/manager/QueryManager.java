@@ -12,7 +12,7 @@ public class QueryManager {
     }
 
     public Query createQuery(int userId, int campId, String description) throws IOException, ClassNotFoundException {
-        int newQueryId = queryDatabase.generateNewId(); // 生成新的ID
+        int newQueryId = queryDatabase.getAll().size()+1; // 生成新的ID
         Query query = new Query(userId, campId, newQueryId, description); // 使用新ID创建Query对象
         queryDatabase.add(query); // 添加到数据库
         return query;

@@ -31,7 +31,7 @@ public class SuggestionManager extends SuggestionDatabase {
 
             // Create a new Suggestion
 
-            int newSuggestionId = suggestionDatabase.generateNewId();
+            int newSuggestionId = suggestionDatabase.getAll().size()+1;
 
             Suggestion newSuggestion = new Suggestion(user, camp.getId(), suggestion.getDescription(),
                     newSuggestionId);
