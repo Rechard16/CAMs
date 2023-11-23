@@ -8,26 +8,26 @@ import boundary.action.ViewHandler;
 import boundary.login.UserSession;
 import model.Permission;
 
-public class ExitAction implements Action {
-	
+public class PreviousViewAction implements Action {
 	private final UserSession session;
-	
-	public ExitAction(UserSession session) {
+
+	public PreviousViewAction(UserSession session) {
 		this.session = session;
 	}
 	
 	@Override
-	public String getDescription() { return "Exit"; }
-
+	public String getDescription() { return "Return to Previous Page"; }
+	
 	@Override
-	public void performAction() { session.getLoginSession().logout(); }
-
+	public void performAction() {}
+	
 	@Override
 	public ViewHandler getNextView() {
-		return null;
+		return session.getViewStack().pop();
 	}
-
+	
 	@Override
-	public List<Permission> getRequiredPermissions() { return Collections.emptyList(); }
-
+	public List<Permission> getRequiredPermissions() { 
+		return Collections.emptyList();
+	}
 }

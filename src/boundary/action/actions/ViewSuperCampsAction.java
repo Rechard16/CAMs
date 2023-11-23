@@ -1,37 +1,41 @@
 package boundary.action.actions;
 
+import java.io.IOException;
 import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.views.EntryView;
-import boundary.login.LoginSession;
+import boundary.action.views.CampListingView;
+import boundary.login.UserSession;
 import main.Context;
+import model.Camp;
 import model.Permission;
 
 public class ViewSuperCampsAction implements Action{
 	
 	private final Context context;
-	private final LoginSession session;
+	private final UserSession session;
+	private List<Camp> camps;
 
 	@Override
 	public String getDescription() {
 		return "View All Camps";
 	}
 	
-	public ViewSuperCampsAction(Context context, LoginSession session) {
+	public ViewSuperCampsAction(Context context, UserSession session) {
 		this.context = context;
 		this.session = session;
 	}
 
 	@Override
-	public void performAction() {
-		context.print("Hehehaha");
+	public void performAction() throws ClassNotFoundException, IOException {
+		camps = context.getCampManager()
+			.getAllCamps();;
 	}
 
 	@Override
 	public ViewHandler getNextView() {
-		return new EntryView(context, session);
+		return new CampListingView(context, session, camps);
 	}
 
 	@Override

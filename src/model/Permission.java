@@ -55,11 +55,11 @@ public enum Permission {
     VIEW_CAMPS_SUPER,
 
     /**
-     * VIEW_CAMP permission allows a stafff to view the details of a specific camp.
+     * VIEW_CAMP permission allows a staff to view the details of a specific camp.
      */
 
     VIEW_CAMP,
-
+   
     /**
      * ENQUIRY permission enables a student to submit enquiries or questions about a
      * camp.
@@ -87,4 +87,14 @@ public enum Permission {
      * VIEW_POINTS permission allows a student to view his own points.
      */
     VIEW_POINTS,
+    
+    /**
+     * CHANGE_PASSWORD permission allows a user to change their password
+     */
+    CHANGE_PASSWORD,
+    
+    /**
+     * COMMITTEE_ELIGIBLE permission allows a user to register themself as a committee member
+     */
+    COMMITTEE_ELIGIBLE
 }

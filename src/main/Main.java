@@ -1,21 +1,25 @@
 package main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import boundary.PermissionManager;
 import boundary.SessionManager;
 import boundary.login.LoginPortal;
 import boundary.login.LoginSession;
+import database.ImportFile;
 import manager.CampManager;
 import manager.SuggestionManager;
 import manager.UserManager;
 import model.CampInfo;
-import model.Suggestion;
+import model.Faculty;
 
 public class Main {
 
 	public static void main(String args[]) throws ClassNotFoundException, IOException {
+		new ImportFile().importFile();
 		CampManager campmanager = new CampManager();
 		SuggestionManager sm = new SuggestionManager();
 		
@@ -28,11 +32,11 @@ public class Main {
 		sg.setSuggestionID(12);
 		sg.setUser(99, "df", "sdf","sdf");
 		sm.addSuggestion(null, sg, null);
+		*/
 
 		CampInfo camp1info = new CampInfo();
-		/*CampInfo camp1info = new CampInfo();
 		camp1info.setName("camp 1");
-		camp1info.setId(001);
+		camp1info.setID(001);
 		List <Date> datelist1 = new ArrayList<Date>();
 		datelist1.add(date1);
 		camp1info.setDates(datelist1);
@@ -42,17 +46,9 @@ public class Main {
 		camp1info.setCommitteeSlots(5);
 		camp1info.setDescription("Outdoors Bootcamp.");
 		
-		Staff staff1 = new Staff();
-		staff1.setUserId("staff1");
-		staff1.setFaculty(Faculty.SCHOOL);
-		staff1.setPassword("password");
-		
-		camp1info.setStaffInCharge(staff1);
-		camp1info.setDeadline(date1);
-		
 		CampInfo camp2info = new CampInfo();
 		camp2info.setName("camp 2");
-		camp2info.setId(002);
+		camp2info.setID(002);
 		List <Date> datelist2 = new ArrayList<Date>();
 		datelist2.add(date2);
 		camp2info.setDates(datelist2);
@@ -62,7 +58,17 @@ public class Main {
 		camp2info.setCommitteeSlots(50);
 		camp2info.setDescription("Indoors Camping.");
 		
-		Staff staff2 = new Staff();
+
+		/*
+		Staff staff1 = new Staff("staff1, ");
+		staff1.setUserID("staff1");
+		staff1.setFaculty(Faculty.SCHOOL);
+		staff1.setPassword("password");
+		
+		camp1info.setStaffInCharge(staff1);
+		camp1info.setDeadline(date1);
+		
+				Staff staff2 = new Staff();
 		staff2.setUserId("staff2");
 		staff2.setFaculty(Faculty.SCSE);
 		staff2.setPassword("password2");
@@ -72,11 +78,13 @@ public class Main {
 		
 		campmanager.createCamp(camp1info);
 		campmanager.createCamp(camp2info);
+		*/
 
 
 
 
-		campmanager.createCamp(camp2info);*/
+		campmanager.createCamp(camp2info);
+		campmanager.createCamp(camp1info);
 		System.out.println(campmanager.getAllCamps().size());
 		
 

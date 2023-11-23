@@ -16,7 +16,6 @@ public class Context {
 	private final AuthenticationManager authenticationManager;
 	private final PermissionManager permissionManager;
 	private final Scanner scanner = new Scanner(System.in);
-	private ViewHandler previousView;
 	
 	private Context(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
 		this.userManager = userManager;
@@ -29,15 +28,7 @@ public class Context {
 	protected void finalize() {
 		this.scanner.close();
 	}
-	
-	public ViewHandler getPreviousView() {
-		return this.previousView;
-	}
-	
-	public void setPreviousView(ViewHandler cur) {
-		this.previousView = cur;
-	}
-	
+
 	public CampManager getCampManager() {
 		return this.campManager;
 	}

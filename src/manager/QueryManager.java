@@ -11,6 +11,7 @@ public class QueryManager {
         this.queryDatabase = new QueryDatabase();
     }
 
+    // TODO: Refactor this!
     public Query createQuery(int userID, int campID, String description) throws IOException, ClassNotFoundException {
         int newQueryId = queryDatabase.getAll().size()+1; // 生成新的ID
         Query query = new Query(userID, campID, newQueryId, description); // 使用新ID创建Query对象

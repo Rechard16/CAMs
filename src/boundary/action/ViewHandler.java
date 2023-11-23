@@ -3,25 +3,28 @@ package boundary.action;
 import java.util.List;
 
 import boundary.OptionDisplayer;
-import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
 
 public abstract class ViewHandler {
 	
 	protected final Context context;
-	protected final LoginSession session;
+	protected final UserSession session;
 	private final ActionAuthorizer authorizer;
 	private ViewHandler nextView;
 	
-	public ViewHandler(Context context, LoginSession session) {
+	public ViewHandler(Context context, UserSession session) {
 		this.context = context;
 		this.session = session;
-		this.authorizer = new ActionAuthorizer(getPermissions(), session);
-		context.setPreviousView(this);
+		this.authorizer = new ActionAuthorizer(session.getLoginSession());
+		session.getViewStack().addView(this);
 	}
 	
 	public void displayView() throws Exception {
+
+		authorizer.setPermissions(getPermissions());
+		context.print("-----------------------------------------------------------");
 		OptionDisplayer displayer = new OptionDisplayer(context, getPrompt());
 		List<Action> actions = generateActions();
 		

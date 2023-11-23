@@ -3,6 +3,7 @@ package boundary;
 import boundary.action.ViewHandler;
 import boundary.action.views.EntryView;
 import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 
 public class SessionManager {
@@ -20,7 +21,7 @@ public class SessionManager {
 		context.print("Welcome to CAMS!");
 		
 		try {
-			runSession(new EntryView(context, loginSession));
+			runSession(new EntryView(context, new UserSession(loginSession)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.print("Application encountered an error! Exiting!");

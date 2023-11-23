@@ -84,35 +84,19 @@ public class UserManager {
         return false;
     }
     
-    public User getUserByID(int id) {
-    	// TODO
-    	return new Staff(0, "iwi", Faculty.SCSE, "HEHEHAHA");
+    public User getUserByID(int id) throws ClassNotFoundException, IOException {
+    	for (User u: studentDatabase.getAll())
+    		if (u.getID() == id) return u;
+    	for (User u: staffDatabase.getAll())
+    		if (u.getID() == id) return u;
+    	return null;
     }
     
     public User getUserByID(String userID) throws ClassNotFoundException, IOException {
     	
-    	return new Staff(0, "iwi", Faculty.SCSE, "HEHEHAHA");
-    	
-    	/*
-    	int i = 0;
-    	
-    	while (i < studentDatabase.getAll().size()) {
-    		if (userID == studentDatabase.getAll().get(i).getUserId()) {
-    			return studentDatabase.getAll().get(i);
-    		}
-    	}
-    	
-    	i = 0;
-    	
-    	while (i < staffDatabase.getAll().size()) {
-    		if (userID == staffDatabase.getAll().get(i).getUserId()) {
-    			return staffDatabase.getAll().get(i);
-    		}
-    	}
-    	
+    	for (User u: studentDatabase.getAll()) if (u.getUserID().equals(userID)) return u;
+    	for (User u: staffDatabase.getAll()) if (u.getUserID().equals(userID)) return u;
     	return null;
-    	*/
-
     }
     
 }

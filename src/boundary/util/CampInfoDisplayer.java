@@ -1,5 +1,7 @@
 package boundary.util;
 
+import java.io.IOException;
+
 import main.Context;
 import model.CampInfo;
 import model.User;
@@ -13,7 +15,7 @@ public class CampInfoDisplayer {
 		this.info = info;
 	}
 	
-	public void displayCampInfo() {
+	public void displayCampInfo() throws ClassNotFoundException, IOException {
 		context.print("Camp name: %s\n", info.getName());
 		context.print("Dates:");
 		context.print(info.getDates());

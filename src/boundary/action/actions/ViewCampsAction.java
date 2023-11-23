@@ -6,7 +6,7 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampListingView;
-import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -14,16 +14,16 @@ import model.Permission;
 public class ViewCampsAction implements Action{
 	
 	private final Context context;
-	private final LoginSession session;
+	private final UserSession session;
 	private List<Camp> camps;
 	
-	public ViewCampsAction(Context context, LoginSession session) {
+	public ViewCampsAction(Context context, UserSession session) {
 		this.context = context;
 		this.session = session;
 	}
 
 	@Override
-	public String getDescription() { return "View My Camps"; }
+	public String getDescription() { return "View Available Camps"; }
 
 	@Override
 	public void performAction() throws ClassNotFoundException, IOException {

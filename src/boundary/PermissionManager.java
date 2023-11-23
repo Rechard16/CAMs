@@ -15,10 +15,12 @@ public class PermissionManager {
 	public List<Permission> getPermissions(User user) {
 		List<Permission> permissions = new ArrayList<Permission>();
 		permissions.add(Permission.VIEW_CAMP);
+		permissions.add(Permission.CHANGE_PASSWORD);
 		switch (user.getType()) {
 		case STUDENT:
 			permissions.add(Permission.VIEW_POINTS);
 			permissions.add(Permission.VIEW_CAMPS);
+			permissions.add(Permission.COMMITTEE_ELIGIBLE);
 			break;
 		case STAFF:
 			permissions.add(Permission.VIEW_CAMPS_SUPER);
@@ -30,7 +32,7 @@ public class PermissionManager {
 	}
 	
 	public List<Permission> getCampModificationPermissions(User user, Camp camp) {
-		List<Permission> permissions = new ArrayList<Permission>();
+		List<Permission> permissions = getPermissions(user);
 		if (user.getType() == UserType.STUDENT) {
 			// TODO
 			if (((Student) user).getCampID() == camp.getID()) {

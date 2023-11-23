@@ -1,23 +1,22 @@
 package boundary.action.actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.views.EntryView;
-import boundary.login.LoginSession;
-import boundary.util.CampInfoDisplayer;
+import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
 import model.Student;
 
-public class ViewAssignedCampAction implements Action {
+public class ViewAssignedCampAction extends ViewCampAction{
 	private final Context context;
-	private final LoginSession session;
+	private final UserSession session;
 	private ViewHandler nextView;
 	
-	public ViewAssignedCampAction(Context context, LoginSession session) {
+	public ViewAssignedCampAction(Context context, UserSession session) {
+		super(context, session);
 		this.context = context;
 		this.session = session;
 	}
@@ -33,25 +32,27 @@ public class ViewAssignedCampAction implements Action {
 		int id = student.getCampID();
 		if (id == -1) {
 			context.print("You do not have an assigned camp!");
-			nextView = new EntryView(context, session);
+			nextView = session.getViewStack().top();
 			return;
 		}
-
 		Camp camp = context.getCampManager().getCampByID(id);
-		new CampInfoDisplayer(context, camp.getInformation())
-			.displayCampInfo();
+
+		this.setCamp(camp);
+		super.performAction();
+		nextView = super.getNextView();
+
 	}
 
 	@Override
 	public ViewHandler getNextView() {
-		// TODO Auto-generated method stub
-		return null;
+		return nextView;
 	}
-
+	
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Permission> perms = new ArrayList<>();
+		perms.addAll(super.getRequiredPermissions());
+		perms.add(Permission.COMMITTEE_ELIGIBLE);
+		return perms;
 	}
-
 }

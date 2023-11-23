@@ -4,17 +4,19 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.ChangePasswordAction;
 import boundary.action.actions.DisplayPointsAction;
 import boundary.action.actions.ExitAction;
+import boundary.action.actions.ViewAssignedCampAction;
 import boundary.action.actions.ViewCampsAction;
 import boundary.action.actions.ViewSuperCampsAction;
-import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
 
 public class EntryView extends ViewHandler {
 
-	public EntryView(Context context, LoginSession session) {
+	public EntryView(Context context, UserSession session) {
 		super(context, session);
 	}
 
@@ -24,10 +26,13 @@ public class EntryView extends ViewHandler {
 	@Override
 	protected List<Action> generateActions() {
 		return List.of(
-				new ExitAction(context, session),
 				new ViewCampsAction(context, session),
+				new ViewAssignedCampAction(context, session),
 				new ViewSuperCampsAction(context, session),
-				new DisplayPointsAction(context, session));
+				new DisplayPointsAction(context, session, this),
+				new ChangePasswordAction(context, session),
+				new ExitAction(session)
+				);
 	}
 
 	@Override

@@ -4,18 +4,20 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
 import model.Student;
 
 public class DisplayPointsAction implements Action{
 	private final Context context;
-	private final LoginSession session;
+	private final UserSession session;
+	private final ViewHandler currentView;
 
-	public DisplayPointsAction(Context context, LoginSession session) {
+	public DisplayPointsAction(Context context, UserSession session, ViewHandler currentView) {
 		this.context = context;
 		this.session = session;
+		this.currentView = currentView;
 	}
 	
 	@Override
@@ -34,7 +36,7 @@ public class DisplayPointsAction implements Action{
 	
 	@Override
 	public ViewHandler getNextView() {
-		return context.getPreviousView();
+		return currentView;
 	}
 	
 	@Override

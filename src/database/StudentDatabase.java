@@ -19,7 +19,7 @@ public class StudentDatabase extends Database<Student>{
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/students.txt";
+    private final String filename = "data/students.txt";
     /**
      * The constructor of the class.
      * @throws IOException if an I/O error occurs

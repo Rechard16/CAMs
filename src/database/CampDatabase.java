@@ -13,7 +13,7 @@ public class CampDatabase extends Database<Camp> {
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/camps.txt";
+    private final String filename = "data/camps.txt";
     /**
      * The list of camps.
      */

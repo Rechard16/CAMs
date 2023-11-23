@@ -5,9 +5,9 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.actions.ExitAction;
+import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ViewCampAction;
-import boundary.login.LoginSession;
+import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -16,7 +16,7 @@ public class CampListingView extends ViewHandler{
 	
 	private List<Camp> camps;
 
-	public CampListingView(Context context, LoginSession session, List<Camp> camps) {
+	public CampListingView(Context context, UserSession session, List<Camp> camps) {
 		super(context, session);
 		this.camps = camps;
 	}
@@ -27,8 +27,8 @@ public class CampListingView extends ViewHandler{
 	@Override
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<Action>();
-		for (Camp camp : camps) actions.add(new ViewCampAction(context, session, camp));
-		actions.add(new ExitAction(context, session));
+		camps.stream().forEach(camp -> actions.add(new ViewCampAction(context, session, camp)));
+		actions.add(new PreviousViewAction(session));
 		return actions;
 	}
 
@@ -37,5 +37,4 @@ public class CampListingView extends ViewHandler{
 		return context.getPermissionManager()
 				.getPermissions(this.session.getUser());
 	}
-
 }

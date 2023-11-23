@@ -7,11 +7,14 @@ import model.Permission;
 
 public class ActionAuthorizer {
 	private List<Permission> permissions;
-	private LoginSession session;
+	private final LoginSession session;
 	
-	public ActionAuthorizer(List<Permission> permissions, LoginSession session) {
-		this.permissions = permissions;
+	public ActionAuthorizer(LoginSession session) {
 		this.session = session;
+	}
+	
+	public void setPermissions(List<Permission> permissions) {
+		this.permissions = permissions;
 	}
 	
 	public boolean isAuthorized(Action action) {

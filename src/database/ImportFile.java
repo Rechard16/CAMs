@@ -19,82 +19,90 @@ public class ImportFile {
      * @throws ClassNotFoundException if the class is not found
      */
     public void importFile() throws IOException, ClassNotFoundException {
-        StaffDatabase staffDatabase = new StaffDatabase();
+        /*StaffDatabase staffDatabase = new StaffDatabase();
         Staff staffs[] = new Staff[5];
-        staffs[0].setID(0);
-        staffs[0].setFaculty(Faculty.SCSE);
-        staffs[0].setUserID("HUKUMAR");
-        staffs[0].setPassword("password");
-        staffs[1].setID(1);
-        staffs[1].setFaculty(Faculty.ADM);
-        staffs[1].setUserID("OURIN");
-        staffs[1].setPassword("password");
-        staffs[2].setID(2);
-        staffs[2].setFaculty(Faculty.EEE);
-        staffs[2].setUserID("UPAM");
-        staffs[2].setPassword("password");
-        staffs[3].setID(3);
-        staffs[3].setFaculty(Faculty.SCSE);
-        staffs[3].setUserID("ANWIT");
-        staffs[3].setPassword("password");
-        staffs[4].setID(4);
-        staffs[4].setFaculty(Faculty.NBS);
-        staffs[4].setUserID("ARVI");
-        staffs[4].setPassword("password");
-        for (int i = 0; i < 5; i++) {
-            staffDatabase.add(staffs[i]);
-        }
+        staffs[0] = new Staff(0, 
+        		"HUKUMAR", 
+        		Faculty.SCSE, 
+        		"password");
+        staffs[1] = new Staff(1, 
+        		"OURIN", 
+        		Faculty.ADM, 
+        		"password");
+        staffs[2] = new Staff(2, 
+        		"UPAM", 
+        		Faculty.EEE, 
+        		"password");
+        staffs[3] = new Staff(3, 
+        		"ANWIT", 
+        		Faculty.SCSE, 
+        		"password");
+        staffs[4] = new Staff(4, 
+        		"ARVI", 
+        		Faculty.NBS, 
+        		"password");
+        for (Staff staff: staffs) staffDatabase.add(staff);
         staffDatabase.save();
+
         StudentDatabase studentDatabase = new StudentDatabase();
 
         Student students[] = new Student[11];
-        students[0].setID(5);
-        students[0].setFaculty(Faculty.SCSE);
-        students[0].setUserID("YCHERN");
-        students[0].setPassword("password");
-        students[1].setID(6);
-        students[1].setFaculty(Faculty.ADM);
-        students[1].setUserID("KOH1");
-        students[1].setPassword("password");
-        students[2].setID(7);
-        students[2].setFaculty(Faculty.EEE);
-        students[2].setUserID("BR015");
-        students[2].setPassword("password");
-        students[3].setID(8);
-        students[3].setFaculty(Faculty.SCSE);
-        students[3].setUserID("CT113");
-        students[3].setPassword("password");
-        students[4].setID(9);
-        students[4].setFaculty(Faculty.NBS);
-        students[4].setUserID("YCN019");
-        students[4].setPassword("password");
-        students[5].setID(10);
-        students[5].setFaculty(Faculty.SCSE);
-        students[5].setUserID("DL007");
-        students[5].setPassword("password");
-        students[6].setID(11);
-        students[6].setFaculty(Faculty.ADM);
-        students[6].setUserID("DON84");
-        students[6].setPassword("password");
-        students[7].setID(12);
-        students[7].setFaculty(Faculty.EEE);
-        students[7].setUserID("ELI34");
-        students[7].setPassword("password");
-        students[8].setID(13);
-        students[8].setFaculty(Faculty.SCSE);
-        students[8].setUserID("LE51");
-        students[8].setPassword("password");
-        students[9].setID(14);
-        students[9].setFaculty(Faculty.NBS);
-        students[9].setUserID("SL22");
-        students[9].setPassword("password");
-        students[10].setID(15);
-        students[10].setFaculty(Faculty.SSS);
-        students[10].setUserID("AKY013");
-        students[10].setPassword("password");
-        for (int i = 0; i < 11; i++) {
+        students[0] = new Student(
+				5,
+				"YCHERN",
+				Faculty.SCSE,
+				"password",
+				-1);
+        students[1] = new Student(
+        		6,
+        		"KOH1",
+        		Faculty.ADM,
+        		"password",
+        		-1);
+        /*(6);
+        culty(Faculty.ADM);
+        erID("KOH1");
+        ssword("password");
+        (7);
+        culty(Faculty.EEE);
+        erID("BR015");
+        ssword("password");
+        (8);
+        culty(Faculty.SCSE);
+        erID("CT113");
+        ssword("password");
+        (9);
+        culty(Faculty.NBS);
+        erID("YCN019");
+        ssword("password");
+        (10);
+        culty(Faculty.SCSE);
+        erID("DL007");
+        ssword("password");
+        (11);
+        culty(Faculty.ADM);
+        erID("DON84");
+        ssword("password");
+        (12);
+        culty(Faculty.EEE);
+        erID("ELI34");
+        ssword("password");
+        (13);
+        culty(Faculty.SCSE);
+        erID("LE51");
+        ssword("password");
+        (14);
+        culty(Faculty.NBS);
+        erID("SL22");
+        ssword("password");
+        D(15);
+        aculty(Faculty.SSS);
+        serID("AKY013");
+        assword("password");
+        for (int i = 0; i < 2; i++) {
             studentDatabase.add(students[i]);
         }
         studentDatabase.save();
+        */
     }
 }
