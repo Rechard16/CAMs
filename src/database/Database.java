@@ -12,9 +12,6 @@ import model.Model;
  * This class T extends the Model class.
  *
  * @param <T> The type of object stored in the database, must extend {@link model.Model}.
- * @author Zeng Ruixiao
- * @version 1.0
- * @since 2023-11-22
  */
 
 public abstract class Database<T extends Model>{
@@ -54,7 +51,7 @@ public abstract class Database<T extends Model>{
     public void add(T newObject) throws IOException, ClassNotFoundException {
         List<T> objectList = getAll();
         objectList.add(newObject);
-       // System.out.println("woooooooo");
+
         save();
     }
 

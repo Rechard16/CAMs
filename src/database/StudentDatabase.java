@@ -8,10 +8,6 @@ import java.util.List;
 /**
  * This class is a database for students.
  * It extends the abstract class Database.
- * @author Zeng Ruixiao
- * @version 1.0
- * @since 2023-11-22
- *
  */
 public class StudentDatabase extends Database<Student>{
 

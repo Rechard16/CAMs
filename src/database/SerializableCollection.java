@@ -11,9 +11,6 @@ import java.util.List;
 
 /**
  * Provides methods for serializing and deserializing a list of objects to and from a file.
- * @author Zeng Ruixiao
- * @version 1.0
- * @since 2023-11-22
  */
 public abstract class SerializableCollection {
 
