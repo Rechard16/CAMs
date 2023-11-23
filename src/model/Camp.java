@@ -11,13 +11,40 @@ import java.util.List;
  */
 
 public class Camp extends Model {
-    private CampInfo information; // Information about the camp.
-    private List<User> registered; // List of users registered for the camp.
-    private boolean visibility; // Indicates if the camp is visible to users.
-    private int Id; // Unique identifier for the cam
-    private List<Integer> committeeMembers; // List of IDs of committee members.
-    private List<Integer> students; // List of IDs of registered students.
-    private int totalRegistered; // Total number of registered users.
+    /**
+     * Information about the camp.
+     */
+    private CampInfo information;
+
+    /**
+     * List of users registered for the camp.
+     */
+    private List<User> registered;
+
+    /**
+     * Indicates if the camp is visible to users.
+     */
+    private boolean visibility;
+
+    /**
+     * Unique identifier for the camp.
+     */
+    private int Id;
+
+    /**
+     * List of IDs of committee members.
+     */
+    private List<Integer> committeeMembers;
+
+    /**
+     * List of IDs of registered students.
+     */
+    private List<Integer> students;
+
+    /**
+     * Total number of registered users.
+     */
+    private int totalRegistered;
 
     /**
      * Constructs a Camp with specified camp information.

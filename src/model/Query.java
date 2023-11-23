@@ -13,11 +13,30 @@ import java.util.Scanner;
  */
 
 public class Query extends Model {
-    private int userId;// The ID of the user who made the query.
-    private int campId;// The ID of the camp associated with the query.
-    private int queryId;// A unique identifier for the query.
-    private String description;// The content of the query.
-    private String reply; // Teacher's reply of the query
+    /**
+     * The ID of the user who made the query.
+     */
+    private int userId;
+
+    /**
+     * The ID of the camp associated with the query.
+     */
+    private int campId;
+
+    /**
+     * A unique identifier for the query.
+     */
+    private int queryId;
+
+    /**
+     * The content of the query.
+     */
+    private String description;
+
+    /**
+     * Teacher's reply to the query.
+     */
+    private String reply;
 
     /**
      * Default constructor for Query.

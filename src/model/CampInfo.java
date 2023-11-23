@@ -12,17 +12,60 @@ import java.util.List;
  */
 
 public class CampInfo extends Model {
-    private String name; // The name of the camp.
-    private int CampId; // A unique identifier for the camp.
-    private List<Date> dates; // The dates when the camp will take place.
-    private Faculty eligibility; // The faculty eligible to participate in the camp.
-    private String location; // Location where the camp will be held.
-    private int totalSlots; // Total number of slots available for the camp.
-    private int committeeSlots; // Number of slots allocated for committee members.
-    private String description; // The description of the camp.
-    private Staff staffInCharge; // Staff member in charge of the camp.
-    public String staff; // Name of Staff in charge
-    private Date deadline; // Deadline for camp registration.
+    /**
+     * The name of the camp.
+     */
+    private String name;
+
+    /**
+     * A unique identifier for the camp.
+     */
+    private int CampId;
+
+    /**
+     * The dates when the camp will take place.
+     */
+    private List<Date> dates;
+
+    /**
+     * The faculty eligible to participate in the camp.
+     */
+    private Faculty eligibility;
+
+    /**
+     * Location where the camp will be held.
+     */
+    private String location;
+
+    /**
+     * Total number of slots available for the camp.
+     */
+    private int totalSlots;
+
+    /**
+     * Number of slots allocated for committee members.
+     */
+    private int committeeSlots;
+
+    /**
+     * The description of the camp.
+     */
+    private String description;
+
+    /**
+     * Staff member in charge of the camp.
+     */
+    private Staff staffInCharge;
+
+    /**
+     * Name of Staff in charge.
+     */
+    public String staff;
+
+    /**
+     * Deadline for camp registration.
+     */
+    private Date deadline;
 
     /**
      * Retrieves the name of the camp.

@@ -34,9 +34,20 @@ import java.util.List;
  */
 
 public class Student extends User {
-    private int points = 0; // Points accumulated by the student.
-    private int campID = 0; // The ID of the camp the student is currently registered for.
-    private List<Integer> camps = new ArrayList<Integer>(); // A list of IDs of camps the student is registered for.
+    /**
+     * Points accumulated by the student.
+     */
+    private int points = 0;
+
+    /**
+     * The ID of the camp the student is currently registered for.
+     */
+    private int campID = 0;
+
+    /**
+     * A list of IDs of camps the student is registered for.
+     */
+    private List<Integer> camps = new ArrayList<Integer>();
 
     /**
      * Default constructor for Student.

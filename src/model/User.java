@@ -7,10 +7,26 @@ package model;
  */
 
 public abstract class User extends Model {
-    private int id;// Unique identifier for the user.
-    private String userID;// A string-based unique ID for the user.
-    private Faculty faculty;// The faculty to which the user belongs.
-    private String password;// Stores the user's password.
+
+    /**
+     * Unique identifier for the user.
+     */
+    private int id;
+
+    /**
+     * A string-based unique ID for the user.
+     */
+    private String userID;
+
+    /**
+     * The faculty to which the user belongs.
+     */
+    private Faculty faculty;
+
+    /**
+     * Stores the user's password.
+     */
+    private String password;
 
     /**
      * Default constructor for User.

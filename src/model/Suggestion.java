@@ -12,11 +12,30 @@ import java.util.List;
  */
 
 public class Suggestion extends Model {
-    private User user;// The user who made the suggestion.
-    private int campID;// The campaign ID to which this suggestion is related.
-    private int suggestionID;// A unique identifier for the suggestion.
-    private String description; // The content of the suggestion.
-    public List<Change> changes = new ArrayList<>(); // A list of changes proposed in the suggestion.
+    /**
+     * The user who made the suggestion.
+     */
+    private User user;
+
+    /**
+     * The campaign ID to which this suggestion is related.
+     */
+    private int campID;
+
+    /**
+     * A unique identifier for the suggestion.
+     */
+    private int suggestionID;
+
+    /**
+     * The content of the suggestion.
+     */
+    private String description;
+
+    /**
+     * A list of changes proposed in the suggestion.
+     */
+    public List<Change> changes = new ArrayList<>();
 
     /**
      * Constructs a new Suggestion with the specified user, campaign ID, and
