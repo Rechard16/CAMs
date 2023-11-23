@@ -10,21 +10,20 @@ import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
+import model.Student;
+import model.User;
+import model.UserType;
 
-public class ViewCampAction implements Action {
-	private final Context context;
-	private final UserSession session;
+public class ViewCampAction extends Action {
 	private Camp camp;
 
 	public ViewCampAction(Context context, UserSession session, Camp camp) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 		this.camp = camp;
 	}
 	
 	public ViewCampAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 	
 	protected void setCamp(Camp camp) {
@@ -35,18 +34,12 @@ public class ViewCampAction implements Action {
 		return this.camp;
 	}
 	
-	protected Context getContext() {
-		return this.context;
-	}
-	
-	protected UserSession getSession() {
-		return this.session;
-	}
-	
 	@Override
 	public String getDescription() {
 		String name = camp.getInformation().getName();
-		if (session.getUser().isRegistered(camp.getID()))
+		User user = session.getUser();
+		if (user.getType() == UserType.STUDENT && 
+				((Student) user).isRegistered(camp.getID()))
 			name += " (Registered)";
 		if (!camp.isVisible()) 
 			name += " (Hidden)";

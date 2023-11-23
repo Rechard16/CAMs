@@ -9,6 +9,7 @@ import boundary.action.actions.DisplayPointsAction;
 import boundary.action.actions.ExitAction;
 import boundary.action.actions.ViewAssignedCampAction;
 import boundary.action.actions.ViewCampsAction;
+import boundary.action.actions.ViewCreatedCampsAction;
 import boundary.action.actions.ViewSuperCampsAction;
 import boundary.login.UserSession;
 import main.Context;
@@ -28,10 +29,11 @@ public class EntryView extends ViewHandler {
 		return List.of(
 				new ViewCampsAction(context, session),
 				new ViewAssignedCampAction(context, session),
+				new ViewCreatedCampsAction(context, session),
 				new ViewSuperCampsAction(context, session),
 				new DisplayPointsAction(context, session, this),
 				new ChangePasswordAction(context, session),
-				new ExitAction(session)
+				new ExitAction(context, session)
 				);
 	}
 

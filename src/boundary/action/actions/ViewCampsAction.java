@@ -11,15 +11,12 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 
-public class ViewCampsAction implements Action{
+public class ViewCampsAction extends Action{
 	
-	private final Context context;
-	private final UserSession session;
 	private List<Camp> camps;
 	
 	public ViewCampsAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 
 	@Override

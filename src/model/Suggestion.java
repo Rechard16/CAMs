@@ -81,6 +81,15 @@ public class Suggestion extends Model {
     public int getID() {
         return this.suggestionID;
     }
+    
+    /**
+     * Sets the suggestion ID
+     * 
+     * @parm id the new ID of the suggestion
+     */
+    public void setID(int id) {
+    	this.suggestionID = id;
+    }
 
     /**
      * Retrieves the user who made the suggestion.

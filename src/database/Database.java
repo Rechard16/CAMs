@@ -59,34 +59,38 @@ public abstract class Database<T extends Model> implements Savable {
     /**
      * Removes an object from the database.
      * @param object The object to be removed.
+     * @return 
      * @throws IOException if an I/O error occurs
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
-    public void remove(T object) throws IOException, ClassNotFoundException{
+    public boolean remove(T object) throws IOException, ClassNotFoundException{
         List<T> objectList = getAll();
         int index = objectList.indexOf(object);
         if(index != -1){
             objectList.remove(index);
             save();
+            return true;
         }
-        else throw new ClassNotFoundException("Object not found");
+        return false;
     }
 
     /**
      * Updates an object in the database.
      * @param object The object to be updated.
      * @param newObject The new object to replace the old object.
+     * @return 
      * @throws IOException if an I/O error occurs
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
-    public void update(T object,T newObject) throws IOException, ClassNotFoundException{
+    public boolean update(T object,T newObject) throws IOException, ClassNotFoundException{
         List<T> objectList = getAll();
         int index = objectList.indexOf(object);
         if(index != -1){
             objectList.set(index, newObject);
             save();
+            return true;
         }
-        else throw new ClassNotFoundException("Object not found");
+        return false;
     }
 
     /**
@@ -106,6 +110,15 @@ public abstract class Database<T extends Model> implements Savable {
     }
 
     /**
+     * Suggests a suitable ID based on the current size of the database
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public int suggestID() throws ClassNotFoundException, IOException {
+    	return this.getAll().size()+1;
+    }
+
+    /**
      * Gets all objects in the database.
      * @return A list of all objects in the database.
      * @throws IOException if an I/O error occurs
@@ -119,10 +132,18 @@ public abstract class Database<T extends Model> implements Savable {
      * @throws IOException if an I/O error occurs
      */
     public abstract void setAll(List<T> objectList) ;
+    
+    /**
+     * Clears the entire database
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public abstract void clear() throws ClassNotFoundException, IOException;
 
     /**
      * Gets the class of the objects stored in the database.
      * @return The class of the objects stored in the database.
      */
     protected abstract Class<T> getContainedClass();
+    
 }

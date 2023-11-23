@@ -6,14 +6,13 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.login.UserSession;
+import main.Context;
 import model.Permission;
 
-public class ExitAction implements Action {
+public class ExitAction extends Action {
 	
-	private final UserSession session;
-	
-	public ExitAction(UserSession session) {
-		this.session = session;
+	public ExitAction(Context context, UserSession session) {
+		super(context, session);
 	}
 	
 	@Override

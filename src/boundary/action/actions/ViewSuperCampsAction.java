@@ -11,10 +11,8 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 
-public class ViewSuperCampsAction implements Action{
+public class ViewSuperCampsAction extends Action{
 	
-	private final Context context;
-	private final UserSession session;
 	private List<Camp> camps;
 
 	@Override
@@ -23,8 +21,7 @@ public class ViewSuperCampsAction implements Action{
 	}
 	
 	public ViewSuperCampsAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 
 	@Override

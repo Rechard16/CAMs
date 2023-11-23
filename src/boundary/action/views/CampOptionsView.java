@@ -4,7 +4,10 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.ModifyCampAction;
 import boundary.action.actions.PreviousViewAction;
+import boundary.action.actions.RegisterAction;
+import boundary.action.actions.RegisterCommitteeAction;
 import boundary.action.actions.ToggleVisibilityAction;
 import boundary.login.UserSession;
 import main.Context;
@@ -28,7 +31,10 @@ public class CampOptionsView extends ViewHandler {
 	protected List<Action> generateActions() {
 		return List.of(
 				new ToggleVisibilityAction(context, session, camp),
-				new PreviousViewAction(session)
+				new ModifyCampAction(context, session, camp),
+				new RegisterAction(context, session, camp),
+				new RegisterCommitteeAction(context, session, camp),
+				new PreviousViewAction(context, session)
 				);
 	}
 

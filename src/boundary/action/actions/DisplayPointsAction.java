@@ -9,14 +9,11 @@ import main.Context;
 import model.Permission;
 import model.Student;
 
-public class DisplayPointsAction implements Action{
-	private final Context context;
-	private final UserSession session;
+public class DisplayPointsAction extends Action{
 	private final ViewHandler currentView;
 
 	public DisplayPointsAction(Context context, UserSession session, ViewHandler currentView) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 		this.currentView = currentView;
 	}
 	
@@ -32,11 +29,6 @@ public class DisplayPointsAction implements Action{
 		
 		if (student.getCampID() == -1)
 			context.print("You have not registered as a committee member for any camp!");
-	}
-	
-	@Override
-	public ViewHandler getNextView() {
-		return currentView;
 	}
 	
 	@Override

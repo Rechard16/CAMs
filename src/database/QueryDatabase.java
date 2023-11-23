@@ -58,4 +58,10 @@ public class QueryDatabase extends Database<Query> {
     protected Class<Query> getContainedClass() {
         return Query.class;
     }
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.queries.clear();
+		save();
+	}
 }

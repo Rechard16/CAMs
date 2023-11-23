@@ -18,8 +18,8 @@ public enum Permission {
     CREATE_CAMP,
 
     /**
-     * MODIFY_CAMP permission allows a user to modify the details of an existing
-     * camp.
+     * MODIFY_CAMP permission allows a user to create a suggestion to make changes
+     * to a camp.
      * This includes changing the camp's schedule, content, or other organizational
      * details.
      */
@@ -27,19 +27,20 @@ public enum Permission {
     MODIFY_CAMP,
 
     /**
-     * SUGGEST_CAMP permission allows a user to suggest changes or improvements
+     * SUGGEST_CAMP permission allows a user to submit suggestions to make changes
      * to a camp.
      * Users with this permission can submit suggestions but may not have the
      * authority to implement them directly.
      */
 
     SUGGEST_CAMP,
-
+    
     /**
      * APPROVE_SUGGEST permission is granted to users who can approve suggestions
+     * submitted by other users or themselves.
      * made for camps.
      */
-
+    
     APPROVE_SUGGEST,
 
     /**
@@ -99,7 +100,17 @@ public enum Permission {
     COMMITTEE_ELIGIBLE,
     
     /**
-     * TOGGLE_VISIBILITY permission allows a user to 
+     * TOGGLE_VISIBILITY permission allows a user to toggle camp visibility
      */
-    TOGGLE_VISIBILITY
+    TOGGLE_VISIBILITY,
+    
+    /**
+     * REGISTER permission allows a user to register for camps
+     */
+    REGISTER, 
+    
+    /**
+     * REGISTER_COMMITTEE permission allows a user to register as a committee member
+     */
+    REGISTER_COMMITTEE
 }

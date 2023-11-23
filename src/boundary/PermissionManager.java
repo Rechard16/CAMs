@@ -25,6 +25,7 @@ public class PermissionManager {
 		case STAFF:
 			permissions.add(Permission.VIEW_CAMPS_SUPER);
 			permissions.add(Permission.TOGGLE_VISIBILITY);
+			permissions.add(Permission.CREATE_CAMP);
 			break;
 		default: break;
 		}
@@ -35,19 +36,23 @@ public class PermissionManager {
 	public List<Permission> getCampModificationPermissions(User user, Camp camp) {
 		List<Permission> permissions = getPermissions(user);
 		if (user.getType() == UserType.STUDENT) {
-			// TODO
-			if (((Student) user).getCampID() == camp.getID()) {
-				permissions.add(Permission.SUGGEST_CAMP);
-				permissions.add(Permission.VIEW_ENQUIRIES);
-				permissions.add(Permission.RESOLVE_ENQUIRY);
+			if (((Student) user).getCamps().contains(camp.getID())) {
+				if (((Student) user).isRegistered(camp.getID())) {
+					permissions.add(Permission.SUGGEST_CAMP);
+					permissions.add(Permission.VIEW_ENQUIRIES);
+					permissions.add(Permission.RESOLVE_ENQUIRY);
+				} else {
+					permissions.add(Permission.ENQUIRY);
+				}
 			} else {
-				permissions.add(Permission.ENQUIRY);
+				permissions.add(Permission.REGISTER);
+				if (((Student) user).getCampID() == -1)
+					permissions.add(Permission.REGISTER_COMMITTEE);
 			}
 		}
 		if (user.getType() == UserType.STAFF) {
 			permissions.add(Permission.APPROVE_SUGGEST);
 			permissions.add(Permission.MODIFY_CAMP);
-			permissions.add(Permission.CREATE_CAMP);
 		}
 		return permissions;
 	}

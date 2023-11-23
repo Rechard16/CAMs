@@ -6,13 +6,13 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.login.UserSession;
+import main.Context;
 import model.Permission;
 
-public class PreviousViewAction implements Action {
-	private final UserSession session;
+public class PreviousViewAction extends Action {
 
-	public PreviousViewAction(UserSession session) {
-		this.session = session;
+	public PreviousViewAction(Context context, UserSession session) {
+		super(context, session);
 	}
 	
 	@Override

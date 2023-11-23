@@ -24,14 +24,14 @@ public class ViewAssignedCampAction extends ViewCampAction{
 
 	@Override
 	public void performAction() throws Exception {
-		Student student = (Student) getSession().getUser();
+		Student student = (Student) session.getUser();
 		int id = student.getCampID();
 		if (id == -1) {
-			getContext().print("You do not have an assigned camp!");
-			nextView = getSession().getViewStack().top();
+			context.print("You do not have an assigned camp!");
+			nextView = session.getViewStack().top();
 			return;
 		}
-		Camp camp = getContext().getCampManager().getCampByID(id);
+		Camp camp = context.getCampManager().getCampByID(id);
 
 		this.setCamp(camp);
 		super.performAction();

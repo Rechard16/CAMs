@@ -5,6 +5,7 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.CreateCampAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ViewCampAction;
 import boundary.login.UserSession;
@@ -28,7 +29,8 @@ public class CampListingView extends ViewHandler{
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<Action>();
 		camps.stream().forEach(camp -> actions.add(new ViewCampAction(context, session, camp)));
-		actions.add(new PreviousViewAction(session));
+		actions.add(new CreateCampAction(context, session));
+		actions.add(new PreviousViewAction(context, session));
 		return actions;
 	}
 

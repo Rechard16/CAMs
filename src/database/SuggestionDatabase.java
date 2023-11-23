@@ -58,4 +58,10 @@ public class SuggestionDatabase extends Database<Suggestion> {
     protected Class<Suggestion> getContainedClass() {
         return Suggestion.class;
     }
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.suggestions.clear();
+		save();
+	}
 }

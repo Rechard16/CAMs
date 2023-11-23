@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import database.SuggestionDatabase;
@@ -16,32 +17,22 @@ import model.User;
  * suggestions before being processed
  */
 
-public class SuggestionManager extends SuggestionDatabase implements Savable {
+public class SuggestionManager implements Savable {
     private SuggestionDatabase suggestionDatabase;
 
-    // linking with suggestion database
     public SuggestionManager() throws ClassNotFoundException, IOException {
         suggestionDatabase = new database.SuggestionDatabase();
-
     }
 
-    public boolean addSuggestion(Camp camp, Suggestion suggestion, User user)
+    public Suggestion addSuggestion(Suggestion suggestion)
             throws IOException, ClassNotFoundException {
-        if (suggestion != null) {
 
-            // Create a new Suggestion
+		int newSuggestionID = suggestionDatabase.suggestID();
 
-            int newSuggestionID = suggestionDatabase.generateNewID();
-
-            Suggestion newSuggestion = new Suggestion(user, camp.getID(), suggestion.getDescription(),
-                    newSuggestionID);
-
-            // Add the suggestion to the database
-            suggestionDatabase.add(newSuggestion);
-            suggestionDatabase.save(); // Update the suggestions in the database
-            return true;
-        }
-        return false;
+		suggestion.setID(newSuggestionID);
+		// Add the suggestion to the database
+		suggestionDatabase.add(suggestion);
+		return suggestion;
     }
 
     // delete by sugestionID
@@ -101,5 +92,11 @@ public class SuggestionManager extends SuggestionDatabase implements Savable {
         }
         return false;
     }
+
+	@Override
+	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

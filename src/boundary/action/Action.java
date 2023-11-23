@@ -1,12 +1,25 @@
 package boundary.action;
 
-import model.Permission;
 import java.util.List;
 
-public interface Action {
+import boundary.login.UserSession;
+import main.Context;
+import model.Permission;
+
+public abstract class Action {
+	protected final Context context;
+	protected final UserSession session;
 	
-	public String getDescription();
-	public void performAction() throws Exception;
-	public ViewHandler getNextView();
-	public List<Permission> getRequiredPermissions();
+	public Action(Context context, UserSession session) {
+		this.context = context;
+		this.session = session;
+	}
+	
+	public abstract String getDescription();
+	public abstract void performAction() throws Exception;
+	public abstract List<Permission> getRequiredPermissions();
+
+	public ViewHandler getNextView() {
+		return session.getViewStack().top();
+	}
 }

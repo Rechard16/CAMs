@@ -76,14 +76,6 @@ public class Student extends User {
         return UserType.STUDENT;
     }
 
-    /*
-     * this method can not be implement in entity class
-     * 
-     * 
-     * public void registerCamp(int campID) {
-     * }
-     */
-
     /**
      * Retrieves the points accumulated by the student.
      *
@@ -143,14 +135,11 @@ public class Student extends User {
         this.campID = CampID;
     }
 
-	@Override
 	public boolean isRegistered(int id) {
 		return camps.contains(id);
 	}
 
-	@Override
-	public void register(Camp camp) {
-		int id=camp.getID();
+	public void register(int id) {
     	if (!camps.contains(id)) {
     		camps.add(id);
     	}
