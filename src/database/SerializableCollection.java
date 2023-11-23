@@ -51,7 +51,7 @@ public abstract class SerializableCollection {
                         throw new ClassNotFoundException("List contains an object of type " + listObject.getClass() + ", expected " + clazz.getCanonicalName());
                     }
                 }
-                @SuppressWarnings("unchecked")
+
                 List<T> result = (List<T>) list;
                 return result;
             } else {

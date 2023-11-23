@@ -21,6 +21,10 @@ public class StudentDatabase extends Database<Student>{
     private List<Student> studentList;
 
     /**
+     * The filename of the file that the database is saved to.
+     */
+    private final String filename = "/data/students.txt";
+    /**
      * The constructor of the class.
      * @throws IOException if an I/O error occurs
      * @throws ClassNotFoundException if the class is not found
@@ -34,7 +38,7 @@ public class StudentDatabase extends Database<Student>{
      * @return The filename as a String.
      */
     public String getFilename() {
-        return "/data/students.txt";
+        return this.filename;
     }
 
     /**
@@ -42,7 +46,7 @@ public class StudentDatabase extends Database<Student>{
      * @return The list of students.
      */
     public List<Student> getAll() {
-        return studentList;
+        return this.studentList;
     }
 
     /**

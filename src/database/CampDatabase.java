@@ -17,56 +17,25 @@ public class CampDatabase extends Database<Camp> {
     private List<Camp> camps;
 
     public CampDatabase() throws IOException, ClassNotFoundException {
-        this.camps=load();
+        this.camps=super.load();
     }
     @Override
     public String getFilename() {
-        return filename;
+        return this.filename;
     }
 
     @Override
     public List<Camp> getAll() throws IOException, ClassNotFoundException {
-        return camps;
+        return this.camps;
     }
 
     @Override
-    public void setAll(List<Camp> objectList) throws IOException {
+    public void setAll(List<Camp> objectList)  {
         this.camps = objectList;
     }
 
     protected Class<Camp> getContainedClass() {
         return Camp.class;
-    }
-    
-    //added
-    public List<Camp> getList() {
-    	return this.camps;
-    }
-    //added
-    public List<Camp> load() throws IOException, ClassNotFoundException {
-    	//System.out.println(this.getFilename());
-    	
-        return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        //setAll(objectList);
-    }
-    //added from abstract class Database
-    public void remove(Camp object) throws IOException, ClassNotFoundException{
-        List<Camp> objectList = getAll();
-        int index = objectList.indexOf(object);
-        if(index != -1){
-            objectList.remove(index);
-           // save();
-        }
-        else throw new ClassNotFoundException("Object not found");
-    }
-    public void update(Camp object,Camp newObject) throws IOException, ClassNotFoundException{
-        List<Camp> objectList = getAll();
-        int index = objectList.indexOf(object);
-        if(index != -1){
-            objectList.set(index, newObject);
-          //  save();
-        }
-        else throw new ClassNotFoundException("Object not found");
     }
 
 }

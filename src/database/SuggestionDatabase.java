@@ -13,42 +13,25 @@ public class SuggestionDatabase extends Database<Suggestion> {
     private List<Suggestion> suggestions = new ArrayList<>();
 
     private AtomicInteger idGenerator = new AtomicInteger();
+    public SuggestionDatabase() throws IOException, ClassNotFoundException {
+        this.suggestions=super.load();
+    }
 
     public int generateNewId() {
         return idGenerator.incrementAndGet();
     }
 
-   /* public void update(Suggestion suggestion) {
 
-        List<Suggestion> suggestions = getAll();
-        for (int i = 0; i < suggestions.size(); i++) {
-            if (suggestions.get(i).getId() == suggestion.getId()) {
-                suggestions.set(i, suggestion);
-                save();
-                break;
-            }
-        }
-    }*/
-
-    @Override
     public String getFilename() {
         return filename;
     }
-
-    @Override
     public List<Suggestion> getAll() throws IOException, ClassNotFoundException {
-        File file = new File(getFilename());
-        if (file.exists()) {
-            suggestions = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        }
-        return suggestions;
+        return this.suggestions;
+    }
+    public void setAll(List<Suggestion> objectList)  {
+        this.suggestions = objectList;
     }
 
-    @Override
-    public void setAll(List<Suggestion> objectList) throws IOException {
-        this.suggestions = objectList;
-        // SerializableCollection.serializeToFile(suggestions, getFilename());
-    }
 
     protected Class<Suggestion> getContainedClass() {
         return Suggestion.class;

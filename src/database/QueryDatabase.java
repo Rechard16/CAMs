@@ -13,30 +13,27 @@ public class QueryDatabase extends Database<Query> {
     private List<Query> queries = new ArrayList<>();
 
     private AtomicInteger idGenerator = new AtomicInteger();
+    public QueryDatabase() throws IOException, ClassNotFoundException {
+        this.queries=super.load();
+    }
 
     public int generateNewId() {
         return idGenerator.incrementAndGet();
     }
 
-    @Override
+
     public String getFilename() {
         return filename;
     }
 
-    @Override
     public List<Query> getAll() throws IOException, ClassNotFoundException {
-        File file = new File(getFilename());
-        if (file.exists()) {
-            queries = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        }
-        return queries;
+        return this.queries;
     }
 
-    @Override
-    public void setAll(List<Query> objectList) throws IOException {
+    public void setAll(List<Query> objectList)  {
         this.queries = objectList;
-        SerializableCollection.serializeToFile(queries, getFilename());
     }
+
 
     protected Class<Query> getContainedClass() {
         return Query.class;

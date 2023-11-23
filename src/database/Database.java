@@ -120,7 +120,7 @@ public abstract class Database<T extends Model>{
      * @param objectList The list of objects to be set.
      * @throws IOException if an I/O error occurs
      */
-    public abstract void setAll(List<T> objectList) throws IOException;
+    public abstract void setAll(List<T> objectList) ;
 
     /**
      * Gets the class of the objects stored in the database.
