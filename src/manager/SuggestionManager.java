@@ -3,9 +3,9 @@ package manager;
 import java.io.IOException;
 
 import database.SuggestionDatabase;
+import model.Camp;
 import model.Suggestion;
 import model.User;
-import model.Camp;
 
 /*
  * A staff can view and approve suggestions to changes to camp details from camp
@@ -16,7 +16,7 @@ import model.Camp;
  * suggestions before being processed
  */
 
-public class SuggestionManager extends SuggestionDatabase {
+public class SuggestionManager extends SuggestionDatabase implements Savable {
     private SuggestionDatabase suggestionDatabase;
 
     // linking with suggestion database

@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import model.Camp;
 import model.CampInfo;
 import model.Faculty;
 
-public class CampManager {
+public class CampManager implements Savable {
 	
 	public CampDatabase campdatabase;
 	
@@ -123,5 +124,9 @@ public class CampManager {
     	}
 		return EligibleCampArr;
     }
- 
+
+	@Override
+	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
+		this.campdatabase.save();
+	}
 }

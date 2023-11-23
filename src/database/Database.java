@@ -3,6 +3,7 @@ package database;
 import java.io.IOException;
 import java.util.List;
 
+import manager.Savable;
 import model.Model;
 
 /**
@@ -14,7 +15,7 @@ import model.Model;
  * @param <T> The type of object stored in the database, must extend {@link model.Model}.
  */
 
-public abstract class Database<T extends Model>{
+public abstract class Database<T extends Model> implements Savable {
     /**
      * Gets the filename of the file that the database is saved to.
      * @return The filename as a String.

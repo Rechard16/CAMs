@@ -1,15 +1,15 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import database.StaffDatabase;
 import database.StudentDatabase;
-import model.Faculty;
 import model.Staff;
 import model.Student;
 import model.User;
 
-public class UserManager {
+public class UserManager implements Savable {
 	
     private StudentDatabase studentDatabase;
     private StaffDatabase staffDatabase;
@@ -98,5 +98,11 @@ public class UserManager {
     	for (User u: staffDatabase.getAll()) if (u.getUserID().equals(userID)) return u;
     	return null;
     }
+
+	@Override
+	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
+		this.studentDatabase.save();
+		this.staffDatabase.save();
+	}
     
 }

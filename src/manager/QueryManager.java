@@ -1,10 +1,12 @@
 package manager;
 
-import database.QueryDatabase;
-import model.Query;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class QueryManager {
+import database.QueryDatabase;
+import model.Query;
+
+public class QueryManager implements Savable{
     private QueryDatabase queryDatabase;
 
     public QueryManager() throws IOException, ClassNotFoundException {
@@ -59,4 +61,10 @@ public class QueryManager {
         }
         return false;
     }
+
+	@Override
+	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
 }
