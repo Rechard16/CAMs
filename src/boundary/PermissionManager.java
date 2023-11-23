@@ -17,6 +17,7 @@ public class PermissionManager {
 		permissions.add(Permission.VIEW_CAMP);
 		switch (user.getType()) {
 		case STUDENT:
+			permissions.add(Permission.VIEW_POINTS);
 			permissions.add(Permission.VIEW_CAMPS);
 			break;
 		case STAFF:
@@ -32,7 +33,7 @@ public class PermissionManager {
 		List<Permission> permissions = new ArrayList<Permission>();
 		if (user.getType() == UserType.STUDENT) {
 			// TODO
-			if (((Student) user).getCampID() == camp.getId()) {
+			if (((Student) user).getCampID() == camp.getID()) {
 				permissions.add(Permission.SUGGEST_CAMP);
 				permissions.add(Permission.VIEW_ENQUIRIES);
 				permissions.add(Permission.RESOLVE_ENQUIRY);

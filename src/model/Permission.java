@@ -82,4 +82,9 @@ public enum Permission {
      */
 
     RESOLVE_ENQUIRY,
+    
+    /**
+     * VIEW_POINTS permission allows a student to view his own points.
+     */
+    VIEW_POINTS,
 }

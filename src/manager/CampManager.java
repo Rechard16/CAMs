@@ -32,11 +32,11 @@ public class CampManager {
 
     public boolean deleteCampByObject(Camp campObject) throws IOException, ClassNotFoundException {
         //Iterating through the ArrayList of camp objects 
-    	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
+    	//Finds the index of the camp with the deleteID, calls .remove(index) to remove it
     	
     	int i = 0;
     	while (i < campdatabase.getAll().size()) {
-    		if (campObject.getId() == campdatabase.getAll().get(i).getId()) {
+    		if (campObject.getID() == campdatabase.getAll().get(i).getID()) {
     			campdatabase.getAll().remove(i);
     			return true;
     		}
@@ -52,10 +52,10 @@ public class CampManager {
     
     public boolean deleteCampByID(int campID) throws IOException, ClassNotFoundException {
         //Iterating through the ArrayList of camp objects 
-    	//Finds the index of the camp with the deleteId, calls .remove(index) to remove it
+    	//Finds the index of the camp with the deleteID, calls .remove(index) to remove it
     	int i = 0;
     	while (i < campdatabase.getAll().size()) {
-    		if (campID == campdatabase.getAll().get(i).getId()) {
+    		if (campID == campdatabase.getAll().get(i).getID()) {
     			campdatabase.getAll().remove(i);
     			return true;
     		}
@@ -70,7 +70,7 @@ public class CampManager {
     	
     	int i = 0;
     	while (i < campdatabase.getAll().size()) {
-    		if (campID == campdatabase.getAll().get(i).getId()) {
+    		if (campID == campdatabase.getAll().get(i).getID()) {
     			Camp tempCamp = new Camp(campInfo);
     			campdatabase.getAll().set(i, tempCamp);
     			return true; //returns true if successful
@@ -85,7 +85,7 @@ public class CampManager {
     	
     	int i = 0;
     	while (i < campdatabase.getAll().size()) {
-    		if (campID == campdatabase.getAll().get(i).getId()) {
+    		if (campID == campdatabase.getAll().get(i).getID()) {
     			campdatabase.getAll().get(i).setVisibility(boolValue);
     		}
     		i++;
@@ -98,7 +98,7 @@ public class CampManager {
         
     	int i = 0;
     	while (i < campdatabase.getAll().size()) {
-    		if (campID == campdatabase.getAll().get(i).getId()) {
+    		if (campID == campdatabase.getAll().get(i).getID()) {
     			return campdatabase.getAll().get(i);
     		}
     		i++;

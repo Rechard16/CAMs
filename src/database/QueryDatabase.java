@@ -1,10 +1,8 @@
 package database;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import model.Query;
 
@@ -33,10 +31,6 @@ public class QueryDatabase extends Database<Query> {
         this.queries=super.load();
     }
 
-    /**
-     * Gets the filename of the file that the database is saved to.
-     * @return The filename as a String.
-     */
     public String getFilename() {
         return filename;
     }

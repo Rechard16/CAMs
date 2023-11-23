@@ -29,13 +29,6 @@ public abstract class User extends Model {
     private String password;
 
     /**
-     * Default constructor for User.
-     */
-
-    public User() {
-    }
-
-    /**
      * Constructs a User with the specified details.
      *
      * @param id       The user's unique identifier.
@@ -81,7 +74,7 @@ public abstract class User extends Model {
      * @return int representing the user's unique identifier.
      */
 
-    public int getId() {
+    public int getID() {
         return id;
     }
 
@@ -91,7 +84,7 @@ public abstract class User extends Model {
      * @param id The new unique identifier to be set for the user.
      */
 
-    public void setId(int id) {
+    public void setID(int id) {
         this.id = id;
     }
 
@@ -101,7 +94,7 @@ public abstract class User extends Model {
      * @return String representing the user's string-based unique ID.
      */
 
-    public String getUserId() {
+    public String getUserID() {
         return userID;
     }
 
@@ -111,7 +104,7 @@ public abstract class User extends Model {
      * @param id The new string-based unique ID to be set for the user.
      */
 
-    public void setUserId(String id) {
+    public void setUserID(String id) {
         this.userID = id;
     }
 

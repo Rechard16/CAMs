@@ -84,6 +84,7 @@ public class Main {
 		Context context = Context.createContext(new UserManager(), new PermissionManager(), campmanager);
 		
 		while(launch(context));
+		context.print("Ending program. Thank you for using CAMs!");
 	}
 		
 	private static boolean launch(Context context) {

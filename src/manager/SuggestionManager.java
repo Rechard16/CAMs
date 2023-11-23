@@ -31,10 +31,10 @@ public class SuggestionManager extends SuggestionDatabase {
 
             // Create a new Suggestion
 
-            int newSuggestionId = suggestionDatabase.getAll().size()+1;
+            int newSuggestionID = suggestionDatabase.generateNewID();
 
-            Suggestion newSuggestion = new Suggestion(user, camp.getId(), suggestion.getDescription(),
-                    newSuggestionId);
+            Suggestion newSuggestion = new Suggestion(user, camp.getID(), suggestion.getDescription(),
+                    newSuggestionID);
 
             // Add the suggestion to the database
             suggestionDatabase.add(newSuggestion);
@@ -62,7 +62,7 @@ public class SuggestionManager extends SuggestionDatabase {
     // delete by campID
     public boolean deleteByCampID(Camp camp) throws IOException, ClassNotFoundException {
         if (camp != null) {
-            suggestionDatabase.remove(suggestionDatabase.findByID(camp.getId()));
+            suggestionDatabase.remove(suggestionDatabase.findByID(camp.getID()));
         }
         return false;
     }
@@ -71,7 +71,7 @@ public class SuggestionManager extends SuggestionDatabase {
             throws ClassNotFoundException, IOException {
 
         // Create a new Suggestion
-        Suggestion newSuggestion = new Suggestion(user, camp.getId(), editedSuggest, suggestion.getSuggestionID());
+        Suggestion newSuggestion = new Suggestion(user, camp.getID(), editedSuggest, suggestion.getSuggestionID());
 
         return newSuggestion;
     }

@@ -97,7 +97,7 @@ public abstract class Database<T extends Model>{
      */
     public T findByID(int id) throws IOException, ClassNotFoundException {
         for(T object : getAll()){
-            if(object.getId() == id){
+            if(object.getID() == id){
                 return object;
             }
         }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import database.StaffDatabase;
 import database.StudentDatabase;
+import model.Faculty;
 import model.Staff;
 import model.Student;
 import model.User;
@@ -83,8 +84,16 @@ public class UserManager {
         return false;
     }
     
+    public User getUserByID(int id) {
+    	// TODO
+    	return new Staff(0, "iwi", Faculty.SCSE, "HEHEHAHA");
+    }
+    
     public User getUserByID(String userID) throws ClassNotFoundException, IOException {
     	
+    	return new Staff(0, "iwi", Faculty.SCSE, "HEHEHAHA");
+    	
+    	/*
     	int i = 0;
     	
     	while (i < studentDatabase.getAll().size()) {
@@ -102,6 +111,7 @@ public class UserManager {
     	}
     	
     	return null;
+    	*/
 
     }
     

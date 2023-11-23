@@ -23,10 +23,7 @@ public class ExitAction implements Action {
 	public String getDescription() { return "Exit"; }
 
 	@Override
-	public void performAction() { 
-		session.logout();
-		context.print("Thank you for using CAMs! :D");
-	}
+	public void performAction() { session.logout(); }
 
 	@Override
 	public ViewHandler getNextView() {

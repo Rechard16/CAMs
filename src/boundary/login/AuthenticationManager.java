@@ -14,7 +14,7 @@ public class AuthenticationManager {
 	}
 	
 	// TODO
-	public User verify(String userId, String password) throws AuthenticationException {
+	public User verify(String userId, String password) throws Exception {
 		User user = userManager.getUserByID(userId);
 		if (user == null || !user.getPassword().equals(password))
 			throw new AuthenticationException("User failed to login");

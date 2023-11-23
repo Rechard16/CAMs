@@ -20,7 +20,7 @@ public class CampInfo extends Model {
     /**
      * A unique identifier for the camp.
      */
-    private int CampId;
+    private int campID;
 
     /**
      * The dates when the camp will take place.
@@ -53,14 +53,9 @@ public class CampInfo extends Model {
     private String description;
 
     /**
-     * Staff member in charge of the camp.
+     * Id of Staff in charge.
      */
-    private Staff staffInCharge;
-
-    /**
-     * Name of Staff in charge.
-     */
-    public String staff;
+    public int staffID;
 
     /**
      * Deadline for camp registration.
@@ -84,8 +79,8 @@ public class CampInfo extends Model {
      */
 
     @Override
-    public int getId() {
-        return this.CampId;
+    public int getID() {
+        return this.campID;
     }
 
     /**
@@ -154,8 +149,8 @@ public class CampInfo extends Model {
      * @return The staff in charge.
      */
 
-    public Staff getStaffInCharge() {
-        return this.staffInCharge;
+    public int getStaffID() {
+        return this.staffID;
     }
 
     /**
@@ -181,11 +176,11 @@ public class CampInfo extends Model {
     /**
      * Sets the unique identifier for the camp.
      *
-     * @param CampId The new unique ID to be set for the camp.
+     * @param CampID The new unique ID to be set for the camp.
      */
 
-    public void setId(int CampId) {
-        this.CampId = CampId;
+    public void setID(int CampID) {
+        this.campID = CampID;
     }
 
     /**
@@ -255,8 +250,8 @@ public class CampInfo extends Model {
      * @param staffInCharge The new staff member to be set as in charge of the camp.
      */
 
-    public void setStaffInCharge(Staff staffInCharge) {
-        this.staffInCharge = staffInCharge;
+    public void setStaffInCharge(Staff staff) {
+        this.staffID = staff.getID();
     }
 
     /**
@@ -267,25 +262,5 @@ public class CampInfo extends Model {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
-    }
-
-    /**
-     * Retrieves additional staff information.
-     *
-     * @return A string containing additional staff information.
-     */
-
-    public String getStaff() {
-        return this.staff;
-    }
-
-    /**
-     * Sets additional staff information.
-     *
-     * @param staff The additional staff information to set.
-     */
-
-    public void setStaff(String staff) {
-        this.staff = staff;
     }
 }

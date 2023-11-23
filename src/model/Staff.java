@@ -19,6 +19,9 @@ participants. There should be filters for how the staff would want to generate t
 
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The Staff class represents a staff user in the system. It extends the User
  * class
@@ -29,15 +32,13 @@ package model;
  */
 
 public class Staff extends User {
+	private List<Integer> camps = new ArrayList<>();
 
-    /**
-     * Default constructor for Staff.
-     */
-    public Staff() {
-        super();
-    }
-
-    /**
+    public Staff(int id, String userID, Faculty faculty, String password) {
+		super(id, userID, faculty, password);
+	}
+    
+	/**
      * Returns the UserType as STAFF, indicating this user is a staff member.
      *
      * @return UserType enum value representing a staff member.
@@ -46,5 +47,25 @@ public class Staff extends User {
     @Override
     public UserType getType() {
         return UserType.STAFF;
+    }
+    
+    public void addCamp(Camp camp) {
+    	int id=camp.getID();
+    	if (!camps.contains(id)) {
+    		camps.add(id);
+    	}
+    }
+    
+    public void removeCamp(Camp camp) {
+    	int id=camp.getID();
+    	if (camps.contains(id)) camps.remove((Integer) id);
+    }
+    
+    public List<Integer> getCamps() {
+    	return this.camps;
+    }
+    
+    public void setCamps(List<Integer> camps) {
+    	this.camps = camps;
     }
 }

@@ -31,7 +31,7 @@ public class OptionDisplayer {
 	public Action getResponse() {
 		while (true) {
 			try {
-				int selection = context.getScanner().nextInt();
+				int selection = Integer.parseInt(context.getScanner().nextLine());
 				if (selection <= options.size() && selection>0)
 					return options.get(selection-1);
 			} catch (Exception e) {}

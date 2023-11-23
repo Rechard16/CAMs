@@ -21,5 +21,5 @@ public abstract class Model implements Serializable {
      * @return int representing the unique ID of the model.
      */
 
-    public abstract int getId();
+    public abstract int getID();
 }

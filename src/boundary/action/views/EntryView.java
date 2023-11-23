@@ -4,6 +4,7 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.DisplayPointsAction;
 import boundary.action.actions.ExitAction;
 import boundary.action.actions.ViewCampsAction;
 import boundary.action.actions.ViewSuperCampsAction;
@@ -25,7 +26,8 @@ public class EntryView extends ViewHandler {
 		return List.of(
 				new ExitAction(context, session),
 				new ViewCampsAction(context, session),
-				new ViewSuperCampsAction(context, session));
+				new ViewSuperCampsAction(context, session),
+				new DisplayPointsAction(context, session));
 	}
 
 	@Override

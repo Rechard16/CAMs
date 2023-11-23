@@ -1,10 +1,8 @@
 package database;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import model.Suggestion;
 
@@ -35,6 +33,7 @@ public class SuggestionDatabase extends Database<Suggestion> {
      * Gets the filename of the file that the database is saved to.
      * @return The filename as a String.
      */
+
     public String getFilename() {
         return filename;
     }

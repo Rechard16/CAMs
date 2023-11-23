@@ -18,6 +18,7 @@ public abstract class ViewHandler {
 		this.context = context;
 		this.session = session;
 		this.authorizer = new ActionAuthorizer(getPermissions(), session);
+		context.setPreviousView(this);
 	}
 	
 	public void displayView() throws Exception {

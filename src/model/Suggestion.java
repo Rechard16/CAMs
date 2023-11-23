@@ -65,7 +65,7 @@ public class Suggestion extends Model {
     public void view() {
         System.out.println("Suggestion ID: " + this.suggestionID);
         System.out.println("Camp ID: " + this.campID);
-        System.out.println("User ID: " + this.user.getId());
+        System.out.println("User ID: " + this.user.getID());
         System.out.println("Content: " + this.description);
         for (Change change : changes) {
             System.out.println(change.toString());
@@ -78,7 +78,7 @@ public class Suggestion extends Model {
      * @return int representing the suggestion's unique identifier.
      */
 
-    public int getId() {
+    public int getID() {
         return this.suggestionID;
     }
 
@@ -194,8 +194,8 @@ public class Suggestion extends Model {
      */
 
     public void setUser(int id, String userID, Faculty faculty, String password) {
-        this.user.setId(id);
-        this.user.setUserId(userID);
+        this.user.setID(id);
+        this.user.setUserID(userID);
         this.user.setFaculty(faculty);
         this.user.setPassword(password);
     }

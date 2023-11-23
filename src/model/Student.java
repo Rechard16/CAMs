@@ -50,14 +50,6 @@ public class Student extends User {
     private List<Integer> camps = new ArrayList<Integer>();
 
     /**
-     * Default constructor for Student.
-     */
-
-    public Student() {
-        super();
-    }
-
-    /**
      * Constructs a Student with specified details including ID, userID, faculty,
      * password, and campID.
      *
@@ -113,25 +105,6 @@ public class Student extends User {
     }
 
     /**
-     * Retrieves the ID of the camp the student is currently registered for.
-     *
-     * @return The ID of the current camp.
-     */
-
-    public int getCampID() {
-        return this.campID;
-    }
-
-    /**
-     * Sets the ID of the camp for the student.
-     *
-     * @param campID The new camp ID to be set for the student.
-     */
-    public void setCampID(int CampID) {
-        this.campID = CampID;
-    }
-
-    /**
      * Retrieves a list of camp IDs the student is registered for.
      *
      * @return A list of integers representing the IDs of the camps.
@@ -150,5 +123,25 @@ public class Student extends User {
     public void setCamps(List<Integer> camps) {
         this.camps = camps;
     }
+
+    /**
+     * Retrieves the ID of the camp the user is currently assigned to.
+     *
+     * @return The ID of the current camp.
+     */
+
+    public int getCampID() {
+        return this.campID;
+    }
+
+    /**
+     * Sets the ID of the assigned camp for the user.
+     *
+     * @param campID The new camp ID to be assigned to the user.
+     */
+    public void setCampID(int CampID) {
+        this.campID = CampID;
+    }
+
 
 }

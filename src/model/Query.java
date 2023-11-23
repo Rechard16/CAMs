@@ -1,10 +1,5 @@
 package model;
 
-import database.QueryDatabase;
-
-import java.util.List;
-import java.util.Scanner;
-
 /**
  * The Query class represents a query or enquiry made by a user in the system.
  * It contains details about the query, including the user who made it, the
@@ -16,17 +11,17 @@ public class Query extends Model {
     /**
      * The ID of the user who made the query.
      */
-    private int userId;
+    private int userID;
 
     /**
      * The ID of the camp associated with the query.
      */
-    private int campId;
+    private int campID;
 
     /**
      * A unique identifier for the query.
      */
-    private int queryId;
+    private int queryID;
 
     /**
      * The content of the query.
@@ -34,31 +29,25 @@ public class Query extends Model {
     private String description;
 
     /**
-     * Teacher's reply to the query.
+     * Committee member's reply to the query.
      */
     private String reply;
-
-    /**
-     * Default constructor for Query.
-     */
-
-    public Query() {
-    }
+    
 
     /**
      * Constructs a Query with specified user ID, camp ID, and description.
-     * Initializes queryId to 1.
+     * Initializes queryID to 1.
      *
-     * @param userId      The ID of the user making the query.
-     * @param campId      The ID of the camp associated with the query.
+     * @param userID      The ID of the user making the query.
+     * @param campID      The ID of the camp associated with the query.
      * @param description The content of the query.
      * @param reply       Inital reply is none.
      */
 
-    public Query(int userId, int campId, String description) {
-        this.userId = userId;
-        this.campId = campId;
-        this.queryId = 1;
+    public Query(int userID, int campID, String description) {
+        this.userID = userID;
+        this.campID = campID;
+        this.queryID = 1;
         this.description = description;
         this.reply = null;
     }
@@ -66,19 +55,19 @@ public class Query extends Model {
     /**
      * Constructs a Query with specified user ID, camp ID, description, and a
      * reference to SuggestionDatabase.
-     * The queryId is generated using the SuggestionDatabase.
+     * The queryID is generated using the SuggestionDatabase.
      *
-     * @param userId      The ID of the user making the query.
-     * @param campId      The ID of the camp associated with the query.
+     * @param userID      The ID of the user making the query.
+     * @param campID      The ID of the camp associated with the query.
      * @param description The content of the query.
-     * @param queryId     The unique id for query.
+     * @param queryID     The unique id for query.
      * @param reply       Inital reply is none.
      */
 
-    public Query(int userId, int campId, int queryId, String description) {
-        this.userId = userId;
-        this.campId = campId;
-        this.queryId = queryId;
+    public Query(int userID, int campID, int queryID, String description) {
+        this.userID = userID;
+        this.campID = campID;
+        this.queryID = queryID;
         this.description = description;
         this.reply = null;
     }
@@ -90,8 +79,8 @@ public class Query extends Model {
      */
     @Override
 
-    public int getId() {
-        return this.queryId;
+    public int getID() {
+        return this.queryID;
     }
 
     /**
@@ -100,8 +89,8 @@ public class Query extends Model {
      * @return int representing the camp ID.
      */
 
-    public int getCampId() {
-        return this.campId;
+    public int getCampID() {
+        return this.campID;
     }
 
     /**
@@ -110,8 +99,8 @@ public class Query extends Model {
      * @return int representing the user's ID.
      */
 
-    public int getUserId() {
-        return this.userId;
+    public int getUserID() {
+        return this.userID;
     }
 
     /**
@@ -130,8 +119,8 @@ public class Query extends Model {
      * @param id The new unique ID to be set for the query.
      */
 
-    public void setId(int id) {
-        this.queryId = id;
+    public void setID(int id) {
+        this.queryID = id;
     }
 
     /**
@@ -140,8 +129,8 @@ public class Query extends Model {
      * @param id The new camp ID to be set for the query.
      */
 
-    public void setCampId(int id) {
-        this.campId = id;
+    public void setCampID(int id) {
+        this.campID = id;
     }
 
     /**
@@ -150,8 +139,8 @@ public class Query extends Model {
      * @param id The new user ID to be set for the query.
      */
 
-    public void setUserId(int id) {
-        this.userId = id;
+    public void setUserID(int id) {
+        this.userID = id;
     }
 
     /**

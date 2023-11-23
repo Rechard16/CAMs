@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import boundary.PermissionManager;
+import boundary.action.ViewHandler;
 import boundary.login.AuthenticationManager;
 import manager.CampManager;
 import manager.UserManager;
@@ -15,6 +16,7 @@ public class Context {
 	private final AuthenticationManager authenticationManager;
 	private final PermissionManager permissionManager;
 	private final Scanner scanner = new Scanner(System.in);
+	private ViewHandler previousView;
 	
 	private Context(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
 		this.userManager = userManager;
@@ -26,6 +28,14 @@ public class Context {
 	@Override
 	protected void finalize() {
 		this.scanner.close();
+	}
+	
+	public ViewHandler getPreviousView() {
+		return this.previousView;
+	}
+	
+	public void setPreviousView(ViewHandler cur) {
+		this.previousView = cur;
 	}
 	
 	public CampManager getCampManager() {
@@ -48,7 +58,7 @@ public class Context {
 		return this.scanner;
 	}
 	
-	public void print(String s) {
+	public void print(Object s) {
 		System.out.println(s);
 	}
 	
