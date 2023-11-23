@@ -1,158 +1,62 @@
+# CAMS
+
+NTU AY2023/24 Semester 1 SC2002 Group Project - Camp manager System (CAMS).
+
+Camp manager System (CAMS) is a Java console application that utilizes object-oriented concepts for student and staff to register and manage a camp. The program is designed with a focus on reusability, extensibility, and maintainability, allowing for easy upgrades and future development. It provides flexibility to accommodate different user types and their requirements.
+
+The initial password for every user is `password`.
+
+## Team Members
+
+We are a group 6 from tutorial group A50, Nanyang Technological University, Singapore. There are 4 members in our group:
+
+| Name         | Github Account                                  | Email                 |
+|--------------|-------------------------------------------------|-----------------------|
+|Chee ZhengRong| [pufanyi](https://github.com/pufanyi)           | [FPU001@e.ntu.edu.sg](mailto:FPU001@e.ntu.edu.sg) |
+|Zhang Jiahua  | [ZhangJiahua]([https://github.com/jin-qingyang](https://github.com/Paraworks)) | [Jzhang132@e.ntu.edu.sg](Jzhang132@e.ntu.edu.sg) |
+| Jiang Jinyi  | [Jinyi087](https://github.com/Jinyi087)         | [D220006@e.ntu.edu.sg](mailto:D220006@e.ntu.edu.sg) |
+| Soo Ying Xi  | [niyaojiayou](https://github.com/niyaojiayou)   | [D220001@e.ntu.edu.sg](mailto:D220001@e.ntu.edu.sg)  |
+
+## Highlights
+- **Reflection**: The interface `Model` uses reflection to convert between classes and strings, enabling dynamic handling of model data without manual mapping.
+- **Generic Repository Class**: `Repository<Model>` class with generics allows for flexible data storage and retrieval for any model type, reducing duplication and improving maintainability.
+- **SHA-3 Password Encryption**: User passwords are encrypted using the SHA-3 algorithm for enhanced
+security.
+- **Batch CSV Data Import**: The system supports batch importing of initial data from CSV files, making it convenient to process large datasets in chunks.
+- **Factory Design Pattern**: The factory pattern is used to quickly generate requests based on different requirements, enhancing system scalability and adaptability.
+- **Data Syncing**: The system automatically saves data and synchronizes it with the database, ensuring that data is not lost in the event of a crash. You can even open multiple instances of the program and they will all be synchronized.
+- **JUnit 5**: We used JUnit 5 to test our classes, it helps to ensure the correctness and robustness of our code.
+
+## Features
+
+## Build
+
+Download the project from GitHub.
+
+```bash
+git clone https://github.com/pufanyi/FYPMS.git
 ```
-CAMS/
-│
-├── src/
-│   ├── Main.java                          # 主程序入口，启动应用程序。
-│   │
-│   ├── model/                             # 用于存放所有的模型类。
-│   │   ├── User.java
-│   │   ├── Staff.java
-│   │   ├── Student.java
-│   │   ├── Permission.java
-│   │   ├── Query.java
-│   │   ├── Suggestion.java
-│   │   ├── Change.java
-│   │   ├── Camp.java
-│   │   ├── CampInfo.java
-│   │   └── Eligibility.java
-│   │
-│   ├── manager/                           # 用于存放所有管理器类。
-│   │   ├── CampManager.java
-│   │   ├── UserManager.java
-│   │   ├── QueryManager.java
-│   │   └── SuggestionManager.java
-│   │
-│   └── util/                              # 存放一些实用程序或辅助类。
-│       ├── IOUtil.java                    # 用于文件输入/输出的实用程序。
-│       ├── MenuDisplay.java               # 负责显示各种菜单和提示。
-│       ├── Authentication.java            # 负责登录和身份验证功能。
-│       └── ...
-│
-├── data/
-│   ├── student_list.xlsx                  # 学生数据。
-│   └── staff_list.xlsx                    # 员工数据。
-│
-└── README.md                              # 项目说明文档。
-```
-User
-- password: String
-- userID: String
-- faculty: String
-- id: int
-- permission: List<Permission>
-+ changePassword()
-+ viewQuery()
-+ viewCamps()
 
-Staff (inherits from User)
-+ createCamp(campInfo: CampInfo): Camp
-+ editCamp(campID: int, campInfo: CampInfo)
-+ deleteCamp(campID: int)
-+ toggleVisibility(campID: int)
-+ viewSuggestion(suggestionID: int)
-+ approveSuggestion(suggestionID: int)
-+ generateReport()
+Use JetBrains IntelliJ IDEA to build the project.
 
-Student (inherits from User)
-- points: int
-- camps: List<Camp>
-+ viewRemainSlots(campID: int)
-+ registerCamp(campID: int)
-+ submitQuery(campID: int, description: String)
-+ submitSuggestion(campID: int, changes: List<Change>)
-+ withdrawCamp(campID: int)
+The project is built with Java 17.
 
-CampCommitteeMember (inherits from Student)
-+ viewDetailedInfo(campID: int)
+The MANIFEST.MF file is located at `src/META-INF/MANIFEST.MF`.
 
-<<enumeration>> Permission
-Modify
-Suggest
-View
-Query
+## UML Class Diagram
 
-Query
-- user: User
-- camp: Camp
-+ description: String
-+ view()
-+ reply()
+### Main Diagram
 
-Suggestion
-- user: CampCommitteeMember
-- camp: Camp
-+ changes: List<Change>
-+ view()
-+ edit()
-+ delete()
+[![Main Diagram](UMLClassDiagram/main.svg)](UMLClassDiagram/main.svg)
 
-<<interface>> Change
-+ modify(): campInfo
+### Entity Sub-Diagram
 
-Camp
-- information: CampInfo
-- registered: List<Student>
-- visibility: Boolean
-+ Id: int
-- committeeMembers: List<CampCommitteeMember>
-- totalRegistered: int
-+ addStudent(student: Student)
-+ removeStudent(student: Student)
-+ addCommitteeMember(member: CampCommitteeMember)
-+ removeCommitteeMember(member: CampCommitteeMember)
+[![Entity Sub-Diagram](UMLClassDiagram/entity.svg)](UMLClassDiagram/entity.svg)
 
-CampInfo
-+ name: String
-+ dates: List<Date>
-+ eligibility: Eligibility
-+ location: String
-+ totalSlots: int
-+ committeeSlots: int
-+ description: String
-+ staffInCharge: Staff
-+ deadline: Date
+### Controller Sub-Diagram
 
-<<enumeration>> Eligibility
-FACULTY
-SCHOOL
+[![Controller Sub-Diagram](UMLClassDiagram/controller.svg)](UMLClassDiagram/controller.svg)
 
-Entity ClassDiagram
-Control ClassDiagram
+### Boundary Sub-Diagram
 
-campManager
-- camps: List<Camp>
-+ createCamp(campInfo: CampInfo): Camp
-+ deleteCamp(campID: int): boolean
-+ editCamp(campID: int, campInfo: CampInfo): boolean
-+ checkClash(date: Date): List<Camp>
-+ updateSlot(campID: int, number: int): boolean
-+ toggleVisibility(campID: int): boolean
-+ getCampById(campID: int): Camp
-
-userManager
-- staffs: List<Staff>
-- students: List<Student>
-+ addUser(user: User): boolean
-+ removeUser(userID: String): boolean
-+ editUser(user: User): boolean
-+ getUserByID(userID: String): User
-+ checkCommittee(studentID: String): boolean
-+ checkStaff(staffID: String): boolean
-+ givePoint(student: Student, points: int): boolean
-+ loginUser(userID: String, password: String): boolean
-
-queryManager
-- queries: List<Query>
-+ createQuery(user: Student, camp: Camp, description: String): Query
-+ deleteQuery(queryID: int): boolean
-+ editQuery(query: Query, description: String): boolean
-+ getQueryByID(queryID: int): Query
-+ replyToQuery(staff: Staff, query: Query, response: String): boolean
-
-suggestionManager
-- suggestions: List<Suggestion>
-+ createSuggestion(user: CampCommitteeMember, camp: Camp, changes: List<Change>): Suggestion
-+ deleteSuggestion(suggestionID: int): boolean
-+ editSuggestion(suggestion: Suggestion, changes: List<Change>): boolean
-+ getSuggestionByID(suggestionID: int): Suggestion
-+ approveSuggestion(staff: Staff, suggestion: Suggestion): boolean
+[![Boundary Sub-Diagram](UMLClassDiagram/boundary.svg)](UMLClassDiagram/boundary.svg)
