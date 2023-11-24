@@ -1,14 +1,14 @@
 package model.change;
 
-import main.Context;
-import model.CampInfo;
-
 import java.util.Date;
 
 import boundary.reader.DateReader;
+import main.Context;
+import model.CampInfo;
 import model.Change;
+import model.Model;
 
-public class DeadlineChange implements Change {
+public class DeadlineChange extends Model implements Change {
     private Date newDeadline;
 
     private DeadlineChange(Date newDeadline) {
@@ -25,4 +25,7 @@ public class DeadlineChange implements Change {
     public void modify(CampInfo campInfo) {
         campInfo.setDeadline(newDeadline);
     }
+
+	@Override
+	public int getID() { return 0; }
 }

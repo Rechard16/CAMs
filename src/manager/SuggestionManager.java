@@ -2,6 +2,7 @@ package manager;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import database.SuggestionDatabase;
 import model.CampInfoModifier;
@@ -45,8 +46,13 @@ public class SuggestionManager implements Savable {
     	return suggestionDatabase.remove(suggestion);
     }
 
-    public Suggestion getSuggestionByID(int suggestionID) throws IOException, ClassNotFoundException {
+    public Suggestion getSuggestion(int suggestionID) throws IOException, ClassNotFoundException {
         return suggestionDatabase.findByID(suggestionID);
+    }
+    
+    public List<Suggestion> getSuggestionsByCamp(int campID) throws ClassNotFoundException, IOException {
+    	return suggestionDatabase.getAll().stream().filter(i ->
+    			i.getCampID() == campID).toList();
     }
 
 	@Override

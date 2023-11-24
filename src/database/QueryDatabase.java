@@ -15,7 +15,7 @@ public class QueryDatabase extends Database<Query> {
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/queries.txt";
+    private final String filename = "data/queries.txt";
 
     /**
      * The list of queries.

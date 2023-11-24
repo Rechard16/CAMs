@@ -52,6 +52,7 @@ public class Suggestion extends Model {
         this.modifier = modifier;
         this.description = description;
         this.suggestionID = suggestionID;
+        modifier.setID(suggestionID);
     }
 
     /**

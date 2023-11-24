@@ -5,9 +5,10 @@ import main.Context;
 import model.CampInfo;
 import model.Change;
 import model.Faculty;
+import model.Model;
 import model.User;
 
-public class EligibilityChange implements Change {
+public class EligibilityChange extends Model implements Change {
     private Faculty newEligibility;
 
     private EligibilityChange(Faculty newEligibility) {
@@ -25,4 +26,12 @@ public class EligibilityChange implements Change {
     public void modify(CampInfo campInfo) {
         campInfo.setEligibility(newEligibility);
     }
+
+	@Override
+	public int getID() { return 0; }
+
+	@Override
+	public String getDescription() {
+		return String.format("Change eligibility to %d", newEligibility.name());
+	}
 }

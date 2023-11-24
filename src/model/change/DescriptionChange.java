@@ -3,8 +3,9 @@ package model.change;
 import main.Context;
 import model.CampInfo;
 import model.Change;
+import model.Model;
 
-public class DescriptionChange implements Change {
+public class DescriptionChange extends Model implements Change {
     private String newDescription;
 
     private DescriptionChange(String newDescription) {
@@ -21,4 +22,7 @@ public class DescriptionChange implements Change {
     public void modify(CampInfo campInfo) {
         campInfo.setDescription(newDescription);
     }
+
+	@Override
+	public int getID() { return 0; }
 }

@@ -3,8 +3,9 @@ package model.change;
 import main.Context;
 import model.CampInfo;
 import model.Change;
+import model.Model;
 
-public class NameChange implements Change {
+public class NameChange extends Model implements Change {
 	private String newName;
 	
 	private NameChange(String newName) {
@@ -20,6 +21,14 @@ public class NameChange implements Change {
 	@Override
 	public void modify(CampInfo campInfo) {
 		campInfo.setName(newName);
+	}
+
+	@Override
+	public int getID() { return 0; }
+
+	@Override
+	public String getDescription() {
+		return String.format("Change name of camp to %s", newName);
 	}
 
 }

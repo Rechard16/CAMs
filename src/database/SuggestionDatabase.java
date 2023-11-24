@@ -14,7 +14,7 @@ public class SuggestionDatabase extends Database<Suggestion> {
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/suggestions.txt";
+    private final String filename = "data/suggestions.txt";
     /**
      * The list of suggestions.
      */

@@ -11,10 +11,11 @@ import model.CampInfoModifier;
 import model.Permission;
 
 public class ApplyChangesAction extends Action {
-	private CampInfoModifier modifier;
-	private Camp camp;
+	private final CampInfoModifier modifier;
+	private final Camp camp;
 
-	public ApplyChangesAction(Context context, UserSession session, Camp camp, CampInfoModifier modifier) {
+	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
+			CampInfoModifier modifier) {
 		super(context, session);
 		this.camp = camp;
 		this.modifier = modifier;
@@ -22,7 +23,7 @@ public class ApplyChangesAction extends Action {
 
 	@Override
 	public String getDescription() {
-		return "Apply current changes";
+		return "Approve current changes";
 	}
 
 	@Override
@@ -30,6 +31,7 @@ public class ApplyChangesAction extends Action {
 		Camp modified = modifier.modify(camp);
 		try {
 			context.getCampManager().updateCamp(camp, modified);
+			context.getSuggestionManager().deleteSuggestion(modifier.getID());
 		} catch (Exception e) {
 			context.print("I/O error. Unable to save your changes!");
 		}

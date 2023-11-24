@@ -23,7 +23,6 @@ public abstract class ViewHandler {
 
 		ActionAuthorizer authorizer = session.getAuthorizer();
 		authorizer.setPermissions(getPermissions());
-		context.print("-----------------------------------------------------------");
 		OptionDisplayer displayer = new OptionDisplayer(context, getPrompt());
 		List<Action> actions = generateActions();
 		
@@ -38,7 +37,7 @@ public abstract class ViewHandler {
 	
 	protected abstract String getPrompt();
 	
-	protected abstract List<Action> generateActions();
+	protected abstract List<Action> generateActions() throws Exception;
 	
 	protected abstract List<Permission> getPermissions();
 

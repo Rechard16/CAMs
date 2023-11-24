@@ -36,8 +36,8 @@ public class PermissionManager {
 	public List<Permission> getCampModificationPermissions(User user, Camp camp) {
 		List<Permission> permissions = getPermissions(user);
 		if (user.getType() == UserType.STUDENT) {
-			if (((Student) user).getCamps().contains(camp.getID())) {
-				if (((Student) user).isRegistered(camp.getID())) {
+			if (((Student) user).isRegistered(camp.getID())) {
+				if (((Student) user).getCampID() == camp.getID()) {
 					permissions.add(Permission.SUGGEST_CAMP);
 					permissions.add(Permission.VIEW_ENQUIRIES);
 					permissions.add(Permission.RESOLVE_ENQUIRY);
@@ -52,8 +52,10 @@ public class PermissionManager {
 			}
 		}
 		if (user.getType() == UserType.STAFF) {
-			permissions.add(Permission.APPROVE_SUGGEST);
-			permissions.add(Permission.MODIFY_CAMP);
+			if (camp.getInformation().staffID == user.getID()) {
+				permissions.add(Permission.APPROVE_SUGGEST);
+				permissions.add(Permission.MODIFY_CAMP);
+			}
 		}
 		return permissions;
 	}

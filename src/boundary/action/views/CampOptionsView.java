@@ -9,6 +9,7 @@ import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.RegisterAction;
 import boundary.action.actions.RegisterCommitteeAction;
 import boundary.action.actions.ToggleVisibilityAction;
+import boundary.action.actions.ViewSuggestionsAction;
 import boundary.login.UserSession;
 import boundary.util.CampDisplayer;
 import main.Context;
@@ -39,6 +40,7 @@ public class CampOptionsView extends ViewHandler {
 		return List.of(
 				new ToggleVisibilityAction(context, session, camp),
 				new ModifyCampAction(context, session, camp),
+				new ViewSuggestionsAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
 				new PreviousViewAction(context, session)

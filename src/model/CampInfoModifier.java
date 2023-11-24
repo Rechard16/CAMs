@@ -3,11 +3,17 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CampInfoModifier {
+public class CampInfoModifier extends Model{
 	private final List<Change> changes;
+	private int id;
 	
 	public CampInfoModifier() {
 		changes = new ArrayList<>();
+	}
+	
+	public CampInfoModifier(CampInfoModifier modifier) {
+		changes = new ArrayList<>(modifier.getChanges());
+		id = modifier.getID();
 	}
 	
 	public CampInfoModifier(List<Change> changes) {
@@ -28,5 +34,18 @@ public class CampInfoModifier {
 		for (Change change: changes)
 			change.modify(modified.getInformation());
 		return modified;
+	}
+	
+	public List<Change> getChanges() {
+		return this.changes;
+	}
+	
+	public void setID(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public int getID() {
+		return this.id;
 	}
 }

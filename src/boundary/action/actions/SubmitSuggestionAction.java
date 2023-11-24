@@ -3,6 +3,7 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
+import boundary.action.ViewHandler;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
@@ -33,10 +34,14 @@ public class SubmitSuggestionAction extends Action {
 			.createSuggestion(session.getUser().getID(), camp.getID() , description, modifier);
 		context.print("Your suggestion has been created and submitted!");
 	}
+	
+	@Override
+	public ViewHandler getNextView() {
+		return session.getViewStack().pop();
+	}
 
 	@Override
 	public List<Permission> getRequiredPermissions() {
 		return List.of(Permission.SUGGEST_CAMP, Permission.MODIFY_CAMP);
 	}
-
 }
