@@ -7,6 +7,7 @@ import java.util.List;
 import database.SuggestionDatabase;
 import model.CampInfoModifier;
 import model.Suggestion;
+import model.SuggestionStatus;
 
 /*
  * A staff can view and approve suggestions to changes to camp details from camp
@@ -45,14 +46,23 @@ public class SuggestionManager implements Savable {
     public boolean deleteSuggestion(Suggestion suggestion) throws ClassNotFoundException, IOException {
     	return suggestionDatabase.remove(suggestion);
     }
-
+    
     public Suggestion getSuggestion(int suggestionID) throws IOException, ClassNotFoundException {
         return suggestionDatabase.findByID(suggestionID);
     }
     
+    public List<Suggestion> getSuggestionsByCamp(int campID, int userID) throws ClassNotFoundException, IOException {
+    	return suggestionDatabase.getAll().stream().filter(i ->
+    			i.getCampID() == campID &&
+    			i.getUserID() == userID
+    			).toList();
+    }
+    
     public List<Suggestion> getSuggestionsByCamp(int campID) throws ClassNotFoundException, IOException {
     	return suggestionDatabase.getAll().stream().filter(i ->
-    			i.getCampID() == campID).toList();
+    			i.getCampID() == campID &&
+    			i.getStatus() == SuggestionStatus.OPEN
+    			).toList();
     }
 
 	@Override

@@ -5,30 +5,30 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.views.SuggestionView;
+import boundary.action.views.ModifySuggestionView;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
 import model.Suggestion;
 import model.SuggestionStatus;
-import model.User;
 
-public class ViewSuggestionAction extends Action {
+public class ModifySuggestionAction extends Action {
 	private final Suggestion suggestion;
-	private final User user;
 	private final Camp camp;
 
-	public ViewSuggestionAction(Context context, UserSession session, Camp camp, Suggestion suggestion) throws ClassNotFoundException, IOException {
+	public ModifySuggestionAction(Context context, UserSession session, Camp camp, Suggestion suggestion) throws ClassNotFoundException, IOException {
 		super(context, session);
 		this.suggestion = suggestion;
 		this.camp = camp;
-		this.user = context.getUserManager().getUserByID(suggestion.getUserID());
 	}
 
 	@Override
 	public String getDescription() {
-		return String.format("%s - %s", user.getUserID(), suggestion.getDescription());
+		String name = suggestion.getDescription();
+		if (suggestion.getStatus() != SuggestionStatus.OPEN)
+			name += String.format(" (%s)", suggestion.getStatus().name());
+		return name;
 	}
 
 	@Override
@@ -36,11 +36,11 @@ public class ViewSuggestionAction extends Action {
 	
 	@Override
 	public ViewHandler getNextView() {
-		return new SuggestionView(context, session, camp, suggestion);
+		return new ModifySuggestionView(context, session, camp, suggestion);
 	}
 
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		return List.of(Permission.MODIFY_CAMP, Permission.APPROVE_SUGGEST);
+		return List.of(Permission.MODIFY_CAMP, Permission.SUGGEST_CAMP);
 	}
 }

@@ -23,7 +23,8 @@ public class RejectSuggestionAction extends Action {
 	@Override
 	public void performAction() throws Exception {
 		try {
-			context.getSuggestionManager().deleteSuggestion(suggestion);
+			suggestion.close();
+			context.getSuggestionManager().save();
 		} catch (Exception e) {
 			context.print("I/O Error. Failed to delete suggestion!");
 			return;
@@ -38,6 +39,6 @@ public class RejectSuggestionAction extends Action {
 	
 	@Override
 	public ViewHandler getNextView() {
-		return session.getViewStack().pop();
+		return session.getViewStack().pop(2);
 	}
 }

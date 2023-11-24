@@ -33,6 +33,8 @@ public class Suggestion extends Model {
      * A list of changes proposed in the suggestion.
      */
     private CampInfoModifier modifier;
+    
+    private SuggestionStatus status;
 
     /**
      * Constructs a new Suggestion with the specified user, campaign ID, and
@@ -51,6 +53,7 @@ public class Suggestion extends Model {
         this.campID = campID;
         this.modifier = modifier;
         this.description = description;
+        this.status = SuggestionStatus.OPEN;
         this.suggestionID = suggestionID;
         modifier.setID(suggestionID);
     }
@@ -162,5 +165,21 @@ public class Suggestion extends Model {
 
     public CampInfoModifier getModifier() {
     	return this.modifier;
+    }
+    
+    public void setModifier(CampInfoModifier modifier) {
+    	this.modifier = modifier;
+    }
+    
+    public SuggestionStatus getStatus() {
+    	return this.status;
+    }
+    
+    public void approve() {
+    	this.status = SuggestionStatus.APPROVED;
+    }
+    
+    public void close() {
+    	this.status = SuggestionStatus.CLOSED;
     }
 }

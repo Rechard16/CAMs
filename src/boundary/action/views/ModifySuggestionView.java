@@ -5,9 +5,9 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
-import boundary.action.actions.SubmitSuggestionAction;
+import boundary.action.actions.PreviousViewAction;
+import boundary.action.actions.UpdateSuggestionAction;
 import boundary.action.actions.modification.ModificationAction;
 import boundary.login.UserSession;
 import boundary.util.CampDisplayer;
@@ -16,26 +16,31 @@ import model.Camp;
 import model.CampInfoModifier;
 import model.Change;
 import model.Permission;
+import model.Suggestion;
+import model.SuggestionStatus;
 
-public class ModifyCampView extends ViewHandler {
+public class ModifySuggestionView extends ViewHandler {
 	private final Camp camp;
 	private final CampInfoModifier modifier;
+	private final Suggestion suggestion;
 
-	public ModifyCampView(Context context, UserSession session, Camp camp) {
+	public ModifySuggestionView(Context context, UserSession session, 
+		Camp camp, Suggestion suggestion) {
 		super(context, session);
 		this.camp = camp;
-		this.modifier = new CampInfoModifier();
+		this.suggestion = suggestion;
+		this.modifier = new CampInfoModifier(suggestion.getModifier());
 	}
 
 	@Override
 	protected String getPrompt() {
-		return "How will you modify this camp?";
+		return "How will you modify this suggestion?";
 	}
 
 	@Override
 	public void displayView() throws Exception {
 		new CampDisplayer(context, camp).dislayCamp();
-		context.print("\nCurrent Modifications to this Camp:");
+		context.print("\nModifications to this Camp:");
 		for (Change change : modifier.getChanges()) {
 			context.print("- " + change.getDescription());
 		}
@@ -45,14 +50,16 @@ public class ModifyCampView extends ViewHandler {
 	@Override
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<>();
-		actions.addAll(ModificationAction
-				.getModificationActions(context, session, modifier));
-		actions.addAll(List.of(
-				// new ToggleVisibilityAction(context, session, camp),
-				new SubmitSuggestionAction(context, session, camp, modifier),
-				new ApplyChangesAction(context, session, camp, modifier, true),
-				new CancelChangesAction(context, session)
-				));
+		if (suggestion.getStatus() == SuggestionStatus.OPEN) {
+			actions.addAll(ModificationAction
+					.getModificationActions(context, session, modifier));
+			actions.addAll(List.of(
+					new UpdateSuggestionAction(context, session, camp, modifier,suggestion),
+					new CancelChangesAction(context, session)
+					));
+		} else {
+			actions.add(new PreviousViewAction(context, session));
+		}
 		return actions;
 	}
 

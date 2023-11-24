@@ -25,6 +25,11 @@ public class ViewStack {
 		return stack.get(stack.size()-1);
 	}
 	
+	public ViewHandler pop(int i) {
+		stack.subList(stack.size()-i, stack.size()).clear();
+		return stack.get(stack.size()-1);
+	}
+	
 	public ViewHandler reset() {
 		stack.subList(1, stack.size()).clear();
 		return stack.get(0);

@@ -12,6 +12,7 @@ import boundary.action.actions.RegisterAction;
 import boundary.action.actions.RegisterCommitteeAction;
 import boundary.action.actions.ToggleVisibilityAction;
 import boundary.action.actions.ViewSuggestionsAction;
+import boundary.action.actions.ViewSuggestionsSuperAction;
 import boundary.action.actions.WithdrawAction;
 import boundary.login.UserSession;
 import boundary.util.CampDisplayer;
@@ -44,6 +45,7 @@ public class CampOptionsView extends ViewHandler {
 				new ToggleVisibilityAction(context, session, camp),
 				new ModifyCampAction(context, session, camp),
 				new ViewSuggestionsAction(context, session, camp),
+				new ViewSuggestionsSuperAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
 				new ConfirmationAction(context, session, 

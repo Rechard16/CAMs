@@ -11,22 +11,22 @@ import model.Camp;
 import model.Permission;
 import model.Suggestion;
 
-public class ViewSuggestionsAction extends Action {
+public class ViewSuggestionsSuperAction extends Action {
 	private final Camp camp;
 	private List<Suggestion> suggestions;
 
-	public ViewSuggestionsAction(Context context, UserSession session, Camp camp) {
+	public ViewSuggestionsSuperAction(Context context, UserSession session, Camp camp) {
 		super(context, session);
 		this.camp = camp;
 	}
 	
 	@Override
-	public String getDescription() { return "View My Suggestions"; }
+	public String getDescription() { return "View all suggestions for camp"; }
 
 	@Override
 	public void performAction() throws Exception {
 		suggestions = context.getSuggestionManager()
-				.getSuggestionsByCamp(camp.getID(), session.getUser().getID());
+				.getSuggestionsByCamp(camp.getID());
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class ViewSuggestionsAction extends Action {
 
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		return List.of(Permission.MODIFY_CAMP, Permission.SUGGEST_CAMP);
+		return List.of(Permission.MODIFY_CAMP, Permission.APPROVE_SUGGEST);
 	}
 
 
