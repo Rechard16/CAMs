@@ -4,7 +4,6 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.views.ModifyCampView;
 import boundary.login.UserSession;
 import boundary.util.CampCreator;
 import main.Context;
@@ -26,11 +25,12 @@ public class CreateCampAction extends Action {
 	public void performAction() throws Exception {
 		CampInfo campInfo = new CampCreator(context, session.getUser()).build();
 		camp = context.getCampManager().createCamp(campInfo);
+		context.print("New camp created! Unhide it to allow students to sign up.");
 	}
 	
 	@Override
 	public ViewHandler getNextView() {
-		return new ModifyCampView(context, session, camp);
+		return session.getViewStack().reset();
 	}
 
 	@Override

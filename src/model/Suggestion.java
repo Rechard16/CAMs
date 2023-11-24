@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * The Suggestion class represents a suggestion made by a user in the system.
  * It includes details about the suggestion, the user who made it, and the
@@ -15,7 +12,7 @@ public class Suggestion extends Model {
     /**
      * The user who made the suggestion.
      */
-    private User user;
+    private int userID;
 
     /**
      * The campaign ID to which this suggestion is related.
@@ -35,7 +32,7 @@ public class Suggestion extends Model {
     /**
      * A list of changes proposed in the suggestion.
      */
-    public List<Change> changes = new ArrayList<>();
+    private CampInfoModifier modifier;
 
     /**
      * Constructs a new Suggestion with the specified user, campaign ID, and
@@ -49,27 +46,12 @@ public class Suggestion extends Model {
      *                           ID.
      */
 
-    public Suggestion(User user, int campID, String description, int suggestionID) {
-        this.user = user;
+    public Suggestion(int userID, int campID, CampInfoModifier modifier, String description, int suggestionID) {
+        this.userID = userID;
         this.campID = campID;
+        this.modifier = modifier;
         this.description = description;
         this.suggestionID = suggestionID;
-    }
-
-    /**
-     * Displays the details of the suggestion including its ID, campaign ID, user
-     * ID, and content.
-     * Also prints out the list of proposed changes.
-     */
-
-    public void view() {
-        System.out.println("Suggestion ID: " + this.suggestionID);
-        System.out.println("Camp ID: " + this.campID);
-        System.out.println("User ID: " + this.user.getID());
-        System.out.println("Content: " + this.description);
-        for (Change change : changes) {
-            System.out.println(change.toString());
-        }
     }
 
     /**
@@ -97,8 +79,8 @@ public class Suggestion extends Model {
      * @return User who made the suggestion.
      */
 
-    public User getUser() {
-        return this.user;
+    public int getUserID() {
+        return this.userID;
     }
 
     /**
@@ -107,8 +89,8 @@ public class Suggestion extends Model {
      * @param user The user to be associated with the suggestion.
      */
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserID(int id) {
+        this.userID = id;
     }
 
     /**
@@ -177,35 +159,7 @@ public class Suggestion extends Model {
      * @return List of Change objects associated with the suggestion.
      */
 
-    public List<Change> getChanges() {
-        return this.changes;
-    }
-
-    /**
-     * Sets the list of changes proposed in the suggestion.
-     *
-     * @param changes The new list of Change objects to be associated with the
-     *                suggestion.
-     */
-
-    public void setChanges(List<Change> changes) {
-        this.changes = changes;
-    }
-
-    /**
-     * Overloaded setUser method for convenience, allowing setting user attributes
-     * directly.
-     *
-     * @param id       The new id of user
-     * @param userID   The new userID of user.
-     * @param faculty  The new faculty of user.
-     * @param password The new password of user.
-     */
-
-    public void setUser(int id, String userID, Faculty faculty, String password) {
-        this.user.setID(id);
-        this.user.setUserID(userID);
-        this.user.setFaculty(faculty);
-        this.user.setPassword(password);
+    public CampInfoModifier getModifier() {
+    	return this.modifier;
     }
 }

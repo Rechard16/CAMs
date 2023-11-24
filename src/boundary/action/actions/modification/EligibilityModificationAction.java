@@ -18,7 +18,7 @@ public class EligibilityModificationAction extends ModificationAction {
 
     @Override
     public void performAction() throws Exception {
-        EligibilityChange change = EligibilityChange.create(context);
+        EligibilityChange change = EligibilityChange.create(context, session.getUser());
         modifier.add(change);
     }
 }

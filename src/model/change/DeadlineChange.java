@@ -2,8 +2,10 @@ package model.change;
 
 import main.Context;
 import model.CampInfo;
-import boundary.util.DateReader;
+
 import java.util.Date;
+
+import boundary.reader.DateReader;
 import model.Change;
 
 public class DeadlineChange implements Change {

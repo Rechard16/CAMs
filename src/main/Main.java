@@ -1,20 +1,15 @@
 package main;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import boundary.PermissionManager;
 import boundary.SessionManager;
 import boundary.login.LoginPortal;
 import boundary.login.LoginSession;
-import database.ImportFile;
 import manager.CampManager;
 import manager.SuggestionManager;
 import manager.UserManager;
-import model.CampInfo;
-import model.Faculty;
 
 public class Main {
 

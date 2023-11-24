@@ -1,4 +1,4 @@
-package boundary.util;
+package exception;
 
 public class TimePeriodClashException extends Exception {
 	public TimePeriodClashException(String name) {

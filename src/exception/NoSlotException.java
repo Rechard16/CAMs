@@ -1,4 +1,4 @@
-package boundary.util;
+package exception;
 
 public class NoSlotException extends Exception{
 	public NoSlotException() {

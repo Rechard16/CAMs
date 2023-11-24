@@ -16,6 +16,13 @@ import model.Model;
  */
 
 public abstract class Database<T extends Model> implements Savable {
+	
+	/**
+	 * Represents the id of the next item to be created
+	 */
+	private int nextID=1;
+	
+	
     /**
      * Gets the filename of the file that the database is saved to.
      * @return The filename as a String.
@@ -39,8 +46,9 @@ public abstract class Database<T extends Model> implements Savable {
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
     public List<T> load() throws IOException, ClassNotFoundException {
-        return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        //setAll(objectList);
+		List<T> result = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
+		result.stream().forEach(i -> nextID = Math.max(i.getID()+1, nextID));
+        return result;
     }
 
     /**
@@ -115,7 +123,7 @@ public abstract class Database<T extends Model> implements Savable {
      * @throws ClassNotFoundException 
      */
     public int suggestID() throws ClassNotFoundException, IOException {
-    	return this.getAll().size()+1;
+    	return nextID++;
     }
 
     /**

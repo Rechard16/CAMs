@@ -1,4 +1,4 @@
-package boundary.util;
+package boundary.reader;
 
 import java.time.LocalDate;
 import java.time.ZoneId;

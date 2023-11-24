@@ -5,6 +5,7 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.actions.ChangePasswordAction;
+import boundary.action.actions.CreateCampAction;
 import boundary.action.actions.DisplayPointsAction;
 import boundary.action.actions.ExitAction;
 import boundary.action.actions.ViewAssignedCampAction;
@@ -32,6 +33,7 @@ public class EntryView extends ViewHandler {
 				new ViewCreatedCampsAction(context, session),
 				new ViewSuperCampsAction(context, session),
 				new DisplayPointsAction(context, session, this),
+				new CreateCampAction(context, session),
 				new ChangePasswordAction(context, session),
 				new ExitAction(context, session)
 				);

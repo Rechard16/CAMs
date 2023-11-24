@@ -54,7 +54,7 @@ public class Camp extends Model {
         this.committeeMembers = new ArrayList<>();
         this.students = new ArrayList<>();
         this.totalRegistered = 0;
-        this.visibility = true; // Default visibility is set to true.
+        this.visibility = false; // Default visibility is set to false.
         this.id = information.getID(); // Set the ID based on provided information.
     }
     

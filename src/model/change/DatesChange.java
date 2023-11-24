@@ -1,11 +1,12 @@
 package model.change;
 
-import boundary.util.DateReader;
 import main.Context;
 import model.CampInfo;
 
 import java.util.Date;
 import java.util.List;
+
+import boundary.reader.DateReader;
 import model.Change;
 
 public class DatesChange implements Change {

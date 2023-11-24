@@ -40,8 +40,8 @@ public class ModifyCampView extends ViewHandler {
 	protected List<Action> generateActions() {
 		return List.of(
 				new PrintCampAction(context, session, camp, modifier),
+
 				new NameModificationAction(context, session, modifier),
-				// Add new Modifications
 				new LocationModificationAction(context, session, modifier),
 				new TotalSlotsModificationAction(context, session, modifier),
 				new CommitteeSlotsModificationAction(context, session, modifier),
@@ -49,8 +49,8 @@ public class ModifyCampView extends ViewHandler {
 				new DescriptionModificationAction(context, session, modifier),
 				new DatesModificationAction(context, session, modifier),
 				new DeadlineModificationAction(context, session, modifier),
+
 				new ToggleVisibilityAction(context, session, camp),
-				//
 				new ApplyChangesAction(context, session, camp, modifier),
 				new CancelChangesAction(context, session));
 	}

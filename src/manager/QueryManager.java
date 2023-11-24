@@ -21,25 +21,11 @@ public class QueryManager implements Savable{
     }
 
     public Query getQueryByID(int queryID) throws IOException, ClassNotFoundException {
-        for (Query query : queryDatabase.getAll())
-            if (query.getID() == queryID) return query;
-        return null;
-    }
-
-    public boolean replyToQuery(int queryID, String response) throws IOException, ClassNotFoundException {
-        for (Query query : queryDatabase.getAll()) {
-            if (query.getID() == queryID) {
-                query.setReply(response);
-                queryDatabase.save();
-                return true;
-            }
-        }
-        return false;
+    	return queryDatabase.findByID(queryID);
     }
 
 	@Override
 	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+		this.queryDatabase.save();
 	}
 }

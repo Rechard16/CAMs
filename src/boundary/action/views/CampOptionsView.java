@@ -10,6 +10,7 @@ import boundary.action.actions.RegisterAction;
 import boundary.action.actions.RegisterCommitteeAction;
 import boundary.action.actions.ToggleVisibilityAction;
 import boundary.login.UserSession;
+import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -25,6 +26,12 @@ public class CampOptionsView extends ViewHandler {
 	@Override
 	protected String getPrompt() {
 		return "What do you wish to do with this camp?";
+	}
+	
+	@Override 
+	public void displayView() throws Exception {
+		new CampDisplayer(context, camp).dislayCamp();
+		super.displayView();
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampOptionsView;
 import boundary.login.UserSession;
-import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -47,10 +46,7 @@ public class ViewCampAction extends Action {
 	}
 
 	@Override
-	public void performAction() throws Exception {
-		new CampDisplayer(context, camp)
-			.dislayCamp();
-	}
+	public void performAction() throws Exception {}
 
 	@Override
 	public ViewHandler getNextView() {

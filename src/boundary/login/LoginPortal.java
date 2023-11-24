@@ -2,6 +2,7 @@ package boundary.login;
 
 import java.util.Scanner;
 
+import exception.UnsuccessfulLoginException;
 import main.Context;
 
 public class LoginPortal {

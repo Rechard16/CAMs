@@ -2,6 +2,9 @@ package boundary.util;
 
 import java.util.Date;
 
+import exception.NoSlotException;
+import exception.RegistrationPeriodExpiredException;
+import exception.TimePeriodClashException;
 import main.Context;
 import model.Camp;
 import model.CampInfo;

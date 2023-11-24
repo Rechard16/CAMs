@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import boundary.reader.BooleanReader;
+import boundary.reader.DateReader;
+import boundary.reader.IntegerReader;
 import main.Context;
 import model.CampInfo;
 import model.Faculty;

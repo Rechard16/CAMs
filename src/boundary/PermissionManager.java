@@ -41,6 +41,7 @@ public class PermissionManager {
 					permissions.add(Permission.SUGGEST_CAMP);
 					permissions.add(Permission.VIEW_ENQUIRIES);
 					permissions.add(Permission.RESOLVE_ENQUIRY);
+					permissions.add(Permission.MODIFY_CAMP);
 				} else {
 					permissions.add(Permission.ENQUIRY);
 				}

@@ -1,9 +1,11 @@
 package model.change;
 
+import boundary.reader.BooleanReader;
 import main.Context;
 import model.CampInfo;
-import model.Faculty;
 import model.Change;
+import model.Faculty;
+import model.User;
 
 public class EligibilityChange implements Change {
     private Faculty newEligibility;
@@ -12,11 +14,11 @@ public class EligibilityChange implements Change {
         this.newEligibility = newEligibility;
     }
 
-    public static EligibilityChange create(Context context) {
-        context.print("Enter the new eligibility criteria for your camp (e.g., SCHOOL, ENGINEERING):");
-        String eligibilityString = context.getScanner().nextLine();
-        Faculty newEligibility = Faculty.valueOf(eligibilityString.toUpperCase());
-        return new EligibilityChange(newEligibility);
+    public static EligibilityChange create(Context context, User user) {
+		context.print("Will your camp be open to the school?");
+		boolean open = new BooleanReader(context).readBool();
+		
+		return new EligibilityChange(open?Faculty.SCHOOL: user.getFaculty());
     }
 
     @Override
