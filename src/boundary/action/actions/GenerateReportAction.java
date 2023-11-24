@@ -10,13 +10,16 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 import model.Student;
+import model.User;
 
 public class GenerateReportAction extends Action {
 	private final Camp camp;
+	private final Filter<User> filter;
 
-	public GenerateReportAction(Context context, UserSession session, Camp camp) {
+	public GenerateReportAction(Context context, UserSession session, Camp camp, Filter<User> filter) {
 		super(context, session);
 		this.camp = camp;
+		this.filter = filter;
 	}
 
 	@Override
@@ -26,7 +29,7 @@ public class GenerateReportAction extends Action {
 
 	@Override
 	public void performAction() throws Exception {
-		new CampReportGenerator().generateCampReport(context, camp, new Filter<Student>());
+		new CampReportGenerator().generateCampReport(context, camp, filter);
 		context.print("Successfully created report!");
 	}
 

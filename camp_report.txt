@@ -1,17 +1,20 @@
 _______________________________
-Camp name: Ende
-Dates: 2024-12-12 to 2024-12-12
+Camp name: Zenith
+Dates: 2023-12-16 to 2023-12-11
 Eligibility: SCHOOL
-Location: Northern Lands
+Location: NUS
 Total Slots: 20
 Committee Slots: 1
-Description: Journey's End
+Description: Find out today if we can get much higher!
 Staff-in-charge: HUKUMAR
-Signup Deadline: 2023-12-12
-Available slots: 17
+Signup Deadline: 2023-12-15
+Available slots: 12
 Available committee slots: 0
 This camp is visible to students.
 _______________________________
-YCHERN (COMMITTEE_MEMBER)
-CT113 (PARTICIPANT)
-DL007 (PARTICIPANT)
+Committe Members:
+YCHERN
+_______________________________
+Participants:
+CT113
+DL007

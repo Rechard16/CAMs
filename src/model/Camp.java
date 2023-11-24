@@ -140,7 +140,7 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
      * @param i The student to be added as a committee member.
      */
 
-    public void addCommitteeMember(int i) {
+    public void addCommitteeMember(int id) {
         // Adds a committee member to the list if they are not already in it
         if (!this.committeeMembers.contains(id)) {
             this.committeeMembers.add(id);

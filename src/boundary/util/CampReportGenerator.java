@@ -8,25 +8,33 @@ import boundary.display.UserDisplayer;
 import boundary.filter.Filter;
 import main.Context;
 import model.Camp;
-import model.Student;
+import model.Role;
+import model.User;
 
 public class CampReportGenerator {
-    public void generateCampReport(Context context, Camp camp, Filter<Student> filter) throws Exception {
+    public void generateCampReport(Context context, Camp camp, Filter<User> filter) throws Exception {
 
     	IO io = new FileWriter("camp_report.txt");
 
     	CampDisplayer campDisplayer = new CampDisplayer(io, context, camp);
     	campDisplayer.display();
     	io.lineBreak();
-
+    	
+    	io.print("Committe Members:");
+    	for (int id: camp.getCommitteeMembers()) {
+            User student = context.getUserManager().getUserByID(id);
+            if (filter.isValid(context, student))
+            	new UserDisplayer(io, context, student).display();
+    	}
+    	io.lineBreak();
+    	
+    	io.print("Participants:");
 		List<Integer> students = camp.getStudents();
-        for(int studentID : students) {
-            Student student = (Student) context.getUserManager().getUserByID(studentID);
-            if (filter.isValid(context, student)) {
-            	UserDisplayer displayer = new UserDisplayer(io, context, student);
-            	displayer.setCamp(camp);
-            	displayer.display();
-            }
+        for(int id: students) {
+            User student = context.getUserManager().getUserByID(id);
+            if (student.getRole(camp) == Role.COMMITTEE_MEMBER) continue;
+            if (filter.isValid(context, student))
+            	new UserDisplayer(io, context, student).display();
         }
         io.flush();
 

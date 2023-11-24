@@ -7,7 +7,6 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.ConfirmationAction;
 import boundary.action.actions.CreateQueryAction;
 import boundary.action.actions.DeleteCampAction;
-import boundary.action.actions.GenerateReportAction;
 import boundary.action.actions.ModifyCampAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.RegisterAction;
@@ -18,6 +17,7 @@ import boundary.action.actions.ViewEnquiriesSuperAction;
 import boundary.action.actions.ViewSuggestionsAction;
 import boundary.action.actions.ViewSuggestionsSuperAction;
 import boundary.action.actions.WithdrawAction;
+import boundary.action.actions.filter.UserFilterByAction;
 import boundary.display.CampDisplayer;
 import boundary.login.UserSession;
 import main.Context;
@@ -53,7 +53,7 @@ public class CampOptionsView extends ViewHandler {
 				new CreateQueryAction(context, session, camp),
 				new ViewEnquiriesAction(context, session, camp),
 				new ViewEnquiriesSuperAction(context, session, camp),
-				new GenerateReportAction(context, session, camp),
+				new UserFilterByAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
 				new ConfirmationAction(context, session, 

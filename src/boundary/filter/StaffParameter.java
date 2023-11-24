@@ -7,9 +7,7 @@ import model.Camp;
 import model.User;
 
 public class StaffParameter extends FilterParameter<Camp> {
-	private String staffID;
-	
-	public StaffParameter() {}
+	private String staffID="";
 	
 	@Override
 	public boolean isValid(Context context, Camp obj) throws ClassNotFoundException, IOException {
@@ -24,6 +22,6 @@ public class StaffParameter extends FilterParameter<Camp> {
 	}
 	@Override
 	public String getName() {
-		return "Staff";
+		return String.format("Staff: %s", staffID);
 	}
 }

@@ -29,8 +29,8 @@ public class CampListingView extends ViewHandler{
 	@Override
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<Action>();
-		camps.stream().forEach(camp -> actions.add(new ViewCampAction(context, session, camp)));
 		actions.add(new CampFilterByAction(context, session, camps));
+		camps.stream().forEach(camp -> actions.add(new ViewCampAction(context, session, camp)));
 		actions.add(new CreateCampAction(context, session));
 		actions.add(new ReturnHomeAction(context, session));
 		return actions;

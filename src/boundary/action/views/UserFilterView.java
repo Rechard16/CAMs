@@ -4,35 +4,35 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.GenerateReportAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.filter.AddFilterAction;
-import boundary.action.actions.filter.FilterCampsAction;
 import boundary.filter.FacultyParameter;
 import boundary.filter.Filter;
 import boundary.filter.FilterParameter;
-import boundary.filter.LocationParameter;
 import boundary.filter.NameParameter;
-import boundary.filter.StaffParameter;
+import boundary.filter.RoleParameter;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
+import model.User;
 import model.interfaces.FacultyMember;
-import model.interfaces.Locatable;
 import model.interfaces.Nameable;
+import model.interfaces.Registrable;
 
-public class CampFilterView extends ViewHandler {
-	private final Filter<Camp> filter = new Filter<>();
-	private final List<Camp> camps;
+public class UserFilterView extends ViewHandler {
+	private final Filter<User> filter = new Filter<>();
+	private final Camp camp;
 
-	public CampFilterView(Context context, UserSession session, List<Camp> camps) {
+	public UserFilterView(Context context, UserSession session, Camp camp) {
 		super(context, session);
-		this.camps = camps;
+		this.camp = camp;
 	}
 
 	@Override
 	protected String getPrompt() {
-		return "Add a filter, or perform a search:";
+		return "Add a filter, or generate the report:";
 	}
 	
 	@Override
@@ -48,15 +48,13 @@ public class CampFilterView extends ViewHandler {
 	@Override
 	protected List<Action> generateActions() throws Exception {
 		return List.of(
-				new AddFilterAction<Locatable>(context, session,
-						new LocationParameter(), filter),
+				new AddFilterAction<Registrable>(context, session,
+						new RoleParameter(camp), filter),
 				new AddFilterAction<FacultyMember>(context, session,
 						new FacultyParameter(), filter),
 				new AddFilterAction<Nameable>(context, session,
 						new NameParameter(), filter),
-				new AddFilterAction<Camp>(context, session,
-						new StaffParameter(), filter),
-				new FilterCampsAction(context, session, filter, camps),
+				new GenerateReportAction(context, session, camp, filter),
 				new PreviousViewAction(context, session)
 				);
 	}
@@ -64,7 +62,8 @@ public class CampFilterView extends ViewHandler {
 	@Override
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
-				.getPermissions(this.session.getUser());
+				.getCampModificationPermissions(this.session.getUser(), camp);
 	}
+
 
 }

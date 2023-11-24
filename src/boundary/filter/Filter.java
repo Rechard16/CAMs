@@ -6,8 +6,10 @@ import java.util.Collection;
 import java.util.List;
 
 import main.Context;
+import model.interfaces.NameComparator;
+import model.interfaces.Nameable;
 
-public class Filter<T> {
+public class Filter<T extends Nameable> {
 	
 	private List<FilterParameter<?>> parameters = new ArrayList<>();
 	
@@ -33,6 +35,7 @@ public class Filter<T> {
 		List<T> res = new ArrayList<>();
 		for (T i: items) if (isValid(context, i))
 			res.add(i);
+		res.sort(new NameComparator());
 		return res;
 	}
 	
