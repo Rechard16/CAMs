@@ -3,8 +3,8 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
+import boundary.display.CampDisplayer;
 import boundary.login.UserSession;
-import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.CampInfoModifier;
@@ -27,7 +27,7 @@ public class PrintCampAction extends Action{
 	@Override
 	public void performAction() throws Exception {
 		Camp modified = modifier.modify(camp);
-		new CampDisplayer(context, modified).dislayCamp();
+		new CampDisplayer(context, modified).display();
 	}
 
 	@Override

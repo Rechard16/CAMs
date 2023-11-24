@@ -2,7 +2,6 @@ package model.change;
 
 import main.Context;
 import model.CampInfo;
-import model.Change;
 import model.Model;
 
 public class LocationChange extends Model implements Change {

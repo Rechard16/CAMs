@@ -8,7 +8,6 @@ import java.util.List;
 import boundary.reader.DateReader;
 import main.Context;
 import model.CampInfo;
-import model.Change;
 import model.Model;
 
 /**

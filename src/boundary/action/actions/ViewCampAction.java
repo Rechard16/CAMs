@@ -36,7 +36,7 @@ public class ViewCampAction extends Action {
 		String name = camp.getInformation().getName();
 
 		Role role = session.getUser().getRole(camp);
-		if (role != Role.FREE_VIEWER && role != Role.VIEWER)
+		if (role != Role.FREE_VIEWER && role != Role.VIEWER && role != Role.STAFF)
 			name += String.format(" (%s)", role.name());
 
 		if (!camp.getVisibility()) 

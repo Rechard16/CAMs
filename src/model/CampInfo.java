@@ -3,6 +3,8 @@ package model;
 import java.util.Date;
 import java.util.List;
 
+import model.interfaces.Nameable;
+
 /**
  * The CampInfo class represents information about a camp in the system.
  * It includes details such as the camp's name, ID, dates, eligibility criteria,
@@ -11,7 +13,7 @@ import java.util.List;
  * deadline.
  */
 
-public class CampInfo extends Model {
+public class CampInfo extends Model implements Nameable {
     /**
      * The name of the camp.
      */

@@ -73,9 +73,9 @@ public class UserManager implements Savable {
     public User getUserByID(String userID) throws ClassNotFoundException, IOException {
     	
     	for (User u: studentDatabase.getAll()) 
-    		if (u.getUserID().equals(userID)) return u;
+    		if (u.getName().equals(userID)) return u;
     	for (User u: staffDatabase.getAll()) 
-    		if (u.getUserID().equals(userID)) return u;
+    		if (u.getName().equals(userID)) return u;
     	return null;
     }
 

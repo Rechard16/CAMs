@@ -1,12 +1,20 @@
 package boundary.filter;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class FilterParameter <T> {
-	public abstract boolean isValid(T obj);
+import main.Context;
+import model.interfaces.Nameable;
+
+public abstract class FilterParameter <T> implements Buildable, Nameable {
+	public abstract boolean isValid(Context context, T obj) throws ClassNotFoundException, IOException;
 	
-	public List<T> doFilter(Collection<T> list) {
-		return list.stream().filter(i -> isValid(i)).toList();
+	public List<T> doFilter(Context context, Collection<T> list) throws ClassNotFoundException, IOException {
+		List<T> res = new ArrayList<>();
+		for (T i: list) if (isValid(context, i))
+			res.add(i);
+		return res;
 	}
 }

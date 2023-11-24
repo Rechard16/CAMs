@@ -3,6 +3,7 @@ package main;
 import java.io.IOException;
 import java.util.Scanner;
 
+import boundary.IO;
 import boundary.PermissionManager;
 import boundary.login.AuthenticationManager;
 import manager.CampManager;
@@ -10,7 +11,7 @@ import manager.QueryManager;
 import manager.SuggestionManager;
 import manager.UserManager;
 
-public class Context {
+public class Context implements IO {
 	
 	private final UserManager userManager;
 	private final CampManager campManager;
@@ -74,6 +75,11 @@ public class Context {
 		print("-----------------------------------------------------------");
 	}
 	
+	@Override
+	public void flush() throws IOException {
+		System.out.flush();
+	}
+
 	static Context createDefaultContext() throws ClassNotFoundException, IOException {
 		return new Context(new UserManager(), new PermissionManager(), new CampManager());
 	}
@@ -81,4 +87,5 @@ public class Context {
 	static Context createContext(UserManager userManager, PermissionManager permissionManager, CampManager campManager) throws ClassNotFoundException, IOException {
 		return new Context(userManager, permissionManager, campManager);
 	}
+
 }

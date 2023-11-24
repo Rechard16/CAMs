@@ -1,23 +1,49 @@
 package boundary.filter;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import main.Context;
+
 public class Filter<T> {
 	
-	private List<FilterParameter<T>> parameters;
+	private List<FilterParameter<?>> parameters = new ArrayList<>();
 	
-	public void addFilter(FilterParameter<T> parameter) {
+	public void addFilter(FilterParameter<?> parameter) {
+		for (int i=0;i<parameters.size();i++)
+			if (parameters.get(i).getClass().equals(parameter.getClass())) {
+				parameters.set(i, parameter);
+				return;
+			}
 		parameters.add(parameter);
 	}
 	
-	public List<T> isValid(Collection<T> items) {
-		return items.stream().filter(item -> isValid(item)).toList();
+	public boolean removeFilter(Class<FilterParameter<?>> c) {
+		for (int i=0;i<parameters.size();i++)
+			if (parameters.get(i).getClass().equals(c)) {
+				parameters.remove(i);
+				return true;
+			}
+		return false;
 	}
 	
-	public boolean isValid(T obj) {
-		for (FilterParameter<T> parameter: parameters)
-			if (!parameter.isValid(obj)) return false;
+	public List<T> getValid(Context context, Collection<T> items) throws ClassNotFoundException, IOException {
+		List<T> res = new ArrayList<>();
+		for (T i: items) if (isValid(context, i))
+			res.add(i);
+		return res;
+	}
+	
+	public List<FilterParameter<?>> getParameters() {
+		return parameters;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean isValid(Context context, T obj) throws ClassNotFoundException, IOException {
+		for (FilterParameter<?> parameter: parameters)
+			if (!((FilterParameter<T>) parameter).isValid(context, obj)) return false;
 		return true;
 	}
 }

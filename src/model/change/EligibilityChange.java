@@ -3,7 +3,6 @@ package model.change;
 import boundary.reader.BooleanReader;
 import main.Context;
 import model.CampInfo;
-import model.Change;
 import model.Faculty;
 import model.Model;
 import model.User;

@@ -9,7 +9,7 @@ import database.CampDatabase;
 import model.Camp;
 import model.CampInfo;
 import model.Faculty;
-import model.Registrable;
+import model.interfaces.Registrable;
 
 public class CampManager implements Savable {
 	

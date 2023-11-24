@@ -7,6 +7,7 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.ConfirmationAction;
 import boundary.action.actions.CreateQueryAction;
 import boundary.action.actions.DeleteCampAction;
+import boundary.action.actions.GenerateReportAction;
 import boundary.action.actions.ModifyCampAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.RegisterAction;
@@ -17,8 +18,8 @@ import boundary.action.actions.ViewEnquiriesSuperAction;
 import boundary.action.actions.ViewSuggestionsAction;
 import boundary.action.actions.ViewSuggestionsSuperAction;
 import boundary.action.actions.WithdrawAction;
+import boundary.display.CampDisplayer;
 import boundary.login.UserSession;
-import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -38,7 +39,7 @@ public class CampOptionsView extends ViewHandler {
 	
 	@Override 
 	public void displayView() throws Exception {
-		new CampDisplayer(context, camp).dislayCamp();
+		new CampDisplayer(context, camp).display();
 		super.displayView();
 	}
 
@@ -52,6 +53,7 @@ public class CampOptionsView extends ViewHandler {
 				new CreateQueryAction(context, session, camp),
 				new ViewEnquiriesAction(context, session, camp),
 				new ViewEnquiriesSuperAction(context, session, camp),
+				new GenerateReportAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
 				new ConfirmationAction(context, session, 

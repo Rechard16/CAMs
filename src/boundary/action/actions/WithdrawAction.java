@@ -8,7 +8,7 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
-import model.Registrable;
+import model.interfaces.Registrable;
 
 public class WithdrawAction extends Action {
 	private final Camp camp;

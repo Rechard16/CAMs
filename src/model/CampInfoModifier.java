@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.change.Change;
+
 public class CampInfoModifier extends Model{
 	private final List<Change> changes;
 	private int id;

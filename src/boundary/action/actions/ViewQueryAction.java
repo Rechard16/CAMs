@@ -27,7 +27,7 @@ public class ViewQueryAction extends Action {
 
 	@Override
 	public String getDescription() {
-		return String.format("%s - %s", user.getUserID(), query.getTitle());
+		return String.format("%s - %s", user.getName(), query.getTitle());
 	}
 
 	@Override

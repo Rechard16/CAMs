@@ -1,6 +1,8 @@
-package model;
+package model.interfaces;
 
 import exception.UnauthorisedActionException;
+import model.Camp;
+import model.Role;
 
 public interface Registrable {
 	public boolean isRegistered(Camp camp);

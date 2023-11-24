@@ -3,7 +3,6 @@ package model.change;
 import boundary.reader.IntegerReader;
 import main.Context;
 import model.CampInfo;
-import model.Change;
 import model.Model;
 
 public class TotalSlotsChange extends Model implements Change {

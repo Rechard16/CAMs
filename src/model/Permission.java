@@ -113,5 +113,5 @@ public enum Permission {
     
     WITHDRAW,
     
-    IMPOSSIBLE
+    IMPOSSIBLE, GENERATE_REPORT
 }

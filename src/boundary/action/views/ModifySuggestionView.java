@@ -11,15 +11,15 @@ import boundary.action.actions.DeleteSuggestionAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.UpdateSuggestionAction;
 import boundary.action.actions.modification.ModificationAction;
+import boundary.display.CampDisplayer;
 import boundary.login.UserSession;
-import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.CampInfoModifier;
-import model.Change;
 import model.Permission;
 import model.Suggestion;
 import model.SuggestionStatus;
+import model.change.Change;
 
 public class ModifySuggestionView extends ViewHandler {
 	private final Camp camp;
@@ -41,7 +41,7 @@ public class ModifySuggestionView extends ViewHandler {
 
 	@Override
 	public void displayView() throws Exception {
-		new CampDisplayer(context, camp).dislayCamp();
+		new CampDisplayer(context, camp).display();
 		context.print("\nModifications to this Camp:");
 		for (Change change : modifier.getChanges()) {
 			context.print("- " + change.getDescription());

@@ -1,0 +1,17 @@
+_______________________________
+Camp name: Ende
+Dates: 2024-12-12 to 2024-12-12
+Eligibility: SCHOOL
+Location: Northern Lands
+Total Slots: 20
+Committee Slots: 1
+Description: Journey's End
+Staff-in-charge: HUKUMAR
+Signup Deadline: 2023-12-12
+Available slots: 17
+Available committee slots: 0
+This camp is visible to students.
+_______________________________
+YCHERN (COMMITTEE_MEMBER)
+CT113 (PARTICIPANT)
+DL007 (PARTICIPANT)

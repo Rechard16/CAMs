@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.UnauthorisedActionException;
+import model.interfaces.FacultyMember;
+import model.interfaces.Locatable;
+import model.interfaces.Nameable;
 
 /**
  * The Camp class represents a camp in the system.
@@ -12,7 +15,7 @@ import exception.UnauthorisedActionException;
  * and identifiers for committee members and students.
  */
 
-public class Camp extends Model {
+public class Camp extends Model implements Nameable, Locatable, FacultyMember {
     /**
      * Information about the camp.
      */
@@ -235,4 +238,19 @@ public class Camp extends Model {
     public void setTotalRegistered(int totalRegistered) {
         this.totalRegistered = totalRegistered;
     }
+    
+    @Override
+    public String getName() {
+    	return this.information.getName();
+    }
+
+	@Override
+	public Faculty getFaculty() {
+		return this.getInformation().getEligibility();
+	}
+
+	@Override
+	public String getLocation() {
+		return this.getInformation().getLocation();
+	}
 }

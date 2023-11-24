@@ -9,13 +9,13 @@ import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
 import boundary.action.actions.SubmitSuggestionAction;
 import boundary.action.actions.modification.ModificationAction;
+import boundary.display.CampDisplayer;
 import boundary.login.UserSession;
-import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.CampInfoModifier;
-import model.Change;
 import model.Permission;
+import model.change.Change;
 
 public class ModifyCampView extends ViewHandler {
 	private final Camp camp;
@@ -34,7 +34,7 @@ public class ModifyCampView extends ViewHandler {
 
 	@Override
 	public void displayView() throws Exception {
-		new CampDisplayer(context, camp).dislayCamp();
+		new CampDisplayer(context, camp).display();
 		context.print("\nCurrent Modifications to this Camp:");
 		for (Change change : modifier.getChanges()) {
 			context.print("- " + change.getDescription());

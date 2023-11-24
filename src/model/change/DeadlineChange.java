@@ -5,7 +5,6 @@ import java.util.Date;
 import boundary.reader.DateReader;
 import main.Context;
 import model.CampInfo;
-import model.Change;
 import model.Model;
 
 public class DeadlineChange extends Model implements Change {

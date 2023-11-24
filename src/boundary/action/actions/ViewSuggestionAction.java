@@ -28,7 +28,7 @@ public class ViewSuggestionAction extends Action {
 
 	@Override
 	public String getDescription() {
-		return String.format("%s - %s", user.getUserID(), suggestion.getDescription());
+		return String.format("%s - %s", user.getName(), suggestion.getDescription());
 	}
 
 	@Override

@@ -1,12 +1,16 @@
 package model;
 
+import model.interfaces.FacultyMember;
+import model.interfaces.Nameable;
+import model.interfaces.Registrable;
+
 /**
  * The abstract User class represents a user in the system. It extends Model,
  * inheriting its properties and functionalities. This class includes attributes
  * and methods that are common to all types of users.
  */
 
-public abstract class User extends Model implements Registrable {
+public abstract class User extends Model implements Registrable, Nameable, FacultyMember {
 
     /**
      * Unique identifier for the user.
@@ -16,7 +20,7 @@ public abstract class User extends Model implements Registrable {
     /**
      * A string-based unique ID for the user.
      */
-    private String userID;
+    private String name;
 
     /**
      * The faculty to which the user belongs.
@@ -39,7 +43,7 @@ public abstract class User extends Model implements Registrable {
 
     public User(int id, String userID, Faculty faculty, String password) {
         this.id = id;
-        this.userID = userID;
+        this.name = userID;
         this.faculty = faculty;
         this.password = password;
     }
@@ -94,8 +98,8 @@ public abstract class User extends Model implements Registrable {
      * @return String representing the user's string-based unique ID.
      */
 
-    public String getUserID() {
-        return userID;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -104,8 +108,8 @@ public abstract class User extends Model implements Registrable {
      * @param id The new string-based unique ID to be set for the user.
      */
 
-    public void setUserID(String id) {
-        this.userID = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
