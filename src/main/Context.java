@@ -70,6 +70,10 @@ public class Context {
 		System.out.printf(s, args);
 	}
 	
+	public void lineBreak() {
+		print("-----------------------------------------------------------");
+	}
+	
 	static Context createDefaultContext() throws ClassNotFoundException, IOException {
 		return new Context(new UserManager(), new PermissionManager(), new CampManager());
 	}

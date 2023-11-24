@@ -102,6 +102,10 @@ public class Student extends User {
     public void setPoints(int points) {
         this.points = points;
     }
+    
+    public void addPoint() {
+    	this.points++;
+    }
 
     /**
      * Retrieves a list of camp IDs the student is registered for.
