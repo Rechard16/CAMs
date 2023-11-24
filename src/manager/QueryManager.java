@@ -2,6 +2,7 @@ package manager;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import database.QueryDatabase;
 import model.Query;
@@ -19,9 +20,26 @@ public class QueryManager implements Savable{
 		queryDatabase.add(query); // 添加到数据库
         return query;
     }
+    
+    public boolean deleteQuery(int id) throws ClassNotFoundException, IOException {
+    	Query q = queryDatabase.findByID(id);
+    	if (q == null) return false;
+    	queryDatabase.remove(q);
+    	return true;
+    }
 
     public Query getQueryByID(int queryID) throws IOException, ClassNotFoundException {
     	return queryDatabase.findByID(queryID);
+    }
+    
+    public List<Query> getQueryByCamp(int campID) throws ClassNotFoundException, IOException {
+    	return queryDatabase.getAll().stream()
+    			.filter(i -> i.getCampID() == campID).toList();
+    }
+    
+    public List<Query> getQueryByUser(int campID, int userID) throws ClassNotFoundException, IOException {
+    	return queryDatabase.getAll().stream()
+    			.filter(i -> i.getUserID() == userID).toList();
     }
 
 	@Override

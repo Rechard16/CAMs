@@ -39,17 +39,22 @@ public class PermissionManager {
 			permissions.add(Permission.VIEW_ENQUIRIES);
 			permissions.add(Permission.RESOLVE_ENQUIRY);
 			permissions.add(Permission.MODIFY_CAMP);
+			permissions.add(Permission.RESOLVE_ENQUIRY);
+			permissions.add(Permission.VIEW_ENQUIRIES);
 			break;
 		case OWNER:
 			permissions.add(Permission.APPROVE_SUGGEST);
 			permissions.add(Permission.MODIFY_CAMP);
 			permissions.add(Permission.DELETE_CAMP);
+			permissions.add(Permission.RESOLVE_ENQUIRY);
+			permissions.add(Permission.VIEW_ENQUIRIES);
 		case STAFF:
 			permissions.add(Permission.TOGGLE_VISIBILITY);
 			break;
 		case PARTICIPANT:
 			permissions.add(Permission.ENQUIRY);
 			permissions.add(Permission.WITHDRAW);
+			permissions.add(Permission.ENQUIRY);
 			break;
 		case FREE_VIEWER:
 			permissions.add(Permission.REGISTER_COMMITTEE);

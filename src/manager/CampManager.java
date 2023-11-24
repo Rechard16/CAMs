@@ -15,7 +15,6 @@ public class CampManager implements Savable {
 	
 	public CampDatabase campDatabase;
 	
-	
 	public CampManager() throws ClassNotFoundException, IOException {
 	    campDatabase = new CampDatabase();
 	}

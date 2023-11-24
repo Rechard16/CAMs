@@ -5,6 +5,7 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.actions.ConfirmationAction;
+import boundary.action.actions.CreateQueryAction;
 import boundary.action.actions.DeleteCampAction;
 import boundary.action.actions.ModifyCampAction;
 import boundary.action.actions.PreviousViewAction;
@@ -46,6 +47,7 @@ public class CampOptionsView extends ViewHandler {
 				new ModifyCampAction(context, session, camp),
 				new ViewSuggestionsAction(context, session, camp),
 				new ViewSuggestionsSuperAction(context, session, camp),
+				new CreateQueryAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
 				new ConfirmationAction(context, session, 
