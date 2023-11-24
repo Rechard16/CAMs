@@ -15,7 +15,7 @@ public class QueryDatabase extends Database<Query> {
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/queries.txt";
+    private final String filename = "data/queries.txt";
 
     /**
      * The list of queries.
@@ -58,4 +58,10 @@ public class QueryDatabase extends Database<Query> {
     protected Class<Query> getContainedClass() {
         return Query.class;
     }
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.queries.clear();
+		save();
+	}
 }

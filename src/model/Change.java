@@ -1,5 +1,6 @@
 package model;
 
 public interface Change {
-    public void modify();
+    public void modify(CampInfo campInfo);
+    public String getDescription();
 }

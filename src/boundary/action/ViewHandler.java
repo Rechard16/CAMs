@@ -7,24 +7,22 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
 
-public abstract class ViewHandler {
+public abstract class ViewHandler implements View{
 	
 	protected final Context context;
 	protected final UserSession session;
-	private final ActionAuthorizer authorizer;
-	private ViewHandler nextView;
+	private View nextView;
 	
 	public ViewHandler(Context context, UserSession session) {
 		this.context = context;
 		this.session = session;
-		this.authorizer = new ActionAuthorizer(session.getLoginSession());
 		session.getViewStack().addView(this);
 	}
 	
 	public void displayView() throws Exception {
 
+		ActionAuthorizer authorizer = session.getAuthorizer();
 		authorizer.setPermissions(getPermissions());
-		context.print("-----------------------------------------------------------");
 		OptionDisplayer displayer = new OptionDisplayer(context, getPrompt());
 		List<Action> actions = generateActions();
 		
@@ -37,13 +35,17 @@ public abstract class ViewHandler {
 		this.nextView = chosen.getNextView();
 	}
 	
+	protected void setNextView(ViewHandler handler) {
+		this.nextView = handler;
+	}
+	
 	protected abstract String getPrompt();
 	
-	protected abstract List<Action> generateActions();
+	protected abstract List<Action> generateActions() throws Exception;
 	
 	protected abstract List<Permission> getPermissions();
 
-	public ViewHandler getNextView() {
+	public View getNextView() {
 		return this.nextView;
 	}
 }

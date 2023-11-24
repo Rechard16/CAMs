@@ -1,6 +1,10 @@
 package boundary.util;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import main.Context;
 import model.CampInfo;
@@ -16,9 +20,13 @@ public class CampInfoDisplayer {
 	}
 	
 	public void displayCampInfo() throws ClassNotFoundException, IOException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+
 		context.print("Camp name: %s\n", info.getName());
-		context.print("Dates:");
-		context.print(info.getDates());
+		List<Date> dates = info.getDates();
+		context.print("Dates: %s to %s\n", 
+				dateFormat.format(dates.get(0)),
+				dateFormat.format(dates.get(1)));
 		context.print("Eligibility: %s\n", info.getEligibility().name());
 		context.print("Location: %s\n", info.getLocation());
 		context.print("Total Slots: %d\n", info.getTotalSlots());
@@ -27,6 +35,6 @@ public class CampInfoDisplayer {
 		
 		User user = context.getUserManager().getUserByID(info.getStaffID());
 		context.print("Staff-in-charge: %s\n", user.getUserID());
-		context.print("Signup Deadline: %s\n", info.getDeadline());
+		context.print("Signup Deadline: %s\n", dateFormat.format(info.getDeadline()));
 	}
 }

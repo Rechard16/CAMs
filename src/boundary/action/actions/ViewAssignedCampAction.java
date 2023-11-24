@@ -11,14 +11,10 @@ import model.Permission;
 import model.Student;
 
 public class ViewAssignedCampAction extends ViewCampAction{
-	private final Context context;
-	private final UserSession session;
 	private ViewHandler nextView;
 	
 	public ViewAssignedCampAction(Context context, UserSession session) {
 		super(context, session);
-		this.context = context;
-		this.session = session;
 	}
 
 	@Override

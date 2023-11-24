@@ -63,4 +63,11 @@ public class StaffDatabase extends Database<Staff>{
     protected Class<Staff> getContainedClass() {
         return Staff.class;
     }
+
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.staffList.clear();
+		save();
+	}
 }

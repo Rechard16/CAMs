@@ -14,7 +14,7 @@ public class SuggestionDatabase extends Database<Suggestion> {
     /**
      * The filename of the file that the database is saved to.
      */
-    private final String filename = "/data/suggestions.txt";
+    private final String filename = "data/suggestions.txt";
     /**
      * The list of suggestions.
      */
@@ -58,4 +58,10 @@ public class SuggestionDatabase extends Database<Suggestion> {
     protected Class<Suggestion> getContainedClass() {
         return Suggestion.class;
     }
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.suggestions.clear();
+		save();
+	}
 }

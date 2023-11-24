@@ -62,4 +62,10 @@ public class CampDatabase extends Database<Camp> {
         return Camp.class;
     }
 
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.camps.clear();
+		save();
+	}
+
 }

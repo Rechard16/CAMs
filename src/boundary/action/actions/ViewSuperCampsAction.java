@@ -11,26 +11,23 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 
-public class ViewSuperCampsAction implements Action{
+public class ViewSuperCampsAction extends Action{
 	
-	private final Context context;
-	private final UserSession session;
 	private List<Camp> camps;
 
 	@Override
 	public String getDescription() {
-		return "View All Camps";
+		return "View All Camps in System";
 	}
 	
 	public ViewSuperCampsAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 
 	@Override
 	public void performAction() throws ClassNotFoundException, IOException {
 		camps = context.getCampManager()
-			.getAllCamps();;
+			.getAllCamps();
 	}
 
 	@Override

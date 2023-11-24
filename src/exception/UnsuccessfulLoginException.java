@@ -1,4 +1,4 @@
-package boundary.login;
+package exception;
 
 public class UnsuccessfulLoginException extends Exception {
 	public UnsuccessfulLoginException() {

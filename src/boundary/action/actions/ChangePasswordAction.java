@@ -9,13 +9,10 @@ import boundary.util.PasswordChangeHandler;
 import main.Context;
 import model.Permission;
 
-public class ChangePasswordAction implements Action {
-	private final Context context;
-	private final UserSession session;
+public class ChangePasswordAction extends Action {
 
 	public ChangePasswordAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 
 	@Override
@@ -32,11 +29,6 @@ public class ChangePasswordAction implements Action {
 				return;
 			}
 		}
-	}
-
-	@Override
-	public ViewHandler getNextView() {
-		return session.getViewStack().top();
 	}
 
 	@Override

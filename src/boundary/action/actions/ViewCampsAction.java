@@ -11,19 +11,16 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 
-public class ViewCampsAction implements Action{
+public class ViewCampsAction extends Action{
 	
-	private final Context context;
-	private final UserSession session;
 	private List<Camp> camps;
 	
 	public ViewCampsAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 
 	@Override
-	public String getDescription() { return "View Available Camps"; }
+	public String getDescription() { return "View Camps in my Faculty"; }
 
 	@Override
 	public void performAction() throws ClassNotFoundException, IOException {

@@ -1,11 +1,12 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import database.SuggestionDatabase;
+import model.CampInfoModifier;
 import model.Suggestion;
-import model.User;
-import model.Camp;
 
 /*
  * A staff can view and approve suggestions to changes to camp details from camp
@@ -16,90 +17,47 @@ import model.Camp;
  * suggestions before being processed
  */
 
-public class SuggestionManager extends SuggestionDatabase {
+public class SuggestionManager implements Savable {
     private SuggestionDatabase suggestionDatabase;
 
-    // linking with suggestion database
     public SuggestionManager() throws ClassNotFoundException, IOException {
         suggestionDatabase = new database.SuggestionDatabase();
-
     }
 
-    public boolean addSuggestion(Camp camp, Suggestion suggestion, User user)
-            throws IOException, ClassNotFoundException {
-        if (suggestion != null) {
+    public Suggestion createSuggestion(int userID, int campID, String description,
+    		CampInfoModifier modifier) throws IOException, ClassNotFoundException {
 
-            // Create a new Suggestion
+		int newSuggestionID = suggestionDatabase.suggestID();
 
-            int newSuggestionID = suggestionDatabase.generateNewID();
-
-            Suggestion newSuggestion = new Suggestion(user, camp.getID(), suggestion.getDescription(),
-                    newSuggestionID);
-
-            // Add the suggestion to the database
-            suggestionDatabase.add(newSuggestion);
-            suggestionDatabase.save(); // Update the suggestions in the database
-            return true;
-        }
-        return false;
+		Suggestion suggestion = new Suggestion(userID, campID, modifier, description, newSuggestionID); 
+		suggestionDatabase.add(suggestion);
+		return suggestion;
     }
 
     // delete by sugestionID
-    public boolean deleteBySuggestionID(Suggestion suggestion) throws IOException, ClassNotFoundException {
-        if (suggestion != null) {
-            int i = 0;
-            while (i < suggestionDatabase.getAll().size()) {
-                if (suggestion.getSuggestionID() == suggestionDatabase.getAll().get(i).getSuggestionID()) {
-                    suggestionDatabase.getAll().remove(i);
-                    return true;
-                }
-                i++;
-            }
-        }
-        return false;
+    public boolean deleteSuggestion(int id) throws IOException, ClassNotFoundException {
+    	Suggestion obj = suggestionDatabase.findByID(id);
+    	if (obj == null) return false;
+    	suggestionDatabase.remove(obj);
+    	return true;
+	}
+    
+    public boolean deleteSuggestion(Suggestion suggestion) throws ClassNotFoundException, IOException {
+    	return suggestionDatabase.remove(suggestion);
     }
 
-    // delete by campID
-    public boolean deleteByCampID(Camp camp) throws IOException, ClassNotFoundException {
-        if (camp != null) {
-            suggestionDatabase.remove(suggestionDatabase.findByID(camp.getID()));
-        }
-        return false;
+    public Suggestion getSuggestion(int suggestionID) throws IOException, ClassNotFoundException {
+        return suggestionDatabase.findByID(suggestionID);
+    }
+    
+    public List<Suggestion> getSuggestionsByCamp(int campID) throws ClassNotFoundException, IOException {
+    	return suggestionDatabase.getAll().stream().filter(i ->
+    			i.getCampID() == campID).toList();
     }
 
-    public Suggestion editSuggestion(Camp camp, User user, Suggestion suggestion, String editedSuggest)
-            throws ClassNotFoundException, IOException {
-
-        // Create a new Suggestion
-        Suggestion newSuggestion = new Suggestion(user, camp.getID(), editedSuggest, suggestion.getSuggestionID());
-
-        return newSuggestion;
-    }
-
-    // right now, newSuggest is made to be uploaded in the database only if accessed
-    // by staff. (newSuggest == return value of editedSuggestion)
-    public boolean approveChange(Suggestion oldSuggest, Suggestion newSuggest)
-            throws IOException, ClassNotFoundException {
-        if (oldSuggest != null && newSuggest != null) {
-            suggestionDatabase.update(oldSuggest, newSuggest);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean viewSuggestionByID(int suggestionID) throws IOException, ClassNotFoundException {
-        if (suggestionDatabase.findByID(suggestionID) != null)
-            System.out.println(suggestionDatabase.findByID(suggestionID).getDescription());
-        return false;
-    }
-
-    public boolean viewSuggestionChanges(Suggestion suggestion) throws IOException, ClassNotFoundException {
-        if (suggestion.getChanges() != null) {
-
-            System.out.println(suggestion.getChanges());
-            return true;
-        }
-        return false;
-    }
+	@Override
+	public void save() throws IOException, FileNotFoundException, ClassNotFoundException {
+		suggestionDatabase.save();
+	}
 
 }

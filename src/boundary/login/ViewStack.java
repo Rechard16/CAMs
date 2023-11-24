@@ -24,4 +24,9 @@ public class ViewStack {
 		stack.remove(stack.size()-1);
 		return stack.get(stack.size()-1);
 	}
+	
+	public ViewHandler reset() {
+		stack.subList(1, stack.size()).clear();
+		return stack.get(0);
+	}
 }

@@ -15,6 +15,7 @@ public class OptionDisplayer {
 
 	public OptionDisplayer(Context context, String prompt) {
 		this.context = context;
+		lineBreak();
 		context.print(prompt);
 	}
 	
@@ -32,10 +33,17 @@ public class OptionDisplayer {
 		while (true) {
 			try {
 				int selection = Integer.parseInt(context.getScanner().nextLine());
-				if (selection <= options.size() && selection>0)
+				selection = Math.min(selection, options.size());
+				if (selection>0) {
+					lineBreak();
 					return options.get(selection-1);
+				}
 			} catch (Exception e) {}
 			context.print("Please enter a valid option! [1-%d]", options.size());
 		}
+	}
+	
+	private void lineBreak() {
+		context.print("-----------------------------------------------------------");
 	}
 }

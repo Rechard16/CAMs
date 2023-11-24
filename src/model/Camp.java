@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exception.UnauthorisedActionException;
+
 /**
  * The Camp class represents a camp in the system.
  * It includes information about the camp, lists of registered users, visibility
@@ -15,11 +17,6 @@ public class Camp extends Model {
      * Information about the camp.
      */
     private CampInfo information;
-
-    /**
-     * List of users registered for the camp.
-     */
-    private List<Integer> registered;
 
     /**
      * Indicates if the camp is visible to users.
@@ -56,11 +53,19 @@ public class Camp extends Model {
 
     public Camp(CampInfo information) {
         this.information = information;
-        this.registered = new ArrayList<>();
         this.committeeMembers = new ArrayList<>();
         this.students = new ArrayList<>();
         this.totalRegistered = 0;
-        this.visibility = true; // Default visibility is set to true.
+        this.visibility = false; // Default visibility is set to false.
+        this.id = information.getID(); // Set the ID based on provided information.
+    }
+    
+    public Camp(Camp camp) {
+    	this.information = new CampInfo(camp.getInformation());
+        this.committeeMembers = new ArrayList<>(camp.getCommitteeMembers());
+        this.students = new ArrayList<>(camp.getStudents());
+        this.totalRegistered = camp.getTotalRegistered();
+        this.visibility = camp.visibility; // Default visibility is set to true.
         this.id = information.getID(); // Set the ID based on provided information.
     }
 
@@ -70,7 +75,7 @@ public class Camp extends Model {
      * @return True if the camp is visible, false otherwise.
      */
 
-    public boolean isVisible() {
+    public boolean getVisibility() {
         return visibility;
     }
 
@@ -101,11 +106,10 @@ public class Camp extends Model {
      * @param student The student to be added to the camp.
      */
 
-    public void addStudent(Student student) {
+    public void addStudent(int id) {
         // Adds a student to the list of registered students and updates the total
-        if (student != null && !this.students.contains(student.getID())) {
-            this.students.add(student.getID());
-            this.registered.add(student.getID());
+        if (!this.students.contains(id)) {
+            this.students.add(id);
             this.totalRegistered++;
         }
     }
@@ -114,12 +118,14 @@ public class Camp extends Model {
      * Removes a student from the camp's registration list.
      *
      * @param student The student to be removed from the camp.
+     * @throws UnauthorisedActionException 
      */
 
-    public void removeStudent(Student student) {
+    public void removeUser(int id) throws UnauthorisedActionException {
+        if (committeeMembers.contains(id))
+        	throw new UnauthorisedActionException();
         // Removes a student from the list of registered students and updates the total
-        if (student != null && this.students.remove(Integer.valueOf(student.getID()))) {
-            this.registered.remove(student.getID());
+        if (this.students.remove((Integer) id)) {
             this.totalRegistered--;
         }
     }
@@ -128,26 +134,13 @@ public class Camp extends Model {
      * Adds a committee member to the camp's committee list.
      * Ensures the member is not already a part of the committee before adding.
      *
-     * @param member The student to be added as a committee member.
+     * @param i The student to be added as a committee member.
      */
 
-    public void addCommitteeMember(Student member) {
+    public void addCommitteeMember(int i) {
         // Adds a committee member to the list if they are not already in it
-        if (member != null && !this.committeeMembers.contains(member.getID())) {
-            this.committeeMembers.add(member.getID());
-        }
-    }
-
-    /**
-     * Removes a committee member from the camp's committee list.
-     *
-     * @param member The committee member to be removed.
-     */
-
-    public void removeCommitteeMember(Student member) {
-        // Removes a committee member from the list
-        if (member != null) {
-            this.committeeMembers.remove(Integer.valueOf(member.getID()));
+        if (!this.committeeMembers.contains(id)) {
+            this.committeeMembers.add(id);
         }
     }
 
@@ -169,16 +162,6 @@ public class Camp extends Model {
 
     public CampInfo getInformation() {
         return this.information;
-    }
-
-    /**
-     * Retrieves the list of users registered for the camp.
-     *
-     * @return A list of User objects representing registered users.
-     */
-
-    public List<Integer> getRegistered() {
-        return this.registered;
     }
 
     /**
@@ -209,16 +192,6 @@ public class Camp extends Model {
 
     public int getTotalRegistered() {
         return this.totalRegistered;
-    }
-
-    /**
-     * Sets the list of users registered for the camp.
-     *
-     * @param registered The new list of User objects to be set as registered users.
-     */
-
-    public void setRegistered(List<Integer> registered) {
-        this.registered = registered;
     }
 
     /**
@@ -261,15 +234,5 @@ public class Camp extends Model {
 
     public void setTotalRegistered(int totalRegistered) {
         this.totalRegistered = totalRegistered;
-    }
-
-    /**
-     * Retrieves the current visibility status of the camp.
-     *
-     * @return The visibility status of the camp.
-     */
-
-    public boolean getVisibility() {
-        return this.visibility;
     }
 }

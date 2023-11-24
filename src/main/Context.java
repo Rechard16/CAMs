@@ -4,22 +4,27 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import boundary.PermissionManager;
-import boundary.action.ViewHandler;
 import boundary.login.AuthenticationManager;
 import manager.CampManager;
+import manager.QueryManager;
+import manager.SuggestionManager;
 import manager.UserManager;
 
 public class Context {
 	
 	private final UserManager userManager;
 	private final CampManager campManager;
+	private final SuggestionManager suggestionManager;
+	private final QueryManager querymanager;
 	private final AuthenticationManager authenticationManager;
 	private final PermissionManager permissionManager;
 	private final Scanner scanner = new Scanner(System.in);
 	
-	private Context(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
+	private Context(UserManager userManager, PermissionManager permissionManager, CampManager campManager) throws ClassNotFoundException, IOException {
 		this.userManager = userManager;
 		this.permissionManager = permissionManager;
+		this.suggestionManager = new SuggestionManager();
+		this.querymanager = new QueryManager();
 		this.authenticationManager = new AuthenticationManager(userManager);
 		this.campManager = campManager;
 	}
@@ -27,6 +32,14 @@ public class Context {
 	@Override
 	protected void finalize() {
 		this.scanner.close();
+	}
+	
+	public SuggestionManager getSuggestionManager() {
+		return this.suggestionManager;
+	}
+
+	public QueryManager getQueryManager() {
+		return this.querymanager;
 	}
 
 	public CampManager getCampManager() {
@@ -61,7 +74,7 @@ public class Context {
 		return new Context(new UserManager(), new PermissionManager(), new CampManager());
 	}
 	
-	static Context createContext(UserManager userManager, PermissionManager permissionManager, CampManager campManager) {
+	static Context createContext(UserManager userManager, PermissionManager permissionManager, CampManager campManager) throws ClassNotFoundException, IOException {
 		return new Context(userManager, permissionManager, campManager);
 	}
 }

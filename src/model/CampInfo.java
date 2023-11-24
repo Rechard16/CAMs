@@ -67,9 +67,29 @@ public class CampInfo extends Model {
      *
      * @return The name of the camp.
      */
-
     public String getName() {
         return this.name;
+    }
+    
+    /**
+     * Default constructor
+     */
+    public CampInfo() {}
+    
+    /**
+     * Copy constructor
+     */
+    public CampInfo(CampInfo info) {
+    	this.name = info.getName();
+    	this.campID = info.getID();
+    	this.dates = info.getDates();
+    	this.eligibility = info.getEligibility();
+    	this.location = info.getLocation();
+    	this.totalSlots = info.getTotalSlots();
+    	this.committeeSlots = info.getCommitteeSlots();
+    	this.description = info.getDescription();
+    	this.deadline = info.getDeadline();
+    	this.staffID = info.getStaffID();
     }
 
     /**
@@ -250,8 +270,8 @@ public class CampInfo extends Model {
      * @param staffInCharge The new staff member to be set as in charge of the camp.
      */
 
-    public void setStaffInCharge(Staff staff) {
-        this.staffID = staff.getID();
+    public void setStaffID(int id) {
+        this.staffID = id;
     }
 
     /**

@@ -6,7 +6,7 @@ package model;
  * and methods that are common to all types of users.
  */
 
-public abstract class User extends Model {
+public abstract class User extends Model implements Registrable {
 
     /**
      * Unique identifier for the user.

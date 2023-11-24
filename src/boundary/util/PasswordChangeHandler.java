@@ -16,7 +16,12 @@ public class PasswordChangeHandler {
 		if (!check(password)) return false;
 		user.setPassword(password);
 		
-		//TODO
+		try {
+			context.getUserManager().save();
+		} catch (Exception e) { 
+			context.print("Failed to save password!");
+			return false;
+		}
 		return true;
 	}
 	

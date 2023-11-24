@@ -12,44 +12,47 @@ package model;
 public enum Permission {
 
     /**
-     * CREATE_CAMP permission allows a staff to create a new camp.
+     * CREATE_CAMP permission allows a user to create a new camp.
      */
 
     CREATE_CAMP,
 
     /**
-     * MODIFY_CAMP permission allows a staff to modify the details of an existing
-     * camp.
+     * MODIFY_CAMP permission allows a user to create a suggestion to make changes
+     * to a camp.
      * This includes changing the camp's schedule, content, or other organizational
      * details.
      */
 
     MODIFY_CAMP,
+    
+    DELETE_CAMP,
 
     /**
-     * SUGGEST_CAMP permission enables a student to suggest changes or improvements
+     * SUGGEST_CAMP permission allows a user to submit suggestions to make changes
      * to a camp.
      * Users with this permission can submit suggestions but may not have the
      * authority to implement them directly.
      */
 
     SUGGEST_CAMP,
-
+    
     /**
-     * APPROVE_SUGGEST permission is granted to staff who can approve suggestions
+     * APPROVE_SUGGEST permission is granted to users who can approve suggestions
+     * submitted by other users or themselves.
      * made for camps.
      */
-
+    
     APPROVE_SUGGEST,
 
     /**
-     * VIEW_CAMPS permission allows a student to view a list of all camps.
+     * VIEW_CAMPS permission allows a user to view a list of all visible camps to their faculty.
      */
 
     VIEW_CAMPS,
 
     /**
-     * VIEW_CAMPS_SUPER permission provides an enhanced view of camps.
+     * VIEW_CAMPS_SUPER permission allows a user to view all camps from all faculties.
      */
 
     VIEW_CAMPS_SUPER,
@@ -61,14 +64,14 @@ public enum Permission {
     VIEW_CAMP,
    
     /**
-     * ENQUIRY permission enables a student to submit enquiries or questions about a
+     * ENQUIRY permission enables a user to submit enquiries or questions about a
      * camp.
      */
 
     ENQUIRY,
 
     /**
-     * VIEW_ENQUIRIES permission allows a staff to view all enquiries made about a
+     * VIEW_ENQUIRIES permission allows a user to view all enquiries made about a
      * camp.
      */
 
@@ -84,17 +87,29 @@ public enum Permission {
     RESOLVE_ENQUIRY,
     
     /**
-     * VIEW_POINTS permission allows a student to view his own points.
+     * COMMITTEE_ELIGIBLE permission allows a user to be eligible as a committee member
      */
-    VIEW_POINTS,
+    COMMITTEE_ELIGIBLE,
     
     /**
      * CHANGE_PASSWORD permission allows a user to change their password
      */
     CHANGE_PASSWORD,
+
+	/**
+     * TOGGLE_VISIBILITY permission allows a user to toggle camp visibility
+     */
+    TOGGLE_VISIBILITY,
     
     /**
-     * COMMITTEE_ELIGIBLE permission allows a user to register themself as a committee member
+     * REGISTER permission allows a user to register for camps
      */
-    COMMITTEE_ELIGIBLE
+    REGISTER, 
+    
+    /**
+     * REGISTER_COMMITTEE permission allows a user to register as a committee member
+     */
+    REGISTER_COMMITTEE,
+    
+    WITHDRAW
 }

@@ -1,6 +1,6 @@
 package boundary;
 
-import boundary.action.ViewHandler;
+import boundary.action.View;
 import boundary.action.views.EntryView;
 import boundary.login.LoginSession;
 import boundary.login.UserSession;
@@ -28,7 +28,7 @@ public class SessionManager {
 		}
 	}
 	
-	private void runSession(ViewHandler currentView) throws Exception {
+	private void runSession(View currentView) throws Exception {
 		while(loginSession.isLoggedIn() && currentView != null) {
 			currentView.displayView();
 			currentView = currentView.getNextView();

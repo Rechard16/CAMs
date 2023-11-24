@@ -6,43 +6,46 @@ import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampOptionsView;
 import boundary.login.UserSession;
-import boundary.util.CampInfoDisplayer;
 import main.Context;
 import model.Camp;
 import model.Permission;
+import model.Role;
 
-public class ViewCampAction implements Action {
-	private final Context context;
-	private final UserSession session;
+public class ViewCampAction extends Action {
 	private Camp camp;
 
 	public ViewCampAction(Context context, UserSession session, Camp camp) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 		this.camp = camp;
 	}
 	
 	public ViewCampAction(Context context, UserSession session) {
-		this.context = context;
-		this.session = session;
+		super(context, session);
 	}
 	
-	public void setCamp(Camp camp) {
+	protected void setCamp(Camp camp) {
 		this.camp = camp;
+	}
+	
+	protected Camp getCamp() {
+		return this.camp;
 	}
 	
 	@Override
 	public String getDescription() {
-		return camp.getInformation().getName();
+		String name = camp.getInformation().getName();
+
+		Role role = session.getUser().getRole(camp);
+		if (role != Role.FREE_VIEWER && role != Role.VIEWER)
+			name += String.format(" (%s)", role.name());
+
+		if (!camp.getVisibility()) 
+			name += " (Hidden)";
+		return name;
 	}
 
 	@Override
-	public void performAction() throws Exception {
-		context.print("You have selected: %s\n", camp.getInformation().getName());
-		
-		new CampInfoDisplayer(context, camp.getInformation())
-			.displayCampInfo();
-	}
+	public void performAction() throws Exception {}
 
 	@Override
 	public ViewHandler getNextView() {

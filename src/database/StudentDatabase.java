@@ -60,4 +60,10 @@ public class StudentDatabase extends Database<Student>{
     protected Class<Student> getContainedClass() {
         return Student.class;
     }
+
+	@Override
+	public void clear() throws ClassNotFoundException, IOException {
+		this.studentList.clear();
+		save();
+	}
 }

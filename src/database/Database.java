@@ -3,6 +3,7 @@ package database;
 import java.io.IOException;
 import java.util.List;
 
+import manager.Savable;
 import model.Model;
 
 /**
@@ -14,7 +15,14 @@ import model.Model;
  * @param <T> The type of object stored in the database, must extend {@link model.Model}.
  */
 
-public abstract class Database<T extends Model>{
+public abstract class Database<T extends Model> implements Savable {
+	
+	/**
+	 * Represents the id of the next item to be created
+	 */
+	private int nextID=1;
+	
+	
     /**
      * Gets the filename of the file that the database is saved to.
      * @return The filename as a String.
@@ -38,8 +46,9 @@ public abstract class Database<T extends Model>{
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
     public List<T> load() throws IOException, ClassNotFoundException {
-        return SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
-        //setAll(objectList);
+		List<T> result = SerializableCollection.deserializeListFromFile(getFilename(), getContainedClass());
+		result.stream().forEach(i -> nextID = Math.max(i.getID()+1, nextID));
+        return result;
     }
 
     /**
@@ -58,34 +67,38 @@ public abstract class Database<T extends Model>{
     /**
      * Removes an object from the database.
      * @param object The object to be removed.
+     * @return 
      * @throws IOException if an I/O error occurs
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
-    public void remove(T object) throws IOException, ClassNotFoundException{
+    public boolean remove(T object) throws IOException, ClassNotFoundException{
         List<T> objectList = getAll();
         int index = objectList.indexOf(object);
         if(index != -1){
             objectList.remove(index);
             save();
+            return true;
         }
-        else throw new ClassNotFoundException("Object not found");
+        return false;
     }
 
     /**
      * Updates an object in the database.
      * @param object The object to be updated.
      * @param newObject The new object to replace the old object.
+     * @return 
      * @throws IOException if an I/O error occurs
      * @throws ClassNotFoundException if the class of a serialized object cannot be found
      */
-    public void update(T object,T newObject) throws IOException, ClassNotFoundException{
+    public boolean update(T object,T newObject) throws IOException, ClassNotFoundException{
         List<T> objectList = getAll();
         int index = objectList.indexOf(object);
         if(index != -1){
             objectList.set(index, newObject);
             save();
+            return true;
         }
-        else throw new ClassNotFoundException("Object not found");
+        return false;
     }
 
     /**
@@ -105,6 +118,15 @@ public abstract class Database<T extends Model>{
     }
 
     /**
+     * Suggests a suitable ID based on the current size of the database
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public int suggestID() throws ClassNotFoundException, IOException {
+    	return nextID++;
+    }
+
+    /**
      * Gets all objects in the database.
      * @return A list of all objects in the database.
      * @throws IOException if an I/O error occurs
@@ -118,10 +140,18 @@ public abstract class Database<T extends Model>{
      * @throws IOException if an I/O error occurs
      */
     public abstract void setAll(List<T> objectList) ;
+    
+    /**
+     * Clears the entire database
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public abstract void clear() throws ClassNotFoundException, IOException;
 
     /**
      * Gets the class of the objects stored in the database.
      * @return The class of the objects stored in the database.
      */
     protected abstract Class<T> getContainedClass();
+    
 }
