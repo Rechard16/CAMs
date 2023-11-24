@@ -26,7 +26,7 @@ public class RegistrationHandler {
 	
 	public boolean register() throws Exception {
 		this.check();
-		student.register(camp.getID());
+		student.register(camp);
 		camp.addStudent(student.getID());
 
 		if (committee) {

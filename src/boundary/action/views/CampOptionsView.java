@@ -4,12 +4,15 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.ConfirmationAction;
+import boundary.action.actions.DeleteCampAction;
 import boundary.action.actions.ModifyCampAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.RegisterAction;
 import boundary.action.actions.RegisterCommitteeAction;
 import boundary.action.actions.ToggleVisibilityAction;
 import boundary.action.actions.ViewSuggestionsAction;
+import boundary.action.actions.WithdrawAction;
 import boundary.login.UserSession;
 import boundary.util.CampDisplayer;
 import main.Context;
@@ -43,6 +46,10 @@ public class CampOptionsView extends ViewHandler {
 				new ViewSuggestionsAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
+				new ConfirmationAction(context, session, 
+						new WithdrawAction(context, session, camp)),
+				new ConfirmationAction(context, session, 
+						new DeleteCampAction(context, session, camp)),
 				new PreviousViewAction(context, session)
 				);
 	}

@@ -19,7 +19,7 @@ public abstract class Action {
 	public abstract void performAction() throws Exception;
 	public abstract List<Permission> getRequiredPermissions();
 
-	public ViewHandler getNextView() {
+	public View getNextView() {
 		return session.getViewStack().top();
 	}
 }

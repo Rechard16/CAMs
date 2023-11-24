@@ -31,6 +31,10 @@ public class CampManager implements Savable {
 	public boolean updateCamp(Camp original, Camp modified) throws ClassNotFoundException, IOException {
     	return campDatabase.update(original, modified);
     }
+	
+	public boolean deleteCamp(Camp camp) throws ClassNotFoundException, IOException {
+		return campDatabase.remove(camp);
+	}
           
     public Camp getCampByID(int campID) throws ClassNotFoundException, IOException {
     	return campDatabase.findByID(campID);

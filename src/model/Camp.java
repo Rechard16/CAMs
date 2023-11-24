@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exception.UnauthorisedActionException;
+
 /**
  * The Camp class represents a camp in the system.
  * It includes information about the camp, lists of registered users, visibility
@@ -116,9 +118,12 @@ public class Camp extends Model {
      * Removes a student from the camp's registration list.
      *
      * @param student The student to be removed from the camp.
+     * @throws UnauthorisedActionException 
      */
 
-    public void removeStudent(int id) {
+    public void removeUser(int id) throws UnauthorisedActionException {
+        if (committeeMembers.contains(id))
+        	throw new UnauthorisedActionException();
         // Removes a student from the list of registered students and updates the total
         if (this.students.remove((Integer) id)) {
             this.totalRegistered--;
@@ -136,19 +141,6 @@ public class Camp extends Model {
         // Adds a committee member to the list if they are not already in it
         if (!this.committeeMembers.contains(id)) {
             this.committeeMembers.add(id);
-        }
-    }
-
-    /**
-     * Removes a committee member from the camp's committee list.
-     *
-     * @param member The committee member to be removed.
-     */
-
-    public void removeCommitteeMember(Student member) {
-        // Removes a committee member from the list
-        if (member != null) {
-            this.committeeMembers.remove(Integer.valueOf(member.getID()));
         }
     }
 

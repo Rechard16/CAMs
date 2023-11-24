@@ -20,7 +20,7 @@ public class ViewCampsAction extends Action{
 	}
 
 	@Override
-	public String getDescription() { return "View Available Camps"; }
+	public String getDescription() { return "View Camps in my Faculty"; }
 
 	@Override
 	public void performAction() throws ClassNotFoundException, IOException {

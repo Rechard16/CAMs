@@ -17,7 +17,7 @@ public class ViewSuperCampsAction extends Action{
 
 	@Override
 	public String getDescription() {
-		return "View All Camps";
+		return "View All Camps in System";
 	}
 	
 	public ViewSuperCampsAction(Context context, UserSession session) {

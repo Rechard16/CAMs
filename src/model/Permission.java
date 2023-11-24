@@ -25,6 +25,8 @@ public enum Permission {
      */
 
     MODIFY_CAMP,
+    
+    DELETE_CAMP,
 
     /**
      * SUGGEST_CAMP permission allows a user to submit suggestions to make changes
@@ -107,5 +109,7 @@ public enum Permission {
     /**
      * REGISTER_COMMITTEE permission allows a user to register as a committee member
      */
-    REGISTER_COMMITTEE
+    REGISTER_COMMITTEE,
+    
+    WITHDRAW
 }

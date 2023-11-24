@@ -10,15 +10,15 @@ import main.Context;
 import model.Camp;
 import model.Permission;
 
-public class ViewCreatedCampsAction extends Action {
+public class ViewMyCampsAction extends Action {
 	private List<Camp> camps;
 	
-	public ViewCreatedCampsAction(Context context, UserSession session) {
+	public ViewMyCampsAction(Context context, UserSession session) {
 		super(context, session);
 	}
 
 	@Override
-	public String getDescription() { return "View Created Camps"; }
+	public String getDescription() { return "View My Camps"; }
 
 	@Override
 	public void performAction() throws Exception {
@@ -32,7 +32,7 @@ public class ViewCreatedCampsAction extends Action {
 
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		return List.of(Permission.VIEW_CAMPS_SUPER, Permission.CREATE_CAMP);
+		return List.of(Permission.VIEW_CAMP, Permission.VIEW_CAMPS);
 	}
 
 }

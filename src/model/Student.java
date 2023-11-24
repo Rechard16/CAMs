@@ -26,6 +26,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exception.UnauthorisedActionException;
+
 /**
  * The Student class represents a student user in the system. It extends the
  * User class
@@ -48,6 +50,11 @@ public class Student extends User {
      * A list of IDs of camps the student is registered for.
      */
     private List<Integer> camps = new ArrayList<Integer>();
+    
+    /**
+     * A list of IDs of camps the student has withdrawn from.
+     */
+    private List<Integer> withdrawn = new ArrayList<Integer>();
 
     /**
      * Constructs a Student with specified details including ID, userID, faculty,
@@ -115,6 +122,10 @@ public class Student extends User {
     public void setCamps(List<Integer> camps) {
         this.camps = camps;
     }
+    
+    public void removeCamp(Camp camp) {
+    	camps.remove((Integer) camp.getID());
+    }
    
     /**
      * Retrieves the ID of the camp the user is currently assigned to.
@@ -135,21 +146,27 @@ public class Student extends User {
         this.campID = CampID;
     }
 
+	public void register(Camp camp) {
+		camps.add(camp.getID());
+	}
+	
+	public void deregister(Camp camp) throws UnauthorisedActionException {
+		if (camp.getID() == this.campID) 
+			campID = -1;
+		removeCamp(camp);
+		withdrawn.add(camp.getID());
+	}
+
     @Override
 	public boolean isRegistered(Camp camp) {
 		return camps.contains(camp.getID());
 	}
     
-	public void register(int id) {
-    	if (!camps.contains(id)) {
-    		camps.add(id);
-    	}
-	}
-	
-	@Override
+		@Override
 	public Role getRole(Camp camp) {
 		if (camp.getID() == this.campID) return Role.COMMITTEE_MEMBER;
 		if (isRegistered(camp)) return Role.PARTICIPANT;
+		if (withdrawn.contains(camp.getID())) return Role.WITHDRAWN;
 		if (this.campID > -1) return Role.VIEWER;
 		return Role.FREE_VIEWER;
 	}

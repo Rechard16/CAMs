@@ -19,6 +19,8 @@ participants. There should be filters for how the staff would want to generate t
 
 package model;
 
+import exception.UnauthorisedActionException;
+
 /**
  * The Staff class represents a staff user in the system. It extends the User
  * class
@@ -53,5 +55,10 @@ public class Staff extends User {
 	public Role getRole(Camp camp) {
 		if (isRegistered(camp)) return Role.OWNER;
 		return Role.STAFF;
+	}
+
+	@Override
+	public void deregister(Camp camp) throws UnauthorisedActionException {
+		throw new UnauthorisedActionException();
 	}
 }

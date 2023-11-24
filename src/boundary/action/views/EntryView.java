@@ -10,7 +10,7 @@ import boundary.action.actions.DisplayPointsAction;
 import boundary.action.actions.ExitAction;
 import boundary.action.actions.ViewAssignedCampAction;
 import boundary.action.actions.ViewCampsAction;
-import boundary.action.actions.ViewCreatedCampsAction;
+import boundary.action.actions.ViewMyCampsAction;
 import boundary.action.actions.ViewSuperCampsAction;
 import boundary.login.UserSession;
 import main.Context;
@@ -28,10 +28,10 @@ public class EntryView extends ViewHandler {
 	@Override
 	protected List<Action> generateActions() {
 		return List.of(
-				new ViewCampsAction(context, session),
-				new ViewAssignedCampAction(context, session),
-				new ViewCreatedCampsAction(context, session),
 				new ViewSuperCampsAction(context, session),
+				new ViewCampsAction(context, session),
+				new ViewMyCampsAction(context, session),
+				new ViewAssignedCampAction(context, session),
 				new DisplayPointsAction(context, session, this),
 				new CreateCampAction(context, session),
 				new ChangePasswordAction(context, session),
