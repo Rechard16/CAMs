@@ -24,7 +24,7 @@ public class RoleParameter extends FilterParameter<Registrable>{
 
 	@Override
 	public String getName() {
-		return String.format("Role: %s", role.name());
+		return "Role";
 	}
 
 	@Override

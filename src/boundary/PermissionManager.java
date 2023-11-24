@@ -49,6 +49,7 @@ public class PermissionManager {
 		case STAFF:
 			permissions.add(Permission.TOGGLE_VISIBILITY);
 			permissions.add(Permission.GENERATE_REPORT);
+			permissions.add(Permission.VIEW_PERFORMANCE);
 			permissions.add(Permission.RESOLVE_ENQUIRY);
 			permissions.add(Permission.VIEW_ENQUIRIES);
 			permissions.add(Permission.APPROVE_SUGGEST);

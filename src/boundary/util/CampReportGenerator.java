@@ -8,11 +8,12 @@ import boundary.display.UserDisplayer;
 import boundary.filter.Filter;
 import main.Context;
 import model.Camp;
+import model.Permission;
 import model.Role;
 import model.User;
 
-public class CampReportGenerator {
-    public void generateCampReport(Context context, Camp camp, Filter<User> filter) throws Exception {
+public class CampReportGenerator implements ReportGenerator {
+    public void generateReport(Context context, Camp camp, Filter<User> filter) throws Exception {
 
     	IO io = new FileWriter("camp_report.txt");
 
@@ -39,4 +40,14 @@ public class CampReportGenerator {
         io.flush();
 
     }
+
+	@Override
+	public List<Permission> getPermissions() {
+		return List.of(Permission.GENERATE_REPORT);
+	}
+
+	@Override
+	public String getName() {
+		return "General Camp Report";
+	}
 }

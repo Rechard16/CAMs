@@ -13,6 +13,8 @@ import boundary.filter.FilterParameter;
 import boundary.filter.NameParameter;
 import boundary.filter.RoleParameter;
 import boundary.login.UserSession;
+import boundary.util.CampReportGenerator;
+import boundary.util.CommitteeReportGenerator;
 import main.Context;
 import model.Camp;
 import model.Permission;
@@ -54,7 +56,10 @@ public class UserFilterView extends ViewHandler {
 						new FacultyParameter(), filter),
 				new AddFilterAction<Nameable>(context, session,
 						new NameParameter(), filter),
-				new GenerateReportAction(context, session, camp, filter),
+				new GenerateReportAction(context, session, camp, 
+						filter, new CampReportGenerator()),
+				new GenerateReportAction(context, session, camp, 
+						filter, new CommitteeReportGenerator()),
 				new PreviousViewAction(context, session)
 				);
 	}

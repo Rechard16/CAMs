@@ -9,6 +9,7 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
+import model.UserType;
 
 public class ModifyCampAction extends Action {
 	private final Camp camp;
@@ -20,6 +21,8 @@ public class ModifyCampAction extends Action {
 
 	@Override
 	public String getDescription() {
+		if (session.getUser().getType() == UserType.STUDENT)
+			return "Suggest changes to this camp";
 		return "Modify this Camp";
 	}
 
