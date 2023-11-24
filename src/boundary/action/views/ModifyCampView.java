@@ -7,7 +7,7 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
 import boundary.action.actions.PrintCampAction;
-import boundary.action.actions.ToggleVisibilityAction;
+//import boundary.action.actions.ToggleVisibilityAction;
 import boundary.action.actions.modification.CommitteeSlotsModificationAction;
 import boundary.action.actions.modification.DatesModificationAction;
 import boundary.action.actions.modification.DeadlineModificationAction;
@@ -49,7 +49,7 @@ public class ModifyCampView extends ViewHandler {
 				new DescriptionModificationAction(context, session, modifier),
 				new DatesModificationAction(context, session, modifier),
 				new DeadlineModificationAction(context, session, modifier),
-				new ToggleVisibilityAction(context, session, camp),
+				// new ToggleVisibilityAction(context, session, camp),
 				//
 				new ApplyChangesAction(context, session, camp, modifier),
 				new CancelChangesAction(context, session));
