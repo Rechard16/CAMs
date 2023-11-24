@@ -16,10 +16,10 @@ public class EligibilityChange extends Model implements Change {
     }
 
     public static EligibilityChange create(Context context, User user) {
-		context.print("Will your camp be open to the school?");
-		boolean open = new BooleanReader(context).readBool();
-		
-		return new EligibilityChange(open?Faculty.SCHOOL: user.getFaculty());
+        context.print("Will your camp be open to the school?");
+        boolean open = new BooleanReader(context).readBool();
+
+        return new EligibilityChange(open ? Faculty.SCHOOL : user.getFaculty());
     }
 
     @Override
@@ -27,11 +27,13 @@ public class EligibilityChange extends Model implements Change {
         campInfo.setEligibility(newEligibility);
     }
 
-	@Override
-	public int getID() { return 0; }
+    @Override
+    public int getID() {
+        return 0;
+    }
 
-	@Override
-	public String getDescription() {
-		return String.format("Change eligibility to %d", newEligibility.name());
-	}
+    @Override
+    public String getDescription() {
+        return String.format("Change eligibility to %s", newEligibility.name());
+    }
 }
