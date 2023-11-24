@@ -26,6 +26,14 @@ public class DeadlineChange extends Model implements Change {
         campInfo.setDeadline(newDeadline);
     }
 
-	@Override
-	public int getID() { return 0; }
+    @Override
+    public int getID() {
+        return 0;
+    }
+
+    @Override
+    public String getDescription() {
+        return String.format("Change deadline to: %s", newDeadline.toString());
+    }
+
 }

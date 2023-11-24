@@ -11,7 +11,8 @@ public class Main {
 
 	public static void main(String args[]) throws ClassNotFoundException, IOException {
 		// Uncomment this to reset
-		// new ImportFile().importFile();
+		// If uncommented, all user data will NOT be saved
+		new ImportFile().importFile();
 		
 		Context context = Context.createDefaultContext();
 		

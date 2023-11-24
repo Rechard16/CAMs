@@ -1,5 +1,6 @@
 package model.change;
 
+import boundary.reader.IntegerReader;
 import main.Context;
 import model.CampInfo;
 import model.Change;
@@ -14,7 +15,7 @@ public class CommitteeSlotsChange extends Model implements Change {
 
     public static CommitteeSlotsChange create(Context context) {
         context.print("Enter the new number of committee slots for your camp:");
-        int newCommitteeSlots = context.getScanner().nextInt();
+        int newCommitteeSlots = new IntegerReader(context).readInt();
         return new CommitteeSlotsChange(newCommitteeSlots);
     }
 
@@ -23,11 +24,13 @@ public class CommitteeSlotsChange extends Model implements Change {
         campInfo.setCommitteeSlots(newCommitteeSlots);
     }
 
-	@Override
-	public int getID() { return 0; }
+    @Override
+    public int getID() {
+        return 0;
+    }
 
-	@Override
-	public String getDescription() {
-		return String.format("Change number of committee slots to %d", newCommitteeSlots);
-	}
+    @Override
+    public String getDescription() {
+        return String.format("Change number of committee slots to %d", newCommitteeSlots);
+    }
 }
