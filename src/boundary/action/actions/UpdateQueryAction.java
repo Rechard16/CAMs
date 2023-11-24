@@ -3,36 +3,42 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
+import boundary.action.ViewHandler;
 import boundary.login.UserSession;
 import main.Context;
-import model.Camp;
 import model.Permission;
+import model.Query;
 
-public class CreateQueryAction extends Action {
-	private final Camp camp;
+public class UpdateQueryAction extends Action {
+	
+	private final Query query;
 
-	public CreateQueryAction(Context context, UserSession session, Camp camp) {
+	public UpdateQueryAction(Context context, UserSession session, Query query) {
 		super(context, session);
-		this.camp = camp;
+		this.query = query;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Create enquiry";
+		return "Modify enquiry";
 	}
 
 	@Override
 	public void performAction() throws Exception {
 		context.print("Describe your question:");
-		String query = context.getScanner().nextLine();
+		String description = context.getScanner().nextLine();
 
 		context.print("Give a title for your query:");
 		String title = context.getScanner().nextLine();
 		
-		context.getQueryManager().createQuery(session.getUser().getID(), 
-				camp.getID(), title, query);
+		context.getQueryManager().updateQuery(query, title, description);
 
-		context.print("Query was created!");
+		context.print("Query was updated!");
+	}
+
+	@Override
+	public ViewHandler getNextView() {
+		return session.getViewStack().pop(2);
 	}
 
 	@Override

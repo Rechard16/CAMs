@@ -23,6 +23,8 @@ public class ImportFile {
     	campDatabase.clear();
     	SuggestionDatabase suggestionDatabase = new SuggestionDatabase();
     	suggestionDatabase.clear();
+    	QueryDatabase queryDatabase = new QueryDatabase();
+    	queryDatabase.clear();
         StaffDatabase staffDatabase = new StaffDatabase();
         staffDatabase.clear();
         Staff staffs[] = new Staff[5];
@@ -120,7 +122,7 @@ public class ImportFile {
 				"password",
 				-1);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 11; i++) {
             studentDatabase.add(students[i]);
         }
         studentDatabase.save();

@@ -27,11 +27,15 @@ public class Query extends Model {
      * The content of the query.
      */
     private String description;
+    
+    private String title;
 
     /**
      * Committee member's reply to the query.
      */
     private String reply;
+    
+    private EnquiryStatus status = EnquiryStatus.UNANSWERED;
     
 
     /**
@@ -44,12 +48,13 @@ public class Query extends Model {
      * @param reply       Inital reply is none.
      */
 
-    public Query(int userID, int campID, String description) {
+    public Query(int userID, int campID, String title, String description) {
         this.userID = userID;
         this.campID = campID;
         this.queryID = 1;
         this.description = description;
-        this.reply = null;
+        this.title = title;
+        this.reply = "Unanswered";
     }
 
     /**
@@ -64,12 +69,13 @@ public class Query extends Model {
      * @param reply       Inital reply is none.
      */
 
-    public Query(int userID, int campID, int queryID, String description) {
+    public Query(int userID, int campID, int queryID, String title, String description) {
         this.userID = userID;
         this.campID = campID;
         this.queryID = queryID;
         this.description = description;
-        this.reply = null;
+        this.title = title;
+        this.reply = "Unanswered";
     }
 
     /**
@@ -98,7 +104,6 @@ public class Query extends Model {
      *
      * @return int representing the user's ID.
      */
-
     public int getUserID() {
         return this.userID;
     }
@@ -108,9 +113,16 @@ public class Query extends Model {
      *
      * @return String representing the content of the query.
      */
-
     public String getDescription() {
         return this.description;
+    }
+    
+    public void setTitle(String title) {
+    	this.title = title;
+    }
+    
+    public String getTitle() {
+    	return title;
     }
 
     /**
@@ -169,7 +181,12 @@ public class Query extends Model {
      * @param reply The new reply to be set for the query.
      */
 
-    public void setReply(String reply) {
+    public void answer(String reply) {
         this.reply = reply;
+        this.status = EnquiryStatus.ANSWERED;
+    }
+    
+    public EnquiryStatus getStatus() {
+    	return this.status;
     }
 }
