@@ -36,6 +36,10 @@ public class QueryManager implements Savable{
     	return true;
     }
 
+	public boolean deleteQuery(Query query) throws ClassNotFoundException, IOException {
+		return queryDatabase.remove(query);
+    }
+
     public Query getQueryByID(int queryID) throws IOException, ClassNotFoundException {
     	return queryDatabase.findByID(queryID);
     }

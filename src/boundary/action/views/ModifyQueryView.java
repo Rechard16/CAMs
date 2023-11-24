@@ -5,6 +5,7 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.DeleteQueryAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.UpdateQueryAction;
 import boundary.login.UserSession;
@@ -42,6 +43,7 @@ public class ModifyQueryView extends ViewHandler {
 		List<Action> actions = new ArrayList<>();
 		if (query.getStatus() == EnquiryStatus.UNANSWERED) {
 			actions.add(new UpdateQueryAction(context, session, query));
+			actions.add(new DeleteQueryAction(context, session, query));
 		}
 		actions.add(new PreviousViewAction(context, session));
 		return actions;

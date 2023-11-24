@@ -6,6 +6,8 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.actions.CancelChangesAction;
+import boundary.action.actions.ConfirmationAction;
+import boundary.action.actions.DeleteSuggestionAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.UpdateSuggestionAction;
 import boundary.action.actions.modification.ModificationAction;
@@ -55,6 +57,8 @@ public class ModifySuggestionView extends ViewHandler {
 					.getModificationActions(context, session, modifier));
 			actions.addAll(List.of(
 					new UpdateSuggestionAction(context, session, camp, modifier,suggestion),
+					new ConfirmationAction(context, session,
+							new DeleteSuggestionAction(context, session, suggestion)),
 					new CancelChangesAction(context, session)
 					));
 		} else {
