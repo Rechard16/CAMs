@@ -5,8 +5,6 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampListingView;
-import boundary.filter.FilterParameter;
-import boundary.filter.camp.StaffParameter;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
@@ -24,8 +22,7 @@ public class ViewCreatedCampsAction extends Action {
 
 	@Override
 	public void performAction() throws Exception {
-		FilterParameter<Camp> filter = new StaffParameter(session.getUser().getID());
-		camps = filter.doFilter(context.getCampManager().getAllCamps());
+		camps = context.getCampManager().getRegisteredCamps(session.getUser());
 	}
 
 	@Override

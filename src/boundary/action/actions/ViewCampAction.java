@@ -9,9 +9,7 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
-import model.Student;
-import model.User;
-import model.UserType;
+import model.Role;
 
 public class ViewCampAction extends Action {
 	private Camp camp;
@@ -36,10 +34,11 @@ public class ViewCampAction extends Action {
 	@Override
 	public String getDescription() {
 		String name = camp.getInformation().getName();
-		User user = session.getUser();
-		if (user.getType() == UserType.STUDENT && 
-				((Student) user).isRegistered(camp.getID()))
-			name += " (Registered)";
+
+		Role role = session.getUser().getRole(camp);
+		if (role != Role.FREE_VIEWER && role != Role.VIEWER)
+			name += String.format(" (%s)", role.name());
+
 		if (!camp.getVisibility()) 
 			name += " (Hidden)";
 		return name;

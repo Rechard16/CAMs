@@ -33,6 +33,6 @@ public class DisplayPointsAction extends Action{
 	
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		return List.of(Permission.VIEW_POINTS);
+		return List.of(Permission.COMMITTEE_ELIGIBLE);
 	}
 }

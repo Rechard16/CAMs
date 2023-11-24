@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Camp;
 import model.Permission;
+import model.Role;
 import model.Student;
 import model.User;
 import model.UserType;
@@ -18,9 +19,8 @@ public class PermissionManager {
 		permissions.add(Permission.CHANGE_PASSWORD);
 		switch (user.getType()) {
 		case STUDENT:
-			permissions.add(Permission.VIEW_POINTS);
-			permissions.add(Permission.VIEW_CAMPS);
 			permissions.add(Permission.COMMITTEE_ELIGIBLE);
+			permissions.add(Permission.VIEW_CAMPS);
 			break;
 		case STAFF:
 			permissions.add(Permission.VIEW_CAMPS_SUPER);
@@ -35,27 +35,29 @@ public class PermissionManager {
 	
 	public List<Permission> getCampModificationPermissions(User user, Camp camp) {
 		List<Permission> permissions = getPermissions(user);
-		if (user.getType() == UserType.STUDENT) {
-			if (((Student) user).isRegistered(camp.getID())) {
-				if (((Student) user).getCampID() == camp.getID()) {
-					permissions.add(Permission.SUGGEST_CAMP);
-					permissions.add(Permission.VIEW_ENQUIRIES);
-					permissions.add(Permission.RESOLVE_ENQUIRY);
-					permissions.add(Permission.MODIFY_CAMP);
-				} else {
-					permissions.add(Permission.ENQUIRY);
-				}
-			} else {
-				permissions.add(Permission.REGISTER);
-				if (((Student) user).getCampID() == -1)
-					permissions.add(Permission.REGISTER_COMMITTEE);
-			}
-		}
-		if (user.getType() == UserType.STAFF) {
-			if (camp.getInformation().staffID == user.getID()) {
-				permissions.add(Permission.APPROVE_SUGGEST);
-				permissions.add(Permission.MODIFY_CAMP);
-			}
+		Role role = user.getRole(camp);
+		
+		switch (role) {
+		case COMMITTEE_MEMBER:
+			permissions.add(Permission.SUGGEST_CAMP);
+			permissions.add(Permission.VIEW_ENQUIRIES);
+			permissions.add(Permission.RESOLVE_ENQUIRY);
+			permissions.add(Permission.MODIFY_CAMP);
+			break;
+		case OWNER:
+			permissions.add(Permission.APPROVE_SUGGEST);
+			permissions.add(Permission.MODIFY_CAMP);
+			break;
+		case PARTICIPANT:
+			permissions.add(Permission.ENQUIRY);
+			break;
+		case STAFF:
+			break;
+		case FREE_VIEWER:
+			permissions.add(Permission.REGISTER_COMMITTEE);
+		case VIEWER:
+			permissions.add(Permission.REGISTER);
+			break;
 		}
 		return permissions;
 	}

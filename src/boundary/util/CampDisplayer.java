@@ -17,6 +17,7 @@ public class CampDisplayer {
 	}
 	
 	public void dislayCamp() throws ClassNotFoundException, IOException {
+		context.print("-----------------------------------------------------------");
 		infoDisplayer.displayCampInfo();
 		context.print(String.format("Available slots: %d", 
 				camp.getInformation().getTotalSlots() - camp.getTotalRegistered()));

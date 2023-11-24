@@ -21,7 +21,9 @@ public class CancelChangesAction extends Action {
 	}
 
 	@Override
-	public void performAction() throws Exception {}
+	public void performAction() throws Exception {
+		context.print("Changes were not applied to your camp");
+	}
 	
 	@Override
 	public ViewHandler getNextView() {

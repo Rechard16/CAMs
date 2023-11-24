@@ -2,6 +2,7 @@ package model.change;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,9 @@ public class DatesChange extends Model implements Change {
 
     @Override
     public void modify(CampInfo campInfo) {
-        campInfo.setDates(List.of(newStartDate));
+    	List<Date> dates = new ArrayList<>(campInfo.getDates());
+    	dates.set(0, newStartDate);
+    	campInfo.setDates(dates);
     }
 
 	@Override

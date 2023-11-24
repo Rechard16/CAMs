@@ -21,6 +21,8 @@ public class ImportFile {
     public void importFile() throws IOException, ClassNotFoundException {
     	CampDatabase campDatabase = new CampDatabase();
     	campDatabase.clear();
+    	SuggestionDatabase suggestionDatabase = new SuggestionDatabase();
+    	suggestionDatabase.clear();
         StaffDatabase staffDatabase = new StaffDatabase();
         staffDatabase.clear();
         Staff staffs[] = new Staff[5];

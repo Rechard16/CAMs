@@ -43,4 +43,15 @@ public class Staff extends User {
     public UserType getType() {
         return UserType.STAFF;
     }
+
+	@Override
+	public boolean isRegistered(Camp camp) {
+		return camp.getInformation().getStaffID() == this.getID();
+	}
+
+	@Override
+	public Role getRole(Camp camp) {
+		if (isRegistered(camp)) return Role.OWNER;
+		return Role.STAFF;
+	}
 }

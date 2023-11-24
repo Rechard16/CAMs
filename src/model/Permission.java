@@ -85,21 +85,16 @@ public enum Permission {
     RESOLVE_ENQUIRY,
     
     /**
-     * VIEW_POINTS permission allows a student to view his own points.
+     * COMMITTEE_ELIGIBLE permission allows a user to be eligible as a committee member
      */
-    VIEW_POINTS,
+    COMMITTEE_ELIGIBLE,
     
     /**
      * CHANGE_PASSWORD permission allows a user to change their password
      */
     CHANGE_PASSWORD,
-    
-    /**
-     * COMMITTEE_ELIGIBLE permission allows a user to register themself as a committee member
-     */
-    COMMITTEE_ELIGIBLE,
-    
-    /**
+
+	/**
      * TOGGLE_VISIBILITY permission allows a user to toggle camp visibility
      */
     TOGGLE_VISIBILITY,

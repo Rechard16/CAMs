@@ -9,20 +9,32 @@ import main.Context;
 import model.Camp;
 import model.CampInfoModifier;
 import model.Permission;
+import model.Suggestion;
 
 public class ApplyChangesAction extends Action {
 	private final CampInfoModifier modifier;
 	private final Camp camp;
+	private final boolean isNew;
 
 	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
-			CampInfoModifier modifier) {
+			CampInfoModifier modifier, boolean isNew) {
 		super(context, session);
 		this.camp = camp;
 		this.modifier = modifier;
+		this.isNew = isNew;
+	}
+	
+	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
+			Suggestion suggestion) {
+		super(context, session);
+		this.camp = camp;
+		this.modifier = suggestion.getModifier();
+		this.isNew = false;
 	}
 
 	@Override
 	public String getDescription() {
+		if (isNew) return "Update camp with changes";
 		return "Approve current changes";
 	}
 

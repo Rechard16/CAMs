@@ -27,7 +27,7 @@ public class ViewSuperCampsAction extends Action{
 	@Override
 	public void performAction() throws ClassNotFoundException, IOException {
 		camps = context.getCampManager()
-			.getAllCamps();;
+			.getAllCamps();
 	}
 
 	@Override

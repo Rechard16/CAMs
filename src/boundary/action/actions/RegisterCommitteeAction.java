@@ -48,7 +48,7 @@ public class RegisterCommitteeAction extends Action{
 
 	@Override
 	public List<Permission> getRequiredPermissions() {
-		return List.of(Permission.VIEW_CAMP, Permission.REGISTER);
+		return List.of(Permission.VIEW_CAMP, Permission.REGISTER, Permission.REGISTER_COMMITTEE);
 	}
 
 }

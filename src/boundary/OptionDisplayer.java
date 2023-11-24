@@ -33,7 +33,8 @@ public class OptionDisplayer {
 		while (true) {
 			try {
 				int selection = Integer.parseInt(context.getScanner().nextLine());
-				if (selection <= options.size() && selection>0) {
+				selection = Math.min(selection, options.size());
+				if (selection>0) {
 					lineBreak();
 					return options.get(selection-1);
 				}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.action.views.ModifyCampView;
+import boundary.action.views.SuggestionView;
 import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
@@ -35,7 +35,7 @@ public class ViewSuggestionAction extends Action {
 	
 	@Override
 	public ViewHandler getNextView() {
-		return new ModifyCampView(context, session, camp, suggestion);
+		return new SuggestionView(context, session, camp, suggestion);
 	}
 
 	@Override

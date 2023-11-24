@@ -135,13 +135,22 @@ public class Student extends User {
         this.campID = CampID;
     }
 
-	public boolean isRegistered(int id) {
-		return camps.contains(id);
+    @Override
+	public boolean isRegistered(Camp camp) {
+		return camps.contains(camp.getID());
 	}
-
+    
 	public void register(int id) {
     	if (!camps.contains(id)) {
     		camps.add(id);
     	}
+	}
+	
+	@Override
+	public Role getRole(Camp camp) {
+		if (camp.getID() == this.campID) return Role.COMMITTEE_MEMBER;
+		if (isRegistered(camp)) return Role.PARTICIPANT;
+		if (this.campID > -1) return Role.VIEWER;
+		return Role.FREE_VIEWER;
 	}
 }

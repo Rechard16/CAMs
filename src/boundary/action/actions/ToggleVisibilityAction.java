@@ -25,6 +25,11 @@ public class ToggleVisibilityAction extends Action {
 	public void performAction() throws Exception {
 		boolean visibility = camp.getVisibility();
 		camp.setVisibility(!visibility);
+		try {
+			context.getCampManager().save();
+		} catch (Exception e) { 
+			context.print("I/O Error. Unable to save your changes!");
+		}
 		context.print("The visibility of this camp has been set to: %s\n",
 				visibility?"false":"true");
 	}

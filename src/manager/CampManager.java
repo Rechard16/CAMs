@@ -9,6 +9,7 @@ import database.CampDatabase;
 import model.Camp;
 import model.CampInfo;
 import model.Faculty;
+import model.Registrable;
 
 public class CampManager implements Savable {
 	
@@ -26,12 +27,8 @@ public class CampManager implements Savable {
 		campDatabase.add(camp);
 		return camp;
     }
-
-    public boolean deleteCamp(Camp campObject) throws IOException, ClassNotFoundException {
-    	return campDatabase.remove(campObject);
-	}
     
-    public boolean updateCamp(Camp original, Camp modified) throws ClassNotFoundException, IOException {
+	public boolean updateCamp(Camp original, Camp modified) throws ClassNotFoundException, IOException {
     	return campDatabase.update(original, modified);
     }
           
@@ -39,6 +36,12 @@ public class CampManager implements Savable {
     	return campDatabase.findByID(campID);
     }
     
+    public List<Camp> getRegisteredCamps(Registrable user) throws ClassNotFoundException, IOException {
+    	List<Camp> res = new ArrayList<>();
+    	for (Camp camp: campDatabase.getAll())
+    		if (user.isRegistered(camp)) res.add(camp);
+    	return res;
+    }
     
     public List<Camp> getAllCamps() throws ClassNotFoundException, IOException{
     	return campDatabase.getAll();
@@ -46,15 +49,15 @@ public class CampManager implements Savable {
     
     public List<Camp> getCampsByEligibility(Faculty eligibility) throws ClassNotFoundException, IOException{
     	
-    	List <Camp> EligibleCampArr = new ArrayList<Camp>();
+    	List <Camp> eligibleCampArr = new ArrayList<Camp>();
     	for (Camp camp: campDatabase.getAll()) {
     		if (!camp.getVisibility()) continue;
     		Faculty fac = camp.getInformation().getEligibility();
     		if (fac == eligibility || fac == Faculty.SCHOOL) {
-    			EligibleCampArr.add(camp);
+    			eligibleCampArr.add(camp);
     		}
     	}
-		return EligibleCampArr;
+		return eligibleCampArr;
     }
 
 	@Override

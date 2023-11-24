@@ -6,7 +6,6 @@ import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
-import boundary.action.actions.PrintCampAction;
 import boundary.action.actions.SubmitSuggestionAction;
 import boundary.action.actions.ToggleVisibilityAction;
 //import boundary.action.actions.ToggleVisibilityAction;
@@ -19,12 +18,12 @@ import boundary.action.actions.modification.LocationModificationAction;
 import boundary.action.actions.modification.NameModificationAction;
 import boundary.action.actions.modification.TotalSlotsModificationAction;
 import boundary.login.UserSession;
+import boundary.util.CampDisplayer;
 import main.Context;
 import model.Camp;
 import model.CampInfoModifier;
 import model.Change;
 import model.Permission;
-import model.Suggestion;
 
 public class ModifyCampView extends ViewHandler {
 	private final Camp camp;
@@ -36,12 +35,6 @@ public class ModifyCampView extends ViewHandler {
 		this.modifier = new CampInfoModifier();
 	}
 
-	public ModifyCampView(Context context, UserSession session, Camp camp, Suggestion suggestion) {
-		super(context, session);
-		this.camp = camp;
-		this.modifier = new CampInfoModifier(suggestion.getModifier());
-	}
-
 	@Override
 	protected String getPrompt() {
 		return "How will you modify this camp?:";
@@ -49,8 +42,7 @@ public class ModifyCampView extends ViewHandler {
 	
 	@Override
 	public void displayView() throws Exception {
-		new PrintCampAction(context, session, camp, modifier)
-			.performAction();
+		new CampDisplayer(context, camp).dislayCamp();
 		context.print("\nCurrent Modifications to this Camp:");
 		for (Change change : modifier.getChanges()) {
 			context.print("- " + change.getDescription());
@@ -72,7 +64,7 @@ public class ModifyCampView extends ViewHandler {
 
 				new ToggleVisibilityAction(context, session, camp),
 				new SubmitSuggestionAction(context, session, camp, modifier),
-				new ApplyChangesAction(context, session, camp, modifier),
+				new ApplyChangesAction(context, session, camp, modifier, true),
 				new CancelChangesAction(context, session));
 	}
 
