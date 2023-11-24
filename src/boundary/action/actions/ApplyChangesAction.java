@@ -13,6 +13,7 @@ import model.Suggestion;
 
 public class ApplyChangesAction extends Action {
 	private final CampInfoModifier modifier;
+	private final Suggestion suggestion;
 	private final Camp camp;
 	private final boolean isNew;
 
@@ -22,6 +23,7 @@ public class ApplyChangesAction extends Action {
 		this.camp = camp;
 		this.modifier = modifier;
 		this.isNew = isNew;
+		this.suggestion = null;
 	}
 	
 	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
@@ -30,6 +32,7 @@ public class ApplyChangesAction extends Action {
 		this.camp = camp;
 		this.modifier = suggestion.getModifier();
 		this.isNew = false;
+		this.suggestion = suggestion;
 	}
 
 	@Override
@@ -43,7 +46,13 @@ public class ApplyChangesAction extends Action {
 		Camp modified = modifier.modify(camp);
 		try {
 			context.getCampManager().updateCamp(camp, modified);
-			context.getSuggestionManager().deleteSuggestion(modifier.getID());
+			if (suggestion != null) {
+				Suggestion suggestion = context.getSuggestionManager()
+						.getSuggestion(modifier.getID());
+				suggestion.approve();
+				context.getSuggestionManager().save();
+			}
+
 		} catch (Exception e) {
 			context.print("I/O error. Unable to save your changes!");
 		}

@@ -111,5 +111,7 @@ public enum Permission {
      */
     REGISTER_COMMITTEE,
     
-    WITHDRAW
+    WITHDRAW,
+    
+    IMPOSSIBLE
 }

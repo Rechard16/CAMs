@@ -5,6 +5,7 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
+import boundary.action.actions.ModifySuggestionAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ViewSuggestionAction;
 import boundary.login.UserSession;
@@ -32,8 +33,10 @@ public class SuggestionListingView extends ViewHandler {
 	@Override
 	protected List<Action> generateActions() throws Exception {
 		List<Action> actions = new ArrayList<>();
-		for (Suggestion s: suggestions)
+		for (Suggestion s: suggestions) {
 			actions.add(new ViewSuggestionAction(context, session, camp, s));
+			actions.add(new ModifySuggestionAction(context, session, camp, s));
+		}
 		actions.add(new PreviousViewAction(context, session));
 		return actions;
 	}
