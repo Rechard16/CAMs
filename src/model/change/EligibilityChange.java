@@ -13,10 +13,16 @@ public class EligibilityChange implements Change {
     }
 
     public static EligibilityChange create(Context context) {
-        context.print("Enter the new eligibility criteria for your camp (e.g., SCHOOL, ENGINEERING):");
+        context.print("Enter the new eligibility criteria for your camp (e.g., SCSE, NBS, ADM, SSS, EEE, or SCHOOL):");
         String eligibilityString = context.getScanner().nextLine();
-        Faculty newEligibility = Faculty.valueOf(eligibilityString.toUpperCase());
-        return new EligibilityChange(newEligibility);
+
+        try {
+            Faculty newEligibility = Faculty.valueOf(eligibilityString.toUpperCase());
+            return new EligibilityChange(newEligibility);
+        } catch (IllegalArgumentException e) {
+            context.print("Invalid faculty name. Please enter a valid faculty name.");
+            return null; 
+        }
     }
 
     @Override
