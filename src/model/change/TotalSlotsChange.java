@@ -14,7 +14,7 @@ public class TotalSlotsChange extends Model implements Change {
 
     public static TotalSlotsChange create(Context context) {
         context.print("Enter the new total slots for your camp:");
-        int newTotalSlots = context.getScanner().nextInt();
+        int newTotalSlots = new IntegerReader(context).readInt();
         return new TotalSlotsChange(newTotalSlots);
     }
 
