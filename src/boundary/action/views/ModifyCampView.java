@@ -8,7 +8,6 @@ import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
 import boundary.action.actions.PrintCampAction;
 import boundary.action.actions.SubmitSuggestionAction;
-import boundary.action.actions.ToggleVisibilityAction;
 //import boundary.action.actions.ToggleVisibilityAction;
 import boundary.action.actions.modification.CommitteeSlotsModificationAction;
 import boundary.action.actions.modification.DatesModificationAction;
@@ -46,11 +45,11 @@ public class ModifyCampView extends ViewHandler {
 	protected String getPrompt() {
 		return "How will you modify this camp?:";
 	}
-	
+
 	@Override
 	public void displayView() throws Exception {
 		new PrintCampAction(context, session, camp, modifier)
-			.performAction();
+				.performAction();
 		context.print("\nCurrent Modifications to this Camp:");
 		for (Change change : modifier.getChanges()) {
 			context.print("- " + change.getDescription());
@@ -70,7 +69,7 @@ public class ModifyCampView extends ViewHandler {
 				new DatesModificationAction(context, session, modifier),
 				new DeadlineModificationAction(context, session, modifier),
 
-				new ToggleVisibilityAction(context, session, camp),
+				// new ToggleVisibilityAction(context, session, camp),
 				new SubmitSuggestionAction(context, session, camp, modifier),
 				new ApplyChangesAction(context, session, camp, modifier),
 				new CancelChangesAction(context, session));
