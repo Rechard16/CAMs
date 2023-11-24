@@ -47,5 +47,4 @@ public class ApplyChangesAction extends Action {
 	public List<Permission> getRequiredPermissions() {
 		return List.of(Permission.MODIFY_CAMP, Permission.APPROVE_SUGGEST);
 	}
-
 }

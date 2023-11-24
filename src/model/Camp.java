@@ -73,7 +73,7 @@ public class Camp extends Model {
      * @return True if the camp is visible, false otherwise.
      */
 
-    public boolean isVisible() {
+    public boolean getVisibility() {
         return visibility;
     }
 
@@ -242,15 +242,5 @@ public class Camp extends Model {
 
     public void setTotalRegistered(int totalRegistered) {
         this.totalRegistered = totalRegistered;
-    }
-
-    /**
-     * Retrieves the current visibility status of the camp.
-     *
-     * @return The visibility status of the camp.
-     */
-
-    public boolean getVisibility() {
-        return this.visibility;
     }
 }

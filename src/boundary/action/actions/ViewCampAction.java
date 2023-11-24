@@ -40,7 +40,7 @@ public class ViewCampAction extends Action {
 		if (user.getType() == UserType.STUDENT && 
 				((Student) user).isRegistered(camp.getID()))
 			name += " (Registered)";
-		if (!camp.isVisible()) 
+		if (!camp.getVisibility()) 
 			name += " (Hidden)";
 		return name;
 	}

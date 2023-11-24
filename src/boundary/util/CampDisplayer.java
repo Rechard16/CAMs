@@ -18,7 +18,11 @@ public class CampDisplayer {
 	
 	public void dislayCamp() throws ClassNotFoundException, IOException {
 		infoDisplayer.displayCampInfo();
-		if (!camp.isVisible()) 
-			context.print("This camp is hidden from students.");
+		context.print(String.format("Available slots: %d", 
+				camp.getInformation().getTotalSlots() - camp.getTotalRegistered()));
+		context.print(String.format("Available committee slots: %d", 
+				camp.getInformation().getCommitteeSlots() - camp.getCommitteeMembers().size()));
+		context.print(String.format("This camp is %s to students.",
+				camp.getVisibility()?"visible":"hidden"));
 	}
 }
