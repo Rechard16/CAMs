@@ -14,7 +14,7 @@ public class CommitteeSlotsChange extends Model implements Change {
 
     public static CommitteeSlotsChange create(Context context) {
         context.print("Enter the new number of committee slots for your camp:");
-        int newCommitteeSlots = context.getScanner().nextInt();
+        int newCommitteeSlots = new IntegerReader(context).readInt();
         return new CommitteeSlotsChange(newCommitteeSlots);
     }
 
