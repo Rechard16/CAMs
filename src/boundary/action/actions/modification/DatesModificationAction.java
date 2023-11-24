@@ -13,7 +13,7 @@ public class DatesModificationAction extends ModificationAction {
 
     @Override
     public String getDescription() {
-        return "What is the new start date of your camp?";
+        return "Change start date of your camp";
     }
 
     @Override
