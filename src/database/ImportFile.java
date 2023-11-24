@@ -65,47 +65,61 @@ public class ImportFile {
         		Faculty.ADM,
         		"password",
         		-1);
-        /*(6);
-        culty(Faculty.ADM);
-        erID("KOH1");
-        ssword("password");
-        (7);
-        culty(Faculty.EEE);
-        erID("BR015");
-        ssword("password");
-        (8);
-        culty(Faculty.SCSE);
-        erID("CT113");
-        ssword("password");
-        (9);
-        culty(Faculty.NBS);
-        erID("YCN019");
-        ssword("password");
-        (10);
-        culty(Faculty.SCSE);
-        erID("DL007");
-        ssword("password");
-        (11);
-        culty(Faculty.ADM);
-        erID("DON84");
-        ssword("password");
-        (12);
-        culty(Faculty.EEE);
-        erID("ELI34");
-        ssword("password");
-        (13);
-        culty(Faculty.SCSE);
-        erID("LE51");
-        ssword("password");
-        (14);
-        culty(Faculty.NBS);
-        erID("SL22");
-        ssword("password");
-        D(15);
-        aculty(Faculty.SSS);
-        serID("AKY013");
-        assword("password");
-        */
+		students[2] = new Student(
+				7,
+				"BRO15",
+				Faculty.EEE,
+				"password",
+				-1);
+		students[3] = new Student(
+				8,
+				"CT113",
+				Faculty.SCSE,
+				"password",
+				-1);
+		students[4] = new Student(
+				9,
+				"YCN019",
+				Faculty.NBS,
+				"password",
+				-1);
+		students[5] = new Student(
+				10,
+				"DL007",
+				Faculty.SCSE,
+				"password",
+				-1);
+		students[6] = new Student(
+				11,
+				"DON84",
+				Faculty.ADM,
+				"password",
+				-1);
+		students[7] = new Student(
+				12,
+				"ELI34",
+				Faculty.EEE,
+				"password",
+				-1);
+		students[8] = new Student(
+				13,
+				"LE51",
+				Faculty.SCSE,
+				"password",
+				-1);
+		students[9] = new Student(
+				14,
+				"SL22",
+				Faculty.NBS,
+				"password",
+				-1);
+		students[10] = new Student(
+				15,
+				"AKY013",
+				Faculty.SSS,
+				"password",
+				-1);
+
         for (int i = 0; i < 2; i++) {
             studentDatabase.add(students[i]);
         }
