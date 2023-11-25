@@ -2,6 +2,7 @@ package boundary.login;
 
 import java.util.Scanner;
 
+import boundary.util.PasswordChangeHandler;
 import exception.UnsuccessfulLoginException;
 import main.Context;
 
@@ -20,6 +21,18 @@ public class LoginPortal {
 	public LoginSession openPortal() {
 		try {
 			LoginSession session = createSession();
+			if (session != null && session.getUser().getPassword().equals("password")) {
+				context.print("You are still using the default password. Please enter a new password");
+				PasswordChangeHandler handler = new PasswordChangeHandler(context, session.getUser());
+				while (true) {
+					context.print("Please enter a password:");
+					String password = context.getScanner().nextLine();
+					if (handler.changePassword(password)) {
+						context.print("Password changed!");
+						break;
+					}
+				}
+			}
 			return session;
 		} catch (UnsuccessfulLoginException e) {
 			context.print(e.getMessage());
