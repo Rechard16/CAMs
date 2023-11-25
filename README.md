@@ -12,11 +12,11 @@ We are a group 6 from tutorial group SCL2, Nanyang Technological University, Sin
 
 | Name           | Github Account                                  
 |----------------|-------------------------------------------------
-|ZENG RUIXIAO    | [Rechard16](https://github.com/Rechard16)
-|Zhang Jiahua    | [Paraworks](https://github.com/Paraworks)
-|YANG IIYU       | [POeticPotatoes](https://github.com/POeticPotatoes)
-|PARK JIHAE      | [pimangnono](https://github.com/pimangnono)
 |CHEE ZHENG RONG |
+|PARK JIHAE      | [pimangnono](https://github.com/pimangnono)
+|YANG IIYU       | [POeticPotatoes](https://github.com/POeticPotatoes)
+|ZENG RUIXIAO    | [Rechard16](https://github.com/Rechard16)
+|ZHANG JIAHUA    | [Paraworks](https://github.com/Paraworks)
 
 ## About this project
 YOu can view them [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ&themeRefresh=1)
