@@ -3,6 +3,7 @@ package entity.model.change;
 import java.util.Date;
 
 import boundary.reader.DateReader;
+import entity.exception.IllegalModificationException;
 import entity.model.CampInfo;
 import entity.model.Model;
 import main.Context;
@@ -36,7 +37,7 @@ public class DeadlineChange extends Model implements Change {
 
     public static DeadlineChange create(Context context) {
         context.print("Enter the new registration deadline for your camp:");
-        Date newDeadline = new DateReader(context).readDate();
+        Date newDeadline = new DateReader(context).readDate(null, null);
         return new DeadlineChange(newDeadline);
     }
 
@@ -44,10 +45,13 @@ public class DeadlineChange extends Model implements Change {
      * Modifies the camp information.
      *
      * @param campInfo The camp information to be modified.
+     * @throws IllegalModificationException 
      */
 
     @Override
-    public void modify(CampInfo campInfo) {
+    public void modify(CampInfo campInfo) throws IllegalModificationException {
+    	if (campInfo.getDates().get(0).before(newDeadline))
+    		throw new IllegalModificationException("Cannot set a deadline after the camp has already started!");
         campInfo.setDeadline(newDeadline);
     }
 

@@ -1,6 +1,7 @@
 package entity.model.change;
 
 import boundary.reader.IntegerReader;
+import entity.exception.IllegalModificationException;
 import entity.model.CampInfo;
 import entity.model.Model;
 import main.Context;
@@ -37,7 +38,7 @@ public class CommitteeSlotsChange extends Model implements Change {
 
     public static CommitteeSlotsChange create(Context context) {
         context.print("Enter the new number of committee slots for your camp:");
-        int newCommitteeSlots = new IntegerReader(context).readInt();
+        int newCommitteeSlots = new IntegerReader(context).readInt(1);
         return new CommitteeSlotsChange(newCommitteeSlots);
     }
 
@@ -45,10 +46,13 @@ public class CommitteeSlotsChange extends Model implements Change {
      * Modifies the camp information.
      *
      * @param campInfo The camp information to be modified.
+     * @throws IllegalModificationException 
      */
 
     @Override
-    public void modify(CampInfo campInfo) {
+    public void modify(CampInfo campInfo) throws IllegalModificationException {
+    	if (campInfo.getCommitteeSlots() > newCommitteeSlots) 
+    		throw new IllegalModificationException("Cannot decrease number of committee slots in a camp!");
         campInfo.setCommitteeSlots(newCommitteeSlots);
     }
 

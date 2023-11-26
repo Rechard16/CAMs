@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import control.database.CampDatabase;
+import control.database.Database;
 import entity.Registrable;
 import entity.model.Camp;
 import entity.model.CampInfo;
@@ -18,7 +19,7 @@ import entity.model.Faculty;
  */
 public class CampManager implements Savable {
 
-	public CampDatabase campDatabase;
+	public Database<Camp> campDatabase;
 
 	/**
 	 * Constructor for the CampManager class.

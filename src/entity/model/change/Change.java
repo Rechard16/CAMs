@@ -1,5 +1,6 @@
 package entity.model.change;
 
+import entity.exception.IllegalModificationException;
 import entity.model.CampInfo;
 
 /**
@@ -12,8 +13,9 @@ public interface Change {
      * Modifies the camp information.
      * 
      * @param campInfo The camp information to be modified.
+     * @throws IllegalModificationException 
      */
-    public void modify(CampInfo campInfo);
+    public void modify(CampInfo campInfo) throws IllegalModificationException;
 
     /**
      * Returns the description of the change.

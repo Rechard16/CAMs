@@ -3,6 +3,7 @@ package control.manager;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import control.database.Database;
 import control.database.StaffDatabase;
 import control.database.StudentDatabase;
 import entity.model.Staff;
@@ -16,8 +17,8 @@ import entity.model.User;
  */
 public class UserManager implements Savable {
 
-	private StudentDatabase studentDatabase;
-	private StaffDatabase staffDatabase;
+	private Database<Student> studentDatabase;
+	private Database<Staff> staffDatabase;
 
 	/**
 	 * Constructor for the UserManager class.

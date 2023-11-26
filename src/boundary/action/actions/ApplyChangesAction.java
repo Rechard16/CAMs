@@ -5,6 +5,7 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import control.login.UserSession;
+import entity.exception.IllegalModificationException;
 import entity.model.Camp;
 import entity.model.CampInfoModifier;
 import entity.model.Permission;
@@ -82,8 +83,8 @@ public class ApplyChangesAction extends Action {
 	 * @throws Exception
 	 */
 	public void performAction() throws Exception {
-		Camp modified = modifier.modify(camp);
 		try {
+			Camp modified = modifier.modify(camp);
 			context.getCampManager().updateCamp(camp, modified);
 			if (suggestion != null) {
 				Suggestion suggestion = context.getSuggestionManager()
@@ -91,7 +92,9 @@ public class ApplyChangesAction extends Action {
 				suggestion.approve();
 				context.getSuggestionManager().save();
 			}
-
+		} catch (IllegalModificationException e) {
+			context.print("Failed to modify camp: %s\n", e.getMessage());
+			return;
 		} catch (Exception e) {
 			context.print("I/O error. Unable to save your changes!");
 		}

@@ -24,12 +24,17 @@ public class IntegerReader {
 	 * @return The integer that was read.
 	 */
 
-	public int readInt() {
+	public int readInt(int minValue) {
 		Scanner scanner = context.getScanner();
 		while (true) {
 			context.print("Enter an integer:");
 			try {
-				return Integer.parseInt(scanner.nextLine());
+				int val = Integer.parseInt(scanner.nextLine());
+				if (val < minValue) {
+					context.print("Value cannot be less than %d!\n", minValue);
+					continue;
+				}
+				return val;
 			} catch (Exception e) {
 			}
 		}

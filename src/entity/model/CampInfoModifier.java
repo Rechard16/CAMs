@@ -3,6 +3,7 @@ package entity.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.exception.IllegalModificationException;
 import entity.model.change.Change;
 
 /**
@@ -67,7 +68,7 @@ public class CampInfoModifier extends Model {
 	 * @param c The change to be removed.
 	 */
 
-	public Camp modify(Camp camp) {
+	public Camp modify(Camp camp) throws IllegalModificationException {
 		Camp modified = new Camp(camp);
 		for (Change change : changes)
 			change.modify(modified.getInformation());

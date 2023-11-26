@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import control.database.SuggestionDatabase;
+import control.database.Database;
 import entity.model.CampInfoModifier;
 import entity.model.Suggestion;
 import entity.model.SuggestionStatus;
@@ -15,7 +15,7 @@ import entity.model.SuggestionStatus;
  * It is also used to get suggestions by camp.
  */
 public class SuggestionManager implements Savable {
-	private SuggestionDatabase suggestionDatabase;
+	private Database<Suggestion> suggestionDatabase;
 
 	/*
 	 * Constructor for SuggestionManager.

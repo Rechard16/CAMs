@@ -46,10 +46,10 @@ public class CampCreator {
 		campInfo.setName(name);
 
 		context.print("What date will your camp start?");
-		Date start = new DateReader(context).readDate();
+		Date start = new DateReader(context).readDate(new Date(), null);
 
 		context.print("Whate date will your camp end?");
-		Date end = new DateReader(context).readDate();
+		Date end = new DateReader(context).readDate(start, null);
 
 		campInfo.setDates(List.of(start, end));
 
@@ -64,12 +64,12 @@ public class CampCreator {
 		campInfo.setLocation(location);
 
 		context.print("How many students may attend the camp?");
-		int totalSlots = new IntegerReader(context).readInt();
+		int totalSlots = new IntegerReader(context).readInt(1);
 
 		campInfo.setTotalSlots(totalSlots);
 
 		context.print("How many committee members may there be in the camp?");
-		int committeeSlots = new IntegerReader(context).readInt();
+		int committeeSlots = new IntegerReader(context).readInt(1);
 
 		campInfo.setCommitteeSlots(committeeSlots);
 
@@ -79,7 +79,7 @@ public class CampCreator {
 		campInfo.setDescription(description);
 
 		context.print("When will registration for the camp close?");
-		Date deadline = new DateReader(context).readDate();
+		Date deadline = new DateReader(context).readDate(new Date(), start);
 
 		campInfo.setDeadline(deadline);
 

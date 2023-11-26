@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import control.database.Database;
 import control.database.QueryDatabase;
+import entity.model.Camp;
 import entity.model.EnquiryStatus;
 import entity.model.Query;
 
@@ -15,7 +17,7 @@ import entity.model.Query;
  */
 
 public class QueryManager implements Savable {
-	private QueryDatabase queryDatabase;
+	private Database<Query> queryDatabase;
 
 	/**
 	 * Constructor for the QueryManager class.

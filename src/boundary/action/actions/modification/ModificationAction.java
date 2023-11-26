@@ -70,7 +70,6 @@ public abstract class ModificationAction extends Action {
 				new CommitteeSlotsModificationAction(context, session, modifier),
 				new EligibilityModificationAction(context, session, modifier),
 				new DescriptionModificationAction(context, session, modifier),
-				new DatesModificationAction(context, session, modifier),
 				new DeadlineModificationAction(context, session, modifier));
 	}
 }
