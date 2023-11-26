@@ -81,6 +81,18 @@ If you wish to test CAMs with test data, 2 input files are provided under `data/
 * Several camps will be added, and 9 students will be registered for camp "Zenith"  
     (Since it only has 9 slots, the camp will be full)
 
+After running `populate_camps`, the following camps will be added to the system:
+
+faculty|camp name|date start|date end|hidden from students|open to school|location|slot|committee|registration|close
+|-|-|-|-|-|-|-|-|-|-|-|
+scse|(HUKUMAR)|Journey's End|2023-12-12|2023-12-15|y|n|NTU|10|2|2023-12-10
+scse|(HUKUMAR)|Zenith|2023-12-16|2023-12-19|y|y|NUS|9|1|2023-12-15
+scse|(HUKUMAR)|Lord of the Flies|2023-12-25|2023-12-25|y|n|Unknown Island|13|2|2023-10-10
+scse|(HUKUMAR)|Secret Base|2023-12-20|2023-12-20|n|n|NUS|13|2|2023-12-11
+ADM|(OURIN)|Apples and Oranges|2023-12-14|2023-12-16|y|y|NTU|10|2|2023-12-10
+ADM|(OURIN)|Trick or Treat|2023-12-15|2023-12-15|y|n|NTU|10|2|2023-12-10
+SCSE|(ANWIT)|Modern Horror|2024-01-05|2024-01-07|y|n|NUS|10|2|2023-12-10
+
 ### File Generation
 CAMs allows the user to generate reports about their camps. After generation, the report will be found in the root directory of the project as `camp_report.txt` or `committee_report.txt` (Depending on the type of report).
 
