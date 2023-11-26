@@ -80,7 +80,7 @@ public class CampCreator {
 		campInfo.setDescription(description);
 
 		context.print("When will registration for the camp close?");
-		Date deadline = new DateReader(context).readDate(new Date(), start);
+		Date deadline = new DateReader(context).readDate(null, start);
 
 		campInfo.setDeadline(deadline);
 
