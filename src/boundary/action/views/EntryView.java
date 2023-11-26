@@ -15,17 +15,39 @@ import boundary.action.actions.ViewSuperCampsAction;
 import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
+/*
+ * EntryView is a class that is used to handle entry.
+ */
 
 public class EntryView extends ViewHandler {
+	/*
+	 * Constructor for EntryView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 */
 
 	public EntryView(Context context, UserSession session) {
 		super(context, session);
 	}
 
 	@Override
-	protected String getPrompt() { return "What do you want to do?"; }
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "What do you want to do?".
+	 */
+	protected String getPrompt() {
+		return "What do you want to do?";
+	}
 
 	@Override
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return The actions.
+	 */
 	protected List<Action> generateActions() {
 		return List.of(
 				new ViewSuperCampsAction(context, session),
@@ -35,11 +57,15 @@ public class EntryView extends ViewHandler {
 				new DisplayPointsAction(context, session, this),
 				new CreateCampAction(context, session),
 				new ChangePasswordAction(context, session),
-				new ExitAction(context, session)
-				);
+				new ExitAction(context, session));
 	}
 
 	@Override
+	/*
+	 * Get the permissions.
+	 * 
+	 * @return The permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return this.context.getPermissionManager()
 				.getPermissions(this.session.getUser());

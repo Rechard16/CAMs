@@ -9,7 +9,7 @@ import model.interfaces.Locatable;
 import model.interfaces.Nameable;
 
 /**
- * The Camp class represents a camp in the system.
+ * The Camp class represents a camp object in the system.
  * It includes information about the camp, lists of registered users, visibility
  * status,
  * and identifiers for committee members and students.
@@ -22,28 +22,33 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
     private CampInfo information;
 
     /**
-     * Indicates if the camp is visible to users.
+     * Indicates if the camp is visible to students.
      */
+
     private boolean visibility;
 
     /**
      * Unique identifier for the camp.
      */
+
     private int id;
 
     /**
      * List of IDs of committee members.
      */
+
     private List<Integer> committeeMembers;
 
     /**
      * List of IDs of registered students.
      */
+
     private List<Integer> students;
 
     /**
      * Total number of registered users.
      */
+
     private int totalRegistered;
 
     /**
@@ -62,9 +67,17 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
         this.visibility = false; // Default visibility is set to false.
         this.id = information.getID(); // Set the ID based on provided information.
     }
-    
+
+    /**
+     * Constructs a Camp with specified camp information.
+     * Initializes the lists of registered users, committee members, and students,
+     * and sets the camp's ID.
+     *
+     * @param information The detailed information about the camp.
+     */
+
     public Camp(Camp camp) {
-    	this.information = new CampInfo(camp.getInformation());
+        this.information = new CampInfo(camp.getInformation());
         this.committeeMembers = new ArrayList<>(camp.getCommitteeMembers());
         this.students = new ArrayList<>(camp.getStudents());
         this.totalRegistered = camp.getTotalRegistered();
@@ -110,7 +123,6 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
      */
 
     public void addStudent(int id) {
-        // Adds a student to the list of registered students and updates the total
         if (!this.students.contains(id)) {
             this.students.add(id);
             this.totalRegistered++;
@@ -119,15 +131,14 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
 
     /**
      * Removes a student from the camp's registration list.
+     * Ensures the student is registered before removing.
      *
      * @param student The student to be removed from the camp.
-     * @throws UnauthorisedActionException 
      */
 
     public void removeUser(int id) throws UnauthorisedActionException {
         if (committeeMembers.contains(id))
-        	throw new UnauthorisedActionException();
-        // Removes a student from the list of registered students and updates the total
+            throw new UnauthorisedActionException();
         if (this.students.remove((Integer) id)) {
             this.totalRegistered--;
         }
@@ -135,9 +146,9 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
 
     /**
      * Adds a committee member to the camp's committee list.
-     * Ensures the member is not already a part of the committee before adding.
+     * Ensures the committee member is not already in the list before adding.
      *
-     * @param i The student to be added as a committee member.
+     * @param committeeMember The committee member to be added to the camp.
      */
 
     public void addCommitteeMember(int id) {
@@ -238,19 +249,37 @@ public class Camp extends Model implements Nameable, Locatable, FacultyMember {
     public void setTotalRegistered(int totalRegistered) {
         this.totalRegistered = totalRegistered;
     }
-    
+
+    /**
+     * Retrieves the name of the camp.
+     *
+     * @return The name of the camp.
+     */
+
     @Override
     public String getName() {
-    	return this.information.getName();
+        return this.information.getName();
     }
 
-	@Override
-	public Faculty getFaculty() {
-		return this.getInformation().getEligibility();
-	}
+    /*
+     * Retrieves the eligibility criteria for the camp.
+     * 
+     * @return The eligibility criteria for the camp.
+     */
 
-	@Override
-	public String getLocation() {
-		return this.getInformation().getLocation();
-	}
+    @Override
+    public Faculty getFaculty() {
+        return this.getInformation().getEligibility();
+    }
+
+    /**
+     * Retrieves the location of the camp.
+     *
+     * @return The location of the camp.
+     */
+
+    @Override
+    public String getLocation() {
+        return this.getInformation().getLocation();
+    }
 }

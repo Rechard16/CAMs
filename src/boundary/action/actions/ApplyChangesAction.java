@@ -10,14 +10,30 @@ import model.Camp;
 import model.CampInfoModifier;
 import model.Permission;
 import model.Suggestion;
+/*
+ * ApplyChangesAction is a class that is used to apply changes.
+ */
 
 public class ApplyChangesAction extends Action {
 	private final CampInfoModifier modifier;
 	private final Suggestion suggestion;
 	private final Camp camp;
 	private final boolean isNew;
+	/*
+	 * Constructor for ApplyChangesAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 * 
+	 * @param modifier The modifier to be used.
+	 * 
+	 * @param isNew The boolean to be used.
+	 */
 
-	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
+	public ApplyChangesAction(Context context, UserSession session, Camp camp,
 			CampInfoModifier modifier, boolean isNew) {
 		super(context, session);
 		this.camp = camp;
@@ -25,8 +41,23 @@ public class ApplyChangesAction extends Action {
 		this.isNew = isNew;
 		this.suggestion = null;
 	}
-	
-	public ApplyChangesAction(Context context, UserSession session, Camp camp, 
+	/*
+	 * Constructor for ApplyChangesAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 * 
+	 * @param modifier The modifier to be used.
+	 * 
+	 * @param isNew The boolean to be used.
+	 * 
+	 * @param suggestion The suggestion to be used.
+	 */
+
+	public ApplyChangesAction(Context context, UserSession session, Camp camp,
 			Suggestion suggestion) {
 		super(context, session);
 		this.camp = camp;
@@ -36,12 +67,23 @@ public class ApplyChangesAction extends Action {
 	}
 
 	@Override
+	/*
+	 * Get the description.
+	 * 
+	 * @return "Update camp with changes" or "Approve current changes".
+	 */
 	public String getDescription() {
-		if (isNew) return "Update camp with changes";
+		if (isNew)
+			return "Update camp with changes";
 		return "Approve current changes";
 	}
 
 	@Override
+	/*
+	 * Performs the action.
+	 * 
+	 * @throws Exception
+	 */
 	public void performAction() throws Exception {
 		Camp modified = modifier.modify(camp);
 		try {
@@ -58,13 +100,23 @@ public class ApplyChangesAction extends Action {
 		}
 		context.print("Your changes have been applied to your camp.");
 	}
-	
+
 	@Override
+	/*
+	 * Get the next view.
+	 * 
+	 * @return The next view.
+	 */
 	public ViewHandler getNextView() {
 		return session.getViewStack().reset();
 	}
 
 	@Override
+	/*
+	 * Get the required permissions.
+	 * 
+	 * @return The required permissions.
+	 */
 	public List<Permission> getRequiredPermissions() {
 		return List.of(Permission.MODIFY_CAMP, Permission.APPROVE_SUGGEST);
 	}

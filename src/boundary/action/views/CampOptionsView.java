@@ -23,27 +23,54 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Camp;
 import model.Permission;
+/*
+ * CampOptionsView is a class that is used to handle camp options.
+ */
 
 public class CampOptionsView extends ViewHandler {
 	private Camp camp;
-	
+	/*
+	 * Constructor for CampOptionsView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 */
+
 	public CampOptionsView(Context context, UserSession session, Camp camp) {
 		super(context, session);
-		this.camp=camp;
+		this.camp = camp;
 	}
 
 	@Override
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "What do you wish to do with this camp?".
+	 */
 	protected String getPrompt() {
 		return "What do you wish to do with this camp?";
 	}
-	
-	@Override 
+
+	@Override
+	/*
+	 * Displays the view.
+	 * 
+	 * @throws Exception
+	 */
 	public void displayView() throws Exception {
 		new CampDisplayer(context, camp).display();
 		super.displayView();
 	}
 
 	@Override
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return The actions.
+	 */
 	protected List<Action> generateActions() {
 		return List.of(
 				new ToggleVisibilityAction(context, session, camp),
@@ -56,15 +83,19 @@ public class CampOptionsView extends ViewHandler {
 				new UserFilterByAction(context, session, camp),
 				new RegisterAction(context, session, camp),
 				new RegisterCommitteeAction(context, session, camp),
-				new ConfirmationAction(context, session, 
+				new ConfirmationAction(context, session,
 						new WithdrawAction(context, session, camp)),
-				new ConfirmationAction(context, session, 
+				new ConfirmationAction(context, session,
 						new DeleteCampAction(context, session, camp)),
-				new PreviousViewAction(context, session)
-				);
+				new PreviousViewAction(context, session));
 	}
 
 	@Override
+	/*
+	 * Get the permissions.
+	 * 
+	 * @return The permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
 				.getCampModificationPermissions(this.session.getUser(), camp);

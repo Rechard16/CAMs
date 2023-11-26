@@ -26,7 +26,8 @@ public class DatesChange extends Model implements Change {
     private Date newEndDate;
 
     /**
-     * Private constructor to create an instance of DatesChange with specified start and end dates.
+     * Private constructor to create an instance of DatesChange with specified start
+     * and end dates.
      *
      * @param newStartDate The new start date for the camp.
      * @param newEndDate   The new end date for the camp.
@@ -37,7 +38,8 @@ public class DatesChange extends Model implements Change {
     }
 
     /**
-     * Creates a new DatesChange object after prompting the user for the new start and end dates.
+     * Creates a new DatesChange object after prompting the user for the new start
+     * and end dates.
      * 
      * @param context The context providing necessary interactions for user input.
      * @return A new instance of DatesChange with the specified start and end dates.
@@ -53,7 +55,8 @@ public class DatesChange extends Model implements Change {
     }
 
     /**
-     * Applies the change to the given CampInfo object by setting its start and end dates to the new values.
+     * Applies the change to the given CampInfo object by setting its start and end
+     * dates to the new values.
      *
      * @param campInfo The CampInfo object to be modified.
      */
@@ -63,7 +66,8 @@ public class DatesChange extends Model implements Change {
     }
 
     /**
-     * Retrieves the unique identifier of this change. In this implementation, it always returns 0.
+     * Retrieves the unique identifier of this change. In this implementation, it
+     * always returns 0.
      *
      * @return The unique identifier (always 0 for this implementation).
      */
@@ -73,7 +77,8 @@ public class DatesChange extends Model implements Change {
     }
 
     /**
-     * Provides a description of this change, specifically stating the new start and end dates.
+     * Provides a description of this change, specifically stating the new start and
+     * end dates.
      *
      * @return A String description of the modification.
      */

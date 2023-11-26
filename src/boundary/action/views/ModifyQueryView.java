@@ -16,35 +16,65 @@ import model.Camp;
 import model.EnquiryStatus;
 import model.Permission;
 import model.Query;
+/*
+ * ModifyQueryView is a class that is used to modify a query.
+ */
 
 public class ModifyQueryView extends ViewHandler {
 	private final Camp camp;
 	private final Query query;
+	/*
+	 * Constructor for ModifyQueryView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 * 
+	 * @param query The query to be used.
+	 */
 
-	public ModifyQueryView(Context context, UserSession session, 
-		Camp camp, Query query) {
+	public ModifyQueryView(Context context, UserSession session,
+			Camp camp, Query query) {
 		super(context, session);
 		this.camp = camp;
 		this.query = query;
 	}
 
 	@Override
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "How will you handle this suggestion?:".
+	 */
 	protected String getPrompt() {
 		return "How will you handle this suggestion?:";
 	}
 
 	@Override
+	/*
+	 * Displays the view.
+	 * 
+	 * @throws Exception
+	 */
 	public void displayView() throws Exception {
-		new QueryDisplayer(context, query).display();;
+		new QueryDisplayer(context, query).display();
+		;
 		super.displayView();
 	}
 
 	@Override
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return The actions.
+	 */
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<>();
 		if (query.getStatus() == EnquiryStatus.UNANSWERED) {
 			actions.add(new UpdateQueryAction(context, session, query));
-			new ConfirmationAction(context, session, 
+			new ConfirmationAction(context, session,
 					new DeleteQueryAction(context, session, query));
 		}
 		actions.add(new PreviousViewAction(context, session));
@@ -52,6 +82,11 @@ public class ModifyQueryView extends ViewHandler {
 	}
 
 	@Override
+	/*
+	 * Get the permissions.
+	 * 
+	 * @return The permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
 				.getCampModificationPermissions(this.session.getUser(), camp);

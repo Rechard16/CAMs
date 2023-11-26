@@ -50,7 +50,7 @@ public class Student extends User {
      * A list of IDs of camps the student is registered for.
      */
     private List<Integer> camps = new ArrayList<Integer>();
-    
+
     /**
      * A list of IDs of camps the student has withdrawn from.
      */
@@ -102,9 +102,13 @@ public class Student extends User {
     public void setPoints(int points) {
         this.points = points;
     }
-    
+
+    /**
+     * Adds a point to the student's total points.
+     */
+
     public void addPoint() {
-    	this.points++;
+        this.points++;
     }
 
     /**
@@ -126,11 +130,17 @@ public class Student extends User {
     public void setCamps(List<Integer> camps) {
         this.camps = camps;
     }
-    
+
+    /**
+     * Adds a camp to the list of camps the student is registered for.
+     *
+     * @param camp The camp to be added to the list.
+     */
+
     public void removeCamp(Camp camp) {
-    	camps.remove((Integer) camp.getID());
+        camps.remove((Integer) camp.getID());
     }
-   
+
     /**
      * Retrieves the ID of the camp the user is currently assigned to.
      *
@@ -150,28 +160,59 @@ public class Student extends User {
         this.campID = CampID;
     }
 
-	public void register(Camp camp) {
-		camps.add(camp.getID());
-	}
-	
-	public void deregister(Camp camp) throws UnauthorisedActionException {
-		if (camp.getID() == this.campID) 
-			campID = -1;
-		removeCamp(camp);
-		withdrawn.add(camp.getID());
-	}
+    /**
+     * Registers the student for a camp.
+     *
+     * @param camp The camp to be registered for.
+     */
+
+    public void register(Camp camp) {
+        camps.add(camp.getID());
+    }
+
+    /**
+     * Deregisters the student from a camp.
+     *
+     * @param camp The camp to be deregistered from.
+     * @throws UnauthorisedActionException
+     */
+
+    public void deregister(Camp camp) throws UnauthorisedActionException {
+        if (camp.getID() == this.campID)
+            campID = -1;
+        removeCamp(camp);
+        withdrawn.add(camp.getID());
+    }
+
+    /**
+     * Checks if the student is registered for a camp.
+     *
+     * @param camp The camp to be checked.
+     * @return True if the student is registered for the camp, false otherwise.
+     */
 
     @Override
-	public boolean isRegistered(Camp camp) {
-		return camps.contains(camp.getID());
-	}
-    
-		@Override
-	public Role getRole(Camp camp) {
-		if (camp.getID() == this.campID) return Role.COMMITTEE_MEMBER;
-		if (isRegistered(camp)) return Role.PARTICIPANT;
-		if (withdrawn.contains(camp.getID())) return Role.WITHDRAWN;
-		if (this.campID > -1) return Role.VIEWER;
-		return Role.FREE_VIEWER;
-	}
+    public boolean isRegistered(Camp camp) {
+        return camps.contains(camp.getID());
+    }
+
+    /**
+     * Returns the role of the user for the specified camp.
+     *
+     * @param camp The camp to check the user's role for.
+     * @return The role of the user for the specified camp.
+     */
+
+    @Override
+    public Role getRole(Camp camp) {
+        if (camp.getID() == this.campID)
+            return Role.COMMITTEE_MEMBER;
+        if (isRegistered(camp))
+            return Role.PARTICIPANT;
+        if (withdrawn.contains(camp.getID()))
+            return Role.WITHDRAWN;
+        if (this.campID > -1)
+            return Role.VIEWER;
+        return Role.FREE_VIEWER;
+    }
 }

@@ -7,12 +7,26 @@ import java.util.Scanner;
 
 import main.Context;
 
+/**
+ * DateReader is a class that is used to read dates.
+ */
+
 public class DateReader {
 	private final Context context;
-	
+	/*
+	 * Constructor for DateReader.
+	 * 
+	 * @param context The context to be used.
+	 */
+
 	public DateReader(Context context) {
 		this.context = context;
 	}
+	/*
+	 * Reads a date.
+	 * 
+	 * @return The date that was read.
+	 */
 
 	public Date readDate() {
 		Scanner scanner = context.getScanner();
@@ -22,7 +36,8 @@ public class DateReader {
 			try {
 				LocalDate date = LocalDate.parse(raw);
 				return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 		}
 	}
 }

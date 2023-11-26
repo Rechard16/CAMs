@@ -33,19 +33,20 @@ public class Suggestion extends Model {
      * A list of changes proposed in the suggestion.
      */
     private CampInfoModifier modifier;
-    
+
+    /**
+     * The status of the suggestion.
+     */
+
     private SuggestionStatus status;
 
     /**
-     * Constructs a new Suggestion with the specified user, campaign ID, and
-     * description.
-     * The suggestion ID is generated automatically by the SuggestionDatabase.
+     * Constructs a Suggestion with specified user ID, camp ID, and description.
+     * Initializes suggestionID to 1.
      *
-     * @param user               The user making the suggestion.
-     * @param campID             The campaign ID associated with the suggestion.
-     * @param description        The content of the suggestion.
-     * @param suggestionDatabase The database used for generating a new suggestion
-     *                           ID.
+     * @param userID      The ID of the user making the suggestion.
+     * @param campID      The ID of the camp associated with the suggestion.
+     * @param description The content of the suggestion.
      */
 
     public Suggestion(int userID, int campID, CampInfoModifier modifier, String description, int suggestionID) {
@@ -67,14 +68,15 @@ public class Suggestion extends Model {
     public int getID() {
         return this.suggestionID;
     }
-    
+
     /**
      * Sets the suggestion ID
      * 
      * @parm id the new ID of the suggestion
      */
+
     public void setID(int id) {
-    	this.suggestionID = id;
+        this.suggestionID = id;
     }
 
     /**
@@ -164,22 +166,47 @@ public class Suggestion extends Model {
      */
 
     public CampInfoModifier getModifier() {
-    	return this.modifier;
+        return this.modifier;
     }
-    
+
+    /**
+     * Sets the list of changes proposed in the suggestion.
+     *
+     * @param modifier The new list of changes to be associated with the
+     *                 suggestion.
+     */
+
     public void setModifier(CampInfoModifier modifier) {
-    	this.modifier = modifier;
+        this.modifier = modifier;
     }
-    
+
+    /**
+     * Retrieves the status of the suggestion.
+     *
+     * @return SuggestionStatus representing the status of the suggestion.
+     */
+
     public SuggestionStatus getStatus() {
-    	return this.status;
+        return this.status;
     }
-    
+
+    /**
+     * Sets the status of the suggestion.
+     *
+     * @param status The new status to be set for the suggestion.
+     */
+
     public void approve() {
-    	this.status = SuggestionStatus.APPROVED;
+        this.status = SuggestionStatus.APPROVED;
     }
-    
+
+    /**
+     * Sets the status of the suggestion.
+     *
+     * @param status The new status to be set for the suggestion.
+     */
+
     public void close() {
-    	this.status = SuggestionStatus.CLOSED;
+        this.status = SuggestionStatus.CLOSED;
     }
 }

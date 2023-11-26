@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * The Model class is an abstract representation of an entity in the
- * application.
+ * Camp Manager Sytem.
  * It is designed to be extensible and provides a common framework for all
  * entities
  * in the application. The class implements the Serializable interface, allowing

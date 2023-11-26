@@ -21,9 +21,21 @@ import model.interfaces.FacultyMember;
 import model.interfaces.Locatable;
 import model.interfaces.Nameable;
 
+/*
+ * CampFilterView is a class that is used to filter camps.
+ */
 public class CampFilterView extends ViewHandler {
 	private final Filter<Camp> filter = new Filter<>();
 	private final List<Camp> camps;
+	/*
+	 * Constructor for CampFilterView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camps The camps to be used.
+	 */
 
 	public CampFilterView(Context context, UserSession session, List<Camp> camps) {
 		super(context, session);
@@ -31,14 +43,25 @@ public class CampFilterView extends ViewHandler {
 	}
 
 	@Override
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "Add a filter, or perform a search:".
+	 */
 	protected String getPrompt() {
 		return "Add a filter, or perform a search:";
 	}
-	
+
 	@Override
+
+	/*
+	 * Displays the view.
+	 * 
+	 * @throws Exception
+	 */
 	public void displayView() throws Exception {
 		String filters = "Currently filtering by: Alphabetical Order";
-		for (FilterParameter<?> param: filter.getParameters())
+		for (FilterParameter<?> param : filter.getParameters())
 			filters += String.format(", %s", param.getName());
 		context.print(filters);
 
@@ -46,6 +69,12 @@ public class CampFilterView extends ViewHandler {
 	}
 
 	@Override
+
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return A list of actions.
+	 */
 	protected List<Action> generateActions() throws Exception {
 		return List.of(
 				new AddFilterAction<Locatable>(context, session,
@@ -57,11 +86,15 @@ public class CampFilterView extends ViewHandler {
 				new AddFilterAction<Camp>(context, session,
 						new StaffParameter(), filter),
 				new FilterCampsAction(context, session, filter, camps),
-				new PreviousViewAction(context, session)
-				);
+				new PreviousViewAction(context, session));
 	}
 
 	@Override
+	/*
+	 * Gets the permissions.
+	 * 
+	 * @return A list of permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
 				.getPermissions(this.session.getUser());

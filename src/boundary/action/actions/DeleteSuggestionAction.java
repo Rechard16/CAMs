@@ -8,9 +8,21 @@ import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
 import model.Suggestion;
+/*
+ * DeleteSuggestionAction is a class that is used to delete suggestions.
+ */
 
 public class DeleteSuggestionAction extends Action {
 	private final Suggestion suggestion;
+	/*
+	 * Constructor for DeleteSuggestionAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param suggestion The suggestion to be used.
+	 */
 
 	public DeleteSuggestionAction(Context context, UserSession session, Suggestion suggestion) {
 		super(context, session);
@@ -18,25 +30,44 @@ public class DeleteSuggestionAction extends Action {
 	}
 
 	@Override
+	/*
+	 * Get the description.
+	 * 
+	 * @return "Delete this Suggestion".
+	 */
 	public String getDescription() {
 		return "Delete this Suggestion";
 	}
 
 	@Override
+	/*
+	 * Perform the action.
+	 * 
+	 * @throws Exception
+	 */
 	public void performAction() throws Exception {
 		context.getSuggestionManager().deleteSuggestion(suggestion);
 		context.print("Your suggestion was deleted!");
 	}
-	
+
 	@Override
+	/*
+	 * Get the next view.
+	 * 
+	 * @return The next view.
+	 */
 	public View getNextView() {
 		return session.getViewStack().pop(2);
 	}
 
 	@Override
+	/*
+	 * Get the required permissions.
+	 * 
+	 * @return The required permissions.
+	 */
 	public List<Permission> getRequiredPermissions() {
 		return List.of(Permission.MODIFY_CAMP, Permission.SUGGEST_CAMP);
 	}
-	
-	
+
 }

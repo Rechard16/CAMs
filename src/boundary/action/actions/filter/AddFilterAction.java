@@ -9,12 +9,26 @@ import boundary.filter.FilterParameter;
 import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
+/*
+ * AddFilterAction is a class that is used to add a filter.
+ */
 
 public class AddFilterAction<T> extends Action {
 	private final Filter<? extends T> filter;
 	private final FilterParameter<T> parameter;
+	/*
+	 * Constructor for AddFilterAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param parameter The parameter to be used.
+	 * 
+	 * @param filter The filter to be used.
+	 */
 
-	public AddFilterAction(Context context, UserSession session, 
+	public AddFilterAction(Context context, UserSession session,
 			FilterParameter<T> parameter, Filter<? extends T> filter) {
 		super(context, session);
 		this.parameter = parameter;
@@ -22,11 +36,21 @@ public class AddFilterAction<T> extends Action {
 	}
 
 	@Override
+	/*
+	 * Get the description.
+	 * 
+	 * @return "Filter by <parameter name>".
+	 */
 	public String getDescription() {
 		return String.format("Filter by %s", parameter.getName());
 	}
 
 	@Override
+	/*
+	 * Perform the action.
+	 * 
+	 * @throws Exception
+	 */
 	public void performAction() throws Exception {
 		parameter.build(context);
 		filter.addFilter(parameter);
@@ -34,6 +58,11 @@ public class AddFilterAction<T> extends Action {
 	}
 
 	@Override
+	/*
+	 * Get the required permissions.
+	 * 
+	 * @return An empty list.
+	 */
 	public List<Permission> getRequiredPermissions() {
 		return Collections.emptyList();
 	}

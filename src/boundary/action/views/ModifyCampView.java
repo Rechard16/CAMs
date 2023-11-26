@@ -16,10 +16,24 @@ import model.Camp;
 import model.CampInfoModifier;
 import model.Permission;
 import model.change.Change;
+/*
+ * ModifyCampView is a class that is used to modify a camp.
+ */
 
 public class ModifyCampView extends ViewHandler {
 	private final Camp camp;
 	private final CampInfoModifier modifier;
+	/*
+	 * Constructor for ModifyCampView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 * 
+	 * @param modifier The modifier to be used.
+	 */
 
 	public ModifyCampView(Context context, UserSession session, Camp camp) {
 		super(context, session);
@@ -28,11 +42,21 @@ public class ModifyCampView extends ViewHandler {
 	}
 
 	@Override
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "How will you modify this camp?".
+	 */
 	protected String getPrompt() {
 		return "How will you modify this camp?";
 	}
 
 	@Override
+	/*
+	 * Displays the view.
+	 * 
+	 * @throws Exception
+	 */
 	public void displayView() throws Exception {
 		new CampDisplayer(context, camp).display();
 		context.print("\nCurrent Modifications to this Camp:");
@@ -43,6 +67,11 @@ public class ModifyCampView extends ViewHandler {
 	}
 
 	@Override
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return The actions.
+	 */
 	protected List<Action> generateActions() {
 		List<Action> actions = new ArrayList<>();
 		actions.addAll(ModificationAction
@@ -51,12 +80,16 @@ public class ModifyCampView extends ViewHandler {
 				// new ToggleVisibilityAction(context, session, camp),
 				new SubmitSuggestionAction(context, session, camp, modifier),
 				new ApplyChangesAction(context, session, camp, modifier, true),
-				new CancelChangesAction(context, session)
-				));
+				new CancelChangesAction(context, session)));
 		return actions;
 	}
 
 	@Override
+	/*
+	 * Get the permissions.
+	 * 
+	 * @return The permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
 				.getCampModificationPermissions(this.session.getUser(), camp);

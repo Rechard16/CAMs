@@ -16,27 +16,37 @@ public class Query extends Model {
     /**
      * The ID of the camp associated with the query.
      */
+
     private int campID;
 
     /**
      * A unique identifier for the query.
      */
+
     private int queryID;
 
     /**
      * The content of the query.
      */
+
     private String description;
-    
+
+    /**
+     * The title of the query.
+     */
+
     private String title;
 
     /**
      * Committee member's reply to the query.
      */
+
     private String reply;
-    
+
+    /**
+     * The status of the query.
+     */
     private EnquiryStatus status = EnquiryStatus.UNANSWERED;
-    
 
     /**
      * Constructs a Query with specified user ID, camp ID, and description.
@@ -116,13 +126,23 @@ public class Query extends Model {
     public String getDescription() {
         return this.description;
     }
-    
+
+    /**
+     * Retrieves the title of the query.
+     *
+     * @return String representing the title of the query.
+     */
     public void setTitle(String title) {
-    	this.title = title;
+        this.title = title;
     }
-    
+
+    /**
+     * Retrieves the title of the query.
+     *
+     * @return String representing the title of the query.
+     */
     public String getTitle() {
-    	return title;
+        return title;
     }
 
     /**
@@ -185,8 +205,13 @@ public class Query extends Model {
         this.reply = reply;
         this.status = EnquiryStatus.ANSWERED;
     }
-    
+
+    /**
+     * Retrieves the status of the query.
+     *
+     * @return The status of the query.
+     */
     public EnquiryStatus getStatus() {
-    	return this.status;
+        return this.status;
     }
 }

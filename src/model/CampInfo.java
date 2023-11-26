@@ -6,11 +6,12 @@ import java.util.List;
 import model.interfaces.Nameable;
 
 /**
- * The CampInfo class represents information about a camp in the system.
- * It includes details such as the camp's name, ID, dates, eligibility criteria,
- * location,
- * total and committee slots, description, staff in charge, and registration
- * deadline.
+ * Represents information about a camp in the CAMS. This class includes
+ * details such as the camp's name, unique identifier, dates, eligibility
+ * criteria,
+ * location, available slots (both total and for committee members),
+ * description,
+ * the staff member in charge, and the registration deadline.
  */
 
 public class CampInfo extends Model implements Nameable {
@@ -25,73 +26,92 @@ public class CampInfo extends Model implements Nameable {
     private int campID;
 
     /**
-     * The dates when the camp will take place.
+     * The start date and end date of the camp duration.
      */
     private List<Date> dates;
 
     /**
-     * The faculty eligible to participate in the camp.
+     * The faculty eligible user to participate in the camp.
      */
+
     private Faculty eligibility;
 
     /**
      * Location where the camp will be held.
      */
+
     private String location;
 
     /**
      * Total number of slots available for the camp.
      */
+
     private int totalSlots;
 
     /**
      * Number of slots allocated for committee members.
      */
+
     private int committeeSlots;
 
     /**
      * The description of the camp.
      */
+
     private String description;
 
     /**
-     * Id of Staff in charge.
+     * Id of Staff in charge of this camp.
      */
+
     public int staffID;
 
     /**
      * Deadline for camp registration.
      */
+
     private Date deadline;
 
     /**
      * Retrieves the name of the camp.
      *
-     * @return The name of the camp.
+     * @return The camp's name.
      */
+
     public String getName() {
         return this.name;
     }
-    
+
     /**
      * Default constructor
      */
-    public CampInfo() {}
-    
+
+    public CampInfo() {
+    }
+
     /**
-     * Copy constructor
+     * Constructs a new CampInfo instance by copying the details from an existing
+     * CampInfo object.
+     * This includes copying the camp's name, unique identifier, dates, eligibility
+     * criteria,
+     * location, total slots, committee slots, description, registration deadline,
+     * and staff ID.
+     * 
+     * @param info The CampInfo instance from which to copy the details.
+     *             Should not be {@code null}.
      */
+
     public CampInfo(CampInfo info) {
-    	this.name = info.getName();
-    	this.campID = info.getID();
-    	this.dates = info.getDates();
-    	this.eligibility = info.getEligibility();
-    	this.location = info.getLocation();
-    	this.totalSlots = info.getTotalSlots();
-    	this.committeeSlots = info.getCommitteeSlots();
-    	this.description = info.getDescription();
-    	this.deadline = info.getDeadline();
-    	this.staffID = info.getStaffID();
+        this.name = info.getName();
+        this.campID = info.getID();
+        this.dates = info.getDates();
+        this.eligibility = info.getEligibility();
+        this.location = info.getLocation();
+        this.totalSlots = info.getTotalSlots();
+        this.committeeSlots = info.getCommitteeSlots();
+        this.description = info.getDescription();
+        this.deadline = info.getDeadline();
+        this.staffID = info.getStaffID();
     }
 
     /**
@@ -108,7 +128,7 @@ public class CampInfo extends Model implements Nameable {
     /**
      * Retrieves the list of dates for the camp.
      *
-     * @return A list of dates.
+     * @return The start and end date of class.
      */
 
     public List<Date> getDates() {

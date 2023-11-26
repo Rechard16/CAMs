@@ -8,25 +8,59 @@ import boundary.action.ViewHandler;
 import boundary.login.UserSession;
 import main.Context;
 import model.Permission;
+/*
+ * ExitAction is a class that is used to exit.
+ */
 
 public class ExitAction extends Action {
-	
+	/*
+	 * Constructor for ExitAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 */
+
 	public ExitAction(Context context, UserSession session) {
 		super(context, session);
 	}
-	
-	@Override
-	public String getDescription() { return "Exit"; }
 
 	@Override
-	public void performAction() { session.getLoginSession().logout(); }
+	/*
+	 * Get the description.
+	 * 
+	 * @return "Exit".
+	 */
+	public String getDescription() {
+		return "Exit";
+	}
 
 	@Override
+	/*
+	 * Perform the action.
+	 */
+	public void performAction() {
+		session.getLoginSession().logout();
+	}
+
+	@Override
+	/*
+	 * Get the next view.
+	 * 
+	 * @return null.
+	 */
 	public ViewHandler getNextView() {
 		return null;
 	}
 
 	@Override
-	public List<Permission> getRequiredPermissions() { return Collections.emptyList(); }
+	/*
+	 * Get the required permissions.
+	 * 
+	 * @return An empty list.
+	 */
+	public List<Permission> getRequiredPermissions() {
+		return Collections.emptyList();
+	}
 
 }

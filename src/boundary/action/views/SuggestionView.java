@@ -14,10 +14,24 @@ import model.Camp;
 import model.Permission;
 import model.Suggestion;
 import model.change.Change;
+/*
+ * SuggestionView is a class that is used to handle a suggestion.
+ */
 
-public class SuggestionView extends ViewHandler{
+public class SuggestionView extends ViewHandler {
 	private final Camp camp;
 	private final Suggestion suggestion;
+	/*
+	 * Constructor for SuggestionView.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 * 
+	 * @param camp The camp to be used.
+	 * 
+	 * @param suggestion The suggestion to be used.
+	 */
 
 	public SuggestionView(Context context, UserSession session, Camp camp, Suggestion suggestion) {
 		super(context, session);
@@ -26,11 +40,21 @@ public class SuggestionView extends ViewHandler{
 	}
 
 	@Override
+	/*
+	 * Get the prompt.
+	 * 
+	 * @return "How will you handle this suggestion?:".
+	 */
 	protected String getPrompt() {
 		return "How will you handle this suggestion?:";
 	}
-	
+
 	@Override
+	/*
+	 * Displays the view.
+	 * 
+	 * @throws Exception
+	 */
 	public void displayView() throws Exception {
 		new CampDisplayer(context, camp).display();
 		context.print("\nSuggested Modifications to this Camp:");
@@ -42,15 +66,24 @@ public class SuggestionView extends ViewHandler{
 	}
 
 	@Override
+	/*
+	 * Generates the actions.
+	 * 
+	 * @return The actions.
+	 */
 	protected List<Action> generateActions() throws Exception {
 		return List.of(
 				new ApplyChangesAction(context, session, camp, suggestion),
 				new RejectSuggestionAction(context, session, suggestion),
-				new CancelChangesAction(context, session)
-				);
+				new CancelChangesAction(context, session));
 	}
 
 	@Override
+	/*
+	 * Get the permissions.
+	 * 
+	 * @return The permissions.
+	 */
 	protected List<Permission> getPermissions() {
 		return context.getPermissionManager()
 				.getCampModificationPermissions(this.session.getUser(), camp);

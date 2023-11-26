@@ -8,17 +8,39 @@ import boundary.login.UserSession;
 import boundary.util.PasswordChangeHandler;
 import main.Context;
 import model.Permission;
+/*
+ * ChangePasswordAction is a class that is used to change passwords.
+ */
 
 public class ChangePasswordAction extends Action {
+	/*
+	 * Constructor for ChangePasswordAction.
+	 * 
+	 * @param context The context to be used.
+	 * 
+	 * @param session The session to be used.
+	 */
 
 	public ChangePasswordAction(Context context, UserSession session) {
 		super(context, session);
 	}
 
 	@Override
-	public String getDescription() { return "Update Password"; }
+	/*
+	 * Get the description.
+	 * 
+	 * @return "Update Password".
+	 */
+	public String getDescription() {
+		return "Update Password";
+	}
 
 	@Override
+	/*
+	 * Perform the action.
+	 * 
+	 * @throws Exception
+	 */
 	public void performAction() throws Exception {
 		PasswordChangeHandler handler = new PasswordChangeHandler(context, session.getUser());
 		while (true) {
@@ -32,6 +54,11 @@ public class ChangePasswordAction extends Action {
 	}
 
 	@Override
+	/*
+	 * Get the next view.
+	 * 
+	 * @return The next view.
+	 */
 	public List<Permission> getRequiredPermissions() {
 		return List.of(Permission.CHANGE_PASSWORD);
 	}

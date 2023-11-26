@@ -31,31 +31,59 @@ import exception.UnauthorisedActionException;
  */
 
 public class Staff extends User {
-    public Staff(int id, String userID, Faculty faculty, String password) {
+	/*
+	 * Constructs a Staff with specified ID, userID, faculty, and password.
+	 */
+
+	public Staff(int id, String userID, Faculty faculty, String password) {
 		super(id, userID, faculty, password);
 	}
-    
-	/**
-     * Returns the UserType as STAFF, indicating this user is a staff member.
-     *
-     * @return UserType enum value representing a staff member.
-     */
 
-    @Override
-    public UserType getType() {
-        return UserType.STAFF;
-    }
+	/**
+	 * Returns the UserType as STAFF, indicating this user is a staff member.
+	 *
+	 * @return UserType enum value representing a staff member.
+	 */
+
+	@Override
+	public UserType getType() {
+		return UserType.STAFF;
+	}
+
+	/**
+	 * Registers the specified camp to the system.
+	 *
+	 * @param camp The camp to be registered.
+	 * @throws UnauthorisedActionException If the user is not authorized to perform
+	 *                                     this action.
+	 */
 
 	@Override
 	public boolean isRegistered(Camp camp) {
 		return camp.getInformation().getStaffID() == this.getID();
 	}
 
+	/**
+	 * Returns the role of the user for the specified camp.
+	 *
+	 * @param camp The camp to check the user's role for.
+	 * @return The role of the user for the specified camp.
+	 */
+
 	@Override
 	public Role getRole(Camp camp) {
-		if (isRegistered(camp)) return Role.OWNER;
+		if (isRegistered(camp))
+			return Role.OWNER;
 		return Role.STAFF;
 	}
+
+	/**
+	 * Registers the specified camp to the system.
+	 *
+	 * @param camp The camp to be registered.
+	 * @throws UnauthorisedActionException If the user is not authorized to perform
+	 *                                     this action.
+	 */
 
 	@Override
 	public void deregister(Camp camp) throws UnauthorisedActionException {

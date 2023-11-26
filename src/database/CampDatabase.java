@@ -6,7 +6,7 @@ import java.util.List;
 import model.Camp;
 
 /**
- *This class is a database for camps.
+ * This class is a database for camps.
  * It extends the abstract class Database.
  */
 public class CampDatabase extends Database<Camp> {
@@ -21,15 +21,17 @@ public class CampDatabase extends Database<Camp> {
 
     /**
      * The constructor of the class.
-     * @throws IOException if an I/O error occurs
+     * 
+     * @throws IOException            if an I/O error occurs
      * @throws ClassNotFoundException if the class is not found
      */
     public CampDatabase() throws IOException, ClassNotFoundException {
-        this.camps=super.load();
+        this.camps = super.load();
     }
 
     /**
      * Gets the filename of the file that the database is saved to.
+     * 
      * @return The filename as a String.
      */
     public String getFilename() {
@@ -38,8 +40,9 @@ public class CampDatabase extends Database<Camp> {
 
     /**
      * gets the list of camps.
+     * 
      * @return a list of camps
-     * @throws IOException if an I/O error occurs
+     * @throws IOException            if an I/O error occurs
      * @throws ClassNotFoundException if the class is not found
      */
     public List<Camp> getAll() throws IOException, ClassNotFoundException {
@@ -48,24 +51,26 @@ public class CampDatabase extends Database<Camp> {
 
     /**
      * Sets the list of camps.
+     * 
      * @param objectList The list of objects to be set.
      */
-    public void setAll(List<Camp> objectList)  {
+    public void setAll(List<Camp> objectList) {
         this.camps = objectList;
     }
 
     /**
      * Gets the class of the contained object.
+     * 
      * @return The class of the contained object.
      */
     protected Class<Camp> getContainedClass() {
         return Camp.class;
     }
 
-	@Override
-	public void clear() throws ClassNotFoundException, IOException {
-		this.camps.clear();
-		save();
-	}
+    @Override
+    public void clear() throws ClassNotFoundException, IOException {
+        this.camps.clear();
+        save();
+    }
 
 }
