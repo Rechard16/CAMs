@@ -74,6 +74,7 @@ public class ModifyQueryView extends ViewHandler {
 		List<Action> actions = new ArrayList<>();
 		if (query.getStatus() == EnquiryStatus.UNANSWERED) {
 			actions.add(new UpdateQueryAction(context, session, query));
+			actions.add(new DeleteQueryAction(context, session, query));
 			new ConfirmationAction(context, session,
 					new DeleteQueryAction(context, session, query));
 		}
