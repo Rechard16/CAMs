@@ -39,7 +39,7 @@ public class CommitteeReportGenerator implements ReportGenerator {
 			Student student = (Student) context.getUserManager().getUserByID(id);
 			if (filter.isValid(context, student)) {
 				io.print(student.getName());
-				io.print("Points earned:", student.getPoints());
+				io.print("Points earned: %d\n", student.getPoints());
 
 				io.print("Suggestions submitted:");
 				List<Suggestion> suggestions = context.getSuggestionManager()
