@@ -19,7 +19,15 @@ We are a group 6 from tutorial group SCL2, Nanyang Technological University, Sin
 |ZHANG JIAHUA    | [Paraworks](https://github.com/Paraworks)
 
 ## Report and declaration
-YOu can view them [here](https://github.com/Rechard16/CAMs/tree/main/Report)
+You can view them [here](https://github.com/Rechard16/CAMs/tree/main/Report)
+
+## Table of Contents
+* [Build](#build)
+* [Running the Project](#running-the-project)
+    * [Login Details](#login-details)
+    * [Test Data](#test-data)
+    * [File Generation](#file-generation)
+    * [Resetting Data](#resetting-data)
 
 ## Build
 
@@ -83,7 +91,7 @@ To reset data, .txt files in the directory must be removed, and a new set of def
 
 ```bash
 cd /path/to/CAMs/
-rm -f data/*
+rm -f data/*.txt
 cp data/defaults/students.txt data/
 cp data/defaults/staff.txt data/
 ```
