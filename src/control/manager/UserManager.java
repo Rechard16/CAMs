@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import control.database.Database;
+import control.database.Savable;
 import control.database.StaffDatabase;
 import control.database.StudentDatabase;
 import entity.model.Staff;

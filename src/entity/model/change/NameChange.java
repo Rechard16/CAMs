@@ -1,5 +1,6 @@
 package entity.model.change;
 
+import boundary.reader.LineReader;
 import entity.model.CampInfo;
 import entity.model.Model;
 import main.Context;
@@ -31,7 +32,7 @@ public class NameChange extends Model implements Change {
 	 */
 	public static NameChange create(Context context) {
 		context.print("What will be the new name of your camp?");
-		String newName = context.getScanner().nextLine();
+		String newName = new LineReader(context).readLine();
 		return new NameChange(newName);
 	}
 

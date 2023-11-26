@@ -1,4 +1,4 @@
-package control.manager;
+package boundary.manager;
 
 import boundary.action.View;
 import boundary.action.views.EntryView;

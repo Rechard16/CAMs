@@ -6,6 +6,7 @@ import java.util.List;
 
 import control.database.Database;
 import control.database.QueryDatabase;
+import control.database.Savable;
 import entity.model.Camp;
 import entity.model.EnquiryStatus;
 import entity.model.Query;

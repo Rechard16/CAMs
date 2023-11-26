@@ -7,6 +7,7 @@ import java.util.Scanner;
 import boundary.reader.BooleanReader;
 import boundary.reader.DateReader;
 import boundary.reader.IntegerReader;
+import boundary.reader.LineReader;
 import entity.model.CampInfo;
 import entity.model.Faculty;
 import entity.model.User;
@@ -42,7 +43,7 @@ public class CampCreator {
 	public CampInfo build() {
 		Scanner scanner = context.getScanner();
 		context.print("What will be the name of your camp?");
-		String name = scanner.nextLine();
+		String name = new LineReader(context).readLine();
 		campInfo.setName(name);
 
 		context.print("What date will your camp start?");
@@ -59,7 +60,7 @@ public class CampCreator {
 		campInfo.setEligibility(open ? Faculty.SCHOOL : user.getFaculty());
 
 		context.print("Where will your camp be held?");
-		String location = scanner.nextLine();
+		String location = new LineReader(context).readLine();
 
 		campInfo.setLocation(location);
 
@@ -74,7 +75,7 @@ public class CampCreator {
 		campInfo.setCommitteeSlots(committeeSlots);
 
 		context.print("What description will the camp have?");
-		String description = scanner.nextLine();
+		String description = new LineReader(context).readLine();
 
 		campInfo.setDescription(description);
 

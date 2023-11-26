@@ -1,4 +1,4 @@
-package control.manager;
+package boundary.manager;
 
 import java.util.ArrayList;
 import java.util.List;

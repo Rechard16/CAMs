@@ -1,7 +1,8 @@
-package control.manager;
+package boundary.manager;
 
 import javax.naming.AuthenticationException;
 
+import control.manager.UserManager;
 import entity.model.User;
 
 /**

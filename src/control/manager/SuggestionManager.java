@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import control.database.Database;
+import control.database.Savable;
 import entity.model.CampInfoModifier;
 import entity.model.Suggestion;
 import entity.model.SuggestionStatus;

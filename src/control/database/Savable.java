@@ -1,4 +1,4 @@
-package control.manager;
+package control.database;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

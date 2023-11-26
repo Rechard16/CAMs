@@ -3,9 +3,9 @@ package main;
 import java.io.IOException;
 
 import boundary.login.LoginPortal;
+import boundary.manager.SessionManager;
 import control.database.ImportFile;
 import control.login.LoginSession;
-import control.manager.SessionManager;
 
 /**
  * Main class is the entry point of the program.

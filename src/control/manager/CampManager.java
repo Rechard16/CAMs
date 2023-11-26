@@ -7,6 +7,7 @@ import java.util.List;
 
 import control.database.CampDatabase;
 import control.database.Database;
+import control.database.Savable;
 import entity.Registrable;
 import entity.model.Camp;
 import entity.model.CampInfo;

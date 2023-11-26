@@ -3,7 +3,6 @@ package control.database;
 import java.io.IOException;
 import java.util.List;
 
-import control.manager.Savable;
 import entity.model.Model;
 
 /**

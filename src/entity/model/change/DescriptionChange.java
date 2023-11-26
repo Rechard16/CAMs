@@ -1,5 +1,6 @@
 package entity.model.change;
 
+import boundary.reader.LineReader;
 import entity.model.CampInfo;
 import entity.model.Model;
 import main.Context;
@@ -32,7 +33,7 @@ public class DescriptionChange extends Model implements Change {
      */
     public static DescriptionChange create(Context context) {
         context.print("Enter the new description for your camp:");
-        String newDescription = context.getScanner().nextLine();
+        String newDescription = new LineReader(context).readLine();
         return new DescriptionChange(newDescription);
     }
 

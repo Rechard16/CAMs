@@ -1,5 +1,6 @@
 package entity.model.change;
 
+import boundary.reader.LineReader;
 import entity.model.CampInfo;
 import entity.model.Model;
 import main.Context;
@@ -32,7 +33,7 @@ public class LocationChange extends Model implements Change {
 
     public static LocationChange create(Context context) {
         context.print("Enter the new location for your camp:");
-        String newLocation = context.getScanner().nextLine();
+        String newLocation = new LineReader(context).readLine();
         return new LocationChange(newLocation);
     }
 

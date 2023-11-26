@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import boundary.IO;
-import control.manager.AuthenticationManager;
+import boundary.manager.AuthenticationManager;
+import boundary.manager.PermissionManager;
 import control.manager.CampManager;
-import control.manager.PermissionManager;
 import control.manager.QueryManager;
 import control.manager.SuggestionManager;
 import control.manager.UserManager;
