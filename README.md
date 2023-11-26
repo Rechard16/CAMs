@@ -18,8 +18,8 @@ We are a group 6 from tutorial group SCL2, Nanyang Technological University, Sin
 |ZENG RUIXIAO    | [Rechard16](https://github.com/Rechard16)
 |ZHANG JIAHUA    | [Paraworks](https://github.com/Paraworks)
 
-## About this project
-YOu can view them [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ&themeRefresh=1)
+## Report and declaration
+YOu can view them [here](https://github.com/Rechard16/CAMs/tree/main/Report)
 
 ## Build
 
