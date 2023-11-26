@@ -1,12 +1,9 @@
 package boundary.action.actions.modification;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.change.DescriptionChange;
 import main.Context;
-import model.CampInfoModifier;
-import model.change.DescriptionChange;
-/*
- * DescriptionModificationAction is a class that is used to modify descriptions.
- */
 
 public class DescriptionModificationAction extends ModificationAction {
     /*

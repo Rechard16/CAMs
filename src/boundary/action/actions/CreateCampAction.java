@@ -4,15 +4,12 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
 import boundary.util.CampCreator;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.CampInfo;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.CampInfo;
-import model.Permission;
-/*
- * CreateCampAction is a class that is used to create a camp.
- */
 
 public class CreateCampAction extends Action {
 	private Camp camp;

@@ -6,15 +6,12 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.ModifyQueryView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.EnquiryStatus;
+import entity.model.Permission;
+import entity.model.Query;
 import main.Context;
-import model.Camp;
-import model.EnquiryStatus;
-import model.Permission;
-import model.Query;
-/*
- * ModifyQueryAction is a class that is used to modify a query.
- */
 
 public class ModifyQueryAction extends Action {
 	private final Query query;

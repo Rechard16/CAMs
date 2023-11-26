@@ -1,13 +1,10 @@
 package boundary.display;
 
 import boundary.IO;
+import entity.model.Camp;
+import entity.model.Role;
+import entity.model.User;
 import main.Context;
-import model.Camp;
-import model.Role;
-import model.User;
-/*
- * UserDisplayer is a class that is used to display users.
- */
 
 public class UserDisplayer extends Displayer {
 	private final User user;

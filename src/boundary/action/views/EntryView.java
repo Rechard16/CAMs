@@ -12,12 +12,9 @@ import boundary.action.actions.ViewAssignedCampAction;
 import boundary.action.actions.ViewCampsAction;
 import boundary.action.actions.ViewMyCampsAction;
 import boundary.action.actions.ViewSuperCampsAction;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * EntryView is a class that is used to handle entry.
- */
 
 public class EntryView extends ViewHandler {
 	/*

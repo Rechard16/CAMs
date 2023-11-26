@@ -4,14 +4,11 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.Registrable;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.interfaces.Registrable;
-/*
- * WithdrawAction is a class that is used to withdraw from a camp.
- */
 
 public class WithdrawAction extends Action {
 	private final Camp camp;

@@ -5,14 +5,11 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.CampOptionsView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Role;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Role;
-/*
- * ViewCampAction is a class that is used to view a camp.
- */
 
 public class ViewCampAction extends Action {
 	private Camp camp;

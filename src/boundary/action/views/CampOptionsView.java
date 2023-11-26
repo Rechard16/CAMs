@@ -19,13 +19,10 @@ import boundary.action.actions.ViewSuggestionsSuperAction;
 import boundary.action.actions.WithdrawAction;
 import boundary.action.actions.filter.UserFilterByAction;
 import boundary.display.CampDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * CampOptionsView is a class that is used to handle camp options.
- */
 
 public class CampOptionsView extends ViewHandler {
 	private Camp camp;

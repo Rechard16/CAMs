@@ -2,8 +2,8 @@ package boundary.action.views;
 
 import boundary.action.Action;
 import boundary.action.View;
-import boundary.login.UserSession;
 import boundary.reader.BooleanReader;
+import control.login.UserSession;
 import main.Context;
 /*
  * ConfirmationView is a class that is used to confirm actions.

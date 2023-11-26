@@ -3,13 +3,10 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * CreateQueryAction is a class that is used to create a query.
- */
 
 public class CreateQueryAction extends Action {
 	private final Camp camp;

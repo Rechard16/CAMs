@@ -4,14 +4,11 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
-import boundary.util.RegistrationHandler;
+import control.event.RegistrationHandler;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * RegisterCommitteeAction is a class that is used to register as a committee member.
- */
 
 public class RegisterCommitteeAction extends Action {
 	private final Camp camp;

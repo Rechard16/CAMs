@@ -9,13 +9,10 @@ import boundary.action.actions.CreateCampAction;
 import boundary.action.actions.ReturnHomeAction;
 import boundary.action.actions.ViewCampAction;
 import boundary.action.actions.filter.CampFilterByAction;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * CampListingView is a class that is used to list camps.
- */
 
 public class CampListingView extends ViewHandler {
 

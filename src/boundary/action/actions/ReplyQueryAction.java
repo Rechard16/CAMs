@@ -4,16 +4,13 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.View;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
+import entity.model.Query;
+import entity.model.Student;
+import entity.model.User;
+import entity.model.UserType;
 import main.Context;
-import model.Permission;
-import model.Query;
-import model.Student;
-import model.User;
-import model.UserType;
-/*
- * ReplyQueryAction is a class that is used to reply to a query.
- */
 
 public class ReplyQueryAction extends Action {
 	private Query query;

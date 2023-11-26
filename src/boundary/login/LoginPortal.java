@@ -2,8 +2,9 @@ package boundary.login;
 
 import java.util.Scanner;
 
-import boundary.util.PasswordChangeHandler;
-import exception.UnsuccessfulLoginException;
+import control.event.PasswordChangeHandler;
+import control.login.LoginSession;
+import entity.exception.UnsuccessfulLoginException;
 import main.Context;
 
 /**

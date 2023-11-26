@@ -1,12 +1,9 @@
 package boundary.action.actions.modification;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.change.DeadlineChange;
 import main.Context;
-import model.CampInfoModifier;
-import model.change.DeadlineChange;
-/*
- * DeadlineModificationAction is a class that is used to modify the deadline.
- */
 
 public class DeadlineModificationAction extends ModificationAction {
     /*

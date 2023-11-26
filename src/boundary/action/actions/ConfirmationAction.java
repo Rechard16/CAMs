@@ -5,12 +5,9 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.View;
 import boundary.action.views.ConfirmationView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * ConfirmationAction is a class that is used to confirm an action.
- */
 
 public class ConfirmationAction extends Action {
 	private final Action action;

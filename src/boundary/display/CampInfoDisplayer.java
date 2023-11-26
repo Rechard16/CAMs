@@ -7,12 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 import boundary.IO;
+import entity.model.CampInfo;
+import entity.model.User;
 import main.Context;
-import model.CampInfo;
-import model.User;
-/*
- * CampInfoDisplayer is a class that is used to display camp information.
- */
 
 public class CampInfoDisplayer extends Displayer {
 	private final CampInfo info;

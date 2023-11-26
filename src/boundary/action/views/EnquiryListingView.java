@@ -8,11 +8,11 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.ModifyQueryAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ViewQueryAction;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Query;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Query;
 
 /*
  * EnquiryListingView is a class that is used to list enquiries.

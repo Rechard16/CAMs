@@ -1,12 +1,9 @@
 package boundary.action.actions.modification;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.change.NameChange;
 import main.Context;
-import model.CampInfoModifier;
-import model.change.NameChange;
-/*
- * NameModificationAction is a class that is used to modify names.
- */
 
 public class NameModificationAction extends ModificationAction {
 	/*

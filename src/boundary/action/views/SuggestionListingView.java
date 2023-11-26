@@ -8,14 +8,11 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.ModifySuggestionAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ViewSuggestionAction;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Suggestion;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Suggestion;
-/*
- * SuggestionListingView is a class that is used to list suggestions.
- */
 
 public class SuggestionListingView extends ViewHandler {
 	private final Camp camp;

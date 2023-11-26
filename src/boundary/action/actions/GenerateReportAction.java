@@ -3,16 +3,13 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
-import boundary.filter.Filter;
-import boundary.login.UserSession;
-import boundary.util.ReportGenerator;
+import boundary.display.report.ReportGenerator;
+import control.login.UserSession;
+import entity.filter.Filter;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.User;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.User;
-/*
- * GenerateReportAction is a class that is used to generate reports.
- */
 
 public class GenerateReportAction extends Action {
 	private final Camp camp;

@@ -1,9 +1,9 @@
 package boundary.action.actions.modification;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.change.LocationChange;
 import main.Context;
-import model.CampInfoModifier;
-import model.change.LocationChange;
 
 /**
  * LocationModificationAction is a class that is used to modify locations.

@@ -5,14 +5,11 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.View;
 import boundary.action.views.EnquiryListingView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Query;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Query;
-/*
- * ViewEnquiriesAction is a class that is used to view enquiries.
- */
 
 public class ViewEnquiriesAction extends Action {
 	private final Camp camp;

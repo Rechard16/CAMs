@@ -7,14 +7,11 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.ReplyQueryAction;
 import boundary.display.QueryDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Query;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Query;
-/*
- * QueryView is a class that is used to handle a query.
- */
 
 public class QueryView extends ViewHandler {
 	private final Camp camp;

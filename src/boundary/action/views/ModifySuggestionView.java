@@ -12,17 +12,14 @@ import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.UpdateSuggestionAction;
 import boundary.action.actions.modification.ModificationAction;
 import boundary.display.CampDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.CampInfoModifier;
+import entity.model.Permission;
+import entity.model.Suggestion;
+import entity.model.SuggestionStatus;
+import entity.model.change.Change;
 import main.Context;
-import model.Camp;
-import model.CampInfoModifier;
-import model.Permission;
-import model.Suggestion;
-import model.SuggestionStatus;
-import model.change.Change;
-/*
- * ModifySuggestionView is a class that is used to modify a suggestion.
- */
 
 public class ModifySuggestionView extends ViewHandler {
 	private final Camp camp;

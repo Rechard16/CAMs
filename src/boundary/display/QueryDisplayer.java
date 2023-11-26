@@ -3,11 +3,8 @@ package boundary.display;
 import java.io.IOException;
 
 import boundary.IO;
+import entity.model.Query;
 import main.Context;
-import model.Query;
-/*
- * Displayer is a class that is used to display objects.
- */
 
 public class QueryDisplayer extends Displayer {
 	private final Query query;

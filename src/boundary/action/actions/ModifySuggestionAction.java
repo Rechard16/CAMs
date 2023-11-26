@@ -6,15 +6,12 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.ModifySuggestionView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Suggestion;
+import entity.model.SuggestionStatus;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Suggestion;
-import model.SuggestionStatus;
-/*
- * ModifySuggestionAction is a class that is used to modify a suggestion.
- */
 
 public class ModifySuggestionAction extends Action {
 	private final Suggestion suggestion;

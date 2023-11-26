@@ -5,14 +5,11 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.View;
 import boundary.action.views.CampListingView;
-import boundary.filter.Filter;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.filter.Filter;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * FilterCampsAction is a class that is used to filter camps.
- */
 
 public class FilterCampsAction extends Action {
 	private final Filter<Camp> filter;

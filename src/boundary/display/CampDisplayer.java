@@ -3,11 +3,8 @@ package boundary.display;
 import java.io.IOException;
 
 import boundary.IO;
+import entity.model.Camp;
 import main.Context;
-import model.Camp;
-/*
- * Displayer is a class that is used to display objects.
- */
 
 public class CampDisplayer extends Displayer {
 	private final Camp camp;

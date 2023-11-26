@@ -10,15 +10,12 @@ import boundary.action.actions.DeleteQueryAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.UpdateQueryAction;
 import boundary.display.QueryDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.EnquiryStatus;
+import entity.model.Permission;
+import entity.model.Query;
 import main.Context;
-import model.Camp;
-import model.EnquiryStatus;
-import model.Permission;
-import model.Query;
-/*
- * ModifyQueryView is a class that is used to modify a query.
- */
 
 public class ModifyQueryView extends ViewHandler {
 	private final Camp camp;

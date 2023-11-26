@@ -5,12 +5,9 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * CancelChangesAction is a class that is used to cancel changes.
- */
 
 public class CancelChangesAction extends Action {
 	/*

@@ -3,13 +3,10 @@ package boundary.action.actions;
 import java.util.List;
 
 import boundary.action.Action;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-/*
- * ToggleVisibilityAction is a class that is used to toggle visibility.
- */
 
 public class ToggleVisibilityAction extends Action {
 	private final Camp camp;

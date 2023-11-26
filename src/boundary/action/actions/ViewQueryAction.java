@@ -6,12 +6,12 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.QueryView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Query;
+import entity.model.User;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Query;
-import model.User;
 
 /*
  * ViewQueryAction is a class that is used to view a query.

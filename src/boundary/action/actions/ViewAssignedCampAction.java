@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Student;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Student;
-/*
- * ViewAssignedCampAction is a class that is used to view an assigned camp.
- */
 
 public class ViewAssignedCampAction extends ViewCampAction {
 	private ViewHandler nextView;

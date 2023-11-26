@@ -4,13 +4,10 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
-import boundary.util.PasswordChangeHandler;
+import control.event.PasswordChangeHandler;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * ChangePasswordAction is a class that is used to change passwords.
- */
 
 public class ChangePasswordAction extends Action {
 	/*

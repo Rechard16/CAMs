@@ -6,16 +6,13 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.SuggestionView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Suggestion;
+import entity.model.SuggestionStatus;
+import entity.model.User;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Suggestion;
-import model.SuggestionStatus;
-import model.User;
-/*
- * ViewSuggestionAction is a class that is used to view a suggestion.
- */
 
 public class ViewSuggestionAction extends Action {
 	private final Suggestion suggestion;

@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import boundary.IO;
-import boundary.PermissionManager;
-import boundary.login.AuthenticationManager;
-import manager.CampManager;
-import manager.QueryManager;
-import manager.SuggestionManager;
-import manager.UserManager;
+import control.manager.AuthenticationManager;
+import control.manager.CampManager;
+import control.manager.PermissionManager;
+import control.manager.QueryManager;
+import control.manager.SuggestionManager;
+import control.manager.UserManager;
 
 /**
  * Context class is a singleton class that holds all the managers and the

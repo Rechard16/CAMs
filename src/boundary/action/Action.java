@@ -2,9 +2,9 @@ package boundary.action;
 
 import java.util.List;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
 
 /*
  * Action is an abstract class that is used to perform actions.

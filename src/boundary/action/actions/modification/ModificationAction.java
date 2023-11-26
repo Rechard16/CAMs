@@ -3,13 +3,10 @@ package boundary.action.actions.modification;
 import java.util.List;
 
 import boundary.action.Action;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.Permission;
 import main.Context;
-import model.CampInfoModifier;
-import model.Permission;
-/*
- * ModificationAction is a class that is used to modify a camp.
- */
 
 public abstract class ModificationAction extends Action {
 	protected final CampInfoModifier modifier;

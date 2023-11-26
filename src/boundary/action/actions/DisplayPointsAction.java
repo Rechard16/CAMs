@@ -4,13 +4,10 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
+import entity.model.Student;
 import main.Context;
-import model.Permission;
-import model.Student;
-/*
- * DisplayPointsAction is a class that is used to display points.
- */
 
 public class DisplayPointsAction extends Action {
 	private final ViewHandler currentView;

@@ -5,14 +5,11 @@ import java.util.List;
 import boundary.action.Action;
 import boundary.action.ViewHandler;
 import boundary.action.views.SuggestionListingView;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Suggestion;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Suggestion;
-/*
- * ViewSuggestionsSuperAction is a class that is used to view suggestions.
- */
 
 public class ViewSuggestionsSuperAction extends Action {
 	private final Camp camp;

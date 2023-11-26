@@ -4,13 +4,10 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.View;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
+import entity.model.Suggestion;
 import main.Context;
-import model.Permission;
-import model.Suggestion;
-/*
- * DeleteSuggestionAction is a class that is used to delete suggestions.
- */
 
 public class DeleteSuggestionAction extends Action {
 	private final Suggestion suggestion;

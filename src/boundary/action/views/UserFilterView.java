@@ -7,24 +7,21 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.GenerateReportAction;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.filter.AddFilterAction;
-import boundary.filter.FacultyParameter;
-import boundary.filter.Filter;
-import boundary.filter.FilterParameter;
-import boundary.filter.NameParameter;
-import boundary.filter.RoleParameter;
-import boundary.login.UserSession;
-import boundary.util.CampReportGenerator;
-import boundary.util.CommitteeReportGenerator;
+import boundary.display.report.CampReportGenerator;
+import boundary.display.report.CommitteeReportGenerator;
+import control.login.UserSession;
+import entity.FacultyMember;
+import entity.Nameable;
+import entity.Registrable;
+import entity.filter.FacultyParameter;
+import entity.filter.Filter;
+import entity.filter.FilterParameter;
+import entity.filter.NameParameter;
+import entity.filter.RoleParameter;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.User;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.User;
-import model.interfaces.FacultyMember;
-import model.interfaces.Nameable;
-import model.interfaces.Registrable;
-/*
- * UserFilterView is a class that is used to filter users.
- */
 
 public class UserFilterView extends ViewHandler {
 	private final Filter<User> filter = new Filter<>();

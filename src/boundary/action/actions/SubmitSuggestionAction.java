@@ -4,14 +4,11 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.CampInfoModifier;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.CampInfoModifier;
-import model.Permission;
-/*
- * SubmitSuggestionAction is a class that is used to submit a suggestion.
- */
 
 public class SubmitSuggestionAction extends Action {
 	private final CampInfoModifier modifier;

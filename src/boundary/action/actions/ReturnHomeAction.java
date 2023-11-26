@@ -5,12 +5,9 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.action.ViewHandler;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * ReturnHomeAction is a class that is used to return to the home page.
- */
 
 public class ReturnHomeAction extends Action {
 	/*

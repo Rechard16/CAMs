@@ -7,19 +7,19 @@ import boundary.action.ViewHandler;
 import boundary.action.actions.PreviousViewAction;
 import boundary.action.actions.filter.AddFilterAction;
 import boundary.action.actions.filter.FilterCampsAction;
-import boundary.filter.FacultyParameter;
-import boundary.filter.Filter;
-import boundary.filter.FilterParameter;
-import boundary.filter.LocationParameter;
-import boundary.filter.NameParameter;
-import boundary.filter.StaffParameter;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.FacultyMember;
+import entity.Locatable;
+import entity.Nameable;
+import entity.filter.FacultyParameter;
+import entity.filter.Filter;
+import entity.filter.FilterParameter;
+import entity.filter.LocationParameter;
+import entity.filter.NameParameter;
+import entity.filter.StaffParameter;
+import entity.model.Camp;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.interfaces.FacultyMember;
-import model.interfaces.Locatable;
-import model.interfaces.Nameable;
 
 /*
  * CampFilterView is a class that is used to filter camps.

@@ -2,11 +2,8 @@ package boundary.action;
 
 import java.util.List;
 
-import boundary.login.LoginSession;
-import model.Permission;
-/*
- * ActionAuthorizer is a class that is used to authorize actions.
- */
+import control.login.LoginSession;
+import entity.model.Permission;
 
 public class ActionAuthorizer {
 	private List<Permission> permissions;

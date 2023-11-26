@@ -4,14 +4,11 @@ import java.util.List;
 
 import boundary.action.Action;
 import boundary.display.CampDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.CampInfoModifier;
+import entity.model.Permission;
 import main.Context;
-import model.Camp;
-import model.CampInfoModifier;
-import model.Permission;
-/*
- * ApplyChangesAction is a class that is used to apply changes.
- */
 
 public class PrintCampAction extends Action {
 	private final Camp camp;

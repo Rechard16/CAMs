@@ -2,13 +2,10 @@ package boundary.action;
 
 import java.util.List;
 
-import boundary.OptionDisplayer;
-import boundary.login.UserSession;
+import boundary.display.OptionDisplayer;
+import control.login.UserSession;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * ViewHandler is an abstract class that is used to handle views.
- */
 
 public abstract class ViewHandler implements View {
 

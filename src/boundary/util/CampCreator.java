@@ -7,10 +7,10 @@ import java.util.Scanner;
 import boundary.reader.BooleanReader;
 import boundary.reader.DateReader;
 import boundary.reader.IntegerReader;
+import entity.model.CampInfo;
+import entity.model.Faculty;
+import entity.model.User;
 import main.Context;
-import model.CampInfo;
-import model.Faculty;
-import model.User;
 
 /**
  * CampCreator is a class that is used to create a camp.

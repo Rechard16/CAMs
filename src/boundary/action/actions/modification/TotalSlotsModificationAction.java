@@ -1,12 +1,9 @@
 package boundary.action.actions.modification;
 
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.CampInfoModifier;
+import entity.model.change.TotalSlotsChange;
 import main.Context;
-import model.CampInfoModifier;
-import model.change.TotalSlotsChange;
-/*
- * TotalSlotsModificationAction is a class that is used to modify total slots.
- */
 
 public class TotalSlotsModificationAction extends ModificationAction {
     /*

@@ -8,15 +8,12 @@ import boundary.action.actions.ApplyChangesAction;
 import boundary.action.actions.CancelChangesAction;
 import boundary.action.actions.RejectSuggestionAction;
 import boundary.display.CampDisplayer;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.model.Camp;
+import entity.model.Permission;
+import entity.model.Suggestion;
+import entity.model.change.Change;
 import main.Context;
-import model.Camp;
-import model.Permission;
-import model.Suggestion;
-import model.change.Change;
-/*
- * SuggestionView is a class that is used to handle a suggestion.
- */
 
 public class SuggestionView extends ViewHandler {
 	private final Camp camp;

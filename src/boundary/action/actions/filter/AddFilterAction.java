@@ -4,14 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 import boundary.action.Action;
-import boundary.filter.Filter;
-import boundary.filter.FilterParameter;
-import boundary.login.UserSession;
+import control.login.UserSession;
+import entity.filter.Filter;
+import entity.filter.FilterParameter;
+import entity.model.Permission;
 import main.Context;
-import model.Permission;
-/*
- * AddFilterAction is a class that is used to add a filter.
- */
 
 public class AddFilterAction<T> extends Action {
 	private final Filter<? extends T> filter;
